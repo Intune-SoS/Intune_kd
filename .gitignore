@@ -1,0 +1,84 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+*.pyc
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+.env.prod
+.env.test
+.env.development
+.env.staging
+*.pem
+*.key
+*.crt
+*.pfx
+credentials.json
+secrets.json
+config/secrets/
+
+# Models (large files)
+models/
+*.gguf
+*.safetensors
+*.bin
+*.pth
+*.pt
+
+# Cache
+.cache/
+unsloth_compiled_cache/
+**/unsloth_compiled_cache/
+**/__pycache__/
+*.cache
+
+# Logs and temp
+*.log
+logs/
+ray_temp/
+tmp/
+tempfile/
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Project-specific
+intune_pipeline_env
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+.hypothesis/
+
+# Database backups
+*.sql.backup
+*.dump
+
+# Configuration files with secrets
+config.local.yaml
+config.local.json
+.supabaserc
