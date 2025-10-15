@@ -1,0 +1,46 @@
+# INTUNE Pipeline - Complete Requirements
+# =========================================
+# Event-driven ML pipeline with Supabase Realtime, Kafka, and Finetuning
+
+# Core Pipeline Dependencies
+# --------------------------
+supabase>=2.0.0              # Supabase client and Realtime
+confluent-kafka>=2.0.0       # Kafka producer/consumer 
+python-dotenv>=1.0.0         # Environment variable management
+
+# ML/AI Dependencies
+# ------------------
+torch>=2.1.2                # PyTorch for ML models (CVE-2024-50266, CVE-2024-50267, CVE-2024-50270 patched)
+transformers>=4.30.0         # HuggingFace transformers
+datasets>=2.14.0            # HuggingFace datasets
+accelerate>=0.20.0           # Training acceleration
+unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git
+
+# Data Processing & Analytics
+# ---------------------------
+pandas>=2.0.0                # Data manipulation
+numpy>=1.24.0,<2.1.0        # Numerical computing 
+scipy>=1.10.0               # Scientific computing
+
+# ML Evaluation Metrics
+# ----------------------
+rouge-score>=0.1.2          # ROUGE metrics
+sacrebleu>=2.3.0            # BLEU metrics
+nltk>=3.8.1                 # Natural language toolkit
+scikit-learn>=1.3.0         # ML evaluation utilities
+
+# HTTP & API
+# -----------
+httpx>=0.24.0               # Async HTTP client
+requests>=2.31.0            # HTTP requests
+pydantic>=2.0.0             # Data validation
+
+# Development & Utilities  
+# ------------------------
+jupyter>=1.0.0              # Jupyter notebooks
+tqdm>=4.65.0                # Progress bars
+
+# Testing
+# -------
+pytest>=7.4.0              # Testing framework
+pytest-asyncio>=0.21.0     # Async testing
