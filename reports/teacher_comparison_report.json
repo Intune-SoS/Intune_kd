@@ -1,0 +1,2603 @@
+{
+  "generated_at": "2026-01-10T15:08:49.587443",
+  "overall": {
+    "total_records": 3996,
+    "alpaca_wins": 2286,
+    "oss_wins": 1502,
+    "ties": 208,
+    "alpaca_weighted_overall": 0.4667,
+    "oss_weighted_overall": 0.3817,
+    "winner": "tuned_alpaca",
+    "margin": 0.08497239739739743
+  },
+  "context_split": {
+    "with_context": {
+      "name": "With Context",
+      "count": 1729,
+      "alpaca_wins": 1206,
+      "oss_wins": 321,
+      "ties": 202,
+      "alpaca_overall": 0.2705,
+      "oss_overall": 0.0686,
+      "alpaca_ctx_grounding": 0.5412,
+      "oss_ctx_grounding": 0.5839,
+      "alpaca_hallucination": 0.5301,
+      "oss_hallucination": 0.8839,
+      "alpaca_faithfulness": 0.3371,
+      "oss_faithfulness": 0.2539,
+      "winner": "alpaca"
+    },
+    "without_context": {
+      "name": "Without Context",
+      "count": 2267,
+      "alpaca_wins": 1080,
+      "oss_wins": 1181,
+      "ties": 6,
+      "alpaca_overall": 0.6163,
+      "oss_overall": 0.6205,
+      "alpaca_ctx_grounding": 1.0,
+      "oss_ctx_grounding": 1.0,
+      "alpaca_hallucination": 0.0,
+      "oss_hallucination": 0.0,
+      "alpaca_faithfulness": 0.3468,
+      "oss_faithfulness": 0.2873,
+      "winner": "oss"
+    }
+  },
+  "by_category": {
+    "general_qa": {
+      "count": 1432,
+      "alpaca_wins": 865,
+      "oss_wins": 501,
+      "ties": 66,
+      "alpaca_avg_scores": {
+        "structured_correctness": 0.5182,
+        "task_success": 0.5814,
+        "instruction_following": 0.9902,
+        "coverage": 0.2172,
+        "faithfulness": 0.3603,
+        "hallucination": 0.1814,
+        "context_grounding": 0.8572,
+        "overall_score": 0.508
+      },
+      "oss_avg_scores": {
+        "structured_correctness": 0.586,
+        "task_success": 0.6247,
+        "instruction_following": 0.9943,
+        "coverage": 0.2289,
+        "faithfulness": 0.2678,
+        "hallucination": 0.3063,
+        "context_grounding": 0.8525,
+        "overall_score": 0.4246
+      }
+    },
+    "language_editing": {
+      "count": 434,
+      "alpaca_wins": 316,
+      "oss_wins": 102,
+      "ties": 16,
+      "alpaca_avg_scores": {
+        "structured_correctness": 0.5055,
+        "task_success": 0.5864,
+        "instruction_following": 0.9902,
+        "coverage": 0.2325,
+        "faithfulness": 0.437,
+        "hallucination": 0.2687,
+        "context_grounding": 0.7378,
+        "overall_score": 0.4583
+      },
+      "oss_avg_scores": {
+        "structured_correctness": 0.5608,
+        "task_success": 0.7276,
+        "instruction_following": 0.9879,
+        "coverage": 0.2482,
+        "faithfulness": 0.3059,
+        "hallucination": 0.6054,
+        "context_grounding": 0.7023,
+        "overall_score": 0.2471
+      }
+    },
+    "classification_analysis": {
+      "count": 962,
+      "alpaca_wins": 470,
+      "oss_wins": 414,
+      "ties": 78,
+      "alpaca_avg_scores": {
+        "structured_correctness": 0.5239,
+        "task_success": 0.5397,
+        "instruction_following": 0.9927,
+        "coverage": 0.1743,
+        "faithfulness": 0.3167,
+        "hallucination": 0.3302,
+        "context_grounding": 0.6982,
+        "overall_score": 0.399
+      },
+      "oss_avg_scores": {
+        "structured_correctness": 0.5877,
+        "task_success": 0.6723,
+        "instruction_following": 0.996,
+        "coverage": 0.2175,
+        "faithfulness": 0.2576,
+        "hallucination": 0.4632,
+        "context_grounding": 0.7656,
+        "overall_score": 0.3353
+      }
+    },
+    "technical_code": {
+      "count": 286,
+      "alpaca_wins": 134,
+      "oss_wins": 138,
+      "ties": 14,
+      "alpaca_avg_scores": {
+        "structured_correctness": 0.2776,
+        "task_success": 0.5928,
+        "instruction_following": 0.9843,
+        "coverage": 0.2028,
+        "faithfulness": 0.3574,
+        "hallucination": 0.1973,
+        "context_grounding": 0.8509,
+        "overall_score": 0.4576
+      },
+      "oss_avg_scores": {
+        "structured_correctness": 0.4098,
+        "task_success": 0.6997,
+        "instruction_following": 0.9904,
+        "coverage": 0.2555,
+        "faithfulness": 0.3452,
+        "hallucination": 0.3038,
+        "context_grounding": 0.8974,
+        "overall_score": 0.4315
+      }
+    },
+    "math_logic": {
+      "count": 338,
+      "alpaca_wins": 215,
+      "oss_wins": 104,
+      "ties": 19,
+      "alpaca_avg_scores": {
+        "structured_correctness": 0.5044,
+        "task_success": 0.4866,
+        "instruction_following": 0.9959,
+        "coverage": 0.2857,
+        "faithfulness": 0.2998,
+        "hallucination": 0.1799,
+        "context_grounding": 0.7695,
+        "overall_score": 0.4696
+      },
+      "oss_avg_scores": {
+        "structured_correctness": 0.5658,
+        "task_success": 0.736,
+        "instruction_following": 0.9959,
+        "coverage": 0.4203,
+        "faithfulness": 0.2821,
+        "hallucination": 0.4495,
+        "context_grounding": 0.8431,
+        "overall_score": 0.3484
+      }
+    },
+    "creative_generative": {
+      "count": 543,
+      "alpaca_wins": 285,
+      "oss_wins": 243,
+      "ties": 15,
+      "alpaca_avg_scores": {
+        "structured_correctness": 0.5295,
+        "task_success": 0.644,
+        "instruction_following": 0.9922,
+        "coverage": 0.1171,
+        "faithfulness": 0.2855,
+        "hallucination": 0.1923,
+        "context_grounding": 0.882,
+        "overall_score": 0.4879
+      },
+      "oss_avg_scores": {
+        "structured_correctness": 0.5899,
+        "task_success": 0.6918,
+        "instruction_following": 0.9936,
+        "coverage": 0.1241,
+        "faithfulness": 0.243,
+        "hallucination": 0.2606,
+        "context_grounding": 0.869,
+        "overall_score": 0.4534
+      }
+    },
+    "explanatory": {
+      "count": 1,
+      "alpaca_wins": 1,
+      "oss_wins": 0,
+      "ties": 0,
+      "alpaca_avg_scores": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5723,
+        "instruction_following": 1.0,
+        "coverage": 0.1724,
+        "faithfulness": 0.2576,
+        "hallucination": 0.9259,
+        "context_grounding": 1.0,
+        "overall_score": 0.0434
+      },
+      "oss_avg_scores": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5409,
+        "instruction_following": 1.0,
+        "coverage": 0.1034,
+        "faithfulness": 0.347,
+        "hallucination": 0.9459,
+        "context_grounding": 1.0,
+        "overall_score": 0.03
+      }
+    }
+  },
+  "sample_results": [
+    {
+      "id": "0012e145-60a4-4ca0-a501-2ff69300046a",
+      "label": "general_qa",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.7,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 1.0,
+        "faithfulness": 1.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "overall_score": 0.8857,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 1.0,
+          "context_similarity": 1.0,
+          "elements_covered": 5,
+          "elements_total": 5,
+          "length_ratio": 1.0
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6212,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.0,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.6,
+        "overall_score": 0.0,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.0,
+          "elements_covered": 0,
+          "elements_total": 5,
+          "length_ratio": 2.43
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.8857
+    },
+    {
+      "id": "00157af8-8abf-4155-9171-1ff5d3a21026",
+      "label": "language_editing",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.4,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "overall_score": 0.5714,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 1.0,
+          "elements_covered": 0,
+          "elements_total": 14,
+          "length_ratio": 0.33
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6134,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.154,
+        "hallucination": 0.7778,
+        "context_grounding": 0.6667,
+        "conciseness": 1.0,
+        "overall_score": 0.1249,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.3849,
+          "elements_covered": 0,
+          "elements_total": 14,
+          "length_ratio": 0.93
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.4465
+    },
+    {
+      "id": "001eac27-13c2-4750-babc-f372d06ae9b1",
+      "label": "general_qa",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.7612,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 1.0,
+        "faithfulness": 1.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "overall_score": 0.8945,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 1.0,
+          "context_similarity": 0.0,
+          "elements_covered": 11,
+          "elements_total": 11,
+          "length_ratio": 1.0
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.8,
+        "task_success": 0.7366,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.7273,
+        "faithfulness": 0.5365,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.7143,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.5365,
+          "context_similarity": 0.0,
+          "elements_covered": 8,
+          "elements_total": 11,
+          "length_ratio": 37.43
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.18019999999999992
+    },
+    {
+      "id": "0021399a-0c0c-4e03-ba38-949e935876a5",
+      "label": "classification_analysis",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5302,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0349,
+        "faithfulness": 0.0906,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.2,
+        "overall_score": 0.0,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.151,
+          "context_similarity": 0.0,
+          "elements_covered": 3,
+          "elements_total": 86,
+          "length_ratio": 0.16
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.0,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.2,
+        "overall_score": 0.0,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.0,
+          "elements_covered": 0,
+          "elements_total": 86,
+          "length_ratio": 0.16
+        }
+      },
+      "alpaca_wins": false,
+      "difference": 0.0
+    },
+    {
+      "id": "00758e38-c632-4e48-8e86-510bda190fab",
+      "label": "technical_code",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.2,
+        "task_success": 0.5879,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.2679,
+        "faithfulness": 0.2818,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.5054,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.2818,
+          "context_similarity": 0.0,
+          "elements_covered": 15,
+          "elements_total": 56,
+          "length_ratio": 6.74
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.2,
+        "task_success": 0.6187,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.125,
+        "faithfulness": 0.1514,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.5564,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.1514,
+          "context_similarity": 0.0,
+          "elements_covered": 7,
+          "elements_total": 56,
+          "length_ratio": 1.41
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.051000000000000045
+    },
+    {
+      "id": "007c81c4-66b2-4fe6-83d1-02a924e8cf2a",
+      "label": "classification_analysis",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6922,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.2174,
+        "faithfulness": 0.2989,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.6441,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.2989,
+          "context_similarity": 0.0,
+          "elements_covered": 10,
+          "elements_total": 46,
+          "length_ratio": 1.65
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.6456,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.087,
+        "faithfulness": 0.0513,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.5191,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0513,
+          "context_similarity": 0.0,
+          "elements_covered": 4,
+          "elements_total": 46,
+          "length_ratio": 6.11
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.125
+    },
+    {
+      "id": "008aefc4-1007-4104-a4f9-db9ac0954750",
+      "label": "classification_analysis",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.1,
+        "instruction_following": 0.75,
+        "instruction_following_rubric": 1.5,
+        "coverage": 0.0444,
+        "faithfulness": 0.0889,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "overall_score": 0.4976,
+        "details": {
+          "instruction_violations": [
+            "refusal_detected"
+          ],
+          "teacher_similarity": 0.0889,
+          "context_similarity": 0.0,
+          "elements_covered": 2,
+          "elements_total": 45,
+          "length_ratio": 0.92
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5454,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1333,
+        "faithfulness": 0.2011,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.5114,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.2011,
+          "context_similarity": 0.0,
+          "elements_covered": 6,
+          "elements_total": 45,
+          "length_ratio": 8.11
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.013799999999999979
+    },
+    {
+      "id": "009fda40-9952-4705-929b-3ff6dc3bc7ac",
+      "label": "general_qa",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5953,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.381,
+        "faithfulness": 0.566,
+        "hallucination": 0.3,
+        "context_grounding": 0.7,
+        "conciseness": 1.0,
+        "overall_score": 0.4742,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.4767,
+          "context_similarity": 0.7,
+          "elements_covered": 8,
+          "elements_total": 21,
+          "length_ratio": 1.18
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.7891,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.5238,
+        "faithfulness": 0.6488,
+        "hallucination": 0.3636,
+        "context_grounding": 0.7,
+        "conciseness": 0.8,
+        "overall_score": 0.4511,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.6364,
+          "context_similarity": 0.6674,
+          "elements_covered": 11,
+          "elements_total": 21,
+          "length_ratio": 1.29
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.02310000000000001
+    },
+    {
+      "id": "00ab3476-ee67-4034-912f-bdb8ceb43a49",
+      "label": "general_qa",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6809,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1053,
+        "faithfulness": 0.5692,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.5793,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.5692,
+          "context_similarity": 0.0,
+          "elements_covered": 6,
+          "elements_total": 57,
+          "length_ratio": 0.09
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5311,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0877,
+        "faithfulness": 0.1004,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.4885,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.1004,
+          "context_similarity": 0.0,
+          "elements_covered": 5,
+          "elements_total": 57,
+          "length_ratio": 5.24
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.09080000000000005
+    },
+    {
+      "id": "00b115ae-be95-4e16-b7fc-d1dcc08bf7d4",
+      "label": "technical_code",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 1.0,
+        "task_success": 0.6178,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0538,
+        "faithfulness": 0.0892,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "overall_score": 0.623,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0892,
+          "context_similarity": 0.0,
+          "elements_covered": 7,
+          "elements_total": 130,
+          "length_ratio": 0.46
+        }
+      },
+      "oss": {
+        "structured_correctness": 1.0,
+        "task_success": 0.8578,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.2,
+        "faithfulness": 0.4407,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "overall_score": 0.7855,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.4407,
+          "context_similarity": 0.0,
+          "elements_covered": 26,
+          "elements_total": 130,
+          "length_ratio": 1.13
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.16249999999999998
+    },
+    {
+      "id": "00b5c9d8-3154-4b35-b0de-ae9203ff4593",
+      "label": "classification_analysis",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.2,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.4143,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.0,
+          "elements_covered": 0,
+          "elements_total": 47,
+          "length_ratio": 0.02
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.6923,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0213,
+        "faithfulness": 0.0503,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "overall_score": 0.5734,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0503,
+          "context_similarity": 0.0,
+          "elements_covered": 1,
+          "elements_total": 47,
+          "length_ratio": 2.74
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.15910000000000002
+    },
+    {
+      "id": "00d3a912-d73a-49a5-9be7-cbe8e3241c76",
+      "label": "general_qa",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.2,
+        "instruction_following": 0.875,
+        "instruction_following_rubric": 1.75,
+        "coverage": 0.5714,
+        "faithfulness": 1.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "overall_score": 0.7352,
+        "details": {
+          "instruction_violations": [
+            "missing_format:list"
+          ],
+          "teacher_similarity": 1.0,
+          "context_similarity": 1.0,
+          "elements_covered": 4,
+          "elements_total": 7,
+          "length_ratio": 1.0
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.71,
+        "instruction_following": 0.875,
+        "instruction_following_rubric": 1.75,
+        "coverage": 0.5714,
+        "faithfulness": 0.3651,
+        "hallucination": 0.75,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.1508,
+        "details": {
+          "instruction_violations": [
+            "missing_format:list"
+          ],
+          "teacher_similarity": 0.3651,
+          "context_similarity": 0.3651,
+          "elements_covered": 4,
+          "elements_total": 7,
+          "length_ratio": 11.0
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.5844
+    },
+    {
+      "id": "00d5dbf0-0ea5-4fcc-87c6-df7189271876",
+      "label": "technical_code",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.2,
+        "task_success": 0.7245,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.3333,
+        "faithfulness": 0.4722,
+        "hallucination": 0.7273,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.1765,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.4388,
+          "context_similarity": 0.5222,
+          "elements_covered": 11,
+          "elements_total": 33,
+          "length_ratio": 0.69
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.2,
+        "task_success": 0.5678,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1818,
+        "faithfulness": 0.2226,
+        "hallucination": 0.9712,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.0139,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.196,
+          "context_similarity": 0.2624,
+          "elements_covered": 6,
+          "elements_total": 33,
+          "length_ratio": 8.76
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.1626
+    },
+    {
+      "id": "00d69491-0604-4f7c-a60f-74b3a9d83e33",
+      "label": "general_qa",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.7291,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.6111,
+        "faithfulness": 0.5976,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.7483,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.5976,
+          "context_similarity": 0.0,
+          "elements_covered": 22,
+          "elements_total": 36,
+          "length_ratio": 1.6
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.7104,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.5556,
+        "faithfulness": 0.3616,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.6397,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.3616,
+          "context_similarity": 0.0,
+          "elements_covered": 20,
+          "elements_total": 36,
+          "length_ratio": 10.8
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.10859999999999992
+    },
+    {
+      "id": "00f01af5-4a4a-485b-9a16-42752672b73c",
+      "label": "general_qa",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5124,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.12,
+        "faithfulness": 0.1005,
+        "hallucination": 0.9167,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "overall_score": 0.0456,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.062,
+          "context_similarity": 0.1581,
+          "elements_covered": 3,
+          "elements_total": 25,
+          "length_ratio": 2.64
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.0,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.8,
+        "overall_score": 0.0,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.0,
+          "elements_covered": 0,
+          "elements_total": 25,
+          "length_ratio": 0.76
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.0456
+    },
+    {
+      "id": "00f2dbf2-6c0c-467a-8c16-7a60d36175fd",
+      "label": "classification_analysis",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5576,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0714,
+        "faithfulness": 0.2356,
+        "hallucination": 0.96,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.0238,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.1532,
+          "context_similarity": 0.3592,
+          "elements_covered": 2,
+          "elements_total": 28,
+          "length_ratio": 1.47
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5405,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1071,
+        "faithfulness": 0.132,
+        "hallucination": 0.9857,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.0071,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.1077,
+          "context_similarity": 0.1684,
+          "elements_covered": 3,
+          "elements_total": 28,
+          "length_ratio": 6.81
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.0167
+    },
+    {
+      "id": "00f3060d-0cc7-403d-9ad1-aa1543c367f8",
+      "label": "language_editing",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.8267,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.2623,
+        "faithfulness": 0.4338,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "overall_score": 0.7175,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.4338,
+          "context_similarity": 0.0,
+          "elements_covered": 16,
+          "elements_total": 61,
+          "length_ratio": 0.94
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.7897,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.2951,
+        "faithfulness": 0.4885,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "overall_score": 0.6605,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.4885,
+          "context_similarity": 0.0,
+          "elements_covered": 18,
+          "elements_total": 61,
+          "length_ratio": 3.32
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.05700000000000005
+    },
+    {
+      "id": "00fa74bf-d3ca-4fcb-a825-ff61340d41d2",
+      "label": "general_qa",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.7748,
+        "instruction_following": 0.875,
+        "instruction_following_rubric": 1.75,
+        "coverage": 0.4286,
+        "faithfulness": 0.5556,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.7048,
+        "details": {
+          "instruction_violations": [
+            "missing_format:list"
+          ],
+          "teacher_similarity": 0.5556,
+          "context_similarity": 0.0,
+          "elements_covered": 18,
+          "elements_total": 42,
+          "length_ratio": 0.63
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.5963,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.3571,
+        "faithfulness": 0.2211,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.5749,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.2211,
+          "context_similarity": 0.0,
+          "elements_covered": 15,
+          "elements_total": 42,
+          "length_ratio": 9.27
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.12990000000000002
+    },
+    {
+      "id": "01040d6e-b96c-4a85-8773-91679999c6c0",
+      "label": "technical_code",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.2,
+        "task_success": 0.5991,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.012,
+        "faithfulness": 0.1878,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.5427,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.1878,
+          "context_similarity": 0.0,
+          "elements_covered": 2,
+          "elements_total": 167,
+          "length_ratio": 1.3
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.7381,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0599,
+        "faithfulness": 0.3714,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "overall_score": 0.6099,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.3714,
+          "context_similarity": 0.0,
+          "elements_covered": 10,
+          "elements_total": 167,
+          "length_ratio": 0.48
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.06720000000000004
+    },
+    {
+      "id": "0107a5b7-fed9-4f65-8f46-f04886e496f2",
+      "label": "general_qa",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.8698,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.2051,
+        "faithfulness": 0.7667,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.7345,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.7667,
+          "context_similarity": 0.0,
+          "elements_covered": 16,
+          "elements_total": 78,
+          "length_ratio": 1.31
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.8634,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1923,
+        "faithfulness": 0.712,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "overall_score": 0.7525,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.712,
+          "context_similarity": 0.0,
+          "elements_covered": 15,
+          "elements_total": 78,
+          "length_ratio": 0.91
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.017999999999999905
+    },
+    {
+      "id": "010b8c88-0c4b-47b1-9f24-fd99eca33690",
+      "label": "language_editing",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.7,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 1.0,
+        "faithfulness": 0.8,
+        "hallucination": 0.5,
+        "context_grounding": 0.5,
+        "conciseness": 1.0,
+        "overall_score": 0.3929,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 1.0,
+          "context_similarity": 0.5,
+          "elements_covered": 3,
+          "elements_total": 3,
+          "length_ratio": 1.0
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.6927,
+        "instruction_following": 0.75,
+        "instruction_following_rubric": 1.5,
+        "coverage": 1.0,
+        "faithfulness": 0.2152,
+        "hallucination": 0.9429,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.0368,
+        "details": {
+          "instruction_violations": [
+            "length_exceeded:95/5"
+          ],
+          "teacher_similarity": 0.2483,
+          "context_similarity": 0.1655,
+          "elements_covered": 3,
+          "elements_total": 3,
+          "length_ratio": 19.0
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.3561
+    },
+    {
+      "id": "0155b1f7-e850-4539-9fa8-bb8a6bad757e",
+      "label": "general_qa",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.7578,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.4,
+        "faithfulness": 0.5774,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "overall_score": 0.7479,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.5774,
+          "context_similarity": 0.0,
+          "elements_covered": 2,
+          "elements_total": 5,
+          "length_ratio": 1.2
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.5305,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.4,
+        "faithfulness": 0.0257,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.5437,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0257,
+          "context_similarity": 0.0,
+          "elements_covered": 2,
+          "elements_total": 5,
+          "length_ratio": 51.8
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.20420000000000005
+    },
+    {
+      "id": "016a5e4a-672e-400f-8a75-94963d7f9f69",
+      "label": "math_logic",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.8622,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.4,
+        "faithfulness": 0.625,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "overall_score": 0.7696,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.625,
+          "context_similarity": 0.0,
+          "elements_covered": 6,
+          "elements_total": 15,
+          "length_ratio": 1.0
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.7817,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.2667,
+        "faithfulness": 0.3927,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.613,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.3927,
+          "context_similarity": 0.0,
+          "elements_covered": 4,
+          "elements_total": 15,
+          "length_ratio": 7.23
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.15659999999999996
+    },
+    {
+      "id": "01701deb-c107-4bce-b936-d3eb6b8e70c3",
+      "label": "math_logic",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.2,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.4143,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.0,
+          "elements_covered": 0,
+          "elements_total": 1,
+          "length_ratio": 0.17
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "overall_score": 0.5857,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.0,
+          "elements_covered": 0,
+          "elements_total": 1,
+          "length_ratio": 0.83
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.1714
+    },
+    {
+      "id": "017a3b80-bfb6-4ed2-9195-95fc71a2b777",
+      "label": "classification_analysis",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6974,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.2,
+        "faithfulness": 0.3085,
+        "hallucination": 0.8,
+        "context_grounding": 0.1667,
+        "conciseness": 1.0,
+        "overall_score": 0.1106,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.3508,
+          "context_similarity": 0.2449,
+          "elements_covered": 5,
+          "elements_total": 25,
+          "length_ratio": 0.83
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5308,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.08,
+        "faithfulness": 0.1066,
+        "hallucination": 0.9677,
+        "context_grounding": 0.0833,
+        "conciseness": 0.4,
+        "overall_score": 0.0124,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.1538,
+          "context_similarity": 0.0358,
+          "elements_covered": 2,
+          "elements_total": 25,
+          "length_ratio": 3.17
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.09820000000000001
+    },
+    {
+      "id": "017b55c3-50a4-482f-b9a6-3681fcf14aac",
+      "label": "creative_generative",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.65,
+        "task_success": 0.8395,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.2008,
+        "faithfulness": 0.7859,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.7537,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.7859,
+          "context_similarity": 0.0,
+          "elements_covered": 53,
+          "elements_total": 264,
+          "length_ratio": 0.8
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.2,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0038,
+        "faithfulness": 0.055,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.4227,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.055,
+          "context_similarity": 0.0,
+          "elements_covered": 1,
+          "elements_total": 264,
+          "length_ratio": 0.01
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.331
+    },
+    {
+      "id": "0198c58b-ccf2-4b8a-9d3e-4a450c87ae0a",
+      "label": "classification_analysis",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.65,
+        "task_success": 0.6149,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0238,
+        "faithfulness": 0.0743,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "overall_score": 0.5376,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0743,
+          "context_similarity": 0.0,
+          "elements_covered": 1,
+          "elements_total": 42,
+          "length_ratio": 4.09
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.6121,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0238,
+        "faithfulness": 0.0606,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.5067,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0606,
+          "context_similarity": 0.0,
+          "elements_covered": 1,
+          "elements_total": 42,
+          "length_ratio": 5.41
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.030899999999999928
+    },
+    {
+      "id": "019d2abc-6f3f-494e-aee6-d3e973102701",
+      "label": "classification_analysis",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6128,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0897,
+        "faithfulness": 0.3705,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "overall_score": 0.5676,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.3705,
+          "context_similarity": 0.0,
+          "elements_covered": 7,
+          "elements_total": 78,
+          "length_ratio": 0.22
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.7721,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1282,
+        "faithfulness": 0.4322,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.6832,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.4322,
+          "context_similarity": 0.0,
+          "elements_covered": 10,
+          "elements_total": 78,
+          "length_ratio": 1.82
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.11560000000000004
+    },
+    {
+      "id": "019fe816-2109-4ccb-81fb-af18a37ed1c2",
+      "label": "general_qa",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.2,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.3333,
+        "faithfulness": 0.7,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.6476,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.5,
+          "context_similarity": 1.0,
+          "elements_covered": 1,
+          "elements_total": 3,
+          "length_ratio": 0.75
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.8,
+        "task_success": 0.6498,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.6667,
+        "faithfulness": 0.0665,
+        "hallucination": 0.9692,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.0193,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0831,
+          "context_similarity": 0.0416,
+          "elements_covered": 2,
+          "elements_total": 3,
+          "length_ratio": 84.0
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.6283
+    },
+    {
+      "id": "01b0b980-502d-412e-bf66-a31d5ba2b228",
+      "label": "language_editing",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6414,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.4545,
+        "faithfulness": 0.6909,
+        "hallucination": 0.3333,
+        "context_grounding": 0.6667,
+        "conciseness": 0.8,
+        "overall_score": 0.4527,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.7071,
+          "context_similarity": 0.6667,
+          "elements_covered": 5,
+          "elements_total": 11,
+          "length_ratio": 0.55
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6681,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1818,
+        "faithfulness": 0.4932,
+        "hallucination": 0.625,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.2487,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.3405,
+          "context_similarity": 0.7223,
+          "elements_covered": 2,
+          "elements_total": 11,
+          "length_ratio": 1.91
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.204
+    },
+    {
+      "id": "01b6c691-bc37-42d9-aaa5-085c9df311e5",
+      "label": "classification_analysis",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.782,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.9231,
+        "faithfulness": 0.767,
+        "hallucination": 0.5,
+        "context_grounding": 0.3636,
+        "conciseness": 0.8,
+        "overall_score": 0.3668,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.9354,
+          "context_similarity": 0.5145,
+          "elements_covered": 12,
+          "elements_total": 13,
+          "length_ratio": 1.25
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6839,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.6154,
+        "faithfulness": 0.5084,
+        "hallucination": 0.8095,
+        "context_grounding": 0.3636,
+        "conciseness": 0.4,
+        "overall_score": 0.1108,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.5521,
+          "context_similarity": 0.4428,
+          "elements_covered": 8,
+          "elements_total": 13,
+          "length_ratio": 3.67
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.256
+    },
+    {
+      "id": "01d47b4c-9be6-48af-b14d-d340de0f08a0",
+      "label": "technical_code",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.2,
+        "task_success": 0.743,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0696,
+        "faithfulness": 0.4632,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.6108,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.4632,
+          "context_similarity": 0.0,
+          "elements_covered": 11,
+          "elements_total": 158,
+          "length_ratio": 0.67
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.2,
+        "task_success": 0.8943,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1392,
+        "faithfulness": 0.6249,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.6655,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.6249,
+          "context_similarity": 0.0,
+          "elements_covered": 22,
+          "elements_total": 158,
+          "length_ratio": 1.97
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.05469999999999997
+    },
+    {
+      "id": "01d81f31-f585-498a-9291-7e61b9f90a9c",
+      "label": "general_qa",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5362,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1216,
+        "faithfulness": 0.1314,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.4985,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.1314,
+          "context_similarity": 0.0,
+          "elements_covered": 9,
+          "elements_total": 74,
+          "length_ratio": 8.04
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.539,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0405,
+        "faithfulness": 0.0852,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.5664,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0852,
+          "context_similarity": 0.0,
+          "elements_covered": 3,
+          "elements_total": 74,
+          "length_ratio": 0.73
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.06790000000000002
+    },
+    {
+      "id": "01ea3d51-b35b-40cb-b92c-93a5438ca2e1",
+      "label": "general_qa",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.65,
+        "task_success": 0.7126,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0644,
+        "faithfulness": 0.4856,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "overall_score": 0.6161,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.4856,
+          "context_similarity": 0.0,
+          "elements_covered": 13,
+          "elements_total": 202,
+          "length_ratio": 0.2
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.5725,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1337,
+        "faithfulness": 0.2548,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.6301,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.2548,
+          "context_similarity": 0.0,
+          "elements_covered": 27,
+          "elements_total": 202,
+          "length_ratio": 1.67
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.014000000000000012
+    },
+    {
+      "id": "021a9cd9-744f-4ceb-9ba3-5d1516048389",
+      "label": "math_logic",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.8232,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.2,
+        "faithfulness": 0.3,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.6,
+        "overall_score": 0.0,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.5,
+          "context_similarity": 0.0,
+          "elements_covered": 3,
+          "elements_total": 15,
+          "length_ratio": 0.33
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.2,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.0,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.4,
+        "overall_score": 0.0,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.0,
+          "elements_covered": 0,
+          "elements_total": 15,
+          "length_ratio": 0.27
+        }
+      },
+      "alpaca_wins": false,
+      "difference": 0.0
+    },
+    {
+      "id": "021bd664-2444-4b68-81b8-e225a66772dd",
+      "label": "classification_analysis",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.65,
+        "task_success": 0.6469,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1029,
+        "faithfulness": 0.1864,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "overall_score": 0.598,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.1864,
+          "context_similarity": 0.0,
+          "elements_covered": 21,
+          "elements_total": 204,
+          "length_ratio": 2.24
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.6531,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0735,
+        "faithfulness": 0.1751,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.6217,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.1751,
+          "context_similarity": 0.0,
+          "elements_covered": 15,
+          "elements_total": 204,
+          "length_ratio": 1.61
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.023700000000000054
+    },
+    {
+      "id": "0229538d-8b6b-4d4d-8d6e-dbf0104a1dad",
+      "label": "general_qa",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.2,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.0,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.2,
+        "overall_score": 0.0,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.0,
+          "elements_covered": 0,
+          "elements_total": 14,
+          "length_ratio": 0.07
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6766,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1429,
+        "faithfulness": 0.1897,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.6,
+        "overall_score": 0.0,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.3162,
+          "context_similarity": 0.0,
+          "elements_covered": 2,
+          "elements_total": 14,
+          "length_ratio": 0.43
+        }
+      },
+      "alpaca_wins": false,
+      "difference": 0.0
+    },
+    {
+      "id": "02380af3-5700-40a6-bcbf-8c4571b84230",
+      "label": "classification_analysis",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.65,
+        "task_success": 0.7365,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0678,
+        "faithfulness": 0.3322,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "overall_score": 0.5981,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.3322,
+          "context_similarity": 0.0,
+          "elements_covered": 20,
+          "elements_total": 295,
+          "length_ratio": 0.22
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.65,
+        "task_success": 0.7546,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1661,
+        "faithfulness": 0.4438,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "overall_score": 0.7163,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.4438,
+          "context_similarity": 0.0,
+          "elements_covered": 49,
+          "elements_total": 295,
+          "length_ratio": 0.97
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.11820000000000008
+    },
+    {
+      "id": "024bd852-88c8-4b61-92d8-44ec35c9df9c",
+      "label": "math_logic",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.2,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.4143,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.0,
+          "elements_covered": 0,
+          "elements_total": 3,
+          "length_ratio": 0.05
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.0,
+        "hallucination": 1.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.0,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.0,
+          "elements_covered": 0,
+          "elements_total": 3,
+          "length_ratio": 2.0
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.4143
+    },
+    {
+      "id": "024e8164-a58e-449e-ae4b-d1e1c344c92b",
+      "label": "math_logic",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.7414,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.1032,
+        "faithfulness": 0.6382,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "overall_score": 0.6547,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.6382,
+          "context_similarity": 0.0,
+          "elements_covered": 26,
+          "elements_total": 252,
+          "length_ratio": 0.3
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.8452,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.127,
+        "faithfulness": 0.6518,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.7034,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.6518,
+          "context_similarity": 0.0,
+          "elements_covered": 32,
+          "elements_total": 252,
+          "length_ratio": 0.64
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.04870000000000008
+    },
+    {
+      "id": "02546194-45b6-4332-a161-e70c9481e170",
+      "label": "classification_analysis",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.2,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0455,
+        "faithfulness": 0.2268,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.2,
+        "overall_score": 0.0,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.378,
+          "context_similarity": 0.0,
+          "elements_covered": 1,
+          "elements_total": 22,
+          "length_ratio": 0.17
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5154,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0455,
+        "faithfulness": 0.113,
+        "hallucination": 0.9167,
+        "context_grounding": 0.3333,
+        "conciseness": 0.8,
+        "overall_score": 0.0394,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0772,
+          "context_similarity": 0.1667,
+          "elements_covered": 1,
+          "elements_total": 22,
+          "length_ratio": 0.78
+        }
+      },
+      "alpaca_wins": false,
+      "difference": -0.0394
+    },
+    {
+      "id": "025c1e6c-a543-4f5c-a5bf-dd8a4af0ca8c",
+      "label": "general_qa",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.65,
+        "task_success": 0.7166,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.229,
+        "faithfulness": 0.5147,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "overall_score": 0.6729,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.5147,
+          "context_similarity": 0.0,
+          "elements_covered": 30,
+          "elements_total": 131,
+          "length_ratio": 0.43
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6598,
+        "instruction_following": 0.875,
+        "instruction_following_rubric": 1.75,
+        "coverage": 0.0611,
+        "faithfulness": 0.3909,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.5267,
+        "details": {
+          "instruction_violations": [
+            "missing_format:list"
+          ],
+          "teacher_similarity": 0.3909,
+          "context_similarity": 0.0,
+          "elements_covered": 8,
+          "elements_total": 131,
+          "length_ratio": 0.15
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.1462000000000001
+    },
+    {
+      "id": "025e7e60-e3a6-4906-af11-56adfbe67565",
+      "label": "language_editing",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.4,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "overall_score": 0.5714,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 1.0,
+          "elements_covered": 0,
+          "elements_total": 14,
+          "length_ratio": 0.38
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.7262,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0714,
+        "faithfulness": 0.4629,
+        "hallucination": 0.6667,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "overall_score": 0.2076,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.3207,
+          "context_similarity": 0.6761,
+          "elements_covered": 1,
+          "elements_total": 14,
+          "length_ratio": 2.69
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.3638
+    },
+    {
+      "id": "0272aa9b-d0f4-425b-b80a-21994239a237",
+      "label": "general_qa",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.8521,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.7778,
+        "faithfulness": 0.8944,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "overall_score": 0.8606,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.8944,
+          "context_similarity": 0.0,
+          "elements_covered": 7,
+          "elements_total": 9,
+          "length_ratio": 0.88
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0,
+        "faithfulness": 0.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.5429,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.0,
+          "elements_covered": 0,
+          "elements_total": 9,
+          "length_ratio": 1.5
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.3177
+    },
+    {
+      "id": "027d64b1-c859-49ac-91cf-c9c4755366ef",
+      "label": "technical_code",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.2,
+        "task_success": 0.6421,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.2188,
+        "faithfulness": 0.4842,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.6207,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.4842,
+          "context_similarity": 0.0,
+          "elements_covered": 7,
+          "elements_total": 32,
+          "length_ratio": 0.59
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.2,
+        "task_success": 0.548,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0938,
+        "faithfulness": 0.0562,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "overall_score": 0.4426,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0562,
+          "context_similarity": 0.0,
+          "elements_covered": 3,
+          "elements_total": 32,
+          "length_ratio": 11.28
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.17810000000000004
+    },
+    {
+      "id": "02a9b3f0-e5eb-4b01-a2d1-989481ece7bd",
+      "label": "creative_generative",
+      "has_context": false,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5454,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.14,
+        "faithfulness": 0.2268,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.6017,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.2268,
+          "context_similarity": 0.0,
+          "elements_covered": 7,
+          "elements_total": 50,
+          "length_ratio": 0.71
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6348,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.04,
+        "faithfulness": 0.1738,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "overall_score": 0.5641,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.1738,
+          "context_similarity": 0.0,
+          "elements_covered": 2,
+          "elements_total": 50,
+          "length_ratio": 2.12
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.03759999999999997
+    },
+    {
+      "id": "02be2640-fb9b-458a-872f-3e3e79f1f698",
+      "label": "classification_analysis",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6183,
+        "instruction_following": 0.875,
+        "instruction_following_rubric": 1.75,
+        "coverage": 0.1842,
+        "faithfulness": 0.675,
+        "hallucination": 0.2,
+        "context_grounding": 0.8,
+        "conciseness": 0.4,
+        "overall_score": 0.4631,
+        "details": {
+          "instruction_violations": [
+            "missing_format:table"
+          ],
+          "teacher_similarity": 0.5916,
+          "context_similarity": 0.8,
+          "elements_covered": 7,
+          "elements_total": 38,
+          "length_ratio": 0.29
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.2,
+        "instruction_following": 0.875,
+        "instruction_following_rubric": 1.75,
+        "coverage": 0.0,
+        "faithfulness": 0.0,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.2,
+        "overall_score": 0.0,
+        "details": {
+          "instruction_violations": [
+            "missing_format:table"
+          ],
+          "teacher_similarity": 0.0,
+          "context_similarity": 0.0,
+          "elements_covered": 0,
+          "elements_total": 38,
+          "length_ratio": 0.1
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.4631
+    },
+    {
+      "id": "02c40010-e3d3-4c70-b7e2-047b86e43ba2",
+      "label": "general_qa",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5408,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0909,
+        "faithfulness": 0.2225,
+        "hallucination": 0.75,
+        "context_grounding": 0.25,
+        "conciseness": 0.6,
+        "overall_score": 0.1144,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.2041,
+          "context_similarity": 0.25,
+          "elements_covered": 1,
+          "elements_total": 11,
+          "length_ratio": 0.42
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5506,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.0909,
+        "faithfulness": 0.1844,
+        "hallucination": 0.8889,
+        "context_grounding": 0.5,
+        "conciseness": 0.6,
+        "overall_score": 0.0544,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.0891,
+          "context_similarity": 0.3273,
+          "elements_covered": 1,
+          "elements_total": 11,
+          "length_ratio": 3.0
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.060000000000000005
+    },
+    {
+      "id": "02cc1af9-3702-44fa-8305-665e9dac3289",
+      "label": "general_qa",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.2,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.2632,
+        "faithfulness": 0.7286,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "overall_score": 0.5845,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.5477,
+          "context_similarity": 1.0,
+          "elements_covered": 5,
+          "elements_total": 19,
+          "length_ratio": 0.2
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6259,
+        "instruction_following": 1.0,
+        "instruction_following_rubric": 2.0,
+        "coverage": 0.3684,
+        "faithfulness": 0.441,
+        "hallucination": 0.8571,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "overall_score": 0.0966,
+        "details": {
+          "instruction_violations": [],
+          "teacher_similarity": 0.483,
+          "context_similarity": 0.378,
+          "elements_covered": 7,
+          "elements_total": 19,
+          "length_ratio": 1.67
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.4879
+    },
+    {
+      "id": "02f2309b-3836-4792-ad6a-7c5e89d28448",
+      "label": "general_qa",
+      "has_context": true,
+      "alpaca": {
+        "structured_correctness": 0.5,
+        "task_success": 0.6067,
+        "instruction_following": 0.875,
+        "instruction_following_rubric": 1.75,
+        "coverage": 0.0549,
+        "faithfulness": 0.4899,
+        "hallucination": 0.4,
+        "context_grounding": 0.3,
+        "conciseness": 0.2,
+        "overall_score": 0.2594,
+        "details": {
+          "instruction_violations": [
+            "missing_format:table"
+          ],
+          "teacher_similarity": 0.5336,
+          "context_similarity": 0.4243,
+          "elements_covered": 5,
+          "elements_total": 91,
+          "length_ratio": 0.1
+        }
+      },
+      "oss": {
+        "structured_correctness": 0.5,
+        "task_success": 0.5652,
+        "instruction_following": 0.875,
+        "instruction_following_rubric": 1.75,
+        "coverage": 0.0879,
+        "faithfulness": 0.2921,
+        "hallucination": 0.8529,
+        "context_grounding": 0.5,
+        "conciseness": 0.6,
+        "overall_score": 0.0719,
+        "details": {
+          "instruction_violations": [
+            "missing_format:table"
+          ],
+          "teacher_similarity": 0.3259,
+          "context_similarity": 0.2415,
+          "elements_covered": 8,
+          "elements_total": 91,
+          "length_ratio": 2.97
+        }
+      },
+      "alpaca_wins": true,
+      "difference": 0.1875
+    }
+  ]
+}
