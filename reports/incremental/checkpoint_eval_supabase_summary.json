@@ -1,0 +1,177 @@
+{
+  "eval_checkpoints_used": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "eval_record_count": 400,
+  "eval_per_checkpoint": 100,
+  "n_with_context": 191,
+  "n_zero_context": 209,
+  "batch_baseline": {
+    "structured_correctness": 0.5,
+    "instruction_following": 0.5,
+    "coverage": 0.5,
+    "hallucination": 0.5,
+    "context_grounding": 0.5,
+    "conciseness": 0.5,
+    "rouge1": 0.5,
+    "rougel": 0.5,
+    "bleu": 0.5
+  },
+  "per_checkpoint": {
+    "C1": {
+      "ctx": {
+        "structured_correctness": 0.5162,
+        "instruction_following": 0.9908,
+        "coverage": 0.4653,
+        "hallucination": 0.6798,
+        "context_grounding": 0.6099,
+        "conciseness": 0.5749,
+        "rouge1": 0.3398,
+        "rougel": 0.293,
+        "bleu": 0.0814
+      },
+      "noctx": {
+        "structured_correctness": 0.5263,
+        "instruction_following": 0.9916,
+        "coverage": 0.2532,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.7311,
+        "rouge1": 0.3854,
+        "rougel": 0.2953,
+        "bleu": 0.0861
+      },
+      "all": {
+        "structured_correctness": 0.5215,
+        "instruction_following": 0.9912,
+        "coverage": 0.3544,
+        "hallucination": 0.3246,
+        "context_grounding": 0.8137,
+        "conciseness": 0.6565,
+        "rouge1": 0.3636,
+        "rougel": 0.2942,
+        "bleu": 0.0838
+      },
+      "n_ctx": 191,
+      "n_noctx": 209,
+      "n_all": 400
+    },
+    "C2": {
+      "ctx": {
+        "structured_correctness": 0.5099,
+        "instruction_following": 0.9758,
+        "coverage": 0.4644,
+        "hallucination": 0.6686,
+        "context_grounding": 0.6387,
+        "conciseness": 0.5351,
+        "rouge1": 0.3119,
+        "rougel": 0.2622,
+        "bleu": 0.0779
+      },
+      "noctx": {
+        "structured_correctness": 0.5301,
+        "instruction_following": 0.994,
+        "coverage": 0.2727,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.7043,
+        "rouge1": 0.3773,
+        "rougel": 0.2872,
+        "bleu": 0.0882
+      },
+      "all": {
+        "structured_correctness": 0.5205,
+        "instruction_following": 0.9853,
+        "coverage": 0.3643,
+        "hallucination": 0.3192,
+        "context_grounding": 0.8275,
+        "conciseness": 0.6235,
+        "rouge1": 0.3461,
+        "rougel": 0.2752,
+        "bleu": 0.0833
+      },
+      "n_ctx": 191,
+      "n_noctx": 209,
+      "n_all": 400
+    },
+    "C3": {
+      "ctx": {
+        "structured_correctness": 0.5154,
+        "instruction_following": 0.9915,
+        "coverage": 0.5047,
+        "hallucination": 0.6877,
+        "context_grounding": 0.6886,
+        "conciseness": 0.4723,
+        "rouge1": 0.2746,
+        "rougel": 0.2293,
+        "bleu": 0.0605
+      },
+      "noctx": {
+        "structured_correctness": 0.527,
+        "instruction_following": 0.9922,
+        "coverage": 0.2759,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6833,
+        "rouge1": 0.3663,
+        "rougel": 0.2773,
+        "bleu": 0.0768
+      },
+      "all": {
+        "structured_correctness": 0.5215,
+        "instruction_following": 0.9919,
+        "coverage": 0.3851,
+        "hallucination": 0.3284,
+        "context_grounding": 0.8513,
+        "conciseness": 0.5825,
+        "rouge1": 0.3225,
+        "rougel": 0.2544,
+        "bleu": 0.069
+      },
+      "n_ctx": 191,
+      "n_noctx": 209,
+      "n_all": 400
+    },
+    "C4": {
+      "ctx": {
+        "structured_correctness": 0.5209,
+        "instruction_following": 0.9928,
+        "coverage": 0.5026,
+        "hallucination": 0.6984,
+        "context_grounding": 0.646,
+        "conciseness": 0.4932,
+        "rouge1": 0.2895,
+        "rougel": 0.2431,
+        "bleu": 0.0634
+      },
+      "noctx": {
+        "structured_correctness": 0.5242,
+        "instruction_following": 0.9922,
+        "coverage": 0.2941,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6871,
+        "rouge1": 0.3786,
+        "rougel": 0.2871,
+        "bleu": 0.0822
+      },
+      "all": {
+        "structured_correctness": 0.5226,
+        "instruction_following": 0.9925,
+        "coverage": 0.3936,
+        "hallucination": 0.3335,
+        "context_grounding": 0.8309,
+        "conciseness": 0.5945,
+        "rouge1": 0.3361,
+        "rougel": 0.2661,
+        "bleu": 0.0732
+      },
+      "n_ctx": 191,
+      "n_noctx": 209,
+      "n_all": 400
+    }
+  }
+}
