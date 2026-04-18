@@ -1,0 +1,198 @@
+# ============================================================================
+# INTUNE PIPELINE - COMPLETE COMMANDS
+# ============================================================================
+# Research: Incremental vs Batch Learning for Knowledge Distillation
+# Models: Gemma-3-1B (student) trained on Alpaca-7B (teacher) outputs
+# ============================================================================
+
+# ============================================================================
+# STEP 0: CHECK STATUS (Run anytime to see progress)
+# ============================================================================
+
+# Overall pipeline status
+python experiment/pipeline.py --status
+
+# Batch mode status
+python experiment/phase2_incremental/13_train_batch.py --status
+
+# Incremental mode status (per checkpoint)
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 1 --step status
+
+
+# ============================================================================
+# STEP 1: CONTEXT GENERATION (Derived from Teacher Output - No LLM)
+# ============================================================================
+# Context = background knowledge extracted from teacher (sevenb) output
+# Context helps student understand domain, but is NOT the direct answer
+# No LLM required - pure text extraction from teacher output
+
+# IMPORTANT: First clear bad context that was generated incorrectly
+# Run this SQL in Supabase to reset context:
+#   UPDATE modelcomp_50k SET context = NULL WHERE context IS NOT NULL;
+
+# Generate context derived from teacher output (fast, no LLM)
+python experiment/data_processing/08_gen_context_ollama.py
+
+# Test with small batch first (with sample preview)
+python experiment/data_processing/08_gen_context_ollama.py --limit 10 --show-samples
+
+# Dry run to see what would be generated
+python experiment/data_processing/08_gen_context_ollama.py --limit 5 --dry-run
+
+
+# ============================================================================
+# STEP 2: GENERATE BASE STUDENT OUTPUTS (Per checkpoint, ~1-2 hours each)
+# ============================================================================
+
+# Generate student outputs for checkpoint 1 (5K records)
+python experiment/phase2_incremental/11_gen_base_student.py --checkpoint 1
+
+# Generate for subsequent checkpoints
+python experiment/phase2_incremental/11_gen_base_student.py --checkpoint 2
+python experiment/phase2_incremental/11_gen_base_student.py --checkpoint 3
+# ... continue to checkpoint 10
+
+
+# ============================================================================
+# OPTION A: INCREMENTAL TRAINING (Checkpoint by Checkpoint)
+# ============================================================================
+
+# --- Checkpoint 1 (5K records) ---
+# Initialize checkpoint 1 (set status='score' for records ready to train)
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 1 --init
+
+# Run all steps: score -> finetune -> output_tuned -> score_tuned -> completed
+# output_tuned now runs local fast batchwise mode (no distributed worker needed)
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 1 --run-all
+
+# OR run individual steps (all local):
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 1 --step score
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 1 --step finetune
+# Optional throughput tuning for output_tuned (keeps MAX_NEW_TOKENS=512 unchanged):
+# Windows PowerShell example (RTX 4060 usually stable at 6-10):
+#   $env:TUNED_GPU_BATCH_SIZE=8
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 1 --step output_tuned
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 1 --step score_tuned
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 1 --step completed
+
+# --- Checkpoint 2 (10K cumulative) ---
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 2 --init
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 2 --run-all
+
+# --- Continue for checkpoints 3-10 ---
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 3 --run-all
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 4 --run-all
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 5 --run-all
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 6 --run-all
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 7 --run-all
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 8 --run-all
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 9 --run-all
+python experiment/phase2_incremental/12_train_incremental.py --checkpoint 10 --run-all
+
+
+# ============================================================================
+# OPTION B: BATCH TRAINING (All scored data at once)
+# ============================================================================
+
+# Check batch status
+python experiment/phase2_incremental/13_train_batch.py --status
+
+# Run all steps: score -> finetune -> output_tuned -> score_tuned -> completed
+python experiment/phase2_incremental/13_train_batch.py --run-all
+
+# OR run individual steps:
+python experiment/phase2_incremental/13_train_batch.py --step score
+python experiment/phase2_incremental/13_train_batch.py --step finetune
+python experiment/phase2_incremental/13_train_batch.py --step output_tuned
+python experiment/phase2_incremental/13_train_batch.py --step score_tuned
+python experiment/phase2_incremental/13_train_batch.py --step completed
+
+
+# ============================================================================
+# STEP 3: ANALYSIS & REPORTS
+# ============================================================================
+
+# Generate analytical report (after training)
+python experiment/evaluation/09_report_analytical.py
+
+# Compare incremental vs batch results
+# Reports saved to: reports/incremental_learning/ and reports/batch_learning/
+
+
+# ============================================================================
+# CHECK CONTEXT IN SUPABASE (SQL queries)
+# ============================================================================
+#
+# View recently added context:
+#   SELECT id, LEFT(input, 100) as instruction, LEFT(context, 200) as context
+#   FROM modelcomp_50k
+#   WHERE context IS NOT NULL
+#   ORDER BY updated_at DESC LIMIT 10;
+#
+# Count context progress:
+#   SELECT
+#     COUNT(*) FILTER (WHERE context IS NOT NULL) as with_context,
+#     COUNT(*) FILTER (WHERE context IS NULL) as without_context
+#   FROM modelcomp_50k;
+#
+# Reset context to regenerate (if needed):
+#   UPDATE modelcomp_50k SET context = NULL;
+
+
+# ============================================================================
+# COMPLETE WORKFLOW SUMMARY
+# ============================================================================
+#
+# 1. Context Generation (derived from teacher, no LLM, fast)
+#    python experiment/data_processing/08_gen_context_ollama.py
+#
+# 2. Student Output Generation (per checkpoint, ~1-2 hours each)
+#    python experiment/phase2_incremental/11_gen_base_student.py --checkpoint N
+#
+# 3a. INCREMENTAL Training (per checkpoint):
+#    python experiment/phase2_incremental/12_train_incremental.py --checkpoint 1 --run-all
+#    ... repeat for checkpoints 2-10
+#
+# 3b. BATCH Training (all data at once):
+#    python experiment/phase2_incremental/13_train_batch.py --run-all
+#
+# 4. Status Flow for each record:
+#    NULL -> score -> finetune -> output_tuned -> score_tuned -> completed
+#
+# ============================================================================
+
+# ============================================================================
+# FILE LOCATIONS
+# ============================================================================
+#
+# Event-Driven Runtime (new grouped folder):
+#   event_driven_pipeline/realtime_kafka_bridge.py
+#   event_driven_pipeline/spark_pipeline_trigger_job_standalone.py
+#   event_driven_pipeline/trigger_consumer.py
+#   event_driven_pipeline/pipeline_validator.py
+#   event_driven_pipeline/pipeline_diagnostic.py
+#
+# Pipeline Controller:
+#   experiment/pipeline.py
+#
+# Data Processing:
+#   experiment/data_processing/08_gen_context_ollama.py   # Context from teacher (no LLM)
+#
+# Training Scripts:
+#   experiment/phase2_incremental/11_gen_base_student.py   # Base student outputs
+#   experiment/phase2_incremental/12_train_incremental.py  # Incremental training
+#   experiment/phase2_incremental/13_train_batch.py        # Batch training
+#
+# Evaluation:
+#   experiment/evaluation/06_eval_metrics.py           # 7 model-agnostic metrics
+#   experiment/evaluation/09_report_analytical.py      # Report generation
+#
+# Models Output:
+#   models/gemma-ckpt{N}-lora/    # Incremental checkpoints
+#   models/gemma-batch-lora/      # Batch training model
+#
+# Reports Output:
+#   reports/incremental_learning/  # Incremental results
+#   reports/batch_learning/        # Batch results
+#
+# ============================================================================
