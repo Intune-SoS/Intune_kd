@@ -1,0 +1,21 @@
+FORGETTING ANALYSIS — C4 adapter on C1's evaluation slice
+==========================================================================
+Eval set: 100 records from modelcomp_50k checkpoint=1 (highest-id slice C1 was originally evaluated on)
+
+--------------------------------------------------------------------------
+Metric                         C1_mean     C4_mean   Δ (C4-C1)  Direction 
+--------------------------------------------------------------------------
+Structured Correctness          0.5175      0.5205     +0.0030  improved  
+Instruction Following           0.9950      0.9975     +0.0025  improved  
+Coverage                        0.3399      0.3803     +0.0404  improved  
+Hallucination                   0.3448      0.3734     +0.0286  FORGOT    
+Context Grounding               0.7641      0.7658     +0.0017  improved  
+Conciseness                     0.6620      0.6260     -0.0360  FORGOT    
+ROUGE-1                         0.4015      0.3676     -0.0338  FORGOT    
+ROUGE-L                         0.3226      0.2843     -0.0383  FORGOT    
+BLEU                            0.1020      0.0740     -0.0280  FORGOT    
+--------------------------------------------------------------------------
+
+  n = 100 records
+  C1 baseline source: ckpt='C1', checkpoint==1 in checkpoint_eval_supabase_raw.json
+  Note: for Hallucination, lower is better — sign convention flipped.
