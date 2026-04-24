@@ -1,0 +1,2006 @@
+{
+  "description": "C4 adapter run on the 100 records from modelcomp_50k checkpoint=1 that C1 was originally evaluated on (forgetting check).",
+  "n": 100,
+  "records": [
+    {
+      "ckpt": "C4",
+      "id": 134589,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Read this short passage and identify the main idea.",
+      "generated": "The main idea of the passage is that the train has recently been leaving at 8:15 am due to mechanical issues. The passage also provides some context about the train's departure schedule. The passage also provides some information about the train's departure schedule. The passage also provides some information about the train'",
+      "reference": "The train has been leaving later than usual due to technical difficulties.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.2308,
+        "hallucination": 0.625,
+        "context_grounding": 0.6,
+        "conciseness": 0.4,
+        "rouge1": 0.209,
+        "rougel": 0.209,
+        "bleu": 0.0134
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134590,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Name a popular musical artist from a given country.",
+      "generated": "One of the most popular musical artists from Japan is J-Pop artist Hatsune Hime. She is known for her catchy pop songs and her unique style of music. She has released several successful albums and has been a major influence on the Japanese music industry. She is also a popular figure on social media, with millions",
+      "reference": "Famous Japanese musical artists include Kyary Pamyu Pamyu, BABYMETAL, Miyavi, Perfume, and T.M.Revolution.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1538,
+        "hallucination": 0.9655,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.1111,
+        "rougel": 0.0833,
+        "bleu": 0.0082
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134591,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Illustrate the phrase \"no way out\".",
+      "generated": "No way out. No way out. No way out. No way out. No way out. No way out. No way out. No way out. No way out. No way out. No way out. No way out. No way out. No way out. No way out. No way out.",
+      "reference": "![No Way Out](https://www.wallfoy.com/wallpaper/661/no-way-out.jpg)",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0714,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.4,
+        "rouge1": 0.1967,
+        "rougel": 0.1967,
+        "bleu": 0
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134592,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "What is conditional probability?",
+      "generated": "Conditional probability is a probability measure that describes the probability of an event occurring given that another event has already occurred. It is used to calculate the probability of an event occurring given that two or more events have already occurred. It is also used to calculate the probability of an event occurring given that the probability of an event occurring is",
+      "reference": "Conditional probability is the probability of a particular event happening, given that another event has already taken place. It is written as P(A|B), which reads as \"the probability of event A given ",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.2069,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.8,
+        "rouge1": 0.4521,
+        "rougel": 0.3836,
+        "bleu": 0.1238
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134593,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Which figure of speech is used in the sentence \"The fish was singing in the bathtub\"?",
+      "generated": "The figure of speech used in the sentence \"The fish was singing in the bathtub\" is simile. It compares the fish to a singer in the bathtub. The simile is used to emphasize the fish's singing and its joy. The simile is also used to create a vivid image in the reader's mind. The",
+      "reference": "Personification.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.2,
+        "rouge1": 0.0,
+        "rougel": 0.0,
+        "bleu": 0
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134594,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "What is the coefficient of thermal expansion?",
+      "generated": "The coefficient of thermal expansion is a measure of how much a material expands or contracts in response to changes in temperature. It is typically expressed as a percentage. The coefficient of thermal expansion is a measure of how much a material expands or contracts in response to changes in temperature. It is typically expressed as a percentage. The coefficient",
+      "reference": "The coefficient of thermal expansion is the ratio of the change in size of an object due to a change in temperature. It measures how much material will expand or contract when exposed to different tem",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.2642,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 1.0,
+        "rouge1": 0.6126,
+        "rougel": 0.4865,
+        "bleu": 0.1448
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134595,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Rank these animals by their lifespan.",
+      "generated": "1. Elephant (lives 60-70 years)\n2. Dolphin (lives 30-50 years)\n3. Dog (lives 10-15 years)\n4. Cat (lives 10-15 years) \n5. Whale (lives 5",
+      "reference": "Elephant, Dolphin, Cat, Dog",
+      "metrics": {
+        "structured_correctness": 0.65,
+        "instruction_following": 1.0,
+        "coverage": 0.5714,
+        "hallucination": 0.4286,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "rouge1": 0.25,
+        "rougel": 0.1875,
+        "bleu": 0.0079
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134596,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "What is the median age of all the US states?",
+      "generated": "The median age of all the US states is 38.5 years old. This age is the average age of all the states in the United States. The median age of all the US states is 38.5 years old. This age is the average age of all the states in the United States.",
+      "reference": "The median age of the United States population is 38.7 years old.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.6923,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.3284,
+        "rougel": 0.3284,
+        "bleu": 0.061
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134597,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "What is the cultural meaning behind the expression \"raining cats and dogs\"?",
+      "generated": "The expression \"raining cats and dogs\" is a common idiom used to describe heavy rain. It is used to describe a torrential downpour, often with the implication that the rain is so intense that it is causing animals to flee from the area. It is also used to describe a situation where people are overwhelmed by the amount",
+      "reference": "The expression \"raining cats and dogs\" is an old English phrase used to describe heavy rain. It is believed to be of nautical origin and describes the wind-driven rain that sailors experienced. In mor",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.283,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.4151,
+        "rougel": 0.4151,
+        "bleu": 0.2084
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134598,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "What is the average number of days a person spends in the hospital after heart surgery?",
+      "generated": "The average number of days a person spends in the hospital after heart surgery is 10-14 days. This is because the patient needs to rest and recover from the surgery, and the hospital provides a safe environment for them to do so. Additionally, the patient will need to take medications and follow a diet plan",
+      "reference": "The average number of days a person spends in the hospital after heart surgery is eight days.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.8333,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.4384,
+        "rougel": 0.4384,
+        "bleu": 0.2556
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134599,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Design a logo according to the brand guidelines given below.",
+      "generated": "The logo should feature the Grand Hotel's name in the Quattrocento Sans font, with the navy blue and gold colors used to create a luxurious and elegant look. The logo should also include a subtle image of a ship or boat, symbolizing the Grand Hotel's location and its connection to the sea. The logo should",
+      "reference": "[An image of a logo for The Grand Hotel featuring a navy blue badge with gold font using the Quattrocento Sans font and “Experience Luxury” in script underneath]",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.3529,
+        "hallucination": 0.6667,
+        "context_grounding": 0.6,
+        "conciseness": 0.8,
+        "rouge1": 0.4941,
+        "rougel": 0.2353,
+        "bleu": 0.0374
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134600,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Outline the key components of a business plan.",
+      "generated": "A business plan should include the following key components: \n1. Executive Summary: A brief overview of the business plan.\n2. Company Description: A description of the business, its mission, and its goals.\n3. Market Analysis: An analysis of the market, including the target audience, competition, and",
+      "reference": "The key components of a business plan include an executive summary, a description of the business, marketing information, financial projections, and an evaluation of risks and opportunities.",
+      "metrics": {
+        "structured_correctness": 0.65,
+        "instruction_following": 1.0,
+        "coverage": 0.4333,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.5479,
+        "rougel": 0.411,
+        "bleu": 0.0704
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134601,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Compose a short critique of the following artwork.",
+      "generated": "This painting is a beautiful example of abstract expressionism. The artist uses bold colors and shapes to create a powerful and emotional image. The use of texture and form is also very effective, as the painting is full of depth and movement. The painting is a great example of abstract expressionism, and it is sure to be",
+      "reference": "This is a piece by the artist Yayoi Kusama titled \"Obliteration Room\". It is a work of installation art and features a space painted entirely white with colorful polka dots and multicolored stickers a",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0365,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.6,
+        "rouge1": 0.3385,
+        "rougel": 0.2256,
+        "bleu": 0.0046
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134602,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Imagine you are a tourist in Rome, what would be your favorite sights?",
+      "generated": "My favorite sights in Rome would be the Colosseum, the Roman Forum, the Pantheon, the Trevi Fountain, the Spanish Steps, and the Vatican City. I would also love to visit the Borghese Gallery and Museum, the Catacombs, and the Baths of Caracalla. I would also love to take",
+      "reference": "My favorite sights in Rome would be the Colosseum, the Pantheon, Trevi Fountain, Saint Peter's Basilica and the Roman Forum. I would also love to visit the Borghese Gallery, with its wonderful art col",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.3028,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.6176,
+        "rougel": 0.4412,
+        "bleu": 0.21
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134603,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Create a custom password based on the following phrase:",
+      "generated": "The password is \"The birds fly\". It is a combination of the words \"The\", \"birds\", and \"fly\". It is a strong password that is difficult to guess. It is also a unique password that is not easily found online. It is a great password to use for any online account. It is also",
+      "reference": "TbF1y!\nThe custom password is created by taking the first letter of each word and adding a number in the middle and a ! at the end. The letter T represents The and the number 1 represents fly. The ! i",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0513,
+        "hallucination": 0.875,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "rouge1": 0.303,
+        "rougel": 0.2424,
+        "bleu": 0.0133
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134604,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Describe the cultural differences between Granada and Madrid.",
+      "generated": "Granada and Madrid are two of the most popular cities in Spain, but they have distinct cultural differences. In Granada, the city is known for its vibrant flamenco music, traditional tapas, and Moorish architecture. In Madrid, the city is known for its modern architecture, tapas, and lively nightlife. Additionally, Granada is",
+      "reference": "Granada and Madrid are two Spanish cities located in different regions of the country. Although both cities are influenced by Spain’s rich culture, there are distinct differences between them. One of ",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1523,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "rouge1": 0.3941,
+        "rougel": 0.2759,
+        "bleu": 0.0212
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134605,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Find one historical event in the 15th century (1400s) and describe it briefly.",
+      "generated": "The Black Death, which began in 1348, was a devastating pandemic that killed an estimated 30-60% of Europe's population. It was caused by the bacterium Yersinia pestis, which was carried by fleas on rats. The plague spread rapidly across Europe, causing widespread death",
+      "reference": "In the 15th century, there was an event that had a major impact on the world - the fall of Constantinople. On May 29th, 1453, the Ottoman army defeated the Byzantine Empire and captured Constantinople",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0204,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "rouge1": 0.1656,
+        "rougel": 0.1146,
+        "bleu": 0.0016
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134606,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Convert the following basic math equation into another equivalent equation: 8 + 5 = x",
+      "generated": "8 + 5 = 13. Therefore, x = 13.\n(8 + 5) = 13.\nx = 13.\n(8 + 5) = 13.\nx = 13.\n(8 + 5) =",
+      "reference": "x = 8 + 5 \nor \nx - 5 = 8 \nor \n13 - x = 8 \nor \nx - 8 = 5.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "rouge1": 0.6667,
+        "rougel": 0.6061,
+        "bleu": 0.0544
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134607,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Explain the concept of absolute advantage.",
+      "generated": "Absolute advantage is the idea that a resource is most efficient when used to produce a single good or service. It is the maximum amount of output that can be produced with a given amount of input. In other words, it is the most efficient way to produce a single good or service. Absolute advantage is a key concept in",
+      "reference": "Absolute advantage is a concept in economics that refers to the ability of an individual, company, or country to produce goods or services more efficiently than its competitors. It determines which co",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0588,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "rouge1": 0.377,
+        "rougel": 0.2408,
+        "bleu": 0.0229
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134608,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Create an email marketing campaign to promote a new product.",
+      "generated": "Subject: Introducing the All-New Product!\n\nDear [Name],\n\nWe are excited to introduce our all-new product, which is sure to be a hit! This product is designed to [explain the product and its benefits]. \n\nWe have been working hard to create the perfect product, and we are confident",
+      "reference": "Subject: Introducing our brand new product! \n\nDear [Name], \n\nWe are excited to announce the launch of our brand new product, [Product Name]. Our product is specially designed to [Insert product descri",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1346,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "rouge1": 0.4198,
+        "rougel": 0.3086,
+        "bleu": 0.0417
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134609,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Describe the relationship between the characters in a given movie.",
+      "generated": "In The Notebook, the relationship between the two main characters, Nicholas and Allie, is the core of the story. They are deeply in love and are determined to stay together despite the obstacles in their way. They are both very different in their personalities and backgrounds, but they are able to overcome their differences and find a way",
+      "reference": "In The Notebook, the main characters, Allie and Noah, have a strong and passionate relationship that evolves over time. Despite their differences and the obstacles they face, the couple is able to ove",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.2319,
+        "hallucination": 0.9583,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "rouge1": 0.5197,
+        "rougel": 0.2835,
+        "bleu": 0.1305
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134610,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Create an animal-themed creative story",
+      "generated": "Once upon a time, there was a magical creature named Sparkle. Sparkle was a small, fluffy creature with a long, shimmering tail. Sparkle lived in a magical forest and had a special gift: she could communicate with all the animals in the forest. One day, Sparkle heard a strange noise coming from",
+      "reference": "Once upon a time, there lived an adventurous monkey named Dave. He lived in a jungle, full of colorful birds and buzzing bees. One day, Dave decided to explore the dangers beneath the canopy in search",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0705,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.6,
+        "rouge1": 0.2674,
+        "rougel": 0.1711,
+        "bleu": 0.0251
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134611,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "For the given query, find out five relevant websites.",
+      "generated": "1. WordPress.org: https://wordpress.org/\n2. Wix: https://www.wix.com/\n3. Squarespace: https://www.squarespace.com/\n4. Shopify: https://www.shopify.com/\n5. HostGator: https://www",
+      "reference": "The five relevant websites are: \n1. Wix.com \n2. Squarespace.com \n3. WordPress.org \n4. Weebly.com \n5. Shopify.com",
+      "metrics": {
+        "structured_correctness": 0.65,
+        "instruction_following": 1.0,
+        "coverage": 0.5455,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.8,
+        "rouge1": 0.5417,
+        "rougel": 0.3333,
+        "bleu": 0.0198
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134612,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "What event triggered World War I?",
+      "generated": "The assassination of Archduke Franz Ferdinand of Austria-Hungary in Sarajevo on June 28, 1914, is widely considered to be the event that triggered World War I. The assassination was the catalyst for the alliance between the major European powers, which ultimately led to the outbreak of the war. The assassination",
+      "reference": "The assassination of Archduke Franz Ferdinand of Austria by a Serbian nationalist on June 28, 1914, triggered World War I.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.7143,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.6,
+        "rouge1": 0.4507,
+        "rougel": 0.4507,
+        "bleu": 0.2048
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134613,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Similar to the input enquire about other school rules",
+      "generated": "No running in the hallways. Please keep your feet to yourself.\nNo running in the hallways. Please keep your feet to yourself.\nNo running in the hallways. Please keep your feet to yourself.\nNo running in the hallways. Please keep your feet to yourself.\nNo running in the hallways. Please keep",
+      "reference": "No eating or drinking in the classrooms, no cell phones in class, no loitering in the halls, no defacing school property, no wearing hats or head coverings indoors.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0,
+        "hallucination": 0.6667,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.2532,
+        "rougel": 0.2532,
+        "bleu": 0.0119
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134614,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Explain who is eligible to vote in the US",
+      "generated": "In the United States, all citizens aged 18 years or older are eligible to vote in federal, state, and local elections. There are also some exceptions, such as military personnel, those with disabilities, and those who have been convicted of certain crimes. Additionally, some states have additional restrictions on voting, such as",
+      "reference": "In the United States, anyone who is a citizen, 18 years old and above, and who is not incarcerated is eligible to vote.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.4,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.6,
+        "rouge1": 0.3467,
+        "rougel": 0.2933,
+        "bleu": 0.0641
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134615,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Generate a list of five valid reasons to go vegan",
+      "generated": "1. Veganism is a more sustainable way of eating, as it reduces the amount of animal products that are consumed.\n2. Veganism is a healthier way of eating, as it is rich in nutrients and fiber.\n3. Veganism is a more ethical way of eating, as it avoids the exploitation of",
+      "reference": "1. Improve your health: Vegan diets are generally lower in saturated fat and higher in vitamins, minerals and fibre than non-vegan diets. \n2. Help the environment: Animal agriculture is a major contri",
+      "metrics": {
+        "structured_correctness": 0.65,
+        "instruction_following": 1.0,
+        "coverage": 0.0336,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.6,
+        "rouge1": 0.2581,
+        "rougel": 0.1548,
+        "bleu": 0.0055
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134616,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Find five recipes for preparing vegan chili",
+      "generated": "1. Vegan Chili with Black Beans, Tomatoes, and Corn\n2. Vegan Chili with Sweet Potatoes, Bell Peppers, and Onions\n3. Vegan Chili with Mushrooms, Carrots, and Spinach\n4. Vegan Chili with Bell Peppers, Tomatoes, and Corn\n5. Vegan Chili with Black Beans, Tomatoes,",
+      "reference": "The five recipes for vegan chili are: \n1. Black Bean Quinoa Chili \n2. Lentil and Sweet Potato Chili \n3. Smoky Three-Bean Chili \n4. White Bean and Roasted Red Pepper Chili \n5. Spicy Edamame Chili",
+      "metrics": {
+        "structured_correctness": 0.65,
+        "instruction_following": 1.0,
+        "coverage": 0.1429,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.8,
+        "rouge1": 0.4872,
+        "rougel": 0.3333,
+        "bleu": 0.0083
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134617,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "What did the Declaration of Independence state?",
+      "generated": "The Declaration of Independence stated that all men are created equal and endowed with certain unalienable rights, including life, liberty, and the pursuit of happiness. It also declared that governments derive their just powers from the consent of the governed. It also stated that all men are endowed with the right to alter or abolish any form",
+      "reference": "The Declaration of Independence declared that the 13 colonies were free and independent of British rule. It stated that all men are created equal, with the right to life, liberty and the pursuit of ha",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.38,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 1.0,
+        "rouge1": 0.5421,
+        "rougel": 0.3925,
+        "bleu": 0.2229
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134618,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Retrieve the relevant details from the news article.",
+      "generated": "The fire broke out in Sunamganj, near Dhaka, on the 30th of May 2021. The fire caused damage to several buildings and caused a large amount of smoke. The fire was quickly extinguished by firefighters. The fire was reported to have been caused by a faulty electrical wiring.",
+      "reference": "The fire broke out in the town of Sunamganj near Dhaka on 30th May 2021. No casualties or significant damage has been reported so far. Firefighters have managed to bring the fire under control and the",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.3947,
+        "hallucination": 0.6667,
+        "context_grounding": 0.7,
+        "conciseness": 1.0,
+        "rouge1": 0.5455,
+        "rougel": 0.3864,
+        "bleu": 0.1051
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134619,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Classify the tweet based on sentiment. Output \"positive\", \"negative\", or \"neutral\".",
+      "generated": "positive.\n<noinput>\n<noinput>\n<noinput>\n<noinput>\n<noinput>\n<noinput>\n<noinput>\n<noinput>\n<noinput>\n<noinput>\n<noinput>\n<noinput>\n<",
+      "reference": "positive",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.2,
+        "rouge1": 0.1429,
+        "rougel": 0.1429,
+        "bleu": 0
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134620,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Delete the tweet if it violates the rules.",
+      "generated": "I hate all girls who are taller than me! I'm not sure why I feel this way, but I'm not sure I can understand why some people feel this way either. I'm sure there's more to the story. #NotAllGirlsAreTheSame #EqualityForAll #LoveAllPeople",
+      "reference": "The tweet has been deleted as it violates the rules.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0,
+        "hallucination": 0.7647,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.0364,
+        "rougel": 0.0364,
+        "bleu": 0.0045
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134621,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Insert words to make the sentence make sense.",
+      "generated": "The teacher asked the students their thoughts and opinions on the lesson. The students were eager to share their opinions. The teacher listened attentively to each student's response. The teacher asked the students to share their thoughts and opinions on the lesson. The teacher was impressed by the students' enthusiasm. The teacher asked the students to",
+      "reference": "The teacher asked the students for their thoughts and opinions on the lesson.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.6,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.3429,
+        "rougel": 0.3429,
+        "bleu": 0.1599
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134622,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Change the second sentence to make the following two sentences compatible.",
+      "generated": "Tom is going on a trip with his friends, while Mary is planning her vacation. \nMary is planning her vacation while Tom is going on a trip with his friends. \nMary is planning her vacation while Tom is going on a trip with his friends. \nTom is going on a trip with his friends",
+      "reference": "Tom is going on a trip with his friends and Mary is planning her vacation.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.125,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.4058,
+        "rougel": 0.4058,
+        "bleu": 0.2051
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134623,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Name three signs of depression.",
+      "generated": "Three signs of depression include loss of interest in activities, fatigue, and changes in sleep patterns. Other signs of depression include difficulty concentrating, feelings of worthlessness, and feelings of hopelessness. Additionally, changes in appetite, weight, and sexual activity can also be signs of depression. If you are experiencing any of these signs,",
+      "reference": "Common signs of depression include persistent feelings of sadness or emptiness, loss of interest in activities, insomnia or oversleeping, changes in appetite, difficulty concentrating, and feeling of ",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.3281,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "rouge1": 0.5577,
+        "rougel": 0.4038,
+        "bleu": 0.1766
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134624,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Generate a travel guide for Tokyo.",
+      "generated": "Tokyo is a vibrant and exciting city with a rich history and culture. Here is a guide to help you explore the city:\n\n1. Transportation: Tokyo has an excellent public transportation system, with a network of trains, subways, and buses. The Narita and Haneda airports are also well-connected.",
+      "reference": "A Travel Guide to Tokyo:\n\nTokyo, the capital of Japan and one of the most vibrant and exciting cities in the world, offers plenty of sights and attractions for visitors. Popular attractions include th",
+      "metrics": {
+        "structured_correctness": 0.65,
+        "instruction_following": 1.0,
+        "coverage": 0.0862,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.2958,
+        "rougel": 0.169,
+        "bleu": 0.0113
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134625,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Suggest three fun activities for a day trip to the beach.",
+      "generated": "1. Build a sandcastle. \n2. Go for a swim in the ocean. \n3. Have a picnic lunch on the beach. \n4. Go for a bike ride along the beach. \n5. Take a boat trip. \n6. Go for a walk along the beach",
+      "reference": "1. Start the day with a morning beach walk, taking in the fresh ocean breeze and beautiful views.\n2. Build sand castles or play a game of beach volleyball for some fun in the sun.\n3. Pack a picnic lun",
+      "metrics": {
+        "structured_correctness": 0.65,
+        "instruction_following": 1.0,
+        "coverage": 0.1146,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "rouge1": 0.4776,
+        "rougel": 0.2985,
+        "bleu": 0.0194
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134626,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Edit the given text so that it follows APA formatting style.",
+      "generated": "Writing in the APA style is important in order to ensure that your work is correctly documented. APA style is a style guide used in academic writing and research. It is used to ensure that all sources are properly cited and that all citations are in the correct format. APA style is also used to ensure that all citations are in",
+      "reference": "Writing in the APA style is important to ensure that your work is correctly documented.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.9333,
+        "hallucination": 0.65,
+        "context_grounding": 0.7,
+        "conciseness": 0.4,
+        "rouge1": 0.3947,
+        "rougel": 0.3947,
+        "bleu": 0.1981
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134627,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "What is the minimum z-score for accepting a hypothesis at 95% confidence level?",
+      "generated": "The minimum z-score for accepting a hypothesis at 95% confidence level is 3.84. This is the z-score that corresponds to a 95% confidence interval for the population mean. This z-score is also known as the z-score of the 95th percentile.",
+      "reference": "The minimum z-score for accepting a hypothesis at the 95% confidence level is 1.96.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "rouge1": 0.459,
+        "rougel": 0.4262,
+        "bleu": 0.231
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134628,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Describe the Five W's of journalism.",
+      "generated": "The Five W's of journalism are: Who, What, When, Where, and Why. These are the core elements of any good news story. Who is the person or entity involved in the story? What is the event or issue being reported? When did the event or issue occur? Where did it take place",
+      "reference": "The Five W's of journalism are five questions used to effectively communicate information through news stories. The five questions are: Who, What, When, Where, and Why. The purpose of the Five W's is ",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.2456,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "rouge1": 0.4545,
+        "rougel": 0.3455,
+        "bleu": 0.1895
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134629,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Construct a query to select all the sales data from 2019.",
+      "generated": "SELECT * FROM sales WHERE YEAR(date_of_sale) = 2019;\nSELECT * FROM sales WHERE DATE(date_of_sale) = '2019-01-01';\nSELECT * FROM sales WHERE DATE(date_of_sale) = '2",
+      "reference": "SELECT * FROM sales WHERE sales_date BETWEEN '2019-01-01' AND '2019-12-31';",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.6,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "rouge1": 0.4651,
+        "rougel": 0.4186,
+        "bleu": 0.1473
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134630,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Explain how to debug a C program",
+      "generated": "Debugging a C program involves identifying and fixing errors in the code. This can be done by using a debugger, which allows you to step through the code line by line and examine the values of variables. Additionally, you can use a profiler to analyze the performance of the code and identify any bottlenecks. Debugging can also",
+      "reference": "Debugging a C program involves finding and correcting errors in the code. A programmer can use a debugger to track the program while it is running, and to inspect variables, data structures, and other",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1807,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.4769,
+        "rougel": 0.3692,
+        "bleu": 0.1162
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134631,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Suggest a data visualization technique to visualize the given dataset.",
+      "generated": "A line chart could be used to visualize the sales of a product in each month for the past year. This would allow users to quickly see the trends in sales over time. The chart could also be used to compare the sales of different products or categories. Additionally, a bar chart could be used to compare the sales of",
+      "reference": "A line chart would be a suitable data visualization technique to visualize the given dataset. A line chart allows visualizing the trend of the data points over a period of time which is ideal for visu",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1186,
+        "hallucination": 0.7917,
+        "context_grounding": 0.7143,
+        "conciseness": 1.0,
+        "rouge1": 0.5085,
+        "rougel": 0.339,
+        "bleu": 0.0382
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134632,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Construct an SQL query to query the average age of all customers",
+      "generated": "SELECT AVG(age) FROM Customers;\nSELECT AVG(age) FROM Customers WHERE age > 18;\nSELECT AVG(age) FROM Customers WHERE age < 18;\nSELECT AVG(age) FROM Customers WHERE age BETWEEN 18 AND 19;\nSELECT AVG(age) FROM",
+      "reference": "SELECT AVG(age) FROM customers;",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "rouge1": 0.2439,
+        "rougel": 0.2439,
+        "bleu": 0.028
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134633,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "In what ways do you think technology is changing the way we learn?",
+      "generated": "Technology is changing the way we learn in many ways. It is making learning more accessible and convenient, allowing us to access information and resources from anywhere at any time. It is also making learning more interactive and engaging, with new technologies such as virtual reality and augmented reality providing immersive learning experiences. Additionally, technology is helping us",
+      "reference": "Technology is changing the way we learn in many positive ways. It allows us to access a larger amount of information from all over the world. Technology can also provide learning materials in various ",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1462,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "rouge1": 0.4072,
+        "rougel": 0.2715,
+        "bleu": 0.0394
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134634,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Describe how cloud computing works",
+      "generated": "Cloud computing is a type of computing that allows users to access computing resources over the internet. It is typically delivered as a service, meaning that users can access the resources without having to install or manage any software or hardware. Cloud computing is used to store, process, and manage data, as well as to run applications.",
+      "reference": "Cloud computing is a type of computing that allows users to access technology-based services through the internet. It involves a network of remote servers which are used to store, manage, and process ",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1984,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "rouge1": 0.4699,
+        "rougel": 0.2951,
+        "bleu": 0.0905
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134635,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Provide an output to the following function",
+      "generated": "10\n10\n10\n10\n10\n10\n10\n10\n10\n10\n10\n10\n10\n10\n10\n10\n10\n10\n10\n10\n10\n1",
+      "reference": "4",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.2,
+        "rouge1": 0.0,
+        "rougel": 0.0,
+        "bleu": 0
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134636,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Find the frequency of the word ‘the’ in a given text",
+      "generated": "The word ‘the’ appears 4 times in the text. The frequency of the word ‘the’ is 4. The word ‘the’ is used 4 times in the text. The frequency of the word ‘the’ is 4. The word ‘the’ appears 4 times in the text.",
+      "reference": "2",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.2,
+        "rouge1": 0.0,
+        "rougel": 0.0,
+        "bleu": 0
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134637,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Create a SQL query to select all the customers records who have purchased more than 5 items",
+      "generated": "SELECT * FROM Customers WHERE COUNT(*) > 5;\nSELECT * FROM Customers WHERE COUNT(*) > 5;\nSELECT * FROM Customers WHERE COUNT(*) > 5;\nSELECT * FROM Customers WHERE COUNT(*) > 5;\nSELECT * FROM Customers WHERE COUNT(*) > 5;\nSELECT * FROM Customers",
+      "reference": "SELECT * FROM customers WHERE number_of_purchases > 5;",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.5556,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.2439,
+        "rougel": 0.2439,
+        "bleu": 0.0273
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134638,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Describe the 4 fundamentals of Object Oriented Programming",
+      "generated": "The four fundamentals of Object Oriented Programming (OOP) are encapsulation, inheritance, polymorphism, and abstraction. Encapsulation is the process of bundling data and methods together into a single unit, which is then protected from external access. Inheritance is the process of creating a new class that inherits properties and methods from an existing class.",
+      "reference": "Object-oriented programming (OOP) is a programming paradigm that uses abstractions to create models based on the real world. It employs four main principles: object orientation, polymorphism, abstract",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1789,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "rouge1": 0.4321,
+        "rougel": 0.2593,
+        "bleu": 0.0452
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134639,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "How would you be monitoring and evaluating the performance of a GPT model?",
+      "generated": "To monitor and evaluate the performance of a GPT model, it is important to track metrics such as accuracy, precision, recall, F1-score, and BLEU score. Additionally, it is important to monitor the model's output for any signs of bias or toxicity. Additionally, it is important to monitor the model",
+      "reference": "Performance monitoring and evaluation of a GPT model is typically done by measuring the accuracy of its output. This can be done by comparing the model's output against ground truth data, or by testin",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1308,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.3758,
+        "rougel": 0.2416,
+        "bleu": 0.0217
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134640,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Generate a story about a journey in space.",
+      "generated": "Once upon a time, there was a young astronaut named Alex who was determined to explore the vastness of space. After years of training and preparation, Alex finally took off on a journey to explore the unknown. \n\nAlex was amazed by the beauty of the stars and planets, and the vastness of the universe.",
+      "reference": "It was a beautiful day on Earth, but Andrew was not content to stay on land. He wanted to explore and experience the vastness of space. So, on that fateful day, he set off on an intergalactic voyage t",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0509,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.2599,
+        "rougel": 0.1733,
+        "bleu": 0.0046
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134641,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "What is the maximum temperature that plutonium can handle before melting?",
+      "generated": "Plutonium can handle up to 1,000 degrees Celsius before it melts. This temperature is reached when the plutonium is exposed to high temperatures and pressures. It is important to note that this temperature is not the same as the temperature of the sun, which is around 5,500 degrees Celsius",
+      "reference": "Plutonium's melting point is around 1122 degrees Celsius. It is one of the few elements that has a boiling point lower than its melting point, with a boiling point of about 913 degrees Celsius. It is ",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1628,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "rouge1": 0.375,
+        "rougel": 0.1964,
+        "bleu": 0.0175
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134642,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "When and why did the Vietnam War start?",
+      "generated": "The Vietnam War started in 1955 when North Vietnam and the Viet Cong, a communist guerrilla force, launched an armed offensive against South Vietnam. The United States, under President Lyndon B. Johnson, intervened in the conflict in 1961, providing military and economic aid to South Vietnam. The war",
+      "reference": "The Vietnam War began in November 1955, when North Vietnam initiated an armed conflict in order to reunite the two Vietnams divided by the agreement of the Geneva Conference. The war was primarily a r",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1653,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "rouge1": 0.3976,
+        "rougel": 0.3012,
+        "bleu": 0.0529
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134643,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Summarize this sentence in one word: She loved the way he always made her laugh.",
+      "generated": "Joyful.\n<br>\n<br>\n<br>\n<br>\n<br>\n<br>\n<br>\n<br>\n<br>\n<br>\n<br>\n<br>\n<br>\n<br>\n<br>",
+      "reference": "Joyful.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.5,
+        "context_grounding": 0.3333,
+        "conciseness": 0.2,
+        "rouge1": 0.1176,
+        "rougel": 0.1176,
+        "bleu": 0.0123
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134644,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Identify the homophone in this sentence: The bee bee's in the tree.",
+      "generated": "The homophone in this sentence is \"bee\" and \"bee's\". The word \"bee\" is a noun, while \"bee's\" is a possessive pronoun. The possessive pronoun \"bee's\" is used to show possession. The word \"bee\" is a noun, while \"bee",
+      "reference": "The homophone in this sentence is \"bee\" and \"be\".",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.32,
+        "rougel": 0.32,
+        "bleu": 0.1755
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134645,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Write a classification essay about pet animals.",
+      "generated": "Pet animals are a popular choice for people to keep as pets. They are often seen as a source of companionship and can provide a sense of comfort and security. Pet animals can also be a great source of entertainment and can help to reduce stress and anxiety. \n\nPet animals can be a great source of companionship and can",
+      "reference": "Pets are beloved companions of humans, providing comfort and joy to many people. Some of the most common pets are animals, ranging from furry mammals to funny reptiles and everything in between. Each ",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0281,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "rouge1": 0.205,
+        "rougel": 0.133,
+        "bleu": 0.0003
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134646,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Find an example of a metaphor in this sentence: My life is like a river flowing inexorably.",
+      "generated": "My life is like a river flowing inexorably. This is an example of a metaphor because it compares life to a river, implying that life is constantly moving forward and never stops. The metaphor is used to convey the idea that life is continuous and never stops. The river is also used to emphasize the unstoppable nature of",
+      "reference": "The phrase \"my life is like a river flowing inexorably\" is an example of a metaphor. It is comparing life to a river, implying continuous forward movement towards an unknown destination.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.5455,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.5618,
+        "rougel": 0.4944,
+        "bleu": 0.2056
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134647,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Rewrite this sentence to make it more formal: She had so much fun.",
+      "generated": "She had a great time.\nShe enjoyed herself immensely.\nShe had a wonderful time.\nShe had a great time.\nShe had a wonderful time.\nShe had a great time.\nShe had a wonderful time.\nShe had a great time.\nShe had a wonderful time.\nShe had",
+      "reference": "She experienced immense enjoyment.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "rouge1": 0.12,
+        "rougel": 0.08,
+        "bleu": 0.004
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134648,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "What are the best practices to protect your online identity?",
+      "generated": "The best practices to protect your online identity include using strong passwords, enabling two-factor authentication, keeping your software up to date, using a VPN, and being cautious about the information you share online. Additionally, it is important to be aware of phishing scams and to never click on suspicious links or download files from unknown sources",
+      "reference": "The best practices for protecting your online identity include using unique and secure passwords, avoiding clicking on suspicious links or websites, enabling two-factor authentication, enabling a virt",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.3229,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.5915,
+        "rougel": 0.4366,
+        "bleu": 0.1703
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134649,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Explain why you should be chosen for this role.",
+      "generated": "I am a highly skilled and experienced technical writer with a proven track record of creating clear, concise, and accurate documentation. I have a deep understanding of technical processes and a passion for creating user-friendly and effective documentation. I am also a strong communicator and collaborator, and I am adept at working with stakeholders to ensure that",
+      "reference": "I think I should be chosen for this role because I have the necessary skills, knowledge and experience to excel as a technical writer for Company XYZ. As I have a proven track record of writing techni",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0874,
+        "hallucination": 0.9286,
+        "context_grounding": 0.5,
+        "conciseness": 0.8,
+        "rouge1": 0.375,
+        "rougel": 0.2625,
+        "bleu": 0.0639
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134650,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Create a theory of why this event happened.",
+      "generated": "The recent mass protests in Chile are likely due to a combination of factors, including economic inequality, political corruption, and government repression. The government has been accused of suppressing dissent and silencing opposition voices, while the economic situation has been worsening for many Chileans. This has led to a sense of frustration and anger among the population",
+      "reference": "The recent mass protests in Chile are driven by a confluence of issues, including rising inequality, the cost of living, and dissatisfaction with the government's response to the economic crisis. In p",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.121,
+        "hallucination": 0.875,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.369,
+        "rougel": 0.2619,
+        "bleu": 0.0615
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134651,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "What can be done to improve cross-cultural communication?",
+      "generated": "Improving cross-cultural communication can be done by being aware of cultural differences, being respectful of other cultures, and being open to learning from others. It is also important to be patient and understanding when communicating with people from different cultures, and to be willing to ask questions and seek clarification when needed. Additionally, it is important",
+      "reference": "There are a number of things that can be done to improve cross-cultural communication. Firstly, strive to understand the culture of the person you are communicating with, such as their values and comm",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0926,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.381,
+        "rougel": 0.1905,
+        "bleu": 0.0117
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134652,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Create a policy that would help solve this problem.",
+      "generated": "A policy that would help solve this problem would be to implement stricter regulations on emissions from vehicles and industries. This could include requiring the use of cleaner fuels, investing in public transportation, and implementing stricter emission standards. Additionally, the government could provide incentives for businesses to adopt more environmentally friendly practices. Additionally, ",
+      "reference": "The government should implement a policy of strict air quality control to reduce air pollution in cities. This policy should include a set of regulations that address key sources of pollution, such as",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.099,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.8,
+        "rouge1": 0.3355,
+        "rougel": 0.1806,
+        "bleu": 0.0151
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134653,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Come up with a business idea that could be profitable.",
+      "generated": "A business idea that could be profitable is a subscription-based service that provides personalized content and services to customers. This could include personalized news feeds, customized workout plans, and access to exclusive content. The subscription model would allow customers to pay a monthly fee for access to the content and services, making it a viable business model",
+      "reference": "A profitable business idea could be a subscription-based service for remote working professionals. The service will provide members with access to a range of tools and services to make remote working ",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 0.875,
+        "coverage": 0.2206,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "rouge1": 0.4828,
+        "rougel": 0.3448,
+        "bleu": 0.0525
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134654,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Describe a system that would help increase employee engagement.",
+      "generated": "A system that would help increase employee engagement could include providing employees with opportunities for professional development, offering competitive compensation and benefits, providing recognition and rewards for good performance, and creating a positive and supportive work environment. Additionally, providing employees with opportunities to collaborate and build relationships with colle",
+      "reference": "A system that can help increase employee engagement should provide employees with incentives to stay engaged and empowered. Some potential components of such a system include regular feedback and mean",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1604,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.4286,
+        "rougel": 0.3247,
+        "bleu": 0.0476
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134655,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Create a list of best practices that should be followed in this field.",
+      "generated": "1. Ensure data security and privacy.\n2. Implement robust data backup and recovery procedures.\n3. Maintain compliance with relevant regulations.\n4. Ensure data accuracy and integrity.\n5. Develop and maintain a data governance framework.\n6. Establish clear data access policies.\n7. Implement data analytics and",
+      "reference": "The following best practices should be followed in the healthcare information technology field: \n1. Adopt a risk-based approach to cybersecurity, utilizing measures such as multi-factor authentication",
+      "metrics": {
+        "structured_correctness": 0.65,
+        "instruction_following": 1.0,
+        "coverage": 0.0826,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.6,
+        "rouge1": 0.3243,
+        "rougel": 0.1757,
+        "bleu": 0.0095
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134656,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Calculate the full price.",
+      "generated": "The full price is $10.00.\nThe quantity is 2.\nThe full price is $10.00.\nThe quantity is 2.\nThe full price is $10.00.\nThe quantity is 2.\nThe full price is $10",
+      "reference": "The full price is $10.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.6667,
+        "context_grounding": 0.3333,
+        "conciseness": 0.2,
+        "rouge1": 0.25,
+        "rougel": 0.25,
+        "bleu": 0.0726
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134657,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Generate an optimistic statement about life.",
+      "generated": "Life is full of surprises and opportunities to learn and grow. It is important to embrace the unknown and to take risks in order to reach your goals. Life is a journey, not a destination, and it is important to enjoy the process along the way. It is also important to remember that life is precious and should be",
+      "reference": "No matter what challenges life throws at us, we can always find something to be grateful for.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0588,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.0789,
+        "rougel": 0.0789,
+        "bleu": 0.0041
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134658,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Find an interesting quote related to design.",
+      "generated": "\"Design is not about making something look pretty; it is about making something useful.\" - Steve Jobs. This quote emphasizes the importance of functionality and usability in design. It is a reminder that design should be driven by the needs of the user, not just aesthetics. It is also a reminder that design should be user-",
+      "reference": "\"Design is not just what it looks like and feels like. Design is how it works\" - Steve Jobs",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.2105,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.3288,
+        "rougel": 0.2192,
+        "bleu": 0.0253
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134659,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Make a comparison between 2 items.",
+      "generated": "The iPhone X and Google Pixel 2 are both flagship smartphones with powerful processors and high-resolution displays. The iPhone X has a larger screen and a more powerful processor, while the Pixel 2 has a smaller screen and a more affordable processor. Both phones have excellent cameras and offer a range of features, such as",
+      "reference": "The iPhone X has a larger display than the Google Pixel 2. The Pixel 2 has a slightly better camera, while the X has better battery life.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.3462,
+        "hallucination": 0.8333,
+        "context_grounding": 0.8,
+        "conciseness": 0.6,
+        "rouge1": 0.4578,
+        "rougel": 0.2892,
+        "bleu": 0.1472
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134660,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Describe a summer scene.",
+      "generated": "The summer sun was shining brightly, casting a warm glow over the lush green grass. The air was filled with the sweet smell of blooming flowers and the sound of birds chirping in the trees. A gentle breeze rustled through the leaves, creating a soothing melody. The sky was a brilliant blue, dotted with fluffy white",
+      "reference": "The sun is shining brightly in the cloudless sky, casting a warmth over the bustling outdoor market. Kids laugh and play in the park, chasing each other in and out of the sprinkler. The scent of sweet",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.2326,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.449,
+        "rougel": 0.2857,
+        "bleu": 0.0157
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134661,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Create a rhyming phrase.",
+      "generated": "Tick-tock, it's a-buzzing.\nTick-tock, it's a-buzzing.\nTick-tock, it's a-buzzing.\nTick-tock, it's a-buzzing.\nTick-tock, it's",
+      "reference": "Tick tock, around the block.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.4286,
+        "hallucination": 1.0,
+        "context_grounding": 0.0,
+        "conciseness": 0.4,
+        "rouge1": 0.1212,
+        "rougel": 0.1212,
+        "bleu": 0
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134662,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Make a judgement about the claim presented.",
+      "generated": "The claim is true. There is a broad consensus among scientists that climate change is a real issue. This consensus is based on the scientific evidence and research that has been conducted over the past decades. The scientific evidence is overwhelming and the consensus is based on the best available data. This consensus is supported by the majority of climate",
+      "reference": "The scientific community is in consensus that climate change is a real issue, with the majority of climate research and studies supporting this conclusion.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.5,
+        "hallucination": 0.7391,
+        "context_grounding": 0.8571,
+        "conciseness": 0.6,
+        "rouge1": 0.4524,
+        "rougel": 0.3333,
+        "bleu": 0.1311
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134663,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Complete the sentence below, trying to use similar language as the original sentence.",
+      "generated": "The teacher explained the lesson with enthusiasm.\nThe teacher explained the lesson with clarity.\nThe teacher explained the lesson with conviction.\nThe teacher explained the lesson with passion.\nThe teacher explained the lesson with conviction.\nThe teacher explained the lesson with passion.\nThe teacher explained the lesson with conviction.\nThe",
+      "reference": "lucidity and clarity.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.3333,
+        "hallucination": 0.5714,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "rouge1": 0.0377,
+        "rougel": 0.0377,
+        "bleu": 0.0037
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134664,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Rewrite the following sentence to make the information more compact",
+      "generated": "We chose this path because it was the best option for our company.",
+      "reference": "We chose to proceed as it was the optimum choice for our company.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1818,
+        "hallucination": 0.5,
+        "context_grounding": 0.2727,
+        "conciseness": 1.0,
+        "rouge1": 0.6154,
+        "rougel": 0.6154,
+        "bleu": 0.1469
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134665,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Analyze the sentence and identify the type of sentence it is.",
+      "generated": "This is a declarative sentence. It states a fact about the snow. It is a simple sentence with a subject and a verb. It is also a simple sentence because it does not contain any conjunctions or relative clauses. It is also a simple sentence because it does not contain any dependent clauses. It is also a simple",
+      "reference": "Declarative.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.9333,
+        "context_grounding": 0.5,
+        "conciseness": 0.2,
+        "rouge1": 0.0339,
+        "rougel": 0.0339,
+        "bleu": 0
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134666,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Calculate the cost of 3 kg of apples if the cost of 1 kg is $2.",
+      "generated": "The cost of 3 kg of apples is $6. The cost of 1 kg of apples is $2. Therefore, the cost of 3 kg of apples is $6. The cost of 3 kg of apples is $6.00. The cost of 3 kg of apples is $6",
+      "reference": "The cost of 3 kg of apples is $6.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "rouge1": 0.3214,
+        "rougel": 0.3214,
+        "bleu": 0.1667
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134667,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Categorize the following word into its corresponding word class.",
+      "generated": "Adjective (describing a noun) - Pretty. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective. Adjective",
+      "reference": "Adjective.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.75,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "rouge1": 0.0833,
+        "rougel": 0.0833,
+        "bleu": 0.0079
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134668,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Find the place value of the given digit in the number.",
+      "generated": "The place value of the digit 7 in the number 3758 is 7. The number is 3758. The digit 7 is in the 7th place value. The number is 3758. The digit 7 is in the 7th place value.",
+      "reference": "The place value of the digit 7 in the number 3758 is hundreds.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.7778,
+        "hallucination": 0.6,
+        "context_grounding": 1.0,
+        "conciseness": 0.6,
+        "rouge1": 0.4615,
+        "rougel": 0.4615,
+        "bleu": 0.2785
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134669,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Correct the spelling for the given word.",
+      "generated": "After.\nThe word \"affter\" is misspelled. The correct spelling is \"after\". The word \"affter\" is a misspelling of \"after\". The word \"affter\" is a misspelling of \"after\". The word \"affter\" is a misspelling of \"after\". The word \"",
+      "reference": "The correct spelling for the given word is \"After\".",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.5714,
+        "hallucination": 0.8333,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.3043,
+        "rougel": 0.3043,
+        "bleu": 0.0274
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 134670,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Fit the input text into the given structure.",
+      "generated": "John went to the store to buy apples.\n<noinput> <noinput> <noinput> <noinput> <noinput> <noinput> <noinput> <noinput> <noinput> <noinput> <noinput> <noinput> <noinput> <no",
+      "reference": "John had decided to go to the store to buy some apples.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.5455,
+        "hallucination": 0.1667,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.4118,
+        "rougel": 0.4118,
+        "bleu": 0.1759
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152501,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Illustrate the given concept with an example",
+      "generated": "Supervised learning is a type of machine learning where the model is trained on a labeled dataset. This means that the model is given a set of examples with known outputs and is then trained to predict the output for new, unseen data. For example, a model trained on a dataset of images of cats and dogs could be",
+      "reference": "Supervised learning is a type of machine learning in which pre-labeled data is used to train a model. For example, a supervised learning algorithm might use labeled images of cats and dogs to train a ",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.4048,
+        "hallucination": 0.92,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.5714,
+        "rougel": 0.4381,
+        "bleu": 0.2198
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152502,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Explain the human impact on climate change",
+      "generated": "Human activities have caused climate change by releasing greenhouse gases into the atmosphere, which trap heat and cause global warming. This has led to rising sea levels, extreme weather events, and changes in ecosystems. Human activities have also caused deforestation, which reduces the amount of carbon dioxide absorbed from the atmosphere. Additionally, the burning of fossil",
+      "reference": "Human activities are the main driver of climate change. Human-induced climate change is caused by the burning of fossil fuels and other activities that increase the amount of greenhouse gases in the a",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.3421,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.5197,
+        "rougel": 0.2992,
+        "bleu": 0.0992
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152503,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Give an example of an animal that is not endangered",
+      "generated": "An example of an animal that is not endangered is the panda. Pandas are native to China and are found in the bamboo forests of the country. They are also found in other parts of the world, such as the United States, Japan, and Russia. Pandas are not endangered because they have been protected by the Chinese government",
+      "reference": "A domestic cat is an example of an animal that is not endangered.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.5556,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.4,
+        "rouge1": 0.2817,
+        "rougel": 0.2535,
+        "bleu": 0.0985
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152504,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Summarize what a Ponzi scheme is.",
+      "generated": "A Ponzi scheme is a fraudulent investment scheme in which a person or group of people use the money of others to pay themselves. The scheme typically involves a leader who promises high returns and relies on the investment of others to fund the scheme. The scheme is usually structured around a fake company or investment fund, and the leader",
+      "reference": "A Ponzi scheme is an investment scam that promises high returns with little-to-no risk. The scam involves enticing investors with the promise of high returns, but instead of genuinely investing the mo",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1461,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.3733,
+        "rougel": 0.2533,
+        "bleu": 0.0517
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152505,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "How can a person improve their critical-thinking ability?",
+      "generated": "A person can improve their critical-thinking ability by practicing problem-solving, analyzing information, and evaluating arguments. Additionally, it is important to be aware of biases and assumptions, and to seek out diverse perspectives. Additionally, it is important to be able to think outside the box and to be open to new ideas. Finally",
+      "reference": "Improving critical thinking involves being willing to question assumptions, take multiple perspectives, make informed decisions, and think analytically. These skills can be developed through practice,",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1176,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.3443,
+        "rougel": 0.1639,
+        "bleu": 0.0048
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152506,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "How can we make a good impression in an interview?",
+      "generated": "Making a good impression in an interview is important. Here are some tips to help you make a great impression: \n- Be prepared and research the company and the role.\n- Dress professionally and be on time.\n- Be enthusiastic and positive.\n- Be confident and articulate.\n- Ask questions and show",
+      "reference": "Making a good impression in an interview is all about preparation. Research the company and the position beforehand, practice your answers, know your strengths and weaknesses, and be prepared to addre",
+      "metrics": {
+        "structured_correctness": 0.65,
+        "instruction_following": 1.0,
+        "coverage": 0.1806,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.4806,
+        "rougel": 0.3101,
+        "bleu": 0.1193
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152507,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Build a natural language query to find the oldest mountain range in the U.S.",
+      "generated": "\"Find the oldest mountain range in the U.S.\"\n(This query is designed to find the oldest mountain range in the U.S. by searching for the oldest mountain range in the United States.)\n(This query is designed to find the oldest mountain range in the U.S. by searching for the",
+      "reference": "What is the oldest mountain range in the United States?",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.8182,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "rouge1": 0.2903,
+        "rougel": 0.2903,
+        "bleu": 0.1172
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152508,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Explain the concept of “content curation”",
+      "generated": "Content curation is the process of selecting, organizing, and presenting content in a way that is relevant to a particular audience. It involves selecting, organizing, and presenting content in a way that is tailored to the needs and interests of the audience. Content curation can be used to create a more engaging and informative experience for users,",
+      "reference": "Content curation involves gathering and organizing data or content from multiple sources in order to provide valuable, relevant, and up-to-date information to an audience. This typically involves disc",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.1094,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "rouge1": 0.4,
+        "rougel": 0.2783,
+        "bleu": 0.014
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152509,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "How could technology be used to address the problem of climate change?",
+      "generated": "Technology can be used to address the problem of climate change in a variety of ways. For example, renewable energy sources such as solar and wind power can be used to generate electricity, reducing the amount of fossil fuels that are burned. Additionally, carbon capture and storage technologies can be used to capture carbon dioxide emissions from the atmosphere",
+      "reference": "Technology can be used to address the problem of climate change in many ways. For example, renewable energy sources such as solar, wind, and geothermal energy can help reduce our dependence on fossil ",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.398,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.6309,
+        "rougel": 0.5101,
+        "bleu": 0.2632
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152510,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Given this input, how would you generate a creative poem?",
+      "generated": "Magpies, a creature of beauty and grace,\nA creature of beauty and grace,\nA creature of beauty and grace,\nA creature of beauty and grace.\n\nTheir bright, shiny eyes, a captivating sight,\nTheir feathers, a dazzling array,\nTheir wings, a fluttering delight,\nTheir calls",
+      "reference": "They chatter in the dawn-touched trees,\nTheir feathers flashing dark and sheen.\nThe magpies of the morning breeze,\nSongbirds of a growing green.\n\nChorusing out their cheerful sound,\nThe magpies gather",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0244,
+        "hallucination": 0.9375,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.188,
+        "rougel": 0.1197,
+        "bleu": 0.0037
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152511,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Create a natural language query to find the population of a given city.",
+      "generated": "\"What is the population of the city of London?\"\n(query type: search)\n(location: London)\n(query type: population)\n(query type: find)\n(query type: city)\n(query type: population)\n(query type: population)\n(query type:",
+      "reference": "What is the population of [city]?",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.2,
+        "rouge1": 0.3243,
+        "rougel": 0.3243,
+        "bleu": 0.0751
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152512,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Compile the following code using correct syntax.",
+      "generated": "expected_output = [0, 1, 2, 3]\n# This code is correct.\n# The expected output is a list containing the numbers 0, 1, 2, and 3.\n# The code uses a list comprehension to generate the list.\n# The list",
+      "reference": "expected_output = [i for i in range(4)] # This will return a list with 4 elements [0, 1, 2, 3].",
+      "metrics": {
+        "structured_correctness": 0.85,
+        "instruction_following": 0.875,
+        "coverage": 0.3636,
+        "hallucination": 0.8,
+        "context_grounding": 0.6667,
+        "conciseness": 0.8,
+        "rouge1": 0.3214,
+        "rougel": 0.3214,
+        "bleu": 0.0378
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152513,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Give me an example of an object in motion.",
+      "generated": "An example of an object in motion is a car driving down the street. The car is moving forward, and the driver is steering the wheel. The car is also moving forward, and the driver is using the gas pedal to increase the speed. The car is also moving forward, and the driver is using the brake pedal",
+      "reference": "An example of an object in motion is a car on a highway. The car is propelled forward by the force of its engine, and it moves from one point to another.",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.3077,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.4,
+        "rougel": 0.3778,
+        "bleu": 0.1817
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152514,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Create a dictionary that contains the names of 5 fruits and the color associated with each.",
+      "generated": "{\n    \"apple\": \"red\",\n    \"banana\": \"yellow\",\n    \"orange\": \"orange\",\n    \"grape\": \"purple\",\n    \"strawberry\": \"red\"\n}",
+      "reference": "fruit_colors = {\n    'apple': 'red',\n    'banana': 'yellow',\n    'pear': 'green',\n    'grape': 'purple',\n    'orange': 'orange',\n}",
+      "metrics": {
+        "structured_correctness": 0.7,
+        "instruction_following": 1.0,
+        "coverage": 0.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "rouge1": 0.7273,
+        "rougel": 0.5455,
+        "bleu": 0.0171
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152515,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Generate 3 jokes related to medicine.",
+      "generated": "1. Why did the doctor refuse to give the patient a second opinion? Because he said it was too expensive!\n2. What did the doctor say to the patient who had a bad case of the flu? \"You're not feeling so good, are you?\"\n3. Why did the nurse get fired",
+      "reference": "1. What was the patient's favorite type of medicine? Supplements!\n\n2. What did the nurse say when the doctor asked for a bandage? \"I'm stumped!\" \n\n3. What did the scalpel say to the knife? \"Let's get ",
+      "metrics": {
+        "structured_correctness": 0.65,
+        "instruction_following": 1.0,
+        "coverage": 0.1316,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.4348,
+        "rougel": 0.3043,
+        "bleu": 0.1003
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152516,
+      "checkpoint": 1,
+      "has_context": true,
+      "input": "Divide the given equation using long division.",
+      "generated": "2x+7 = 2x+7\n4x+5 = 4x+5\n2x+7 = 2x+7\n4x+5 = 4x+5\n2x+7 = 2x+7\n4x+5 = 4x+",
+      "reference": "(2x+7)(4x+5)\n\n2x + 7 : 2x + 7\n4x + 5 : 2x + 7\n\n-> 4x + 5\n2x + 7\n\n---------\n2x\n\n-> 4x + 5\n2x\n\n---------\n5\n\n-> 0 \n5\n\n---------\n5",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 1.0,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 1.0,
+        "rouge1": 0.8511,
+        "rougel": 0.7234,
+        "bleu": 0
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152517,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Write a creative story involving two characters who are estranged friends reunited.",
+      "generated": "Once upon a time, there were two friends who had been estranged for years. They had grown apart and drifted apart, but one day, fate intervened. They were both invited to a reunion dinner, and they were both excited to see each other again. As they walked into the restaurant, they were greeted by a familiar",
+      "reference": "Jack and Sam had been the best of friends since their days in school. They did everything together, and were inseparable, until Sam moved away to another city. For years, they were out of touch - unti",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.0532,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.3671,
+        "rougel": 0.2025,
+        "bleu": 0.015
+      }
+    },
+    {
+      "ckpt": "C4",
+      "id": 152518,
+      "checkpoint": 1,
+      "has_context": false,
+      "input": "Explain why increased government regulation often hinders business growth.",
+      "generated": "Increased government regulation can hinder business growth by increasing costs for businesses, limiting their ability to innovate, and creating barriers to entry into the market. Regulations can also lead to increased bureaucracy and red tape, making it difficult for businesses to operate efficiently. Additionally, regulations can limit the ability of businesses to compete with larger companies, a",
+      "reference": "Increased government regulation often hinders business growth because it adds compliance costs and creates an uncertain legal landscape that can impede businesses’ ability to hire, invest, innovate, a",
+      "metrics": {
+        "structured_correctness": 0.5,
+        "instruction_following": 1.0,
+        "coverage": 0.172,
+        "hallucination": 0.0,
+        "context_grounding": 1.0,
+        "conciseness": 0.8,
+        "rouge1": 0.4651,
+        "rougel": 0.3411,
+        "bleu": 0.028
+      }
+    }
+  ]
+}
