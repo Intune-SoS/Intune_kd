@@ -1,0 +1,15 @@
+====================================================================
+CROSS-CHECKPOINT RETENTION MATRIX (Overall Score)
+====================================================================
+Adapter           Slice C1      Slice C2      Slice C3      Slice C4
+--------------------------------------------------------------------
+C1                  0.5308        0.7349        0.0803        0.4272
+C2                  0.5619        0.7290        0.0804        0.3699
+C3                  0.5389        0.7188        0.1004        0.3710
+C4                  0.5427        0.7233        0.1122        0.3716
+====================================================================
+
+Retention Summary Notes:
+  - Diagonal (Ci on Slice Ci): Performance on the native training distribution.
+  - Below diagonal (C(i+k) on Slice Ci): Backward retention / catastrophic forgetting.
+  - Above diagonal (Ci on Slice C(i+k)): Forward transfer / zero-shot generalisation.

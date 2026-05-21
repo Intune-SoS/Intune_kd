@@ -1,0 +1,702 @@
+[
+  {
+    "id": 119338,
+    "input": "Edit this sentence by making it more concise.",
+    "context": "Heroes often have a noble purpose and can be looked up to as an example of someone who has done something that is considered brave or admirable.",
+    "sevenb": "Heroes often possess a noble purpose and display admirable courage.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119339,
+    "input": "Describe the relationship between design thinking and innovation.",
+    "context": null,
+    "sevenb": "Design thinking and innovation are closely intertwined, as design thinking provides a human-centered approach to innovation that utilizes the designer's toolkit to integrate the needs of people, the possibilities of technology, and the requirements for success.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119340,
+    "input": "List two benefits of using design thinking.",
+    "context": null,
+    "sevenb": "The two benefits of using design thinking are (1) the ability to identify and solve problems in creative ways, and (2) the ability to focus on the end-user experience to develop solutions that satisfy user requirements.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119341,
+    "input": "Compose 5 midi notes that sound happy and hopeful.",
+    "context": null,
+    "sevenb": "1. C4 Major\n2. D4 Major\n3. G4 Major\n4. A4 Major\n5. C5 Major",
+    "checkpoint": 1
+  },
+  {
+    "id": 119342,
+    "input": "Edit the text so that it is grammaticaly correct.",
+    "context": "It be like that some times",
+    "sevenb": "It is like that sometimes.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119343,
+    "input": "What are some common causes of car accidents?",
+    "context": null,
+    "sevenb": "1. Distracted driving \n2. Driving under the influence of alcohol or drugs \n3. Speeding \n4. Poor weather conditions \n5. Failure to obey traffic laws \n6. Aggressive driving \n7. Defective vehicle parts \n8. Driving while fatigued \n9. Running a red light \n10. Problems or defects in road or highway design",
+    "checkpoint": 1
+  },
+  {
+    "id": 119344,
+    "input": "What is the basic goal of a mutual fund?",
+    "context": null,
+    "sevenb": "The basic goal of a mutual fund is to provide investors with a diversified portfolio of investments that is managed professionally to help them reach their financial goals.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119345,
+    "input": "Name three countries in Europe whose population are over 50 million.",
+    "context": "Teacher reference: 1. Germany 2. France 3. United Kingdom",
+    "sevenb": "1. Germany\n2. France\n3. United Kingdom",
+    "checkpoint": 1
+  },
+  {
+    "id": 119346,
+    "input": "What values were promised in the United States Declaration of Independence?",
+    "context": null,
+    "sevenb": "The United States Declaration of Independence promised life, liberty, and the pursuit of happiness.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119347,
+    "input": "Analyze the following text and provide the statistics related to the sentiment score it carries.",
+    "context": "Text: Life feels like a roller coaster. It has its ups and downs.",
+    "sevenb": "The sentiment analysis of the text reveals an overall positive sentiment score of 0.7 on a scale of -1 to 1. It has a higher proportion of positive words (2) compared to negative words (0).",
+    "checkpoint": 1
+  },
+  {
+    "id": 119348,
+    "input": "Search the web for the most common symptoms of the flu.",
+    "context": null,
+    "sevenb": "The most common symptoms of the flu include fever, headache, muscle aches and pains, fatigue, congestion, runny nose, and coughing. Less common symptoms can include a sore throat, nausea, vomiting and diarrhea.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119349,
+    "input": "What are the most basic elements of HTML?",
+    "context": null,
+    "sevenb": "The most basic elements of HTML are the tags. These consist of start tags, end tags, and the content in between them. Examples of tags include the <head> tag, the <body> tag, and the <title> tag. Other elements include attributes, which provide additional information about the element's nature and content.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119350,
+    "input": "Assign two values to the following variables: x=2, y=3",
+    "context": null,
+    "sevenb": "x = 2\ny = 3",
+    "checkpoint": 1
+  },
+  {
+    "id": 119351,
+    "input": "What are the environmental impacts of plastic pollution?",
+    "context": null,
+    "sevenb": "The environmental impacts of plastic pollution include the release of toxic chemicals, air and water pollution, the disruption of marine ecosystems, and the accumulation of waste on land and in the ocean. Plastic pollution can harm or even kill fish, birds, and other marine life, as well as have long-term impacts on their populations. Additionally, it can contaminate soil and water, putting humans and wildlife at risk for health problems.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119352,
+    "input": "Name three major rivers in South America.",
+    "context": null,
+    "sevenb": "1. Amazon River\n2. Orinoco River\n3. Paraná River",
+    "checkpoint": 1
+  },
+  {
+    "id": 119353,
+    "input": "How can the use of predictive analytics benefit a business?",
+    "context": null,
+    "sevenb": "The use of predictive analytics can benefit a business in several ways, including aiding the development of more accurate forecasts, allowing faster access to critical market data, uncovering relationships between different products and services, better targeting potential customers, improving organizational processes, and optimizing marketing strategies.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119354,
+    "input": "Create a route planner to reach the destination.",
+    "context": "Start Location: Interlaken, Switzerland\nDestination: Lauterbrunnen, Switzerland",
+    "sevenb": "Head north-east on Marktgasse towards Bahnhofstrasse, turn left onto Bahnhofstrasse, turn left onto Bernstrasse, take the first right onto Hauptstrasse and then continue onto Murbacherstrasse. Turn left onto Interlakenstrasse and turn slightly right onto Gewerbestrasse. Follow the signs for Lauterbrunnen and turn right onto Zellerweg. Turn right onto Steinbridge at the fork in the road and follow the winding road to Lauterbrunnen.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119356,
+    "input": "Convert this sentence into a question.",
+    "context": "I can access the website from my computer.",
+    "sevenb": "Can I access the website from my computer?",
+    "checkpoint": 1
+  },
+  {
+    "id": 119357,
+    "input": "Construct a sentence using the words \"oppress\", \"deserve\" and \"equality\".",
+    "context": null,
+    "sevenb": "Everyone deserves to be treated with equality and to not be oppressed.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119358,
+    "input": "Suggest an activity to enjoy in nature.",
+    "context": null,
+    "sevenb": "Going for a hike in the woods is a great way to enjoy nature. You get to experience the sights, sounds, and smells of the natural environment and to appreciate the beauty of nature. Plus, you can get some exercise too!",
+    "checkpoint": 1
+  },
+  {
+    "id": 119359,
+    "input": "Summarize the content in 3 sentences.",
+    "context": "The study looked at the use of machine learning algorithms to predict stock indices. It found that ANNs, SVM and RF algorithms all offer accurate predictions, with RF outperforming the others. ANNs had good accuracy but needed more processing time.",
+    "sevenb": "The study examined the use of machine learning algorithms for predicting stock indices. It found that all three algorithms tested (ANNs, SVM and RF) offered accurate predictions, with RF outperforming the others. ANNs had good accuracy but needed more processing time.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119360,
+    "input": "Generate a list of items to pack for a night camping trip.",
+    "context": null,
+    "sevenb": "Here is a list of items you should pack for a night camping trip:\n- Tent \n- Sleeping bag \n- Warm clothes for sleeping \n- A hat and gloves \n- A first-aid kit \n- Flashlight and/or lantern \n- Bug spray \n- Sunscreen \n- Water bottles \n- Food and snacks \n- Matches \n- Firewood \n- Cooking utensils \n- A map of the area \n- A compass \n- A portable charger \n- Whistle \n- Binoculars \n- A pocketknife",
+    "checkpoint": 1
+  },
+  {
+    "id": 119361,
+    "input": "Rewrite this statement as an imperative sentence.",
+    "context": "Please save the file before closing.",
+    "sevenb": "Save the file before closing.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119362,
+    "input": "Create 3 new rules for a game.",
+    "context": null,
+    "sevenb": "1. Every player must build a structure within 10 turns.\n2. The first player to build a structure of any kind gets a bonus.\n3. No two players can build the same structure within 30 turns of each other.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119363,
+    "input": "Provide an example of a situation to go with the example.",
+    "context": "Person A always blames Person B for their mistakes.",
+    "sevenb": "For example, Person A receives an unsatisfactory grade on a test, and they immediately blame Person B for not giving them enough help.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119364,
+    "input": "Translate this phrase into another language.",
+    "context": "Let's get started.",
+    "sevenb": "Vamos empezar. (Spanish)",
+    "checkpoint": 1
+  },
+  {
+    "id": 119365,
+    "input": "Identify the species of bird.",
+    "context": "It has red and yellow plumage with a black crest.",
+    "sevenb": "Barn Swallow.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119366,
+    "input": "Build a chatbot dialogue to take customer order.",
+    "context": null,
+    "sevenb": "Customer: Hi there, I'd like to order a pizza.\n\nChatbot: Hi there! What type of pizza would you like to order? \n\nCustomer: I'd like to order a large pepperoni pizza.\n\nChatbot: Great! Any extra toppings?\n\nCustomer: Can I add mushrooms?\n\nChatbot: Sure thing - a large pepperoni pizza with mushrooms. Anything else? \n\nCustomer: That's it.\n\nChatbot: Alright, your order for a large pepperoni pizza with mushrooms has been placed. Please confirm your address and we will deliver your order shortly.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119367,
+    "input": "Update the number in the cell.",
+    "context": "The cell in the spreadsheet contains the number \"3\".",
+    "sevenb": "The cell has been updated to contain the number \"4\".",
+    "checkpoint": 1
+  },
+  {
+    "id": 119368,
+    "input": "Capitalise each word in the sentence.",
+    "context": "the sun shone brightly",
+    "sevenb": "The Sun Shone Brightly",
+    "checkpoint": 1
+  },
+  {
+    "id": 119369,
+    "input": "Identify the type of triangle.",
+    "context": "sides 11, 5 and 13",
+    "sevenb": "The triangle is an obtuse triangle.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119370,
+    "input": "Sort the list of items by price.",
+    "context": "Apple, Banana, Orange - $3, $1, $2",
+    "sevenb": "Banana - $1, Orange - $2, Apple - $3",
+    "checkpoint": 1
+  },
+  {
+    "id": 119371,
+    "input": "Produce a story about a bear.",
+    "context": null,
+    "sevenb": "Once upon a time, there was a bear who lived in the deep woods. The bear was a very curious creature, and enjoyed exploring the world around him. One day, the bear stumbled upon a small pond, and while looking in the water, he saw a reflection of himself. Startled, the bear ran away, but the next day he came back. He slowly began to get used to seeing his reflection, and eventually stopped running away. In time, the bear and his reflection made a pact, and the bear learned many things from the reflection. The bear and the reflection remained good friends until the bear died many years later.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119372,
+    "input": "Generate a title for the story.",
+    "context": "Once upon a time, there was a bear who lived in the deep woods.",
+    "sevenb": "The Adventures of the Curious Bear in the Deep Woods",
+    "checkpoint": 1
+  },
+  {
+    "id": 119373,
+    "input": "Name five animals found in the rainforest.",
+    "context": null,
+    "sevenb": "Monkeys, sloths, toucans, jaguars, frogs.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119374,
+    "input": "Analyze the pros and cons of online shopping.",
+    "context": null,
+    "sevenb": "The pros of online shopping include convenience, lower prices, ability to compare prices, more selection, and the ability to shop from anywhere. The cons include shipping costs, delays, lack of direct customer service, the inability to see or try on the item before purchasing, and the risk of scammers. Overall, online shopping can be a great way to save money, but it is important to be aware of the risks associated with it.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119375,
+    "input": "Summarize the story of Little Red Riding Hood.",
+    "context": null,
+    "sevenb": "Little Red Riding Hood is a classic fairy tale about a young girl who goes to visit her grandmother, but on the way is waylaid by a wolf. The wolf tricks her into giving away information about her grandmother and eventually eats her. However, a woodcutter saves her and her grandmother by cutting open the wolf's belly and releasing them. In the end, Red Riding Hood is reunited with her grandmother and learns an important lesson about the importance of being careful and vigilant.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119376,
+    "input": "Describe the differences between a pig and a cow.",
+    "context": null,
+    "sevenb": "Pigs and cows are both animals, but they have many differences. Pigs are omnivores, while cows are herbivores, meaning that cows primarily eat grass and other plant matter while pigs can eat both plants and animals. Pigs have cloven hooves, while cows have hooves that are divided in two sections. Pigs are more likely to be raised as pets, while cows are typically reared for their meat, milk, and other products. Pigs also tend to be smaller than cows, and they have more hair than cows.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119377,
+    "input": "Generate a list of 6 questions about sustainable energy.",
+    "context": null,
+    "sevenb": "1. What are the advantages and disadvantages of using renewable energy?\n2. What types of renewable energy sources are available?\n3. What types of infrastructure are needed for a renewable energy system?\n4. How do the costs of renewable energy compare to the costs of fossil fuels?\n5. What are some strategies for improving the efficiency of renewable energy systems?\n6. How can renewable energy be used to reduce air pollution?",
+    "checkpoint": 1
+  },
+  {
+    "id": 119378,
+    "input": "Analyze the effects of poverty on mental health.",
+    "context": null,
+    "sevenb": "Poverty can have wide-reaching and profound effects on mental health. Low income, limited access to resources, and lack of stability can lead to increased stress and depression. People living in poverty are more likely to experience trauma and adverse childhood experiences, which can lead to an increased risk of developing mental health problems, including anxiety and depression. Further, poverty can limit access to quality mental health care, making it difficult to get the help that is needed to manage mental health issues.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119379,
+    "input": "Suggest a title for an article about ransomware attacks.",
+    "context": null,
+    "sevenb": "\"The Growing Threat of Ransomware Attacks: What You Need to Know\".",
+    "checkpoint": 1
+  },
+  {
+    "id": 119380,
+    "input": "Generate a list of 7 reasons why people should exercise regularly.",
+    "context": null,
+    "sevenb": "1. Improves mental health and wellbeing\n2. Strengthens muscles and bones\n3. Helps maintain a healthy weight\n4. Protects against chronic diseases\n5. Boosts energy levels\n6. Supports the immune system\n7. Improves quality of sleep.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119381,
+    "input": "What are the consequences of high levels of air pollution?",
+    "context": null,
+    "sevenb": "High levels of air pollution can cause a wide range of adverse health and environmental effects. These effects include increased risk of respiratory diseases, heart attacks, strokes, and certain cancers, as well as decreased oxygen levels, global warming, and damage to ecosystems. In addition, air pollution has been linked to premature death, reduced crop yields, reduced visibility, and damage to buildings and monuments.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119382,
+    "input": "Describe a psychological condition called \"depersonalization disorder\".",
+    "context": null,
+    "sevenb": "Depersonalization disorder is a form of dissociative disorder in which an individual experiences a feeling of being detached from reality or themselves. People with depersonalization disorder may feel as though their thoughts and emotions are not their own, and they may have difficulty recognizing faces and voices. They may also experience distortion in the perception of time and space. Symptoms can be intermittent or continuous, and the disorder is often associated with depression, anxiety, and post-traumatic stress disorder.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119383,
+    "input": "Generate a list of 8 social media platforms.",
+    "context": "Teacher reference: 1. Facebook 2. Twitter 3. Instagram 4. Snapchat 5. YouTube 6. TikTok 7. LinkedIn 8. Pinterest",
+    "sevenb": "1. Facebook\n2. Twitter\n3. Instagram\n4. Snapchat\n5. YouTube\n6. TikTok\n7. LinkedIn\n8. Pinterest",
+    "checkpoint": 1
+  },
+  {
+    "id": 119384,
+    "input": "Analyze the environmental impact of plastic bags.",
+    "context": null,
+    "sevenb": "The environmental impact of plastic bags is significant. Plastic bags are a type of single-use plastic and are not biodegradable, meaning that when they are discarded, they do not break down or decompose. They are a significant component of plastic pollution, and can be found clogging waterways, polluting oceans, and contributing to landfills. In addition, plastic bags can also be a source of chemical pollution, as many contain substances that can leach into the environment.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119385,
+    "input": "Generate a list of 5 countries with the highest human development index.",
+    "context": "Teacher reference: 1. Norway 2. Switzerland 3. Australia 4. Ireland 5. Germany",
+    "sevenb": "1. Norway\n2. Switzerland\n3. Australia\n4. Ireland\n5. Germany",
+    "checkpoint": 1
+  },
+  {
+    "id": 119386,
+    "input": "Find orthographic errors in the sentence.",
+    "context": "I luved going to the beachy last summer",
+    "sevenb": "I loved going to the beach last summer.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119387,
+    "input": "Create a new sentence by combining the two sentences.",
+    "context": "She loves reading books. She enjoys spending time in the library.",
+    "sevenb": "She loves spending time in the library reading books.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119388,
+    "input": "Generate a response to the following tweet.",
+    "context": "I love watching the sunset",
+    "sevenb": "Me too! Watching the sunset can be so peaceful.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119389,
+    "input": "Combine the two ideas in the sentence.",
+    "context": "Mountain climbing is hard. It requires a lot of practice.",
+    "sevenb": "Mountain climbing requires a lot of practice and hard work.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119390,
+    "input": "Generate an example of a formal email.",
+    "context": null,
+    "sevenb": "Dear [Name],\n\nI hope this email finds you well. I am writing to inform you that [topic]. [Description of topic].\n\nIf you have any questions or concerns, please do not hesitate to reach out.\n\nSincerely,\n\n[Name]",
+    "checkpoint": 1
+  },
+  {
+    "id": 119391,
+    "input": "Sort the list of fruits according to their color.",
+    "context": "Banana, Grape, Apple",
+    "sevenb": "Yellow (Banana), Purple (Grape), Red (Apple)",
+    "checkpoint": 1
+  },
+  {
+    "id": 119392,
+    "input": "Write an advertisement that promotes a product.",
+    "context": null,
+    "sevenb": "Do you want to look your best with the latest fashion trends? Check out our newest line of clothing! With styles ranging from casual to formal wear, you'll be sure to find something to suit your unique style. Plus, our prices are unbeatable, meaning you won't have to break the bank to look good. Visit our store today to find the perfect outfit for you!",
+    "checkpoint": 1
+  },
+  {
+    "id": 119393,
+    "input": "Explain the main arguments on both sides of a current controversy.",
+    "context": "Gun control laws",
+    "sevenb": "The gun control debate has been going on for decades, and there are two main camps to the argument. Those in favor of gun control argue that guns are too often used for violent or criminal purposes, that gun restrictions can help protect citizens, and that the Second Amendment does not protect the right to carry any type of gun. Those against gun control believe that it violates an individual's right to bear arms, goes against the Second Amendment, and that it would be largely ineffective in reducing crime.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119394,
+    "input": "Reword the sentence to use other words without changing the meaning.",
+    "context": "She came late to the meeting.",
+    "sevenb": "She arrived tardily to the gathering.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119395,
+    "input": "Define the expression in the context of computing.",
+    "context": null,
+    "sevenb": "\"Machine learning\" is a field of computer science that uses algorithms to develop models and systems which can learn from data and make predictions. By identifying patterns in data, machine learning can make powerful insights which can be leveraged to create solutions to complex problems.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119396,
+    "input": "Generate a list of questions that you would ask to get to know someone better.",
+    "context": null,
+    "sevenb": "- What is the story of your life? \n- What are your hobbies and passions? \n- How do you like to spend your spare time? \n- What has been your proudest accomplishment? \n- What is the best book you have ever read? \n- What would you do if you had a million dollars? \n- What do you look for in a partner? \n- What career would you like to pursue? \n- What is the best piece of advice you have ever received? \n- What kind of legacy do you hope to leave behind?",
+    "checkpoint": 1
+  },
+  {
+    "id": 119397,
+    "input": "Rewrite the sentence to use a negative adverb.",
+    "context": "He walks carefully.",
+    "sevenb": "He walks cautiously.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119398,
+    "input": "Generate a business plan for a start-up company.",
+    "context": null,
+    "sevenb": "Our business plan involves launching a start-up company that will utilize innovative technologies and marketing strategies to sell a new product. The product is a [Name of Product], which is a [Product Description]. \n\nWe will target our product to [Target Market], aiming to meet the needs of [User Profile]. In order to efficiently get the product to market, we will leverage existing technologies including [Technology Example 1], [Technology Example 2], and [Technology Example 3]. We aim to make the product available online to begin with and will then consider expanding our sales channels. \n\nWe will initially generate revenue through [Revenue Stream 1] and [Revenue Stream 2]. Our start-up costs include [Cost Example 1], [Cost Example 2], and [Cost Example 3]. Our marketing strategy will be to focus on [Marketing Focus].\n\nWe believe that our company provides a unique and exciting opportunity in the market and we are confident that we can make this venture a success.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119399,
+    "input": "Give an example of how cultural differences can affect communication.",
+    "context": null,
+    "sevenb": "When people from different cultures interact, they may interpret communication cues differently. For example, in some countries it can be considered polite to make direct eye contact while speaking, while in other cultures averting one's gaze can signal deference and respect. This can lead to misunderstandings if one person is following the norms of one culture while the other person is expecting those of another.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119400,
+    "input": "Generate an example of a well-written blog post.",
+    "context": null,
+    "sevenb": "Do you want to make money blogging? Starting your own blog can be a great way to make a passive income, as long as you focus on creating great content. Whether you are just starting a blog or looking to maximize your success, these tips and tricks can help you increase your income and grow your presence. \n\nFirst, start by creating content that is unique and engaging. You should also focus on SEO tactics to improve your ranking with search engines. Then, monetize your blog with advertisements, affiliate sales, or other methods that help you generate income. Lastly, network with other bloggers to maximize your potential and create relationships with people in your niche.\n\nWith these tips in mind, you can start your blogging journey and make money from your website.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119401,
+    "input": "Categorize the given list of animals.",
+    "context": "Elephant, Spider, Cow",
+    "sevenb": "Mammal (Elephant, Cow), Arachnid (Spider)",
+    "checkpoint": 1
+  },
+  {
+    "id": 119402,
+    "input": "Open up a discussion about a given topic.",
+    "context": null,
+    "sevenb": "What are your thoughts on the increasing use of artificial intelligence in our daily lives? AI is becoming more and more prevalent, from learning algorithms which can help us make better decisions to virtual assistants which can answer our questions. What implications could this have for the future? What potential benefits and drawbacks might we experience?",
+    "checkpoint": 1
+  },
+  {
+    "id": 119403,
+    "input": "Generate a list of tips for someone who is learning a new language.",
+    "context": null,
+    "sevenb": "- Read and listen to materials in the target language as much as possible. \n- Use language-learning apps to practice your vocabulary and pronunciation.\n- Talk to native speakers whenever possible. \n- Immerse yourself in the culture to get a better understanding of the language. \n- Learn new words and phrases by studying them in context. \n- Make regular goals for yourself and track your progress.\n- Stay motivated and have fun!",
+    "checkpoint": 1
+  },
+  {
+    "id": 119404,
+    "input": "Evaluate the passage for readability.",
+    "context": "Writing an essay can be a challenging task for everyone; but it has to be done. With planning and practice, most people can quickly learn how to write an effective essay.",
+    "sevenb": "The passage is fairly easy to read and understand. The sentences are simple and the language is clear.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119405,
+    "input": "Convert the following sentence into an interrogative sentence.",
+    "context": "Ali is a good student.",
+    "sevenb": "Is Ali a good student?",
+    "checkpoint": 1
+  },
+  {
+    "id": 119406,
+    "input": "Summarize the given piece of text.",
+    "context": "Mental Health is hugely important for one’s overall wellbeing and it is essential that everyone gives adequate attention to it. A healthy body cannot exist without a healthy mind. Here are some tips and advice to maintaining good mental health: Get sleep, exercise, eat nutritious food, maintain a healthy lifestyle, practice relaxation techniques, limit alcohol and drug use.",
+    "sevenb": "Maintaining good mental health is essential for overall wellbeing and involves getting enough sleep, exercising, eating healthy food, maintaining a healthy lifestyle, practicing relaxation techniques and limiting alcohol and drug use.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119407,
+    "input": "Rewrite the sentence using a synonym.",
+    "context": "I'm hungry.",
+    "sevenb": "I'm famished.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119408,
+    "input": "Generate an example of a symbol widely used in the field of mathematics.",
+    "context": null,
+    "sevenb": "The equals sign (=) is a common symbol used in mathematics to indicate that two expressions are equal.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119409,
+    "input": "List two factors that causes global climate change?",
+    "context": null,
+    "sevenb": "Two factors that cause global climate change are the burning of fossil fuels, which releases greenhouse gases into the atmosphere, and deforestation, which reduces the number of trees that can absorb carbon dioxide.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119410,
+    "input": "Calculate the product of 5 and 3.",
+    "context": null,
+    "sevenb": "The product of 5 and 3 is 15.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119411,
+    "input": "Change the given sentence into a passive voice.",
+    "context": "He wrote a letter.",
+    "sevenb": "A letter was written by him.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119412,
+    "input": "List two benefits of studying English.",
+    "context": null,
+    "sevenb": "Two benefits of studying English are improved communication skills and the ability to understand other cultures and perspectives. By studying English, one can gain insight into the history, literature, and culture of the English-speaking world.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119413,
+    "input": "Rewrite the given sentence using the appropriate conjunctions.",
+    "context": "He started laughing and then he stopped.",
+    "sevenb": "He started laughing, but then he stopped.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119414,
+    "input": "Generate a question with the keyword “fungi”",
+    "context": null,
+    "sevenb": "Where do fungi typically live?",
+    "checkpoint": 1
+  },
+  {
+    "id": 119415,
+    "input": "Summarize the following text in 10 words or less.",
+    "context": "The CDC reports that there were 11,078 firearm-related homicides in the U.S. in 2010, with 6,009 reported involving a handgun and 358 reported involving a rifle.",
+    "sevenb": "US had 11,078 gun homicides in 2010, mainly with handguns.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119416,
+    "input": "Add 3 examples to the following sentence.",
+    "context": "Gun violence in the United States can result in...",
+    "sevenb": "Gun violence in the United States can result in death, injury, destruction of property, emotional trauma, and a wide range of other difficulties. Examples include mass shootings in public places, domestic violence, gang violence, and accidental shootings.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119417,
+    "input": "Categorize the following text into appropriate topics.",
+    "context": "In 2018, the most recent year for which data are available as of 2021, the Centers for Disease Control and Prevention's (CDC) National Center for Health Statistics reports 38,390 deaths by firearm, of which 24,432 were by suicide. The rate of firearm deaths per 100,000 people rose from 10.3 per 100,000 in 1999 to 12 per 100,000 in 2017, with 109 people dying per day or about 14,542 homicides in total, being 11.9 per 100,000 in 2018.",
+    "sevenb": "Category: Gun Violence Statistics\nTopic 1: Total Deaths by Firearm \nName: In 2018 \nData: 38,390 deaths - 24,432 suicides & 14,542 homicides\n\nCategory: Gun Violence Statistics\nTopic 2: Death Rate Per 100,000 \nName: 1999 - 2017 \nData: From 10.3 per 100,000 to 12 per 100,000. \n\nCategory: Gun Violence Statistics \nTopic 3: U.S. Statistics\nName: In 2018\nData: 109 people dying per day, 11.9 per 100,000.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119418,
+    "input": "Reorder the following words correctly to form a sentence.",
+    "context": "injuries | the | result | United | States | Gun | violence | of | thousands | tens",
+    "sevenb": "Gun violence in the United States result in tens of thousands of injuries.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119419,
+    "input": "Remove third-person words from the following sentence.",
+    "context": "Someone or something increased the rate of firearm deaths from 10.3 per 100,000 to 12 per 100,000 from 1999 to 2017.",
+    "sevenb": "I increased the rate of firearm deaths from 10.3 per 100,000 to 12 per 100,000 from 1999 to 2017.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119420,
+    "input": "Rewrite the following sentence without using any pronouns.",
+    "context": "I increased the rate of firearm deaths from 10.3 per 100,000 to 12 per 100,000 from 1999 to 2017.",
+    "sevenb": "Increased the rate of firearm deaths from 10.3 per 100,000 to 12 per 100,000 from 1999 to 2017.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119421,
+    "input": "Use the words from the list below to fill in the blanks in the sentence.",
+    "context": "The highest peak in the world is ____ ____. \nList: Mount, Everest",
+    "sevenb": "The highest peak in the world is Mount Everest.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119422,
+    "input": "Identify and explain any figure of speech in the following sentence.",
+    "context": "Between 1999 and 2017, the rate of gun deaths per 100,000 individuals increased from 10.3 to 12.",
+    "sevenb": "There is no figure of speech in this sentence.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119423,
+    "input": "Generate a title for a story related to the following text.",
+    "context": "In 2018, the most recent year for which data are available as of 2021, the Centers for Disease Control and Prevention's (CDC) National Center for Health Statistics reports 38,390 deaths by firearm, of which 24,432 were by suicide. The rate of firearm deaths per 100,000 people rose from 10.3 per 100,000 in 1999 to 12 per 100,000 in 2017, with 109 people dying per day or about 14,542 homicides in total, being 11.9 per 100,000 in 2018.",
+    "sevenb": "\"Gun Violence Spirals Out of Control: A Look into Firearm Mortality Rates in the US\"",
+    "checkpoint": 1
+  },
+  {
+    "id": 119425,
+    "input": "Create a web page that sells women's clothing.",
+    "context": null,
+    "sevenb": "The web page should include a catalogue of items as well as product descriptions, images, and ordering information. It should also include a search bar, filter options, and a shopping cart. Furthermore, a secure payment system should be implemented to guarantee secure transactions.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119426,
+    "input": "Create a script to generate an array of random numbers.",
+    "context": null,
+    "sevenb": "import random\ndef random_array(n):\n    arr = []\n    for i in range(n):\n        arr.append(random.randint(0, 100))\n    return arr",
+    "checkpoint": 1
+  },
+  {
+    "id": 119427,
+    "input": "Give five examples of an extreme weather condition.",
+    "context": "Teacher reference: 1. Hurricane 2. Tornado 3. Blizzard 4. Heatwave 5. Hailstorm",
+    "sevenb": "1. Hurricane \n2. Tornado \n3. Blizzard \n4. Heatwave \n5. Hailstorm",
+    "checkpoint": 1
+  },
+  {
+    "id": 119428,
+    "input": "Format and organize the following unstructured text information into a table.",
+    "context": "Name: Peter\nAge: 43\nGender: Male\nOccupation: Doctor",
+    "sevenb": "| Name | Age | Gender | Occupation |\n|------|-----|--------|------------|\n|Peter | 43  | Male   | Doctor     |",
+    "checkpoint": 1
+  },
+  {
+    "id": 119429,
+    "input": "How many states are there in the United States?",
+    "context": null,
+    "sevenb": "There are 50 states in the United States.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119430,
+    "input": "Provide a list containing five adjectives to describe an elephant.",
+    "context": "Teacher reference: 1. Majestic 2. Intelligent 3. Huge 4. Gentle 5. Gracious",
+    "sevenb": "1. Majestic \n2. Intelligent \n3. Huge \n4. Gentle \n5. Gracious",
+    "checkpoint": 1
+  },
+  {
+    "id": 119431,
+    "input": "Develop an algorithm to find the maximum number in a list.",
+    "context": null,
+    "sevenb": "def find_max(lst):\n    max_num = 0\n    for num in lst:\n        if num > max_num:\n            max_num = num\n    return max_num",
+    "checkpoint": 1
+  },
+  {
+    "id": 119432,
+    "input": "Find the slope of the following line.",
+    "context": "y = 3x - 2",
+    "sevenb": "The slope of the line is 3.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119433,
+    "input": "Create a data structure appropriate for storing student records.",
+    "context": null,
+    "sevenb": "A dictionary would be a suitable data structure for storing student records. The key could be the student id and the value could be a list containing their name, age, gender, and other relevant data.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119434,
+    "input": "Find the lowest value for the following function",
+    "context": "6x^2 - 4x - 8",
+    "sevenb": "-8",
+    "checkpoint": 1
+  },
+  {
+    "id": 119435,
+    "input": "Write a short story or a poem",
+    "context": null,
+    "sevenb": "The sun filtering through the trees\nThe birds singing sweet melodies\nOn a bench, you stopped to rest\nAnd dream of a life that's blessed\n\nLife seeming so mundane and slow\nYou wished that doors to depths would show\nIn realms unknown, with no limits, soar\nAbove the clouds, you could explore\n\nYou still remember that bright spring day\nWhen adventurers in your heart once played\nToday, your fears are no more alive\nTowards the sky, your hopes revive\n\nYou know a journey is the only way\nTo break the chains, no longer sway\nYour heart is open, ready for flight\nToday's the day, a new world in sight.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119436,
+    "input": "Categorize the following sentence according to the type of figure of speech used.",
+    "context": "She smiled with great delight.",
+    "sevenb": "Personification",
+    "checkpoint": 1
+  },
+  {
+    "id": 119437,
+    "input": "Name the capital cities of the following three countries",
+    "context": "India, Canada, Egypt",
+    "sevenb": "India: New Delhi. Canada: Ottawa. Egypt: Cairo.",
+    "checkpoint": 1
+  },
+  {
+    "id": 119438,
+    "input": "Write down the steps to perform a certain task",
+    "context": "Making a smoothie",
+    "sevenb": "1. Gather your ingredients-fresh fruit and any other desired ingredients like yogurt, juice, or milk.\n2. Add your ingredients to a blender. \n3. Secure the lid of the blender.\n4. Turn the blender on and blend until the mixture is smooth.\n5. Serve your smoothie in a glass.\n6. Enjoy your smoothie!",
+    "checkpoint": 1
+  },
+  {
+    "id": 119439,
+    "input": "Explain the difference between the two types",
+    "context": "Aerobic and anaerobic exercise",
+    "sevenb": "Aerobic exercise is any activity that increases your heart and breathing rates and uses oxygen to produce energy. Examples of aerobic exercise include running, cycling, and swimming. Anaerobic exercise is any activity that does not involve using oxygen to produce energy. Examples of anaerobic exercise include weight lifting and sprinting. The main difference between aerobic and anaerobic exercise is that aerobic exercise is sustained for longer periods of time and relies heavily on oxygen for energy production. Anaerobic exercise, on the other hand, is done in short bursts and does not involve the use of oxygen.",
+    "checkpoint": 1
+  }
+]
