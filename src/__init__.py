@@ -4,4 +4,4 @@ A comprehensive system for training, evaluating, and iteratively improving LLM m
 """
 
 __version__ = "1.0.0"
-__author__ = "Self-eval-llm"
+__author__ = "INTUNE Team"
