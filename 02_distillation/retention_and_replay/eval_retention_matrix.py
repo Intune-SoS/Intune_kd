@@ -20,13 +20,17 @@ Setup:
 - 9 Paper Metrics + Overall from 06_eval_metrics.py:
     structured_correctness, instruction_following, coverage,
     hallucination, context_grounding, conciseness, rouge1, rougel, bleu.
-- Crash-safe: results saved to reports/retention/matrix_raw.json after each adapter.
-- Output: 4x4 table printed at the end (rows = adapter used, columns = data slice).
+- Crash-safe & Auto-Resumable: results saved per slice (every 100 records).
+- Dual Live Stopwatch: tracks current slice time, speed (s/rec), and total overall time left.
+- Dual Table Outputs:
+    1. Cross-Checkpoint Retention Matrix (Overall Score)
+    2. Cross-Checkpoint Stopwatch Timing Matrix (Inference Latency in seconds & s/rec)
 
 Usage:
 ------
-    python experiment/evaluation/eval_retention_matrix.py
-    python experiment/evaluation/eval_retention_matrix.py --limit 2  # smoke test
+    python 02_distillation/retention_and_replay/eval_retention_matrix.py
+    python 02_distillation/retention_and_replay/eval_retention_matrix.py --fresh   # start from scratch
+    python 02_distillation/retention_and_replay/eval_retention_matrix.py --limit 5 # quick smoke test
 """
 
 import os
@@ -35,8 +39,14 @@ import json
 import time
 import logging
 import argparse
+import warnings
 from pathlib import Path
 from typing import Dict, List, Any, Optional
+
+# ── Suppress noisy warnings ──────────────────────────────────────────────────
+warnings.filterwarnings("ignore", message=".*max_new_tokens.*")
+warnings.filterwarnings("ignore", message=".*quantization_config.*")
+warnings.filterwarnings("ignore", message=".*Triton.*")
 
 # ── Windows / PyTorch optimizations & stability ──────────────────────────────
 os.environ.setdefault("TORCHDYNAMO_DISABLE", "1")
@@ -88,8 +98,9 @@ C1_EVAL_SLICE_FILE = REPORTS_DIR / "c1_eval_slice.json"
 RAW_RESULTS_FILE = REPORTS_DIR / "matrix_raw.json"
 SUMMARY_RESULTS_FILE = REPORTS_DIR / "matrix_summary.json"
 TABLE_OUTPUT_FILE = REPORTS_DIR / "matrix_table.txt"
+TIMING_OUTPUT_FILE = REPORTS_DIR / "matrix_timing.txt"
 
-# Evaluation constraints: RTX 4070 8GB
+# Evaluation constraints: batch size 4 for memory safety
 BATCH_SIZE = 4
 MAX_NEW_TOKENS = 64
 SLICE_SIZE = 100
@@ -118,6 +129,88 @@ METRIC_LABELS = {
     "bleu":                   "BLEU",
     "overall":                "Overall Score",
 }
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Stopwatch & Progress Tracker
+# ─────────────────────────────────────────────────────────────────────────────
+
+def format_duration(seconds: float) -> str:
+    """Format duration in seconds to mm:ss or hh:mm:ss."""
+    s = max(0, int(seconds))
+    h = s // 3600
+    m = (s % 3600) // 60
+    sec = s % 60
+    if h > 0:
+        return f"{h:02d}h {m:02d}m {sec:02d}s"
+    return f"{m:02d}m {sec:02d}s"
+
+
+class RetentionStopwatch:
+    """
+    Dual live stopwatch tracking:
+    1. Active slice timer (elapsed, ETA, speed in s/record)
+    2. Overall experiment job timer (slices completed, total elapsed, total time left)
+    """
+
+    def __init__(self, total_slices: int = 16, slice_size: int = SLICE_SIZE):
+        self.total_slices = total_slices
+        self.slice_size = slice_size
+        self.global_start_time = time.perf_counter()
+        self.slice_start_time = time.perf_counter()
+        self.completed_slices = 0
+        self.current_adapter = "C1"
+        self.current_slice = "C1"
+        self.slice_timings: Dict[str, Dict[str, float]] = {}
+
+    def start_slice(self, adapter: str, slice_name: str, already_done_slices: int):
+        self.current_adapter = adapter
+        self.current_slice = slice_name
+        self.completed_slices = already_done_slices
+        self.slice_start_time = time.perf_counter()
+
+    def update_batch(self, batch_idx: int, total_batches: int, processed_records: int):
+        now = time.perf_counter()
+        slice_elapsed = now - self.slice_start_time
+        sec_per_rec = slice_elapsed / max(1, processed_records)
+        remaining_in_slice = max(0, self.slice_size - processed_records)
+        slice_eta = remaining_in_slice * sec_per_rec
+
+        # Overall estimation
+        current_fraction = processed_records / max(1, self.slice_size)
+        effective_done = self.completed_slices + current_fraction
+        global_elapsed = now - self.global_start_time
+
+        if effective_done > 0:
+            avg_sec_per_slice = global_elapsed / effective_done
+            remaining_slices = max(0.0, self.total_slices - effective_done)
+            overall_eta = remaining_slices * avg_sec_per_slice
+        else:
+            overall_eta = (self.total_slices - 1) * (self.slice_size * sec_per_rec)
+
+        pct_slice = (processed_records / max(1, self.slice_size)) * 100
+        overall_idx = min(self.total_slices, self.completed_slices + 1)
+        pct_overall = (effective_done / max(1, self.total_slices)) * 100
+
+        ticker = (
+            f"\r[{self.current_adapter} | Slice {self.current_slice}] "
+            f"Batch {batch_idx:02d}/{total_batches:02d} ({processed_records}/{self.slice_size}) [{pct_slice:.0f}%] | "
+            f"Slice: {format_duration(slice_elapsed)} (ETA: {format_duration(slice_eta)}) | "
+            f"{sec_per_rec:.2f}s/rec | "
+            f"Overall: {overall_idx}/{self.total_slices} [{pct_overall:.0f}%] | "
+            f"Total Left: {format_duration(overall_eta)}"
+        )
+        sys.stdout.write(ticker)
+        sys.stdout.flush()
+
+    def finish_slice(self) -> float:
+        sys.stdout.write("\n")
+        sys.stdout.flush()
+        elapsed = time.perf_counter() - self.slice_start_time
+        if self.current_adapter not in self.slice_timings:
+            self.slice_timings[self.current_adapter] = {}
+        self.slice_timings[self.current_adapter][self.current_slice] = round(elapsed, 2)
+        return elapsed
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -194,7 +287,6 @@ def fetch_checkpoint_slice(client, ckpt_num: int, limit: int = SLICE_SIZE) -> Li
     Uses two-step query (cheap index pull then hydration) to avoid statement timeouts.
     """
     log.info(f"Fetching slice for checkpoint {ckpt_num} (limit={limit})...")
-    # Step 1: cheap id-only query using index
     id_resp = (
         client.table("modelcomp_50k")
         .select("id")
@@ -207,7 +299,6 @@ def fetch_checkpoint_slice(client, ckpt_num: int, limit: int = SLICE_SIZE) -> Li
     if not ids:
         raise RuntimeError(f"No records found for checkpoint {ckpt_num}")
 
-    # Step 2: hydrate full columns by id in (...)
     hydrate_resp = (
         client.table("modelcomp_50k")
         .select("id, input, context, sevenb, checkpoint")
@@ -215,7 +306,6 @@ def fetch_checkpoint_slice(client, ckpt_num: int, limit: int = SLICE_SIZE) -> Li
         .execute()
     )
     rows = list(hydrate_resp.data or [])
-    # Strictly sort ascending by id
     rows.sort(key=lambda r: r.get("id") or 0)
     log.info(f"  Checkpoint {ckpt_num}: fetched {len(rows)} rows (id range {rows[0]['id']}..{rows[-1]['id']})")
     return rows
@@ -224,8 +314,7 @@ def fetch_checkpoint_slice(client, ckpt_num: int, limit: int = SLICE_SIZE) -> Li
 def get_c1_eval_slice(client, limit: int = SLICE_SIZE) -> List[Dict[str, Any]]:
     """
     Returns the pinned C1 evaluation slice.
-    If reports/retention/c1_eval_slice.json exists, reads from disk.
-    Otherwise fetches it from Supabase, writes to disk, and returns it.
+    Reads from disk if reports/retention/c1_eval_slice.json exists.
     """
     if C1_EVAL_SLICE_FILE.exists():
         log.info(f"Loading pinned C1 evaluation slice from: {C1_EVAL_SLICE_FILE}")
@@ -243,16 +332,11 @@ def get_c1_eval_slice(client, limit: int = SLICE_SIZE) -> List[Dict[str, Any]]:
 
 
 def load_all_eval_slices(limit: int = SLICE_SIZE) -> Dict[str, List[Dict[str, Any]]]:
-    """
-    Loads all four evaluation slices (C1, C2, C3, C4), 100 records each.
-    """
+    """Loads all four evaluation slices (C1, C2, C3, C4), limit records each."""
     client = get_supabase_client()
     slices: Dict[str, List[Dict[str, Any]]] = {}
 
-    # Slice C1 (pinned)
     slices["C1"] = get_c1_eval_slice(client, limit=limit)
-
-    # Slices C2, C3, C4
     for ckpt in [2, 3, 4]:
         name = f"C{ckpt}"
         slices[name] = fetch_checkpoint_slice(client, ckpt_num=ckpt, limit=limit)
@@ -263,15 +347,10 @@ def load_all_eval_slices(limit: int = SLICE_SIZE) -> Dict[str, List[Dict[str, An
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Prompt Formatting & Batched Inference
+# Prompt Formatting & Batched Inference with Live Stopwatch
 # ─────────────────────────────────────────────────────────────────────────────
 
 def build_prompt_training_format(record: Dict[str, Any]) -> str:
-    """
-    Format prompt matching training:
-    ### Instruction:\n{input}\n\n### Context:\n{context}\n\n### Response:\n
-    (Context omitted if empty)
-    """
     instruction = (record.get("input") or "").strip()
     context = (record.get("context") or "").strip()
 
@@ -284,11 +363,15 @@ def build_prompt_training_format(record: Dict[str, Any]) -> str:
     return f"### Instruction:\n{instruction}\n\n### Response:\n"
 
 
-def generate_batch(
-    model, tokenizer, records: List[Dict[str, Any]], batch_size: int = BATCH_SIZE
+def generate_batch_with_stopwatch(
+    model,
+    tokenizer,
+    records: List[Dict[str, Any]],
+    batch_size: int = BATCH_SIZE,
+    tracker: Optional[RetentionStopwatch] = None,
 ) -> List[str]:
     """
-    Run greedy batched generation with left padding.
+    Run greedy batched generation with left padding and live stopwatch updates.
     """
     import torch
 
@@ -297,8 +380,11 @@ def generate_batch(
     saved_side = tokenizer.padding_side
     tokenizer.padding_side = "left"
 
+    total_records = len(records)
+    total_batches = (total_records + batch_size - 1) // batch_size
+
     try:
-        for start in range(0, len(records), batch_size):
+        for batch_idx, start in enumerate(range(0, total_records, batch_size), 1):
             batch = records[start : start + batch_size]
             prompts = [build_prompt_training_format(r) for r in batch]
 
@@ -324,10 +410,17 @@ def generate_batch(
             for j in range(len(batch)):
                 new_tokens = output_ids[j][input_len:]
                 reply = tokenizer.decode(new_tokens, skip_special_tokens=True)
-                # Strip instruction/response prefixes
                 reply = reply.split("### Instruction:")[0]
                 reply = reply.split("### Response:")[-1]
                 all_outputs.append(reply.strip())
+
+            # Update live stopwatch after every batch
+            if tracker:
+                tracker.update_batch(
+                    batch_idx=batch_idx,
+                    total_batches=total_batches,
+                    processed_records=len(all_outputs),
+                )
     finally:
         tokenizer.padding_side = saved_side
 
@@ -341,7 +434,7 @@ def generate_batch(
 def load_model_and_tokenizer(adapter_path: str):
     """
     Load base model in 4-bit and attach PEFT LoRA adapter.
-    Uses eager attention to avoid Windows CUDA SDPA stalls.
+    Silences max_length warnings and uses eager attention.
     """
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
@@ -387,18 +480,20 @@ def load_model_and_tokenizer(adapter_path: str):
         tokenizer.pad_token = tokenizer.eos_token
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
+    # Configure generation to be clean and warning-free
     model.generation_config.do_sample = False
     model.generation_config.temperature = 1.0
     model.generation_config.top_p = 1.0
     model.generation_config.top_k = 50
     model.generation_config.pad_token_id = tokenizer.pad_token_id
+    model.generation_config.max_length = None  # Silences warning completely
 
     log.info("Model and tokenizer successfully loaded")
     return model, tokenizer
 
 
 def unload_model(model, tokenizer) -> None:
-    """Free GPU memory completely between adapter evaluations."""
+    """Free GPU / CPU memory completely between adapter evaluations."""
     import gc
     import torch
 
@@ -408,126 +503,94 @@ def unload_model(model, tokenizer) -> None:
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
         torch.cuda.synchronize()
-    log.info("GPU memory cleared successfully")
+    log.info("Model unloaded & memory cleared successfully")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Evaluation Runner
+# Matrix & Stopwatch Timing Table Builders
 # ─────────────────────────────────────────────────────────────────────────────
 
-def evaluate_adapter_on_slices(
-    adapter_name: str,
-    adapter_path: str,
-    slices: Dict[str, List[Dict[str, Any]]],
-) -> List[Dict[str, Any]]:
+def build_and_save_matrices(
+    raw_results: List[Dict[str, Any]],
+    timing_data: Optional[Dict[str, Dict[str, float]]] = None,
+) -> str:
     """
-    Evaluates one adapter across all four checkpoint slices.
-    """
-    log.info("=" * 65)
-    log.info(f"STARTING EVALUATION: Adapter {adapter_name}")
-    log.info(f"Path: {adapter_path}")
-    log.info("=" * 65)
-
-    model, tokenizer = load_model_and_tokenizer(adapter_path)
-    adapter_results: List[Dict[str, Any]] = []
-
-    # Warmup
-    import torch
-    warmup_inputs = tokenizer(["Hello"], return_tensors="pt").to(next(model.parameters()).device)
-    with torch.inference_mode():
-        model.generate(**warmup_inputs, max_new_tokens=4, do_sample=False)
-    del warmup_inputs
-    if torch.cuda.is_available():
-        torch.cuda.empty_cache()
-
-    for slice_name, slice_records in slices.items():
-        log.info(f"Evaluating {adapter_name} on slice {slice_name} ({len(slice_records)} records)...")
-        t0 = time.perf_counter()
-        generated_texts = generate_batch(model, tokenizer, slice_records, batch_size=BATCH_SIZE)
-        elapsed = time.perf_counter() - t0
-        log.info(f"  Inference done in {elapsed:.2f}s ({elapsed / max(1, len(slice_records)):.2f}s/rec)")
-
-        for record, gen_text in zip(slice_records, generated_texts):
-            reference = (record.get("sevenb") or "").strip()
-            instruction = (record.get("input") or "").strip()
-            context = (record.get("context") or "").strip()
-
-            scores = calculate_metrics(
-                prediction=gen_text,
-                reference=reference,
-                instruction=instruction,
-                context=context,
-                task_label="general_qa",
-            )
-
-            adapter_results.append({
-                "adapter":      adapter_name,
-                "eval_slice":   slice_name,
-                "id":           record.get("id"),
-                "checkpoint":   record.get("checkpoint"),
-                "has_context":  bool(context),
-                "input":        instruction[:200],
-                "generated":    gen_text[:400],
-                "reference":    reference[:200],
-                "metrics":      {k: round(scores[k], 4) for k in METRICS},
-                "overall":      round(scores["overall"], 4),
-            })
-
-    unload_model(model, tokenizer)
-    return adapter_results
-
-
-def build_and_save_matrix(raw_results: List[Dict[str, Any]]) -> str:
-    """
-    Computes the 4x4 matrix of overall scores and builds a formatted table string.
+    Computes both:
+    1. 4x4 Retention Matrix (Overall Score)
+    2. 4x4 Stopwatch Timing Matrix (Seconds per slice & s/rec)
+    Saves outputs to summary JSON and text tables.
     """
     adapters = ["C1", "C2", "C3", "C4"]
     slices = ["C1", "C2", "C3", "C4"]
 
-    # Compute means: matrix[adapter][slice] = overall_score
+    # Compute overall score and metric means
     matrix: Dict[str, Dict[str, float]] = {a: {} for a in adapters}
     matrix_per_metric: Dict[str, Dict[str, Dict[str, float]]] = {a: {s: {} for s in slices} for a in adapters}
 
     for a in adapters:
         for s in slices:
-            recs = [r for r in raw_results if r["adapter"] == a and r["eval_slice"] == s]
+            recs = [r for r in raw_results if r.get("adapter") == a and r.get("eval_slice") == s]
             if recs:
-                mean_overall = sum(r["overall"] for r in recs) / len(recs)
+                mean_overall = sum(r.get("overall", 0.0) for r in recs) / len(recs)
                 matrix[a][s] = round(mean_overall, 4)
                 for m in METRICS:
-                    mean_m = sum(r["metrics"][m] for r in recs) / len(recs)
+                    mean_m = sum(r.get("metrics", {}).get(m, 0.0) for r in recs) / len(recs)
                     matrix_per_metric[a][s][m] = round(mean_m, 4)
             else:
                 matrix[a][s] = 0.0
 
-    # Build ASCII table
+    # 1. Build Score Table
     col_w = 14
     header = f"{'Adapter':<12}" + "".join(f"{('Slice ' + s):>{col_w}}" for s in slices)
     sep = "=" * len(header)
-    lines = [
+    score_lines = [
         sep,
         "CROSS-CHECKPOINT RETENTION MATRIX (Overall Score)",
         sep,
         header,
         "-" * len(header),
     ]
-
     for a in adapters:
         row = f"{a:<12}" + "".join(f"{matrix[a].get(s, 0.0):>{col_w}.4f}" for s in slices)
-        lines.append(row)
+        score_lines.append(row)
+    score_lines.append(sep)
+    score_lines.append("")
+    score_lines.append("Retention Summary Notes:")
+    score_lines.append("  - Diagonal (Ci on Slice Ci): Performance on native training distribution.")
+    score_lines.append("  - Below diagonal (C(i+k) on Slice Ci): Backward retention / catastrophic forgetting.")
+    score_lines.append("  - Above diagonal (Ci on Slice C(i+k)): Forward transfer / zero-shot generalisation.")
+    score_table_str = "\n".join(score_lines)
 
-    lines.append(sep)
-    lines.append("")
-    lines.append("Retention Summary Notes:")
-    lines.append("  - Diagonal (Ci on Slice Ci): Performance on the native training distribution.")
-    lines.append("  - Below diagonal (C(i+k) on Slice Ci): Backward retention / catastrophic forgetting.")
-    lines.append("  - Above diagonal (Ci on Slice C(i+k)): Forward transfer / zero-shot generalisation.")
-    table_str = "\n".join(lines)
+    # 2. Build Timing Table (if available)
+    timing_lines = []
+    if timing_data:
+        timing_lines = [
+            "",
+            sep,
+            "CROSS-CHECKPOINT STOPWATCH INFERENCE TIMING (Seconds per slice)",
+            sep,
+            header,
+            "-" * len(header),
+        ]
+        for a in adapters:
+            row_times = []
+            for s in slices:
+                t = timing_data.get(a, {}).get(s, 0.0)
+                if t > 0:
+                    row_times.append(f"{t:>{col_w-1}.1f}s")
+                else:
+                    row_times.append(f"{'--':>{col_w}}")
+            timing_lines.append(f"{a:<12}" + "".join(row_times))
+        timing_lines.append(sep)
 
-    # Save summary JSON
+    timing_table_str = "\n".join(timing_lines)
+    full_output_str = score_table_str + "\n" + timing_table_str
+
+    # Save to disk
     summary_data = {
         "matrix_overall": matrix,
         "matrix_per_metric": matrix_per_metric,
+        "timing_data": timing_data or {},
         "adapters": adapters,
         "slices": slices,
     }
@@ -535,68 +598,161 @@ def build_and_save_matrix(raw_results: List[Dict[str, Any]]) -> str:
         json.dump(summary_data, f, indent=2)
 
     with open(TABLE_OUTPUT_FILE, "w", encoding="utf-8") as f:
-        f.write(table_str + "\n")
+        f.write(full_output_str + "\n")
 
-    return table_str
+    return full_output_str
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Main
+# Main Evaluation Loop with Granular Per-Slice Resume
 # ─────────────────────────────────────────────────────────────────────────────
 
 def main():
     parser = argparse.ArgumentParser(description="Cross-Checkpoint Retention Matrix Evaluation")
     parser.add_argument("--limit", type=int, default=SLICE_SIZE, help="Number of records per checkpoint slice (default: 100)")
-    parser.add_argument("--resume", action="store_true", help="Resume from existing matrix_raw.json if present")
+    parser.add_argument("--fresh", action="store_true", help="Start fresh and overwrite existing progress in matrix_raw.json")
     args = parser.parse_args()
 
-    log.info("=" * 65)
-    log.info("EXPERIMENT 1: Cross-Checkpoint Retention Matrix")
-    log.info(f"Limit per slice: {args.limit} records")
+    log.info("=" * 70)
+    log.info("EXPERIMENT 1: Cross-Checkpoint Retention Matrix (with Dual Stopwatch)")
+    log.info(f"Slice limit: {args.limit} records | Auto-resume: {'DISABLED (--fresh)' if args.fresh else 'ENABLED'}")
     log.info(f"Reports directory: {REPORTS_DIR}")
-    log.info("=" * 65)
+    log.info("=" * 70)
 
-    # Step 1: Load all 4 evaluation slices (pins C1 to c1_eval_slice.json)
+    # 1. Load evaluation slices (pins C1 to c1_eval_slice.json)
     slices = load_all_eval_slices(limit=args.limit)
+    total_matrix_cells = len(CHECKPOINTS) * len(slices)  # 4 x 4 = 16
 
-    # Step 2: Crash-safe results accumulator
+    # 2. Load existing results for auto-resume
     raw_results: List[Dict[str, Any]] = []
-    if args.resume and RAW_RESULTS_FILE.exists():
+    completed_cells = set()
+    timing_data: Dict[str, Dict[str, float]] = {a: {} for a in CHECKPOINTS.keys()}
+
+    if not args.fresh and RAW_RESULTS_FILE.exists():
         try:
             with open(RAW_RESULTS_FILE, "r", encoding="utf-8") as f:
                 raw_results = json.load(f)
-            log.info(f"Resumed from {RAW_RESULTS_FILE} with {len(raw_results)} prior evaluations")
+
+            # A cell is only considered complete if it has at least `args.limit` evaluations
+            from collections import Counter
+            cell_counts = Counter((r.get("adapter"), r.get("eval_slice")) for r in raw_results)
+            completed_cells = set(cell for cell, count in cell_counts.items() if count >= args.limit)
+
+            log.info(f"Auto-resumed: found {len(completed_cells)}/{total_matrix_cells} slices already completed")
         except Exception as e:
-            log.warning(f"Failed to read existing raw results: {e}. Starting fresh.")
+            log.warning(f"Could not parse existing raw results ({e}). Starting fresh.")
             raw_results = []
+            completed_cells = set()
 
-    completed_adapters = set(r["adapter"] for r in raw_results)
+    # Load existing timings if available
+    if SUMMARY_RESULTS_FILE.exists():
+        try:
+            with open(SUMMARY_RESULTS_FILE, "r", encoding="utf-8") as f:
+                saved_summary = json.load(f)
+                timing_data = saved_summary.get("timing_data", timing_data)
+        except Exception:
+            pass
 
-    # Step 3: Loop over adapters C1..C4
+    # 3. Initialize Global Stopwatch
+    tracker = RetentionStopwatch(total_slices=total_matrix_cells, slice_size=args.limit)
+    completed_slices_count = len(completed_cells)
+
+    # 4. Loop through each adapter
     for adapter_name, adapter_path in CHECKPOINTS.items():
-        if adapter_name in completed_adapters and args.resume:
-            log.info(f"Adapter {adapter_name} already evaluated — skipping")
+        # Identify which slices still need to be evaluated for this adapter
+        needed_slices = [
+            s_name for s_name in slices.keys()
+            if (adapter_name, s_name) not in completed_cells
+        ]
+
+        if not needed_slices:
+            log.info(f"Adapter {adapter_name}: all slices already finished ({len(slices)}/{len(slices)}) — skipping model load")
             continue
 
         if not Path(adapter_path).exists():
-            log.error(f"Adapter directory not found: {adapter_path} — skipping")
+            log.error(f"Adapter directory not found: {adapter_path} — skipping {adapter_name}")
             continue
 
-        results = evaluate_adapter_on_slices(adapter_name, adapter_path, slices)
-        raw_results.extend(results)
+        log.info("=" * 70)
+        log.info(f"LOADING ADAPTER {adapter_name} ({len(needed_slices)} slices remaining)")
+        log.info("=" * 70)
 
-        # Crash-safe save after each adapter
-        with open(RAW_RESULTS_FILE, "w", encoding="utf-8") as f:
-            json.dump(raw_results, f, indent=2, ensure_ascii=False)
-        log.info(f"Crash-safe checkpoint saved: {RAW_RESULTS_FILE} ({len(raw_results)} total evaluations)")
+        model, tokenizer = load_model_and_tokenizer(adapter_path)
 
-    # Step 4: Build 4x4 matrix and print table
+        # Warmup pass
+        import torch
+        warmup_inputs = tokenizer(["Hello"], return_tensors="pt").to(next(model.parameters()).device)
+        with torch.inference_mode():
+            model.generate(**warmup_inputs, max_new_tokens=4, do_sample=False)
+        del warmup_inputs
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+        # Evaluate each needed slice
+        for slice_name in needed_slices:
+            slice_records = slices[slice_name]
+            log.info(f"Starting {adapter_name} on slice {slice_name} ({len(slice_records)} records)...")
+
+            tracker.start_slice(adapter_name, slice_name, completed_slices_count)
+            generated_texts = generate_batch_with_stopwatch(
+                model=model,
+                tokenizer=tokenizer,
+                records=slice_records,
+                batch_size=BATCH_SIZE,
+                tracker=tracker,
+            )
+            elapsed_sec = tracker.finish_slice()
+            timing_data[adapter_name][slice_name] = round(elapsed_sec, 2)
+
+            log.info(f"  Finished {adapter_name} on slice {slice_name} in {elapsed_sec:.1f}s ({elapsed_sec/len(slice_records):.2f}s/rec)")
+
+            # Compute metrics for each record
+            for record, gen_text in zip(slice_records, generated_texts):
+                reference = (record.get("sevenb") or "").strip()
+                instruction = (record.get("input") or "").strip()
+                context = (record.get("context") or "").strip()
+
+                scores = calculate_metrics(
+                    prediction=gen_text,
+                    reference=reference,
+                    instruction=instruction,
+                    context=context,
+                    task_label="general_qa",
+                )
+
+                raw_results.append({
+                    "adapter":     adapter_name,
+                    "eval_slice":  slice_name,
+                    "id":          record.get("id"),
+                    "checkpoint":  record.get("checkpoint"),
+                    "has_context": bool(context),
+                    "input":       instruction[:200],
+                    "generated":   gen_text[:400],
+                    "reference":   reference[:200],
+                    "metrics":     {k: round(scores[k], 4) for k in METRICS},
+                    "overall":     round(scores["overall"], 4),
+                })
+
+            completed_cells.add((adapter_name, slice_name))
+            completed_slices_count += 1
+
+            # Crash-safe save immediately after EACH slice
+            with open(RAW_RESULTS_FILE, "w", encoding="utf-8") as f:
+                json.dump(raw_results, f, indent=2, ensure_ascii=False)
+
+            # Update live summary table on disk after each slice
+            build_and_save_matrices(raw_results, timing_data)
+            log.info(f"  [Checkpoint Saved] Slice {completed_slices_count}/{total_matrix_cells} persisted to {RAW_RESULTS_FILE}")
+
+        unload_model(model, tokenizer)
+
+    # 5. Final Output
     log.info("")
-    table_str = build_and_save_matrix(raw_results)
-    print("\n" + table_str + "\n")
+    final_output = build_and_save_matrices(raw_results, timing_data)
+    print("\n" + final_output + "\n")
     log.info(f"Raw results saved to:     {RAW_RESULTS_FILE}")
     log.info(f"Summary results saved to: {SUMMARY_RESULTS_FILE}")
-    log.info(f"Table saved to:           {TABLE_OUTPUT_FILE}")
+    log.info(f"Table output saved to:    {TABLE_OUTPUT_FILE}")
 
 
 if __name__ == "__main__":
