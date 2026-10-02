@@ -1,0 +1,22 @@
+# Mac (Apple Silicon) Requirements for INTUNE Batch Pipeline
+# ==============================================================
+# Native Apple Metal (MPS) support - No Unsloth / CUDA / Triton
+
+torch>=2.2.0
+transformers>=4.40.0
+datasets>=2.18.0
+accelerate>=0.29.0
+peft>=0.10.0
+trl>=0.8.0
+
+# Database & Environment
+supabase>=2.3.0
+python-dotenv>=1.0.0
+
+# Metrics & Utilities
+rouge-score>=0.1.2
+nltk>=3.8.1
+tqdm>=4.66.0
+requests>=2.31.0
+httpx>=0.27.0
+pydantic>=2.6.0
