@@ -800,18 +800,81 @@ def step_completed(sb):
     bulk_update_rows(sb, updates)
     
     if improvements:
-        avg = sum(improvements) / len(improvements)
+        n = len(improvements)
+        avg = sum(improvements) / n
         pos = sum(1 for i in improvements if i > 0)
         neg = sum(1 for i in improvements if i < 0)
-        _flush(f"\nRESULTS: {len(improvements):,} records | avg improvement {avg:.4f}")
-        _flush(f"  Improved: {pos:,}  Degraded: {neg:,}")
+        neu = n - pos - neg
+
+        metrics_list = [
+            'structured_correctness', 'task_success', 'instruction_following',
+            'coverage', 'faithfulness', 'hallucination', 'context_grounding',
+            'conciseness', 'rouge1', 'rougel', 'bleu'
+        ]
+
+        def _safe_avg(field):
+            vals = [float(r[field]) for r in records if r.get(field) is not None]
+            return round(sum(vals) / len(vals), 4) if vals else None
+
+        avg_b = _safe_avg('score')
+        avg_a = _safe_avg('score_tuned')
+
+        metric_details = {}
+        for m in metrics_list:
+            m_b = _safe_avg(m)
+            m_a = _safe_avg(f"{m}_tuned")
+            delta = round(m_a - m_b, 4) if (m_a is not None and m_b is not None) else None
+            metric_details[m] = {
+                'before': m_b,
+                'after': m_a,
+                'improvement': delta
+            }
+
+        _flush(f"\nRESULTS: {n:,} records | avg improvement {avg:+.4f}")
+        _flush(f"  Improved: {pos:,} ({pos/n*100:.1f}%)  Degraded: {neg:,} ({neg/n*100:.1f}%)  Neutral: {neu:,}")
+        
+        report = {
+            "type": "batch_baseline",
+            "timestamp": datetime.now().isoformat(),
+            "records_evaluated": n,
+            "summary": {
+                "overall_score_before": avg_b,
+                "overall_score_after": avg_a,
+                "improvement": round(avg, 4),
+                "improvement_pct": round(avg / avg_b * 100, 2) if avg_b else 0.0,
+                "win_rate_improved_pct": round(pos / n * 100, 1),
+                "regression_pct": round(neg / n * 100, 1),
+                "neutral_pct": round(neu / n * 100, 1),
+                "counts": {
+                    "total": n,
+                    "improved": pos,
+                    "regressed": neg,
+                    "neutral": neu
+                }
+            },
+            "quality_metrics (weight 0.60)": {
+                "structured_correctness": metric_details['structured_correctness'],
+                "task_success": metric_details['task_success'],
+                "instruction_following": metric_details['instruction_following'],
+            },
+            "fidelity_metrics (weight 0.40)": {
+                "coverage": metric_details['coverage'],
+                "faithfulness": metric_details['faithfulness'],
+                "hallucination": metric_details['hallucination'],
+                "context_grounding": metric_details['context_grounding'],
+            },
+            "diagnostic_metrics": {
+                "conciseness": metric_details['conciseness'],
+                "rouge1": metric_details['rouge1'],
+                "rougel": metric_details['rougel'],
+                "bleu": metric_details['bleu'],
+            },
+            "all_metrics_breakdown": metric_details
+        }
+
         os.makedirs(BATCH_REPORT_PATH, exist_ok=True)
         with open(f"{BATCH_REPORT_PATH}/results.json",'w') as f:
-            json.dump({
-                "total": len(improvements), "avg_improvement": avg,
-                "improved": pos, "degraded": neg,
-                "ts": datetime.now().isoformat()
-            }, f, indent=2)
+            json.dump(report, f, indent=2)
     _flush("[SUCCESS] Pipeline complete!")
     return True
 

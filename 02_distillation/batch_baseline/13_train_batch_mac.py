@@ -28,10 +28,11 @@ if eval_dir not in sys.path:
     sys.path.insert(0, eval_dir)
 
 # ── macOS / Apple MPS Environment Config ──────────────────────────────────────
-os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
-os.environ["TOKENIZERS_PARALLELISM"]      = "false"
-os.environ["OMP_NUM_THREADS"]             = "1"
-os.environ["MKL_NUM_THREADS"]             = "1"
+os.environ["PYTORCH_ENABLE_MPS_FALLBACK"]      = "1"
+os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = "0.0"  # Disables upper allocator limit to eliminate Metal GC thrashing
+os.environ["TOKENIZERS_PARALLELISM"]           = "false"
+os.environ["OMP_NUM_THREADS"]                  = "1"
+os.environ["MKL_NUM_THREADS"]                  = "1"
 
 # ── Config ────────────────────────────────────────────────────────────────────
 # On Mac, we use the standard Hugging Face Gemma-3-1B-it (1B fits in ~2GB RAM)
@@ -39,13 +40,13 @@ MODEL_NAME       = os.getenv('BASE_MODEL_NAME', 'google/gemma-3-1b-it')
 MAX_SEQ_LENGTH   = 512     # Dataset P99 is 328 tokens, max is 440
 MAX_NEW_TOKENS   = 256     # Target response median is 81 tokens
 MIN_RECORDS      = 100
-BATCH_SIZE       = 4       # Fits comfortably in Apple Silicon unified memory
-GRAD_ACCUM       = 4       # Effective batch = 16 (4 x 4)
+BATCH_SIZE       = int(os.getenv('BATCH_SIZE', '8'))       # 8 maximizes Apple Silicon GPU occupancy
+GRAD_ACCUM       = int(os.getenv('GRAD_ACCUM', '2'))       # Effective batch = 16 (8 x 2), cuts training steps in half
 STREAM_SIZE      = 1000    # DB fetch chunk size
 DB_CHUNK         = 500     # DB bulk update chunk size
-TUNED_INFER_BATCH_SIZE = 64
+TUNED_INFER_BATCH_SIZE = 128
 TUNED_SCAN_PAGE_SIZE   = 500
-TUNED_GPU_BATCH_SIZE   = int(os.getenv('TUNED_GPU_BATCH_SIZE', '16'))
+TUNED_GPU_BATCH_SIZE   = int(os.getenv('TUNED_GPU_BATCH_SIZE', '32'))  # 32 doubles generation throughput
 LORA_R           = 16
 LORA_ALPHA       = 16
 LORA_DROPOUT     = 0
@@ -377,6 +378,9 @@ def step_score(sb):
             ctx     = rec.get('context','') or ''
             task    = rec.get('task_label','general_qa')
             if not student or not teacher: continue
+            if rec.get('score') is not None and float(rec.get('score') or 0.0) > 0.0:
+                updates.append({'id': rec['id'], 'status': 'score'})
+                continue
             m = _compute_metrics(eval_fn, ins, student, teacher, ctx, task)
             r1, rl, bleu = _rouge_bleu(rouge, smooth, teacher, student)
             updates.append({
@@ -789,19 +793,82 @@ def step_completed(sb):
     bulk_update_rows(sb, updates)
     
     if improvements:
-        avg = sum(improvements) / len(improvements)
+        n = len(improvements)
+        avg = sum(improvements) / n
         pos = sum(1 for i in improvements if i > 0)
         neg = sum(1 for i in improvements if i < 0)
-        _flush(f"\nRESULTS: {len(improvements):,} records | avg improvement {avg:.4f}")
-        _flush(f"  Improved: {pos:,}  Degraded: {neg:,}")
+        neu = n - pos - neg
+
+        metrics_list = [
+            'structured_correctness', 'task_success', 'instruction_following',
+            'coverage', 'faithfulness', 'hallucination', 'context_grounding',
+            'conciseness', 'rouge1', 'rougel', 'bleu'
+        ]
+
+        def _safe_avg(field):
+            vals = [float(r[field]) for r in records if r.get(field) is not None]
+            return round(sum(vals) / len(vals), 4) if vals else None
+
+        avg_b = _safe_avg('score')
+        avg_a = _safe_avg('score_tuned')
+
+        metric_details = {}
+        for m in metrics_list:
+            m_b = _safe_avg(m)
+            m_a = _safe_avg(f"{m}_tuned")
+            delta = round(m_a - m_b, 4) if (m_a is not None and m_b is not None) else None
+            metric_details[m] = {
+                'before': m_b,
+                'after': m_a,
+                'improvement': delta
+            }
+
+        _flush(f"\nRESULTS: {n:,} records | avg improvement {avg:+.4f}")
+        _flush(f"  Improved: {pos:,} ({pos/n*100:.1f}%)  Degraded: {neg:,} ({neg/n*100:.1f}%)  Neutral: {neu:,}")
+        
+        report = {
+            "type": "batch_baseline",
+            "device": "mac_mps",
+            "timestamp": datetime.now().isoformat(),
+            "records_evaluated": n,
+            "summary": {
+                "overall_score_before": avg_b,
+                "overall_score_after": avg_a,
+                "improvement": round(avg, 4),
+                "improvement_pct": round(avg / avg_b * 100, 2) if avg_b else 0.0,
+                "win_rate_improved_pct": round(pos / n * 100, 1),
+                "regression_pct": round(neg / n * 100, 1),
+                "neutral_pct": round(neu / n * 100, 1),
+                "counts": {
+                    "total": n,
+                    "improved": pos,
+                    "regressed": neg,
+                    "neutral": neu
+                }
+            },
+            "quality_metrics (weight 0.60)": {
+                "structured_correctness": metric_details['structured_correctness'],
+                "task_success": metric_details['task_success'],
+                "instruction_following": metric_details['instruction_following'],
+            },
+            "fidelity_metrics (weight 0.40)": {
+                "coverage": metric_details['coverage'],
+                "faithfulness": metric_details['faithfulness'],
+                "hallucination": metric_details['hallucination'],
+                "context_grounding": metric_details['context_grounding'],
+            },
+            "diagnostic_metrics": {
+                "conciseness": metric_details['conciseness'],
+                "rouge1": metric_details['rouge1'],
+                "rougel": metric_details['rougel'],
+                "bleu": metric_details['bleu'],
+            },
+            "all_metrics_breakdown": metric_details
+        }
+
         os.makedirs(BATCH_REPORT_PATH, exist_ok=True)
         with open(f"{BATCH_REPORT_PATH}/results.json",'w') as f:
-            json.dump({
-                "total": len(improvements), "avg_improvement": avg,
-                "improved": pos, "degraded": neg,
-                "device": "mac_mps",
-                "ts": datetime.now().isoformat()
-            }, f, indent=2)
+            json.dump(report, f, indent=2)
     _flush("[SUCCESS] Batch Pipeline complete on macOS!")
     return True
 
