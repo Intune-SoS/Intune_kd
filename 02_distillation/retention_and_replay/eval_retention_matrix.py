@@ -3,24 +3,30 @@ eval_retention_matrix.py — Cross-Checkpoint Retention Matrix Evaluation
 ========================================================================
 
 Evaluates catastrophic forgetting across sequential checkpoints by measuring
-the performance of each adapter (C1, C2, C3, C4) on data slices from ALL
-checkpoints (C1, C2, C3, C4).
+the performance of each adapter (BASE, C1, C2, C3, C4) on data slices from
+all checkpoints (C1, C2, C3, C4) plus a held-out set (H).
+
+Final matrix: 5 rows (BASE, C1, C2, C3, C4) x 5 columns (C1, C2, C3, C4, H).
 
 Setup:
 ------
 - Base model: unsloth/gemma-3-1b-it-bnb-4bit (4-bit BitsAndBytes, bfloat16, eager attention)
 - Adapters evaluated:
+    * BASE: base model with no adapter
     * C1: models/gemma-ckpt1-lora
     * C2: models/gemma-ckpt2-lora
     * C3: models/gemma-ckpt3-lora
     * C4: models/gemma-ckpt4-lora
-- Data: 100 records per checkpoint slice (ordered by id ascending).
-  The C1 slice is pinned to reports/retention/c1_eval_slice.json so it is
-  strictly identical across both this experiment and train_c2_with_replay.py.
+- Data slices:
+    * C1-C4: 100 records each per checkpoint (ordered by id ascending).
+      The C1 slice is pinned to reports/retention/c1_eval_slice.json so it is
+      strictly identical across both this experiment and train_c2_with_replay.py.
+    * H: 300 records (150 each from checkpoints 5 and 6, never trained on),
+      pinned to reports/retention/heldout_slice.json with fixed seed 42.
 - 9 Paper Metrics + Overall from 06_eval_metrics.py:
     structured_correctness, instruction_following, coverage,
     hallucination, context_grounding, conciseness, rouge1, rougel, bleu.
-- Crash-safe & Auto-Resumable: results saved per slice (every 100 records).
+- Crash-safe & Auto-Resumable: results saved per slice (every completed slice).
 - Dual Live Stopwatch: tracks current slice time, speed (s/rec), and total overall time left.
 - Dual Table Outputs:
     1. Cross-Checkpoint Retention Matrix (Overall Score)
@@ -30,7 +36,6 @@ Usage:
 ------
     python 02_distillation/retention_and_replay/eval_retention_matrix.py
     python 02_distillation/retention_and_replay/eval_retention_matrix.py --fresh   # start from scratch
-    python 02_distillation/retention_and_replay/eval_retention_matrix.py --limit 5 # quick smoke test
 """
 
 import os
@@ -85,6 +90,7 @@ from src.database.supabase_client import get_supabase_client
 BASE_MODEL = "unsloth/gemma-3-1b-it-bnb-4bit"
 
 CHECKPOINTS = {
+    "BASE": None,
     "C1": str(project_root / "models" / "gemma-ckpt1-lora"),
     "C2": str(project_root / "models" / "gemma-ckpt2-lora"),
     "C3": str(project_root / "models" / "gemma-ckpt3-lora"),
@@ -95,6 +101,7 @@ REPORTS_DIR = project_root / "reports" / "retention"
 REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 
 C1_EVAL_SLICE_FILE = REPORTS_DIR / "c1_eval_slice.json"
+HELD_FILE = REPORTS_DIR / "heldout_slice.json"
 RAW_RESULTS_FILE = REPORTS_DIR / "matrix_raw.json"
 SUMMARY_RESULTS_FILE = REPORTS_DIR / "matrix_summary.json"
 TABLE_OUTPUT_FILE = REPORTS_DIR / "matrix_table.txt"
@@ -104,6 +111,7 @@ TIMING_OUTPUT_FILE = REPORTS_DIR / "matrix_timing.txt"
 BATCH_SIZE = 4
 MAX_NEW_TOKENS = 64
 SLICE_SIZE = 100
+HELD_SIZE = 300
 
 METRICS = [
     "structured_correctness",
@@ -153,7 +161,7 @@ class RetentionStopwatch:
     2. Overall experiment job timer (slices completed, total elapsed, total time left)
     """
 
-    def __init__(self, total_slices: int = 16, slice_size: int = SLICE_SIZE):
+    def __init__(self, total_slices: int = 25, slice_size: int = SLICE_SIZE):
         self.total_slices = total_slices
         self.slice_size = slice_size
         self.global_start_time = time.perf_counter()
@@ -163,10 +171,12 @@ class RetentionStopwatch:
         self.current_slice = "C1"
         self.slice_timings: Dict[str, Dict[str, float]] = {}
 
-    def start_slice(self, adapter: str, slice_name: str, already_done_slices: int):
+    def start_slice(self, adapter: str, slice_name: str, already_done_slices: int, slice_records: int = None):
         self.current_adapter = adapter
         self.current_slice = slice_name
         self.completed_slices = already_done_slices
+        if slice_records is not None:
+            self.slice_size = slice_records
         self.slice_start_time = time.perf_counter()
 
     def update_batch(self, batch_idx: int, total_batches: int, processed_records: int):
@@ -331,15 +341,73 @@ def get_c1_eval_slice(client, limit: int = SLICE_SIZE) -> List[Dict[str, Any]]:
     return records
 
 
+def get_heldout_slice(client, size: int = HELD_SIZE) -> List[Dict[str, Any]]:
+    """Fixed random sample from checkpoints 5-6 (never trained on). Pinned to disk."""
+    import random
+    if HELD_FILE.exists():
+        log.info(f"Loading pinned held-out slice from: {HELD_FILE}")
+        with open(HELD_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    rng = random.Random(42)
+    rows: List[Dict[str, Any]] = []
+    for ckpt in (5, 6):
+        ids, start = [], 0
+        while True:  # page through, the API caps rows per request
+            resp = (client.table("modelcomp_50k").select("id")
+                    .eq("checkpoint", ckpt).order("id", desc=False)
+                    .range(start, start + 999).execute())
+            batch = [r["id"] for r in (resp.data or [])]
+            ids += batch
+            if len(batch) < 1000:
+                break
+            start += 1000
+        pick = rng.sample(ids, size // 2)
+        for i in range(0, len(pick), 100):
+            hy = (client.table("modelcomp_50k")
+                  .select("id, input, context, sevenb, checkpoint")
+                  .in_("id", pick[i:i + 100]).execute())
+            rows += list(hy.data or [])
+    rows.sort(key=lambda r: r.get("id") or 0)
+    with open(HELD_FILE, "w", encoding="utf-8") as f:
+        json.dump(rows, f, indent=2, ensure_ascii=False)
+    log.info(f"Pinned held-out slice: {len(rows)} rows -> {HELD_FILE}")
+    return rows
+
+
+def with_retry(fn, *args, tries: int = 5, **kwargs):
+    for i in range(1, tries + 1):
+        try:
+            return fn(*args, **kwargs)
+        except Exception as e:
+            if i == tries:
+                raise
+            log.warning(f"{fn.__name__} failed ({type(e).__name__}); retry {i}/{tries - 1} in {5 * i}s")
+            time.sleep(5 * i)
+
+
+def get_pinned_slice(client, ckpt_num: int, limit: int = SLICE_SIZE) -> List[Dict[str, Any]]:
+    f = REPORTS_DIR / f"c{ckpt_num}_eval_slice.json"
+    if f.exists():
+        with open(f, "r", encoding="utf-8") as fh:
+            return json.load(fh)[:limit]
+    rows = with_retry(fetch_checkpoint_slice, client, ckpt_num=ckpt_num, limit=limit)
+    with open(f, "w", encoding="utf-8") as fh:
+        json.dump(rows, fh, indent=2, ensure_ascii=False)
+    log.info(f"Pinned C{ckpt_num} slice -> {f}")
+    return rows
+
+
 def load_all_eval_slices(limit: int = SLICE_SIZE) -> Dict[str, List[Dict[str, Any]]]:
-    """Loads all four evaluation slices (C1, C2, C3, C4), limit records each."""
+    """Loads evaluation slices (C1, C2, C3, C4, H), limit records each for C1-C4."""
     client = get_supabase_client()
     slices: Dict[str, List[Dict[str, Any]]] = {}
 
     slices["C1"] = get_c1_eval_slice(client, limit=limit)
     for ckpt in [2, 3, 4]:
         name = f"C{ckpt}"
-        slices[name] = fetch_checkpoint_slice(client, ckpt_num=ckpt, limit=limit)
+        slices[name] = get_pinned_slice(client, ckpt, limit=limit)
+
+    slices["H"] = with_retry(get_heldout_slice, client)
 
     total_records = sum(len(s) for s in slices.values())
     log.info(f"All eval slices loaded: {total_records} records total across {list(slices.keys())}")
@@ -369,13 +437,14 @@ def generate_batch_with_stopwatch(
     records: List[Dict[str, Any]],
     batch_size: int = BATCH_SIZE,
     tracker: Optional[RetentionStopwatch] = None,
-) -> List[str]:
+) -> tuple[List[str], List[int]]:
     """
     Run greedy batched generation with left padding and live stopwatch updates.
     """
     import torch
 
     all_outputs: List[str] = []
+    all_lens: List[int] = []
     device = next(model.parameters()).device
     saved_side = tokenizer.padding_side
     tokenizer.padding_side = "left"
@@ -409,6 +478,7 @@ def generate_batch_with_stopwatch(
 
             for j in range(len(batch)):
                 new_tokens = output_ids[j][input_len:]
+                all_lens.append(int((new_tokens != tokenizer.pad_token_id).sum().item()))
                 reply = tokenizer.decode(new_tokens, skip_special_tokens=True)
                 reply = reply.split("### Instruction:")[0]
                 reply = reply.split("### Response:")[-1]
@@ -424,7 +494,7 @@ def generate_batch_with_stopwatch(
     finally:
         tokenizer.padding_side = saved_side
 
-    return all_outputs
+    return all_outputs, all_lens
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -449,7 +519,7 @@ def load_model_and_tokenizer(adapter_path: str):
             pass
 
     log.info(f"Loading base model: {BASE_MODEL}")
-    log.info(f"Attaching LoRA adapter: {adapter_path}")
+    log.info(f"Attaching LoRA adapter: {str(adapter_path)}")
 
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,
@@ -466,15 +536,20 @@ def load_model_and_tokenizer(adapter_path: str):
         attn_implementation="eager",
     )
 
-    model = PeftModel.from_pretrained(base_model, adapter_path)
+    if adapter_path is None:
+        model = base_model
+        tok_path = BASE_MODEL
+    else:
+        model = PeftModel.from_pretrained(base_model, adapter_path)
+        tok_path = adapter_path
     model.eval()
 
     try:
         tokenizer = AutoTokenizer.from_pretrained(
-            adapter_path, trust_remote_code=True, fix_mistral_regex=True
+            tok_path, trust_remote_code=True, fix_mistral_regex=True
         )
     except TypeError:
-        tokenizer = AutoTokenizer.from_pretrained(adapter_path, trust_remote_code=True)
+        tokenizer = AutoTokenizer.from_pretrained(tok_path, trust_remote_code=True)
 
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -510,18 +585,28 @@ def unload_model(model, tokenizer) -> None:
 # Matrix & Stopwatch Timing Table Builders
 # ─────────────────────────────────────────────────────────────────────────────
 
+def dedup(rows):
+    seen, out = set(), []
+    for r in rows:
+        k = (r.get("adapter"), r.get("eval_slice"), r.get("id"))
+        if k not in seen:
+            seen.add(k)
+            out.append(r)
+    return out
+
 def build_and_save_matrices(
     raw_results: List[Dict[str, Any]],
     timing_data: Optional[Dict[str, Dict[str, float]]] = None,
 ) -> str:
     """
     Computes both:
-    1. 4x4 Retention Matrix (Overall Score)
-    2. 4x4 Stopwatch Timing Matrix (Seconds per slice & s/rec)
+    1. 5x5 Retention Matrix (Overall Score)
+    2. 5x5 Stopwatch Timing Matrix (Seconds per slice & s/rec)
     Saves outputs to summary JSON and text tables.
     """
-    adapters = ["C1", "C2", "C3", "C4"]
-    slices = ["C1", "C2", "C3", "C4"]
+    raw_results = dedup(raw_results)
+    adapters = ["BASE", "C1", "C2", "C3", "C4"]
+    slices = ["C1", "C2", "C3", "C4", "H"]
 
     # Compute overall score and metric means
     matrix: Dict[str, Dict[str, float]] = {a: {} for a in adapters}
@@ -556,9 +641,10 @@ def build_and_save_matrices(
     score_lines.append(sep)
     score_lines.append("")
     score_lines.append("Retention Summary Notes:")
-    score_lines.append("  - Diagonal (Ci on Slice Ci): Performance on native training distribution.")
-    score_lines.append("  - Below diagonal (C(i+k) on Slice Ci): Backward retention / catastrophic forgetting.")
-    score_lines.append("  - Above diagonal (Ci on Slice C(i+k)): Forward transfer / zero-shot generalisation.")
+    score_lines.append("  - Diagonal (Ci on Slice Ci): Performance on own training data (seen).")
+    score_lines.append("  - Below diagonal (C(i+k) on Slice Ci): Backward retention (seen by ancestor, not by this adapter).")
+    score_lines.append("  - Above diagonal (Ci on Slice C(i+k)): Forward transfer (unseen data).")
+    score_lines.append("  - H column: Held-out data never used in training by any adapter.")
     score_table_str = "\n".join(score_lines)
 
     # 2. Build Timing Table (if available)
@@ -621,7 +707,7 @@ def main():
 
     # 1. Load evaluation slices (pins C1 to c1_eval_slice.json)
     slices = load_all_eval_slices(limit=args.limit)
-    total_matrix_cells = len(CHECKPOINTS) * len(slices)  # 4 x 4 = 16
+    total_matrix_cells = len(CHECKPOINTS) * len(slices)  # 5 x 5 = 25
 
     # 2. Load existing results for auto-resume
     raw_results: List[Dict[str, Any]] = []
@@ -631,18 +717,29 @@ def main():
     if not args.fresh and RAW_RESULTS_FILE.exists():
         try:
             with open(RAW_RESULTS_FILE, "r", encoding="utf-8") as f:
-                raw_results = json.load(f)
+                raw_results = dedup(json.load(f))
 
-            # A cell is only considered complete if it has at least `args.limit` evaluations
+            # A cell is only considered complete if it has at least as many records as the slice
             from collections import Counter
             cell_counts = Counter((r.get("adapter"), r.get("eval_slice")) for r in raw_results)
-            completed_cells = set(cell for cell, count in cell_counts.items() if count >= args.limit)
+            slice_sizes = {s_name: len(s_data) for s_name, s_data in slices.items()}
+            completed_cells = set(
+                cell for cell, count in cell_counts.items()
+                if count >= slice_sizes.get(cell[1], args.limit)
+            )
 
             log.info(f"Auto-resumed: found {len(completed_cells)}/{total_matrix_cells} slices already completed")
         except Exception as e:
             log.warning(f"Could not parse existing raw results ({e}). Starting fresh.")
             raw_results = []
             completed_cells = set()
+
+    # Safety check: reused cells must be on the same rows as the current pinned slices
+    for (a, s) in list(completed_cells):
+        old_ids = {r["id"] for r in raw_results if r["adapter"] == a and r["eval_slice"] == s}
+        new_ids = {r["id"] for r in slices[s]}
+        if old_ids != new_ids:
+            raise RuntimeError(f"Slice {s}: ids differ from saved results for {a}. Stop and tell me.")
 
     # Load existing timings if available
     if SUMMARY_RESULTS_FILE.exists():
@@ -669,8 +766,8 @@ def main():
             log.info(f"Adapter {adapter_name}: all slices already finished ({len(slices)}/{len(slices)}) — skipping model load")
             continue
 
-        if not Path(adapter_path).exists():
-            log.error(f"Adapter directory not found: {adapter_path} — skipping {adapter_name}")
+        if adapter_path is not None and not Path(adapter_path).exists():
+            log.error(f"Adapter directory not found: {str(adapter_path)} — skipping {adapter_name}")
             continue
 
         log.info("=" * 70)
@@ -693,8 +790,8 @@ def main():
             slice_records = slices[slice_name]
             log.info(f"Starting {adapter_name} on slice {slice_name} ({len(slice_records)} records)...")
 
-            tracker.start_slice(adapter_name, slice_name, completed_slices_count)
-            generated_texts = generate_batch_with_stopwatch(
+            tracker.start_slice(adapter_name, slice_name, completed_slices_count, slice_records=len(slice_records))
+            generated_texts, gen_lens = generate_batch_with_stopwatch(
                 model=model,
                 tokenizer=tokenizer,
                 records=slice_records,
@@ -702,12 +799,12 @@ def main():
                 tracker=tracker,
             )
             elapsed_sec = tracker.finish_slice()
-            timing_data[adapter_name][slice_name] = round(elapsed_sec, 2)
+            timing_data.setdefault(adapter_name, {})[slice_name] = round(elapsed_sec, 2)
 
             log.info(f"  Finished {adapter_name} on slice {slice_name} in {elapsed_sec:.1f}s ({elapsed_sec/len(slice_records):.2f}s/rec)")
 
             # Compute metrics for each record
-            for record, gen_text in zip(slice_records, generated_texts):
+            for record, gen_text, n_tok in zip(slice_records, generated_texts, gen_lens):
                 reference = (record.get("sevenb") or "").strip()
                 instruction = (record.get("input") or "").strip()
                 context = (record.get("context") or "").strip()
@@ -727,7 +824,9 @@ def main():
                     "checkpoint":  record.get("checkpoint"),
                     "has_context": bool(context),
                     "input":       instruction[:200],
-                    "generated":   gen_text[:400],
+                    "generated":   gen_text,
+                    "n_new_tokens": n_tok,
+                    "hit_limit":     n_tok >= MAX_NEW_TOKENS,
                     "reference":   reference[:200],
                     "metrics":     {k: round(scores[k], 4) for k in METRICS},
                     "overall":     round(scores["overall"], 4),
@@ -745,6 +844,7 @@ def main():
             log.info(f"  [Checkpoint Saved] Slice {completed_slices_count}/{total_matrix_cells} persisted to {RAW_RESULTS_FILE}")
 
         unload_model(model, tokenizer)
+        model = tokenizer = None
 
     # 5. Final Output
     log.info("")

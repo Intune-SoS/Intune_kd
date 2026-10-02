@@ -1,15 +1,29 @@
-====================================================================
+==================================================================================
 CROSS-CHECKPOINT RETENTION MATRIX (Overall Score)
-====================================================================
-Adapter           Slice C1      Slice C2      Slice C3      Slice C4
---------------------------------------------------------------------
-C1                  0.5308        0.7349        0.0803        0.4272
-C2                  0.5619        0.7290        0.0804        0.3699
-C3                  0.5389        0.7188        0.1004        0.3710
-C4                  0.5427        0.7233        0.1122        0.3716
-====================================================================
+==================================================================================
+Adapter           Slice C1      Slice C2      Slice C3      Slice C4       Slice H
+----------------------------------------------------------------------------------
+BASE                0.4330        0.4095        0.4648        0.3808        0.4507
+C1                  0.5030        0.4442        0.5057        0.4360        0.4914
+C2                  0.4954        0.4334        0.5014        0.4174        0.4827
+C3                  0.5067        0.4370        0.4978        0.4147        0.4868
+C4                  0.5082        0.4369        0.5007        0.4348        0.4835
+==================================================================================
 
 Retention Summary Notes:
-  - Diagonal (Ci on Slice Ci): Performance on the native training distribution.
-  - Below diagonal (C(i+k) on Slice Ci): Backward retention / catastrophic forgetting.
-  - Above diagonal (Ci on Slice C(i+k)): Forward transfer / zero-shot generalisation.
+  - Diagonal (Ci on Slice Ci): Performance on own training data (seen).
+  - Below diagonal (C(i+k) on Slice Ci): Backward retention (seen by ancestor, not by this adapter).
+  - Above diagonal (Ci on Slice C(i+k)): Forward transfer (unseen data).
+  - H column: Held-out data never used in training by any adapter.
+
+==================================================================================
+CROSS-CHECKPOINT STOPWATCH INFERENCE TIMING (Seconds per slice)
+==================================================================================
+Adapter           Slice C1      Slice C2      Slice C3      Slice C4       Slice H
+----------------------------------------------------------------------------------
+BASE                202.6s        178.0s        181.8s        180.9s        534.8s
+C1                  233.7s        241.8s        249.1s        247.2s        741.9s
+C2                  248.9s        247.0s        246.6s        246.3s       2417.2s
+C3                  244.7s        238.4s        238.0s        239.0s       3771.8s
+C4                  248.0s        253.3s        256.2s        247.9s       3206.7s
+==================================================================================

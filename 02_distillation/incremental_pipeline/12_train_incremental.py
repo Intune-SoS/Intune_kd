@@ -121,6 +121,7 @@ os.environ.setdefault('TORCHINDUCTOR_CPP_WRAPPER', '0')
 import torch
 from tqdm import tqdm
 from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor
 from supabase import create_client
 
 if torch.cuda.is_available():
@@ -149,20 +150,22 @@ from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 # ─────────────────────────────────────────────────────────────────────────────
 # CONFIG
 # ─────────────────────────────────────────────────────────────────────────────
+TABLE_NAME = os.getenv('SUPABASE_TABLE_INCREMENTAL', 'modelcomp_50k')
 MODEL_NAME = "unsloth/gemma-3-1b-it-bnb-4bit"
-MAX_SEQ_LENGTH = 2048
+MAX_SEQ_LENGTH = 512          # Dataset P99 is 328 tokens, max is 440 tokens
 RECORDS_PER_CHECKPOINT = 5000
-MAX_NEW_TOKENS = 512
-TUNED_INFER_BATCH_SIZE = 50
-TUNED_SCAN_PAGE_SIZE = 250
-TUNED_GPU_BATCH_SIZE = int(os.getenv('TUNED_GPU_BATCH_SIZE', '12'))
+MAX_NEW_TOKENS = 256          # Target response median is 81 tokens
+TUNED_INFER_BATCH_SIZE = 128  # Buffer before GPU chunking
+TUNED_SCAN_PAGE_SIZE = 500
+TUNED_GPU_BATCH_SIZE = int(os.getenv('TUNED_GPU_BATCH_SIZE', '32'))  # RTX 4060 fits batch 32 in <2.5GB VRAM
+
 
 LORA_R = 16
 LORA_ALPHA = 16
 LORA_DROPOUT = 0
 
 STATUS_FLOW = ['score', 'finetune', 'output_tuned', 'score_tuned', 'completed']
-MIN_RECORDS_PER_CHECKPOINT = 0
+MIN_RECORDS_PER_CHECKPOINT = 100
 
 # How many rows to UPDATE per Supabase client session.
 # Each batch opens ONE fresh HTTP/2 connection and executes rows sequentially
@@ -190,7 +193,8 @@ def get_supabase():
     Long-running loops exhaust HTTP/2 stream IDs on a single connection,
     causing 'Server disconnected'. A fresh client resets the connection.
     """
-    return create_client(os.getenv('SUPABASE_URL'), os.getenv('SUPABASE_KEY'))
+    key = os.getenv('SUPABASE_SERVICE_ROLE_KEY') or os.getenv('SUPABASE_KEY')
+    return create_client(os.getenv('SUPABASE_URL'), key)
 
 
 def _is_retryable(exc: Exception) -> bool:
@@ -202,56 +206,39 @@ def supabase_batch_update_with_retry(
     table: str,
     rows: list,          # list of dicts, each MUST contain 'id' key
     id_col: str = 'id',
-    max_retries: int = 6,
+    max_retries: int = 4,
+    concurrency: int = 16,
 ) -> None:
     """
-    Update multiple rows using individual UPDATE calls sharing ONE fresh client.
-
-    WHY NOT UPSERT?
-    Supabase upsert will INSERT if the row doesn't exist, triggering NOT NULL
-    constraints on columns not included in the payload (e.g. 'input').
-    Since all rows in this pipeline always pre-exist, UPDATE is correct.
-
-    WHY ONE CLIENT PER BATCH?
-    A fresh client = fresh HTTP/2 connection. Reusing a single client across
-    thousands of rows causes 'Server disconnected' as the connection ages.
-    We open one client per batch of UPDATE_BATCH_SIZE rows and retry the
-    entire batch with a new client if any row in it fails.
-
-    Args:
-        table:       Supabase table name.
-        rows:        List of dicts. Each must contain `id_col` + columns to set.
-        id_col:      Primary key column (used in WHERE clause).
-        max_retries: Total attempts per batch before re-raising.
+    Update multiple rows concurrently using a ThreadPoolExecutor.
+    Each thread gets its own client connection, speeding up database
+    updates by up to 16x compared to sequential HTTP round-trips.
     """
     if not rows:
         return
 
-    for i in range(0, len(rows), UPDATE_BATCH_SIZE):
-        batch = rows[i: i + UPDATE_BATCH_SIZE]
+    def _update_single(row):
+        row_id = row[id_col]
+        payload = {k: v for k, v in row.items() if k != id_col}
         last_exc = None
-
         for attempt in range(max_retries):
             try:
-                client = get_supabase()   # fresh connection for this batch
-                for row in batch:
-                    row_id = row[id_col]
-                    payload = {k: v for k, v in row.items() if k != id_col}
-                    client.table(table).update(payload).eq(id_col, row_id).execute()
-                break  # batch succeeded
+                client = get_supabase()
+                client.table(table).update(payload).eq(id_col, row_id).execute()
+                return
             except Exception as exc:
                 last_exc = exc
                 if attempt < max_retries - 1 and _is_retryable(exc):
-                    wait = min(2.0 * (2 ** attempt), 60)
-                    print(
-                        f"\n⚠️  DB batch error (attempt {attempt + 1}/{max_retries}), "
-                        f"retrying batch [{i}:{i + len(batch)}] in {wait:.0f}s\n   {exc}"
-                    )
-                    time.sleep(wait)
+                    time.sleep(0.5 * (2 ** attempt))
                 else:
                     raise
-        else:
-            raise last_exc  # exhausted retries
+        raise last_exc
+
+    for i in range(0, len(rows), UPDATE_BATCH_SIZE):
+        batch = rows[i: i + UPDATE_BATCH_SIZE]
+        workers = min(concurrency, len(batch))
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            list(pool.map(_update_single, batch))
 
 
 def supabase_single_update_with_retry(
@@ -289,17 +276,17 @@ def supabase_single_update_with_retry(
 # ─────────────────────────────────────────────────────────────────────────────
 
 def get_checkpoint_size(checkpoint: int) -> int:
-    result = get_supabase().table('modelcomp_50k') \
+    result = get_supabase().table(TABLE_NAME) \
         .select('id', count='exact').eq('checkpoint', checkpoint).execute()
     return result.count or 0
 
 
 def fetch_records_by_status(checkpoint: int, status: str) -> list:
     """Paginated fetch — Supabase caps at 1000 rows per response."""
-    print(f"\nFetching checkpoint {checkpoint} records with status='{status}'...")
+    print(f"\nFetching checkpoint {checkpoint} records with status='{status}' from '{TABLE_NAME}'...")
     all_records, offset, batch = [], 0, 1000
     while True:
-        result = get_supabase().table('modelcomp_50k') \
+        result = get_supabase().table(TABLE_NAME) \
             .select('*') \
             .eq('checkpoint', checkpoint) \
             .eq('status', status) \
@@ -317,10 +304,10 @@ def fetch_records_by_status(checkpoint: int, status: str) -> list:
 
 def fetch_checkpoint_records(checkpoint: int) -> list:
     """Fetch ALL records for a checkpoint regardless of status."""
-    print(f"\nFetching all records for checkpoint {checkpoint}...")
+    print(f"\nFetching all records for checkpoint {checkpoint} from '{TABLE_NAME}'...")
     all_records, offset, batch = [], 0, 1000
     while True:
-        result = get_supabase().table('modelcomp_50k') \
+        result = get_supabase().table(TABLE_NAME) \
             .select('*').eq('checkpoint', checkpoint) \
             .range(offset, offset + batch - 1).execute()
         if not result.data:
@@ -335,14 +322,14 @@ def fetch_checkpoint_records(checkpoint: int) -> list:
 
 def update_status_bulk(record_ids: list, new_status: str) -> None:
     """Bulk-update the status column using batched UPDATE with retry."""
-    print(f"\nUpdating {len(record_ids)} records to status='{new_status}'...")
+    print(f"\nUpdating {len(record_ids)} records to status='{new_status}' in '{TABLE_NAME}'...")
     rows = [{'id': rid, 'status': new_status} for rid in record_ids]
     # Show tqdm over batches, not individual rows
     batch_count = (len(rows) + UPDATE_BATCH_SIZE - 1) // UPDATE_BATCH_SIZE
     for i in tqdm(range(0, len(rows), UPDATE_BATCH_SIZE),
                   total=batch_count, desc="Updating status"):
         batch = rows[i: i + UPDATE_BATCH_SIZE]
-        supabase_batch_update_with_retry('modelcomp_50k', batch)
+        supabase_batch_update_with_retry(TABLE_NAME, batch)
 
 
 def validate_records_count(
@@ -369,7 +356,11 @@ def validate_records_count(
     print(f"{'─' * 50}")
 
     if count < min_required:
-        print(f"\n❌ VALIDATION FAILED: need {remaining:,} more records for '{step_name}'.")
+        print(f"\n❌ VALIDATION FAILED: found {count:,} records for '{step_name}', but need at least {min_required:,}.")
+        print(f"   Table queried: '{TABLE_NAME}'")
+        print(f"   💡 Likely cause: Row Level Security (RLS) is enabled in Supabase, blocking the API from reading rows.")
+        print(f"   Fix: Run this in your Supabase SQL Editor:")
+        print(f"        ALTER TABLE {TABLE_NAME} DISABLE ROW LEVEL SECURITY;")
         return False
     print(f"✅ Validation passed: {count:,} records ready for {step_name}")
     return True
@@ -512,6 +503,7 @@ def generate_output(model, tokenizer, instruction: str, context: str = '') -> tu
     prompt = _build_prompt(instruction, context)
     inputs = tokenizer(prompt, return_tensors='pt', truncation=True, max_length=1024)
     inputs = {k: v.to(model.device) for k, v in inputs.items()}
+    input_len = inputs['input_ids'].shape[1]
 
     t0 = time.time()
     with torch.inference_mode():
@@ -523,8 +515,7 @@ def generate_output(model, tokenizer, instruction: str, context: str = '') -> tu
         )
     latency_ms = (time.time() - t0) * 1000
 
-    prompt_len = int(inputs['attention_mask'][0].sum().item())
-    response_tokens = out[0][prompt_len:]
+    response_tokens = out[0][input_len:]
     response = tokenizer.decode(response_tokens, skip_special_tokens=True).strip()
     if not response:
         response = _extract_response(tokenizer.decode(out[0], skip_special_tokens=True))
@@ -533,43 +524,47 @@ def generate_output(model, tokenizer, instruction: str, context: str = '') -> tu
 
 def generate_output_batch(model, tokenizer, records: list) -> tuple[list, list]:
     """
-    Run batched inference for a list of records.
+    Run batched inference for a list of records with left-padding.
     Returns (outputs, per_row_latency_ms).
     """
     prompts = [_build_prompt(r['input'], r.get('context', '')) for r in records]
-    inputs = tokenizer(
-        prompts,
-        return_tensors='pt',
-        truncation=True,
-        padding=True,
-        max_length=1024,
-    )
-    inputs = {k: v.to(model.device) for k, v in inputs.items()}
-
-    t0 = time.time()
-    with torch.inference_mode():
-        out = model.generate(
-            **inputs,
-            max_new_tokens=MAX_NEW_TOKENS,
-            do_sample=True,
-            temperature=0.7,
-            top_p=0.9,
-            use_cache=True,
-            pad_token_id=tokenizer.pad_token_id or tokenizer.eos_token_id,
+    saved_side = tokenizer.padding_side
+    tokenizer.padding_side = 'left'
+    try:
+        inputs = tokenizer(
+            prompts,
+            return_tensors='pt',
+            truncation=True,
+            padding=True,
+            max_length=MAX_SEQ_LENGTH,
         )
-    batch_latency_ms = (time.time() - t0) * 1000
+        inputs = {k: v.to(model.device) for k, v in inputs.items()}
+        input_len = inputs['input_ids'].shape[1]
 
-    input_lengths = inputs['attention_mask'].sum(dim=1).tolist()
-    outputs = []
-    for i, seq in enumerate(out):
-        response_tokens = seq[int(input_lengths[i]):]
-        text = tokenizer.decode(response_tokens, skip_special_tokens=True).strip()
-        if not text:
-            text = _extract_response(tokenizer.decode(seq, skip_special_tokens=True))
-        outputs.append(text)
+        t0 = time.time()
+        with torch.inference_mode():
+            out = model.generate(
+                **inputs,
+                max_new_tokens=MAX_NEW_TOKENS,
+                do_sample=False,
+                use_cache=True,
+                pad_token_id=tokenizer.pad_token_id or tokenizer.eos_token_id,
+                eos_token_id=tokenizer.eos_token_id,
+            )
+        batch_latency_ms = (time.time() - t0) * 1000
 
-    per_row_latency = [batch_latency_ms / max(1, len(records))] * len(records)
-    return outputs, per_row_latency
+        outputs = []
+        for seq in out:
+            response_tokens = seq[input_len:]
+            text = tokenizer.decode(response_tokens, skip_special_tokens=True).strip()
+            if not text:
+                text = _extract_response(tokenizer.decode(seq, skip_special_tokens=True))
+            outputs.append(text)
+
+        per_row_latency = [batch_latency_ms / max(1, len(records))] * len(records)
+        return outputs, per_row_latency
+    finally:
+        tokenizer.padding_side = saved_side
 
 
 def generate_output_batch_adaptive(
@@ -679,7 +674,7 @@ def init_checkpoint(checkpoint: int) -> int:
 
     all_records, offset, batch = [], 0, 1000
     while True:
-        result = get_supabase().table('modelcomp_50k') \
+        result = get_supabase().table(TABLE_NAME) \
             .select('id, sevenb, student_output') \
             .eq('checkpoint', checkpoint) \
             .or_('status.is.null,status.eq.') \
@@ -749,6 +744,16 @@ def step_score(checkpoint: int) -> float:
     print(f"{'=' * 60}")
 
     records = fetch_records_by_status(checkpoint, 'score')
+    if not records:
+        downstream = get_supabase().table(TABLE_NAME) \
+            .select('id', count='exact') \
+            .eq('checkpoint', checkpoint) \
+            .in_('status', ['finetune', 'output_tuned', 'score_tuned', 'completed']) \
+            .limit(1).execute()
+        if downstream.count and downstream.count > 0:
+            print(f"⏩ Checkpoint {checkpoint}: {downstream.count:,} records already past 'score' (status='finetune' or later). Skipping to next step.")
+            return 1.0
+
     if not validate_records_count(records, 'score'):
         return 0.0
 
@@ -757,7 +762,7 @@ def step_score(checkpoint: int) -> float:
 
     def _flush(force: bool = False) -> None:
         if pending and (force or len(pending) >= UPDATE_BATCH_SIZE):
-            supabase_batch_update_with_retry('modelcomp_50k', list(pending))
+            supabase_batch_update_with_retry(TABLE_NAME, list(pending))
             pending.clear()
 
     for item in tqdm(records, desc="Scoring base student"):
@@ -822,22 +827,18 @@ def step_finetune(checkpoint: int):
     print(f"{'=' * 60}")
 
     records = fetch_records_by_status(checkpoint, 'finetune')
+    if not records:
+        downstream = get_supabase().table(TABLE_NAME) \
+            .select('id', count='exact') \
+            .eq('checkpoint', checkpoint) \
+            .in_('status', ['output_tuned', 'score_tuned', 'completed']) \
+            .limit(1).execute()
+        if downstream.count and downstream.count > 0:
+            print(f"⏩ Checkpoint {checkpoint}: {downstream.count:,} records already past 'finetune' (status='output_tuned' or later). Skipping to next step.")
+            return project_path('models', f'gemma-ckpt{checkpoint}-lora')
+
     if not validate_records_count(records, 'finetune'):
         return None
-
-    formatted = []
-    for item in records:
-        ctx = item.get('context') or ''
-        text = (
-            f"### Instruction:\n{item['input']}\n\n"
-            f"### Context:\n{ctx}\n\n### Response:\n{item['sevenb']}"
-            if ctx else
-            f"### Instruction:\n{item['input']}\n\n### Response:\n{item['sevenb']}"
-        )
-        formatted.append({'text': text})
-
-    dataset = Dataset.from_list(formatted)
-    print(f"Training on {len(dataset)} records")
 
     _lora_kwargs = dict(
         r=LORA_R,
@@ -862,22 +863,53 @@ def step_finetune(checkpoint: int):
         )
         model = FastLanguageModel.get_peft_model(model, **_lora_kwargs)
 
+    eos = tokenizer.eos_token or "<end_of_turn>"
+    print(f"Using EOS token: {repr(eos)}")
+
+    formatted = []
+    for item in records:
+        ctx = (item.get('context') or '').strip()
+        ans = (item.get('sevenb') or '').strip()
+        text = (
+            f"### Instruction:\n{item['input']}\n\n"
+            f"### Context:\n{ctx}\n\n### Response:\n{ans}{eos}"
+            if ctx else
+            f"### Instruction:\n{item['input']}\n\n### Response:\n{ans}{eos}"
+        )
+        formatted.append({'text': text})
+
+    dataset = Dataset.from_list(formatted)
+    print("Pre-tokenizing dataset (single worker, Windows-safe)...")
+    def tokenize_fn(examples):
+        return tokenizer(
+            examples["text"],
+            truncation=True,
+            max_length=MAX_SEQ_LENGTH,
+            padding=False,
+        )
+    dataset = dataset.map(tokenize_fn, batched=True, num_proc=1, remove_columns=["text"])
+    dataset.set_format(type="torch", columns=["input_ids", "attention_mask"])
+    print(f"Training on {len(dataset)} records")
+
     output_dir = project_path('models', f'gemma-ckpt{checkpoint}-lora')
+
+    training_args = TrainingArguments(
+        per_device_train_batch_size=4, gradient_accumulation_steps=4,
+        warmup_steps=30, num_train_epochs=1, learning_rate=2e-4,
+        fp16=not torch.cuda.is_bf16_supported(), bf16=torch.cuda.is_bf16_supported(),
+        logging_steps=25, optim='adamw_8bit', weight_decay=0.01,
+        lr_scheduler_type='linear', seed=42, output_dir=output_dir,
+        save_strategy='epoch', gradient_checkpointing=True,
+        remove_unused_columns=False, ddp_find_unused_parameters=False,
+        torch_compile=False, torch_compile_backend='inductor',
+    )
+    training_args.dataset_num_proc = 1
 
     trainer = SFTTrainer(
         model=model, tokenizer=tokenizer, train_dataset=dataset,
-        dataset_text_field='text', max_seq_length=MAX_SEQ_LENGTH,
+        max_seq_length=MAX_SEQ_LENGTH,
         dataset_num_proc=1, packing=False,
-        args=TrainingArguments(
-            per_device_train_batch_size=2, gradient_accumulation_steps=8,
-            warmup_steps=30, num_train_epochs=1, learning_rate=2e-4,
-            fp16=not torch.cuda.is_bf16_supported(), bf16=torch.cuda.is_bf16_supported(),
-            logging_steps=25, optim='adamw_8bit', weight_decay=0.01,
-            lr_scheduler_type='linear', seed=42, output_dir=output_dir,
-            save_strategy='epoch', gradient_checkpointing=True,
-            remove_unused_columns=False, ddp_find_unused_parameters=False,
-            torch_compile=False, torch_compile_backend='inductor',
-        ),
+        args=training_args,
     )
 
     torch._dynamo.config.disable = True
@@ -911,11 +943,21 @@ def step_output_tuned(checkpoint: int) -> int:
     print(f"🤖 STEP: output_tuned — Tuned Inference | Checkpoint {checkpoint}")
     print(f"{'=' * 60}")
 
-    pending_count = get_supabase().table('modelcomp_50k') \
+    pending_count = get_supabase().table(TABLE_NAME) \
         .select('id', count='exact') \
         .eq('checkpoint', checkpoint) \
         .eq('status', 'output_tuned') \
         .execute().count or 0
+
+    if pending_count == 0:
+        downstream = get_supabase().table(TABLE_NAME) \
+            .select('id', count='exact') \
+            .eq('checkpoint', checkpoint) \
+            .in_('status', ['score_tuned', 'completed']) \
+            .limit(1).execute()
+        if downstream.count and downstream.count > 0:
+            print(f"⏩ Checkpoint {checkpoint}: {downstream.count:,} records already past 'output_tuned' (status='score_tuned' or later). Skipping to next step.")
+            return downstream.count
 
     if not validate_records_count(pending_count, 'output_tuned'):
         return 0
@@ -941,7 +983,7 @@ def step_output_tuned(checkpoint: int) -> int:
 
     while True:
         while len(pending_buffer) < TUNED_INFER_BATCH_SIZE:
-            page = get_supabase().table('modelcomp_50k') \
+            page = get_supabase().table(TABLE_NAME) \
                 .select('id, input, context') \
                 .eq('checkpoint', checkpoint) \
                 .eq('status', 'output_tuned') \
@@ -989,7 +1031,7 @@ def step_output_tuned(checkpoint: int) -> int:
             print(f"Error while processing checkpoint batch at id>{last_seen_id}: {e}")
 
         if rows_to_update:
-            supabase_batch_update_with_retry('modelcomp_50k', rows_to_update)
+            supabase_batch_update_with_retry(TABLE_NAME, rows_to_update)
             processed += len(rows_to_update)
 
         print(f"Checkpoint {checkpoint} output_tuned progress: {processed}/{pending_count}")
@@ -1019,6 +1061,16 @@ def step_score_tuned(checkpoint: int) -> float:
     print(f"{'=' * 60}")
 
     records = fetch_records_by_status(checkpoint, 'score_tuned')
+    if not records:
+        downstream = get_supabase().table(TABLE_NAME) \
+            .select('id', count='exact') \
+            .eq('checkpoint', checkpoint) \
+            .eq('status', 'completed') \
+            .limit(1).execute()
+        if downstream.count and downstream.count > 0:
+            print(f"⏩ Checkpoint {checkpoint}: {downstream.count:,} records already completed. Skipping to next step.")
+            return 1.0
+
     if not validate_records_count(records, 'score_tuned'):
         return 0.0
 
@@ -1027,7 +1079,7 @@ def step_score_tuned(checkpoint: int) -> float:
 
     def _flush(force: bool = False) -> None:
         if pending and (force or len(pending) >= UPDATE_BATCH_SIZE):
-            supabase_batch_update_with_retry('modelcomp_50k', list(pending))
+            supabase_batch_update_with_retry(TABLE_NAME, list(pending))
             pending.clear()
 
     for item in tqdm(records, desc="Scoring tuned student"):
@@ -1103,7 +1155,7 @@ def step_completed(checkpoint: int):
 
     def _flush(force: bool = False) -> None:
         if pending and (force or len(pending) >= UPDATE_BATCH_SIZE):
-            supabase_batch_update_with_retry('modelcomp_50k', list(pending))
+            supabase_batch_update_with_retry(TABLE_NAME, list(pending))
             pending.clear()
 
     for item in tqdm(records, desc="Writing improvement scores"):
@@ -1175,8 +1227,21 @@ def step_completed(checkpoint: int):
 def run_all_steps(checkpoint: int) -> dict:
     """Execute every step in STATUS_FLOW order for a checkpoint."""
     print(f"\n{'=' * 60}")
-    print(f"🚀 RUNNING ALL STEPS — Checkpoint {checkpoint}")
+    print(f"🚀 RUNNING ALL STEPS — Checkpoint {checkpoint} | Table: {TABLE_NAME}")
     print(f"{'=' * 60}")
+
+    # Auto-initialize if any records have null/empty status
+    try:
+        null_res = get_supabase().table(TABLE_NAME) \
+            .select('id', count='exact') \
+            .eq('checkpoint', checkpoint) \
+            .or_('status.is.null,status.eq.') \
+            .limit(1).execute()
+        if null_res.count and null_res.count > 0:
+            print(f"Found {null_res.count:,} uninitialized records in checkpoint {checkpoint}. Running auto-init to set status='score'...")
+            init_checkpoint(checkpoint)
+    except Exception as e:
+        print(f"Note on status check: {e}")
 
     step_fns = {
         'score':        step_score,
@@ -1206,12 +1271,17 @@ def run_all_steps(checkpoint: int) -> dict:
 # ─────────────────────────────────────────────────────────────────────────────
 
 def main() -> None:
+    global TABLE_NAME
     parser = argparse.ArgumentParser(description='Incremental Learning Pipeline')
     parser.add_argument('--checkpoint', type=int, required=True, help='Checkpoint number (1–10)')
     parser.add_argument('--step', type=str, choices=STATUS_FLOW + ['status'])
     parser.add_argument('--run-all', action='store_true')
     parser.add_argument('--init', action='store_true')
+    parser.add_argument('--table', type=str, default=None, help=f'Supabase table name (default: {TABLE_NAME})')
     args = parser.parse_args()
+
+    if args.table:
+        TABLE_NAME = args.table
 
     if not 1 <= args.checkpoint <= 10:
         print("Error: --checkpoint must be 1–10"); sys.exit(1)
@@ -1221,7 +1291,7 @@ def main() -> None:
         parser.print_help(); sys.exit(1)
 
     cp = args.checkpoint
-    print(f"\n{'=' * 60}\n🚀 INCREMENTAL LEARNING — Checkpoint {cp}\n{'=' * 60}")
+    print(f"\n{'=' * 60}\n🚀 INCREMENTAL LEARNING — Checkpoint {cp} | Table: {TABLE_NAME}\n{'=' * 60}")
 
     if args.init:
         init_checkpoint(cp); return
