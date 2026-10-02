@@ -1,217 +1,367 @@
 {
   "matrix_overall": {
+    "BASE": {
+      "C1": 0.433,
+      "C2": 0.4095,
+      "C3": 0.4648,
+      "C4": 0.3808,
+      "H": 0.4507
+    },
     "C1": {
-      "C1": 0.5308,
-      "C2": 0.7349,
-      "C3": 0.0803,
-      "C4": 0.4272
+      "C1": 0.503,
+      "C2": 0.4442,
+      "C3": 0.5057,
+      "C4": 0.436,
+      "H": 0.4914
     },
     "C2": {
-      "C1": 0.5619,
-      "C2": 0.729,
-      "C3": 0.0804,
-      "C4": 0.3699
+      "C1": 0.4954,
+      "C2": 0.4334,
+      "C3": 0.5014,
+      "C4": 0.4174,
+      "H": 0.4827
     },
     "C3": {
-      "C1": 0.5389,
-      "C2": 0.7188,
-      "C3": 0.1004,
-      "C4": 0.371
+      "C1": 0.5067,
+      "C2": 0.437,
+      "C3": 0.4978,
+      "C4": 0.4147,
+      "H": 0.4868
     },
     "C4": {
-      "C1": 0.5427,
-      "C2": 0.7233,
-      "C3": 0.1122,
-      "C4": 0.3716
+      "C1": 0.5082,
+      "C2": 0.4369,
+      "C3": 0.5007,
+      "C4": 0.4348,
+      "H": 0.4835
     }
   },
   "matrix_per_metric": {
-    "C1": {
+    "BASE": {
       "C1": {
-        "structured_correctness": 0.5,
-        "instruction_following": 1.0,
-        "coverage": 0.2975,
-        "hallucination": 0.1666,
-        "context_grounding": 0.6429,
-        "conciseness": 0.9,
-        "rouge1": 0.5174,
-        "rougel": 0.363,
-        "bleu": 0.0701
+        "structured_correctness": 0.62,
+        "instruction_following": 0.9925,
+        "coverage": 0.3426,
+        "hallucination": 0.3404,
+        "context_grounding": 0.8245,
+        "conciseness": 0.642,
+        "rouge1": 0.3104,
+        "rougel": 0.254,
+        "bleu": 0.0587
       },
       "C2": {
-        "structured_correctness": 0.575,
-        "instruction_following": 1.0,
-        "coverage": 0.7262,
-        "hallucination": 0.0,
-        "context_grounding": 1.0,
-        "conciseness": 0.5,
-        "rouge1": 0.4219,
-        "rougel": 0.3987,
-        "bleu": 0.1348
+        "structured_correctness": 0.5965,
+        "instruction_following": 0.9962,
+        "coverage": 0.3171,
+        "hallucination": 0.3576,
+        "context_grounding": 0.8616,
+        "conciseness": 0.612,
+        "rouge1": 0.3223,
+        "rougel": 0.2673,
+        "bleu": 0.0725
       },
       "C3": {
-        "structured_correctness": 0.5,
-        "instruction_following": 1.0,
-        "coverage": 0.125,
-        "hallucination": 0.8565,
-        "context_grounding": 0.8334,
-        "conciseness": 0.5,
-        "rouge1": 0.2366,
-        "rougel": 0.1935,
-        "bleu": 0.0667
+        "structured_correctness": 0.6205,
+        "instruction_following": 0.9925,
+        "coverage": 0.2198,
+        "hallucination": 0.2677,
+        "context_grounding": 0.8535,
+        "conciseness": 0.65,
+        "rouge1": 0.2796,
+        "rougel": 0.2242,
+        "bleu": 0.0431
       },
       "C4": {
-        "structured_correctness": 0.5,
-        "instruction_following": 0.9375,
-        "coverage": 0.3921,
-        "hallucination": 0.4828,
-        "context_grounding": 1.0,
-        "conciseness": 0.9,
-        "rouge1": 0.6579,
-        "rougel": 0.5843,
-        "bleu": 0.2632
+        "structured_correctness": 0.607,
+        "instruction_following": 0.9962,
+        "coverage": 0.2773,
+        "hallucination": 0.4004,
+        "context_grounding": 0.7697,
+        "conciseness": 0.622,
+        "rouge1": 0.3018,
+        "rougel": 0.2436,
+        "bleu": 0.0318
+      },
+      "H": {
+        "structured_correctness": 0.6088,
+        "instruction_following": 0.9883,
+        "coverage": 0.2832,
+        "hallucination": 0.2978,
+        "context_grounding": 0.8403,
+        "conciseness": 0.6573,
+        "rouge1": 0.3172,
+        "rougel": 0.2476,
+        "bleu": 0.0486
+      }
+    },
+    "C1": {
+      "C1": {
+        "structured_correctness": 0.5195,
+        "instruction_following": 0.9838,
+        "coverage": 0.4453,
+        "hallucination": 0.2612,
+        "context_grounding": 0.8281,
+        "conciseness": 0.66,
+        "rouge1": 0.4058,
+        "rougel": 0.3442,
+        "bleu": 0.1307
+      },
+      "C2": {
+        "structured_correctness": 0.515,
+        "instruction_following": 0.995,
+        "coverage": 0.3969,
+        "hallucination": 0.325,
+        "context_grounding": 0.8778,
+        "conciseness": 0.626,
+        "rouge1": 0.3864,
+        "rougel": 0.3213,
+        "bleu": 0.098
+      },
+      "C3": {
+        "structured_correctness": 0.5255,
+        "instruction_following": 0.9875,
+        "coverage": 0.3159,
+        "hallucination": 0.2173,
+        "context_grounding": 0.8854,
+        "conciseness": 0.676,
+        "rouge1": 0.3728,
+        "rougel": 0.2931,
+        "bleu": 0.0801
+      },
+      "C4": {
+        "structured_correctness": 0.518,
+        "instruction_following": 0.9738,
+        "coverage": 0.3593,
+        "hallucination": 0.3281,
+        "context_grounding": 0.8356,
+        "conciseness": 0.65,
+        "rouge1": 0.3457,
+        "rougel": 0.2776,
+        "bleu": 0.0716
+      },
+      "H": {
+        "structured_correctness": 0.5242,
+        "instruction_following": 0.9892,
+        "coverage": 0.3479,
+        "hallucination": 0.2502,
+        "context_grounding": 0.8775,
+        "conciseness": 0.672,
+        "rouge1": 0.3733,
+        "rougel": 0.3034,
+        "bleu": 0.0898
       }
     },
     "C2": {
       "C1": {
-        "structured_correctness": 0.5,
-        "instruction_following": 1.0,
-        "coverage": 0.3586,
-        "hallucination": 0.1666,
-        "context_grounding": 0.6429,
-        "conciseness": 0.9,
-        "rouge1": 0.5396,
-        "rougel": 0.4083,
-        "bleu": 0.0932
+        "structured_correctness": 0.5275,
+        "instruction_following": 0.9862,
+        "coverage": 0.4502,
+        "hallucination": 0.2662,
+        "context_grounding": 0.8516,
+        "conciseness": 0.62,
+        "rouge1": 0.3814,
+        "rougel": 0.3265,
+        "bleu": 0.1221
       },
       "C2": {
-        "structured_correctness": 0.575,
-        "instruction_following": 1.0,
-        "coverage": 0.7143,
-        "hallucination": 0.0,
-        "context_grounding": 1.0,
-        "conciseness": 0.5,
-        "rouge1": 0.3739,
-        "rougel": 0.3238,
-        "bleu": 0.0847
+        "structured_correctness": 0.5165,
+        "instruction_following": 0.995,
+        "coverage": 0.4221,
+        "hallucination": 0.3264,
+        "context_grounding": 0.8678,
+        "conciseness": 0.578,
+        "rouge1": 0.359,
+        "rougel": 0.2902,
+        "bleu": 0.0817
       },
       "C3": {
-        "structured_correctness": 0.5,
-        "instruction_following": 1.0,
-        "coverage": 0.1666,
-        "hallucination": 0.86,
-        "context_grounding": 0.8334,
-        "conciseness": 0.5,
-        "rouge1": 0.2283,
-        "rougel": 0.1848,
-        "bleu": 0.0688
+        "structured_correctness": 0.5375,
+        "instruction_following": 0.9888,
+        "coverage": 0.3192,
+        "hallucination": 0.2239,
+        "context_grounding": 0.8768,
+        "conciseness": 0.646,
+        "rouge1": 0.3463,
+        "rougel": 0.2682,
+        "bleu": 0.071
       },
       "C4": {
-        "structured_correctness": 0.5,
-        "instruction_following": 0.9375,
-        "coverage": 0.3772,
-        "hallucination": 0.4828,
-        "context_grounding": 1.0,
-        "conciseness": 0.5,
-        "rouge1": 0.2809,
-        "rougel": 0.2318,
-        "bleu": 0.0319
+        "structured_correctness": 0.532,
+        "instruction_following": 0.9862,
+        "coverage": 0.3728,
+        "hallucination": 0.3533,
+        "context_grounding": 0.8226,
+        "conciseness": 0.612,
+        "rouge1": 0.3098,
+        "rougel": 0.2557,
+        "bleu": 0.0568
+      },
+      "H": {
+        "structured_correctness": 0.5268,
+        "instruction_following": 0.9846,
+        "coverage": 0.3462,
+        "hallucination": 0.2509,
+        "context_grounding": 0.8791,
+        "conciseness": 0.63,
+        "rouge1": 0.3539,
+        "rougel": 0.2847,
+        "bleu": 0.0807
       }
     },
     "C3": {
       "C1": {
-        "structured_correctness": 0.5,
-        "instruction_following": 1.0,
-        "coverage": 0.2975,
-        "hallucination": 0.1666,
-        "context_grounding": 0.6429,
-        "conciseness": 0.9,
-        "rouge1": 0.5211,
-        "rougel": 0.3684,
-        "bleu": 0.0754
+        "structured_correctness": 0.5215,
+        "instruction_following": 0.9825,
+        "coverage": 0.4727,
+        "hallucination": 0.2484,
+        "context_grounding": 0.877,
+        "conciseness": 0.576,
+        "rouge1": 0.345,
+        "rougel": 0.2847,
+        "bleu": 0.0926
       },
       "C2": {
-        "structured_correctness": 0.575,
-        "instruction_following": 1.0,
-        "coverage": 0.6353,
-        "hallucination": 0.0,
-        "context_grounding": 1.0,
-        "conciseness": 0.5,
-        "rouge1": 0.4382,
-        "rougel": 0.3869,
-        "bleu": 0.11
+        "structured_correctness": 0.5195,
+        "instruction_following": 0.9925,
+        "coverage": 0.4425,
+        "hallucination": 0.3345,
+        "context_grounding": 0.9215,
+        "conciseness": 0.548,
+        "rouge1": 0.3405,
+        "rougel": 0.274,
+        "bleu": 0.0743
       },
       "C3": {
-        "structured_correctness": 0.5,
-        "instruction_following": 1.0,
-        "coverage": 0.1389,
-        "hallucination": 0.8232,
-        "context_grounding": 0.8334,
-        "conciseness": 0.5,
-        "rouge1": 0.2473,
-        "rougel": 0.1935,
-        "bleu": 0.0659
+        "structured_correctness": 0.5285,
+        "instruction_following": 0.9888,
+        "coverage": 0.3223,
+        "hallucination": 0.2303,
+        "context_grounding": 0.9059,
+        "conciseness": 0.608,
+        "rouge1": 0.3212,
+        "rougel": 0.2544,
+        "bleu": 0.058
       },
       "C4": {
-        "structured_correctness": 0.5,
-        "instruction_following": 0.9375,
-        "coverage": 0.3772,
-        "hallucination": 0.4808,
-        "context_grounding": 1.0,
-        "conciseness": 0.5,
-        "rouge1": 0.2892,
-        "rougel": 0.252,
-        "bleu": 0.0318
+        "structured_correctness": 0.521,
+        "instruction_following": 0.985,
+        "coverage": 0.3703,
+        "hallucination": 0.3528,
+        "context_grounding": 0.8275,
+        "conciseness": 0.568,
+        "rouge1": 0.2869,
+        "rougel": 0.2242,
+        "bleu": 0.0472
+      },
+      "H": {
+        "structured_correctness": 0.5255,
+        "instruction_following": 0.9908,
+        "coverage": 0.3614,
+        "hallucination": 0.2597,
+        "context_grounding": 0.8922,
+        "conciseness": 0.6127,
+        "rouge1": 0.3421,
+        "rougel": 0.2714,
+        "bleu": 0.0688
       }
     },
     "C4": {
       "C1": {
-        "structured_correctness": 0.5,
-        "instruction_following": 1.0,
-        "coverage": 0.3098,
-        "hallucination": 0.1666,
-        "context_grounding": 0.6429,
-        "conciseness": 0.9,
-        "rouge1": 0.5292,
-        "rougel": 0.3667,
-        "bleu": 0.0751
+        "structured_correctness": 0.5245,
+        "instruction_following": 0.985,
+        "coverage": 0.4671,
+        "hallucination": 0.2555,
+        "context_grounding": 0.8643,
+        "conciseness": 0.606,
+        "rouge1": 0.37,
+        "rougel": 0.3055,
+        "bleu": 0.1077
       },
       "C2": {
-        "structured_correctness": 0.575,
-        "instruction_following": 1.0,
-        "coverage": 0.6905,
-        "hallucination": 0.0,
-        "context_grounding": 1.0,
-        "conciseness": 0.5,
-        "rouge1": 0.3937,
-        "rougel": 0.3432,
-        "bleu": 0.0862
+        "structured_correctness": 0.518,
+        "instruction_following": 0.9925,
+        "coverage": 0.4286,
+        "hallucination": 0.3336,
+        "context_grounding": 0.8677,
+        "conciseness": 0.558,
+        "rouge1": 0.3457,
+        "rougel": 0.2697,
+        "bleu": 0.0791
       },
       "C3": {
-        "structured_correctness": 0.5,
-        "instruction_following": 1.0,
-        "coverage": 0.1666,
-        "hallucination": 0.775,
-        "context_grounding": 0.5834,
-        "conciseness": 0.5,
-        "rouge1": 0.2604,
-        "rougel": 0.2084,
-        "bleu": 0.0693
+        "structured_correctness": 0.5255,
+        "instruction_following": 0.9888,
+        "coverage": 0.3319,
+        "hallucination": 0.2237,
+        "context_grounding": 0.8712,
+        "conciseness": 0.622,
+        "rouge1": 0.327,
+        "rougel": 0.2542,
+        "bleu": 0.0596
       },
       "C4": {
-        "structured_correctness": 0.5,
-        "instruction_following": 0.9375,
-        "coverage": 0.3871,
-        "hallucination": 0.48,
-        "context_grounding": 1.0,
-        "conciseness": 0.5,
-        "rouge1": 0.3177,
-        "rougel": 0.244,
-        "bleu": 0.0473
+        "structured_correctness": 0.523,
+        "instruction_following": 0.9875,
+        "coverage": 0.415,
+        "hallucination": 0.3313,
+        "context_grounding": 0.7949,
+        "conciseness": 0.634,
+        "rouge1": 0.3597,
+        "rougel": 0.2997,
+        "bleu": 0.0817
+      },
+      "H": {
+        "structured_correctness": 0.5253,
+        "instruction_following": 0.9875,
+        "coverage": 0.3622,
+        "hallucination": 0.2622,
+        "context_grounding": 0.8835,
+        "conciseness": 0.6187,
+        "rouge1": 0.3434,
+        "rougel": 0.2737,
+        "bleu": 0.0716
       }
     }
   },
+  "timing_data": {
+    "C1": {
+      "C1": 233.73,
+      "C2": 241.78,
+      "C3": 249.11,
+      "C4": 247.15,
+      "H": 741.93
+    },
+    "C2": {
+      "C1": 248.93,
+      "C2": 247.0,
+      "C3": 246.64,
+      "C4": 246.29,
+      "H": 2417.2
+    },
+    "C3": {
+      "C1": 244.71,
+      "C2": 238.4,
+      "C3": 237.96,
+      "C4": 238.99,
+      "H": 3771.83
+    },
+    "C4": {
+      "C1": 248.02,
+      "C2": 253.3,
+      "C3": 256.16,
+      "C4": 247.87,
+      "H": 3206.7
+    },
+    "BASE": {
+      "C1": 202.62,
+      "C2": 177.96,
+      "C3": 181.76,
+      "C4": 180.9,
+      "H": 534.81
+    }
+  },
   "adapters": [
+    "BASE",
     "C1",
     "C2",
     "C3",
@@ -221,6 +371,7 @@
     "C1",
     "C2",
     "C3",
-    "C4"
+    "C4",
+    "H"
   ]
 }

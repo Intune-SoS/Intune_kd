@@ -1,0 +1,2102 @@
+[
+  {
+    "id": 144312,
+    "input": "Create a title for this poem.",
+    "context": "The sun was shining and the birds were singing,\nA gentle breeze blew and kissed my face,\nMy feet skipping across the grass,\nA freedom from the mundane day.",
+    "sevenb": "\"Skipping Through Freedom\"",
+    "checkpoint": 5
+  },
+  {
+    "id": 144334,
+    "input": "Categorize the following into either physical, digital, or abstract.",
+    "context": "Data",
+    "sevenb": "Digital.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144361,
+    "input": "Reason about the following statement.",
+    "context": "Global warming is a serious problem.",
+    "sevenb": "Global warming is a serious problem that is caused by an increase in atmospheric greenhouse gases due to human activities. This increase in greenhouse gases traps additional heat in the atmosphere, resulting in changes to the planet's climate that are beginning to cause negative impacts on natural ecosystems, human health and economic stability. To stop this destructive process, it is important for governments to implement policies that reduce the emissions of these gases.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144402,
+    "input": "Classify the following words as either mammals or birds",
+    "context": "pigeon, tiger",
+    "sevenb": "Mammal: Tiger\nBird: Pigeon",
+    "checkpoint": 5
+  },
+  {
+    "id": 144513,
+    "input": "Change the following sentence to the future tense, deleting unnecessary words in the process:\n\"I asked her what her favorite color is\".",
+    "context": null,
+    "sevenb": "I will ask her what her favorite color is.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144528,
+    "input": "Describe an efficient way to organize data for a store's inventory management.",
+    "context": null,
+    "sevenb": "The most efficient way to organize data for a store's inventory management is to divide the items into categories, such as by type, brand, size, color, model, etc. This will make it easier to search and retrieve specific items from the inventory. Additionally, the store should maintain a list of the current inventory which can be updated as new items are stocked or when items are removed. This list should also include a running total of the number of items in each category.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144555,
+    "input": "Make me laugh with a funny limerick.",
+    "context": null,
+    "sevenb": "There once was a man from Nantucket,\nWho went to the store in his bucket.\nThe items he got,\nWere certainly not,\nWhat he had expected to pluck it.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144571,
+    "input": "Set up an environment for serving a Python web application",
+    "context": null,
+    "sevenb": "1. Install a web server such as Apache or Nginx.\n2. Install Python and any libraries and frameworks of your choice.\n3. Install a database such as MySQL or PostgreSQL.\n4. Configure and deploy the web application.\n5. Test the web application and tune the server's configuration.\n6. Implement security protocols such as authentication and authorization.\n7. Monitor the application and system performance.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144573,
+    "input": "What are some best practices for debugging an AI algorithm?",
+    "context": null,
+    "sevenb": "1. Inspect the data set for potential sources of error.\n2. Ensure that the data and model are compatible with each other and are pre-processed in the same way.\n3. Test each component of the AI system independently.\n4. Consider different metrics and data visualizations to better understand the results.\n5. Utilize techniques such as bagging or cross-validation to find the source of error.\n6. Leverage transfer learning to compare the performance of an AI algorithm to a baseline.\n7. Compare the performance of the AI algorithm against different datasets.\n8. Use an evolutionary process to quickly try out different combinations to determine the best performing setup.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144666,
+    "input": "Analyze the pros and cons of e-commerce business models.",
+    "context": null,
+    "sevenb": "The pros of an e-commerce business model include cost savings due to no physical storefront or inventory, access to a much larger customer base, an easier and more efficient ordering process, and the ability to customize services with the help of digital tools. On the downside, internet security and cybercrime risk remain constant threats, digital marketing can be tricky and expensive, and there can be difficulties in managing customer expectations about delivery, refunds and returns.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144687,
+    "input": "Discuss the impact of social media on public opinion.",
+    "context": null,
+    "sevenb": "Social media has had a dramatic impact on public opinion, by providing instant access to news, opinions, data, and events from all around the world. This can have both positive and negative effects, as it has increased worldwide discourse and awareness, but it can also lead to the diffusion of misinformation and the echo chamber effect.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144697,
+    "input": "Reduce the length of the given sentence without altering the meaning",
+    "context": "Our company will offer you a versatile role where you will be able to get an opportunity to learn new skills and develop your expertise.",
+    "sevenb": "You'll have a varied role with learning and growth opportunities.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144770,
+    "input": "How do you reduce the risk of data security breaches?",
+    "context": null,
+    "sevenb": "To reduce the risk of data security breaches, one should implement data security policies such as password protection and encryption. Additionally, it is important to regularly update software and provide adequate training to staff to increase their awareness of potential risks. Firewalls, regular security assessments and penetration testing should also be carried out to help identify and eliminate any potential vulnerabilities. Lastly, backup and disaster recovery plans should be set up in case of any unforeseen events.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144833,
+    "input": "Construct a model of an atom",
+    "context": null,
+    "sevenb": "An atom is made up of a small, dense nucleus surrounded by electrons that are arranged in shells around the nucleus. The nucleus is made up of positively charged protons and neutral neutrons. The number of protons in an atom's nucleus determines what type of atom it is. Electrons orbit the nucleus in specific energy levels known as \"shells\" and are negatively charged. These shells are filled with electrons in a specific order and each shell can only hold a certain number of electrons.\n\nThe model of an atom consists of a sphere that represents the nucleus in the center of the atom, surrounded by rings that show where the shells are located. The protons and neutrons are represented by small spheres in the nucleus and the electrons are represented by small spheres that are placed at different distances from the nucleus, each representing a different shell.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144855,
+    "input": "Fix the broken code in this block.",
+    "context": "```python\nif x < y\n    print('x is smaller than y')\n  else:\n    print('x is larger than y')\n```",
+    "sevenb": "```python\nif x < y:\n    print('x is smaller than y')\nelse:\n    print('x is larger than y')\n```",
+    "checkpoint": 5
+  },
+  {
+    "id": 144882,
+    "input": "Generate a list of 10 everyday objects found in the kitchen.",
+    "context": null,
+    "sevenb": "1. Kitchen Knife\n2. Pots and Pans\n3. Plate\n4. Bowl\n5. Microwave\n6. Dishwasher\n7. Dish Soap\n8. Kettle\n9. Coffee Maker\n10. Blender",
+    "checkpoint": 5
+  },
+  {
+    "id": 144897,
+    "input": "Write 10 sports terms and their definitions.",
+    "context": null,
+    "sevenb": "1. Ball - a round or oval object used in a variety of sports.\n2. Foul - an illegal action in a sports game, such as a player hitting another player.\n3. Penalty - a punishment given to a player or team for violating a sports rule.\n4. Goal - a designated area where players attempt to score in a sports game.\n5. Assist - a pass or action by a player that helps another player score.\n6. Shot - an attempt to score a goal in a sports game.\n7. Cover - a defensive technique used to block a shot or pass.\n8. Tackle - a move used to stop an individual from advancing with the ball.\n9. Rebound - the act of catching a missed shot before it touches the ground.\n10. Corner kick - a free kick taken from the corner of the field after the ball has gone out of bounds.",
+    "checkpoint": 5
+  },
+  {
+    "id": 144958,
+    "input": "Generate a list of advantages and disadvantages of using electric cars",
+    "context": null,
+    "sevenb": "Advantages: \n- Electric cars produce no emissions, which means they are better for the environment \n- Electric cars are cheaper to run and maintain than traditional cars\n- They are quieter and more comfortable to drive \n\nDisadvantages: \n- The initial cost of the car might be higher than shouldering the cost of a traditional car\n- Charging times can be significantly longer than refueling times \n- The charging infrastructure for electric cars may be limited in some places",
+    "checkpoint": 5
+  },
+  {
+    "id": 144966,
+    "input": "Given a dataset, find the average age.",
+    "context": "Dataset containing 5 people:\nPerson 1: Age 12\nPerson 2: Age 15\nPerson 3: Age 18\nPerson 4: Age 21\nPerson 5: Age 25",
+    "sevenb": "The average age is 18.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145025,
+    "input": "Describe the term \"lexicon\".",
+    "context": null,
+    "sevenb": "The lexicon is the complete set of words and expressions that are used within a particular language or context. It is a collection of all the words within a language and their definitions, as well as their relationships to each other. It is also used as a measure of the size of a language, with larger languages having a larger lexicon.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145058,
+    "input": "Add some lines to complete the given poem.",
+    "context": "Rain pours down \nSoaks the ground",
+    "sevenb": "Rain pours down \nSoaks the ground\nCleanses air, provides a sound\nSplashes on the rooftop's crown\nMakes the world feel so alive \nNurtures plants and creatures' strife \nRain against window casements \nBringing blessings for us all",
+    "checkpoint": 5
+  },
+  {
+    "id": 145073,
+    "input": "Summarize the given article in 10 or fewer sentences with a critical perspective.",
+    "context": "Article:\n\nThe new Apple Watch Series 6 touts its ability to measure blood oxygen levels, as well as tracking activities and sleep. Even though its features seem impressive, the tech giant isn’t the first to combine this technology into a smart watch. In fact, Fitbit released a watch with the same type of technology earlier in the year.",
+    "sevenb": "The new Apple Watch Series 6 is marketed as a revolutionary device thanks to its ability to measure blood oxygen levels and track activities and sleep. However, this is not the first time this type of technology has been combined with a smart watch, as Fitbit released a similar device earlier in the year. Apple is late to the game when it comes to this type of technology, and consumer choice may suffer if Apple continues to lag behind. Additionally, the cost of the new Apple Watch is relatively high compared to similar devices from other manufacturers. All in all, while the new features of the Apple Watch may seem enticing to users, it is worth considering other options available on the market.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145081,
+    "input": "Put together an outfit that suits the given occasion.",
+    "context": "Occasion: Job interview",
+    "sevenb": "An outfit suitable for a job interview would consist of a blouse paired with dress slacks, a knee-length skirt or dress, as well as a dressy blazer. A fashionable pair of shoes, like loafers, pumps, or flats would complete the look. Accessories should be minimal but can include a small necklace, a watch, and/or tasteful earrings.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145106,
+    "input": "Imagine you are a programmer assigned to do this task. Analyze the instruction and design a program to meet the requirements.",
+    "context": "Design a program that can take a list of numbers and sort them in ascending order.",
+    "sevenb": "The program should take a list of numbers as input, sort the numbers in ascending order, and output the sorted list. The program should include a loop to traverse the list and a comparison function to compare two elements and determine their order.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145141,
+    "input": "Given the following input, suggest two different ways to conclude the story.",
+    "context": "Takumi had made it home, but the door was locked. His parents were away on vacation, and they'd forgotten to give him a key. He slapped the door in frustration, knowing that he couldn't get in.",
+    "sevenb": "Option 1:\nTakumi decided to call his parents and ask them to quickly get him a set of spare keys. After a quick discussion, they agreed and Takumi was able to enter his home. \nOption 2: \nTakumi remembered that he had a spare key hidden in the back of one of the flower pots. He reached in, and luckily it was still there. He retrieved the key, unlocked the door, and walked in.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145151,
+    "input": "Given a list of words, create a poem that captures the feeling of your current state of mind.",
+    "context": "peaceful, mindful, grateful",
+    "sevenb": "Peaceful is the soul that breathes within\nMindful ears hear my heart's tender spin\nGrateful smiles reflect a tranquil sheen\nA contentment that can never be unseen.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145153,
+    "input": "Create a list of five items related to the field of cybersecurity.",
+    "context": null,
+    "sevenb": "1. Firewalls\n2. Encryption\n3. Intrusion detection systems\n4. Antivirus software\n5. Network security scanners",
+    "checkpoint": 5
+  },
+  {
+    "id": 145185,
+    "input": "Briefly explain the importance of supply chain management.",
+    "context": null,
+    "sevenb": "Supply chain management is an important business practice that focuses on the efficient and effective management of the flow of goods and services from the point of origin to the point of consumption. It helps ensure that the right products are available in the right places at the right times and at the lowest cost. This in turn helps a business be more profitable and successful.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145214,
+    "input": "Given the following sentence and word, create a new sentence using the word.",
+    "context": "Sentence: She had a dog.\nWord: envelope",
+    "sevenb": "She had an envelope filled with treats for her beloved dog.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145228,
+    "input": "Given a list of ingredients, name a dish that contains these ingredients",
+    "context": "celery, bell peppers, onions",
+    "sevenb": "Stir-fry vegetables with celery, bell peppers, and onions.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145229,
+    "input": "Convert the sentence in to its negative form without changing the meaning.",
+    "context": "I saw a movie last night.",
+    "sevenb": "I did not see a movie last night.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145254,
+    "input": "Rearrange the words in the sentence below into the correct order.",
+    "context": "will not you understand",
+    "sevenb": "Understand you will not.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145342,
+    "input": "Rewrite this sentence:\n\n\"The quickest way to reach the destination is by airplane.\"",
+    "context": null,
+    "sevenb": "Taking a plane is the fastest way to get to the destination.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145456,
+    "input": "Name five reasons why you should use a password manager",
+    "context": null,
+    "sevenb": "1. Increased security: Password managers are designed to ensure your data is secure and keep it away from hackers. \n2. Easy access: All your accounts and passwords can be accessed from a single platform.\n3. Automated password storage: The password manager automates the storage process and can generate complex passwords for you.\n4. Password sharing and syncing: Password managers make it easy to share and sync passwords between multiple devices.\n5. Auto-fill: Password managers can auto-fill forms and credentials, cutting down on the time you spend logging into accounts.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145466,
+    "input": "Name two instances where a person could be guilty of intentionally abusing a legal system for self-gain.",
+    "context": null,
+    "sevenb": "Two examples of someone abusing the legal system for their own benefit are tax fraud and filing a lawsuit with false evidence.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145493,
+    "input": "Arrange the following words in a meaningful sentence: salmon, to, fishing, go",
+    "context": null,
+    "sevenb": "I am going to go fishing for salmon.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145576,
+    "input": "Create a question on the topic of climate change.",
+    "context": null,
+    "sevenb": "What are some ways that we can all work together to reduce our carbon emissions and help combat climate change?",
+    "checkpoint": 5
+  },
+  {
+    "id": 145597,
+    "input": "Discriminate between these two similar sounding words",
+    "context": "Its vs. It's",
+    "sevenb": "Its is a possessive pronoun without an apostrophe, meaning belonging to it. It's is a contraction meaning \"It is\" or \"It has\".",
+    "checkpoint": 5
+  },
+  {
+    "id": 145619,
+    "input": "Given a mathematical expression, simplify it.",
+    "context": "3x + 4xy + y - 2x - 3y",
+    "sevenb": "4xy + x - y",
+    "checkpoint": 5
+  },
+  {
+    "id": 145632,
+    "input": "Say something to cheer up a person who is feeling down.",
+    "context": null,
+    "sevenb": "It's okay to not be okay. Take a break and do something fun or relaxing. You got this!",
+    "checkpoint": 5
+  },
+  {
+    "id": 145635,
+    "input": "Rearrange these words to form a gramatically correct sentence.",
+    "context": "flies woman an the old",
+    "sevenb": "The old woman flies.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145648,
+    "input": "Write a summary of the article \"The Impact of Social Media on Student Stress\".",
+    "context": null,
+    "sevenb": "This article explores the connections between social media use and mental health in college students. It looks at the negative impacts of social media, including increased stress levels and disruption of peace of mind. It also discusses the potential positive aspects of social media, such as improved communication and increased feelings of connectedness. Finally, it provides suggestions for mitigating these negative impacts, including setting limits on social media use and seeking out healthier online activities.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145657,
+    "input": "Compare and contrast an open-source and a proprietary software.",
+    "context": null,
+    "sevenb": "Open-source and proprietary software have many differences. Open-source software is available to view, edit and use by anyone with permission, and the code is distributed freely. Proprietary software is owned by the creator, and the code is kept secret. Open-source software is often developed by volunteers and supported by the open-source community, but proprietary software is developed and supported by the company owning the code. Open-source software has no costs associated with it and updates are often more frequent than proprietary software. However, open-source software can be vulnerable to malicious attacks and lack features usually found in proprietary software. Proprietary software typically runs faster and offers more features than open-source software, but it comes at the cost of being more expensive to obtain and maintain.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145663,
+    "input": "Generate a Visual Studio Code (vscode) command for formatting the document.",
+    "context": null,
+    "sevenb": "In Visual Studio Code press Ctrl + Shift + P to open the command palette. Then type \"Format Document\" and press Enter. This will format the document according to the language's formatting rules.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145726,
+    "input": "Sort the following list of names alphabetically.",
+    "context": "John, Amanda,Maria,James",
+    "sevenb": "Amanda, James, John, Maria",
+    "checkpoint": 5
+  },
+  {
+    "id": 145788,
+    "input": "What is the most natural satellite of Earth?",
+    "context": null,
+    "sevenb": "The most natural satellite of Earth is the Moon.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145900,
+    "input": "Generate a valid HTML code for a web page with a table.",
+    "context": null,
+    "sevenb": "<html>\n<head>\n  <title>Table Page</title>\n</head>\n<body>\n  <h1>Table</h1>\n  <table>\n  <tr>\n    <th>Country</th>\n    <th>Capital</th> \n  </tr>\n  <tr>\n    <td>United States</td>\n    <td>Washington D.C.</td>\n  </tr>\n  <tr>\n    <td>France</td>\n    <td>Paris</td>\n  </tr>\n  <tr>\n    <td>Japan</td>\n    <td>Tokyo</td>\n  </tr>\n  </table>\n</body>\n</html>",
+    "checkpoint": 5
+  },
+  {
+    "id": 145953,
+    "input": "Explain the concept of human capital",
+    "context": null,
+    "sevenb": "Human capital is the collective knowledge, skills, experience, and abilities of a society's workforce. It is the source of productivity and economic growth, as it enables individuals to contribute to collective wealth and development. Human capital has both tangible and intangible components, such as experience, education, creativity, innovation, and health. Investing in human capital is therefore essential to promote economic growth, as it boosts economic output through productivity improvements and increases the ability of individuals to contribute to economic activities.",
+    "checkpoint": 5
+  },
+  {
+    "id": 145954,
+    "input": "Write a brief description of the primary antagonist of the Harry Potter series",
+    "context": null,
+    "sevenb": "The primary antagonist of the Harry Potter series is Lord Voldemort, also known as \"He Who Must Not Be Named\". Voldemort is a powerful and evil wizard who seeks to gain immortality and rule over the wizarding world. He was responsible for the death of Harry Potter's parents and he is determined to have control over the wizarding world and rid it of non-magical, or muggle, people. Voldemort is driven by his ambition to become immortal, convince other dark wizards to join him, and finally defeat Harry Potter.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146041,
+    "input": "Give an example of a sustainable agricultural practice.",
+    "context": null,
+    "sevenb": "An example of a sustainable agricultural practice is crop rotation, which involves rotating different crops throughout the year and not planting the same crop in the same location each year. This helps to maintain soil fertility and reduce soil erosion, while also reducing the need for chemical fertilizers.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146053,
+    "input": "Given a sentence, add a term of endearment to it.",
+    "context": "I love spending time with you.",
+    "sevenb": "I love spending time with you, my love.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146066,
+    "input": "Tell me about the differences between dogs and cats.",
+    "context": null,
+    "sevenb": "Dogs and cats are two very different types of animals. Dogs have a much stronger sense of loyalty and friendship, while cats tend to be more independent and less affectionate. Dogs are much more social animals, while cats are more content with solitude. Additionally, dogs are more active and require more exercise, while cats are more laid back and can be more independent.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146088,
+    "input": "Which company owns the website Hulu?",
+    "context": null,
+    "sevenb": "Hulu is owned by Disney, WarnerMedia, Comcast, and AT&T.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146116,
+    "input": "Categorize the item as belonging to a particular group.",
+    "context": "A ship",
+    "sevenb": "Water transportation.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146121,
+    "input": "List the steps involved in writing a simple computer program.",
+    "context": null,
+    "sevenb": "1. Plan the program  \n2. Code the program   \n3. Test and debug the program  \n4. Refine the program  \n5. Document and publish the program",
+    "checkpoint": 5
+  },
+  {
+    "id": 146124,
+    "input": "Give an example of a real-world application for Machine Learning.",
+    "context": null,
+    "sevenb": "Real-world applications of Machine Learning include facial recognition, credit card fraud detection, speech recognition, virtual personal assistants, self-driving cars, robotics, and natural language processing (NLP).",
+    "checkpoint": 5
+  },
+  {
+    "id": 146130,
+    "input": "For the given data, calculate the mean and standard deviation.",
+    "context": "8, 4, 7, 7, 5, 2, 10",
+    "sevenb": "The mean of the given data is 6.2857 and the standard deviation is 2.7386.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146153,
+    "input": "Describe why the oceans are important to the environment using 3 facts.",
+    "context": null,
+    "sevenb": "Oceans are essential to life on Earth as they regulate the climate and weather, provide habitat for millions of species, and are a major source of oxygen production. They absorb about 30% of the carbon dioxide produced by human activities, helping to maintain global temperatures; they also provide a critical source of protein for billions of people around the world. Moreover, oceans are a major economic asset, generating billions of dollars in revenue from activities such as fishing and tourism.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146191,
+    "input": "Explain why electric cars are better than their petrol/diesel counterparts.",
+    "context": null,
+    "sevenb": "electric cars are better than their petrol/diesel counterparts because they are more efficient, cost less to maintain, and produce zero emissions, making them a much more environmentally friendly option. They also require much less frequent refueling than petrol/diesel cars and have very low running costs, making them a smart choice for those looking to save money on their motoring costs.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146201,
+    "input": "Modify the following code to print out the result 5.",
+    "context": "a = 2\nb = 2\nprint(a+b)",
+    "sevenb": "print(a+b+1)",
+    "checkpoint": 5
+  },
+  {
+    "id": 146231,
+    "input": "Input the name of an animal and output the animal's scientific name.",
+    "context": "Lion",
+    "sevenb": "Panthera leo",
+    "checkpoint": 5
+  },
+  {
+    "id": 146233,
+    "input": "Outline the steps involved in baking a lemon meringue pie.",
+    "context": null,
+    "sevenb": "The steps for baking a lemon meringue pie include: making the crust, preparing the lemon filling, creating the meringue, and baking the pie.  Finally, the pie should be cooled and garnished with lemon zest.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146331,
+    "input": "Find the value of y given x=-1: y=-2x+3.",
+    "context": null,
+    "sevenb": "When x=-1, y=-2(-1)+3=1.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146332,
+    "input": "Write a funny anecdote about baking a cake.",
+    "context": null,
+    "sevenb": "I was baking a cake the other day but I got a little over-enthusiastic and mixed all the ingredients together without measuring them. When I put it in the oven, my whole kitchen started to smell like a terrible combination of cinnamon and ketchup! Needless to say, it wasn't one of my finest creations.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146346,
+    "input": "Name two methods of preventing cyber attacks.",
+    "context": null,
+    "sevenb": "Two methods of preventing cyber attacks are educating users on cyber security best practices and using strong encryption protocols. Educating users can help them identify potential threats and mitigate the risk of attacks by protecting their data and credentials. Additionally, implementing strong encryption protocols and firewalls can protect networks and computers from becoming compromised in the event of an attack.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146385,
+    "input": "Generate a short news article about a proposed new law.",
+    "context": null,
+    "sevenb": "A new law is being proposed that would make it easier for voters to cast their ballots in local elections. The law, which is being sponsored by Senator John Smith, seeks to create more flexible voting hours and make it easier for people to cast their ballot on Election Day. According to Senator Smith, the goal is to increase voter participation and make it easier for all citizens to make their voices heard. If the bill is passed, it will take effect in the upcoming election.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146479,
+    "input": "Choose one of the following text example and correct any grammar mistakes.",
+    "context": "Yesterday I went to the store to by some vegetables",
+    "sevenb": "Yesterday I went to the store to buy some vegetables.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146484,
+    "input": "Write a letter to a local government official advocating for an environmental issue.",
+    "context": null,
+    "sevenb": "Dear [Name], \n\nI am writing to you to express my concern over the current environmental situation in our community. Although we have made some progress in protecting our environment, much remains to be done. I believe that there are steps that we can take as a community to ensure that our environment is protected and preserved. \n\nWe all need clean air, safe drinking water, and sustainable, healthy environments in which to live and work. Our local government has an important role to play in securing a sustainable future for our community. I urge the government to take action by setting more stringent regulations to protect the environment, enforcing laws about air and water pollution, and investing in green energy initiatives.\n\nI hope that you will take my plea for action seriously and make it a priority to safeguard our environment for future generations. Thank you for taking the time to read my letter. \n\nSincerely, \n[Name]",
+    "checkpoint": 5
+  },
+  {
+    "id": 146493,
+    "input": "Create a general strategy for a team to develop a new product.",
+    "context": null,
+    "sevenb": "The team should begin by understanding the market need for the product. Research should be completed to understand customer needs, competitors and industry trends. This research should be used to develop a product concept and a plan that outlines the product’s timeline, budget, and goals. The strategy should include tasks such as product design, testing, and manufacturing, as well as marketing and launching. The team should also track the progress of the product and make any necessary adjustments to ensure its success.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146496,
+    "input": "Identify the category that best describes the movie.",
+    "context": "India's Daughter",
+    "sevenb": "Documentary",
+    "checkpoint": 5
+  },
+  {
+    "id": 146512,
+    "input": "Write a description of a school you went to.",
+    "context": null,
+    "sevenb": "My alma mater was an academically rigorous and vibrant school located in the heart of the city. It was an urban school with a diverse student population, creating an atmosphere of learning and exploration. There were numerous extracurricular activities to get involved in and experienced teachers to learn from. The school had a strong sense of community, with many events and activities taking place both inside and outside the classroom. I look back fondly at my time there and consider it one of the keys to my successes later in life.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146514,
+    "input": "Edit this sentence to make it more concise: \n\nThe employee that was assigned to the project had excessive difficulty understanding the problem.",
+    "context": "The employee assigned to the project had difficulty understanding the problem.",
+    "sevenb": "The assigned employee had difficulty understanding the problem.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146520,
+    "input": "Give 5 creative and original ways to use a glass jar.",
+    "context": null,
+    "sevenb": "1. Use a glass jar to store homemade candles. \n2. Turn a glass jar into a terrarium filled with small plants and rocks.\n3. Use the glass jar to make your own pickles. \n4. Fill the jar with colored water and a few floating candles to create a unique light fixture. \n5. Make a winter wonderland jar by filling it with snowflakes, mini evergreen trees and LED lights.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146538,
+    "input": "Generate a 10-character PIN code.",
+    "context": "Teacher answer: 7466503489",
+    "sevenb": "7466503489",
+    "checkpoint": 5
+  },
+  {
+    "id": 146580,
+    "input": "Summarize the policy implications of the following article:",
+    "context": "\"This article examines how the COVID-19 pandemic has affected health disparities in marginalized communities, including communities of color, lower-income communities, and those with limited access to healthcare.\"",
+    "sevenb": "The COVID-19 pandemic has exacerbated existing health disparities in marginalized communities due to existing inequalities in access to healthcare and other resources. Policy makers must take steps to ensure that these disadvantaged communities have access to the resources and services they need to remain healthy and reduce the burden of this virus.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146603,
+    "input": "Describe the key features of the latest version of the iPhone.",
+    "context": null,
+    "sevenb": "The latest version of the iPhone has several key features that make it stand out. It has a larger, 6.5-inch Super Retina XDR display which offers improved viewing for games, videos, and movies. It is also powered by an A13 Bionic chip, enabling faster app performance. The device is equipped with a dual-camera system, allowing for sharper and more detailed photos. Additionally, the phone boasts improved water-resistance, wireless charging capability, and Face ID for fast and secure authentication.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146604,
+    "input": "What are the three major pieces of software that are used in web development?",
+    "context": null,
+    "sevenb": "The three major pieces of software used in web development are HTML, CSS, and JavaScript. HTML is used to structure a website while CSS is used to style the website. JavaScript is used to add interactivity to the website, as well as performing calculations and control the flow of the website.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146605,
+    "input": "Generate a funny joke using the keyword 'teacher'.",
+    "context": null,
+    "sevenb": "Why did the teacher go to the pineapple? To get a better apple-itude!",
+    "checkpoint": 5
+  },
+  {
+    "id": 146697,
+    "input": "Describe a place you have visited in under 100 words.",
+    "context": "The Grand Canyon",
+    "sevenb": "The Grand Canyon is one of the most beautiful places I have ever visited. I was amazed by the vast expanse of the canyon, its majestic cliffs and stunning colors. The overlooks gave me stunning views of the canyon and its many levels. I felt so small in such a grand and humbling environment. It was a truly unforgettable experience.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146728,
+    "input": "Analyze the following statement and explain what is wrong with it.",
+    "context": "Statement: \"All politicians are lies.\"",
+    "sevenb": "The statement \"All politicians are lies\" is an overly generalizing statement without basis. It is wrong to make an assumption that all politicians are liars as it is too broad and subjective. Not all politicians are liars, and it is unfair to judge an entire group of people in such a negative way.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146731,
+    "input": "Given a list of words and descriptions, categorize the words into two distinct groups.",
+    "context": "Pluto — dwarf planet\nHelium — chemical element\nUranus — planet\nTitanium — chemical element",
+    "sevenb": "Group 1: Pluto, Uranus\nGroup 2: Helium, Titanium.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146771,
+    "input": "Add 2 decimal places after a number.",
+    "context": "99",
+    "sevenb": "99.00",
+    "checkpoint": 5
+  },
+  {
+    "id": 146904,
+    "input": "Does the sentence use a metaphorical figure of speech?",
+    "context": "The angry sea was roaring.",
+    "sevenb": "Yes, this sentence uses a metaphor as it is comparing the angry sea to a creature that is roaring.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146911,
+    "input": "Generate an expression that evaluates to non-zero if the given number is even.",
+    "context": "5",
+    "sevenb": "5 % 2 === 0",
+    "checkpoint": 5
+  },
+  {
+    "id": 146983,
+    "input": "Explain how this concept works.",
+    "context": "Quantum Entanglement",
+    "sevenb": "Quantum Entanglement is a phenomenon that occurs when two particles become connected in such a way that the state of one particle affects the state of the other, no matter how far away they are from each other. This connection between two particles is called entanglement, and the particles are said to be entangled with each other.",
+    "checkpoint": 5
+  },
+  {
+    "id": 146984,
+    "input": "Organize the following list of names into alphabetical order.",
+    "context": "Miranda, Xavier, Bob, Henry",
+    "sevenb": "Bob, Henry, Miranda, Xavier",
+    "checkpoint": 5
+  },
+  {
+    "id": 147087,
+    "input": "Formulate a hypothesis about this phenomenon.",
+    "context": "Birds building nests in urban areas",
+    "sevenb": "My hypothesis is that urban areas provide birds with more protection from predators than rural areas, and that this is further reinforced by the presence of humans providing additional shelter. That is why birds are more likely to build nests in urban areas.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147116,
+    "input": "You are provided with the following sentence. Provide the most appropriate synonym for the underlined word.",
+    "context": "The chicken was prepared with spices and cooked exorbitantly.",
+    "sevenb": "The chicken was prepared with spices and cooked extravagantly.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147117,
+    "input": "Given the following sentence, find the error and provide the correct version:",
+    "context": "Mike and me went to the store.",
+    "sevenb": "Mike and I went to the store.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147147,
+    "input": "Give an example of how the given person could use their skills to achieve something.",
+    "context": "Person: A technical CEO.",
+    "sevenb": "The technical CEO could use their technical knowledge and expertise to create a product roadmap that emphasizes customer needs and ensures a successful product launch.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147241,
+    "input": "Describe software testing methods.",
+    "context": null,
+    "sevenb": "Software testing is the process of evaluating a software product to determine whether it meets certain requirements as well as its ability to perform as expected. There are various methods of software testing, including unit testing, integration testing, system testing, acceptance testing, and other specialized tests. Unit testing focuses on testing individual units of code, while integration testing tests how the individual units interact with one another. System testing tests the entire system as a whole, while acceptance testing determines whether or not the system meets the user's needs and expectations.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147273,
+    "input": "Find the density of a substance given its mass and volume.",
+    "context": "Mass: 10 kg\nVolume: 8 L",
+    "sevenb": "The density of the substance is 1.25 kg/L. This is calculated by dividing the mass (10 kg) by the volume (8 L) to get the density (1.25 kg/L).",
+    "checkpoint": 5
+  },
+  {
+    "id": 147295,
+    "input": "Convert the following steps into a Python program.",
+    "context": "1. Ask the user to enter a positive number\n2. Calculate the logarithm (base 10) of the given number\n3. Print the calculated value",
+    "sevenb": "num = float(input('Please enter a positive number: '))\n \nlog10 = math.log10(num)\n \nprint('The logarithm (base 10) of the given number is', log10)",
+    "checkpoint": 5
+  },
+  {
+    "id": 147298,
+    "input": "Change the font style and size of the text in this document.",
+    "context": "<p style=\"font-family: Arial; font-size: 12px;\">This is a test document.</p>",
+    "sevenb": "<p style=\"font-family: Times New Roman; font-size: 24px;\">This is a test document.</p>",
+    "checkpoint": 5
+  },
+  {
+    "id": 147321,
+    "input": "Identify 3 ways to encourage individuals to practice social distancing.",
+    "context": null,
+    "sevenb": "Three ways to encourage individuals to practice social distancing are: by allowing virtual interactions, providing educational resources that emphasize the importance of social distancing, and increasing public transportation safety and access to support essential workers. Additionally, governments could provide fines and sanctions for those not abiding by social distancing measures, as well as incentives for those who do.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147365,
+    "input": "Explain the importance of HTML to website design.",
+    "context": null,
+    "sevenb": "HTML (HyperText Markup Language) is a coding language used to create websites. It provides structure for the content of the website, allowing it to be displayed in a consistent and organized way. HTML is an important tool for website designers as it helps with navigation, page layout and styling, and allows for the integration of multimedia content.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147396,
+    "input": "Given two recipes, list two ingredients that are used in both recipes.",
+    "context": "Recipe 1: Coconut Rice\nIngredients: Rice, Coconut, Water\n\nRecipe 2: Curry Chicken\nIngredients: Chicken, Curry Powder, Onion",
+    "sevenb": "Rice, Onion",
+    "checkpoint": 5
+  },
+  {
+    "id": 147433,
+    "input": "Identify a possible theme for a children's party.",
+    "context": null,
+    "sevenb": "A possible theme for a children's party could be an outer space theme. This could include activities like making alien masks, having an alien scavenger hunt, building rockets, and playing a game of star tag. Other themes could include a pirate party, a carnival, a dinosaur-themed party, or a superhero theme.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147441,
+    "input": "Find out the time difference between the first and second timestamps.",
+    "context": "Timestamp 1: Mon Jun 15 2020 12:54:03\nTimestamp 2: Mon Jun 15 2020 14:22:19",
+    "sevenb": "1 hour 28 minutes 16 seconds",
+    "checkpoint": 5
+  },
+  {
+    "id": 147445,
+    "input": "Delete the specified element from the list.",
+    "context": "List: [3, 4, 8, 5, 9], Element = 8",
+    "sevenb": "[3, 4, 5, 9]",
+    "checkpoint": 5
+  },
+  {
+    "id": 147446,
+    "input": "Find the season corresponding to the given month.",
+    "context": "Month = June",
+    "sevenb": "Summer",
+    "checkpoint": 5
+  },
+  {
+    "id": 147459,
+    "input": "Speculate what might happen in the future?",
+    "context": "Electric vehicles will become more common across the world.",
+    "sevenb": "In the future, electric vehicles will become the norm rather than the exception. We will see more electric vehicles on the road and they will slowly start to replace traditional petrol or diesel cars. As electric vehicles become more popular, governments, businesses and individuals will invest more resources in infrastructure and technologies to support their use. This will lead to improved battery range, lower costs and better services for electric vehicle owners.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147485,
+    "input": "Compare the benefits of investing in stocks and bonds.",
+    "context": null,
+    "sevenb": "Investing in stocks offers the potential for higher returns over the long term, but carries greater risk than investing in bonds. Bonds tend to be less volatile than stocks, and interest earned is usually fixed. Stocks, on the other hand, can generate larger returns over the long run, but investment returns can vary significantly over the short term. Furthermore, stocks can benefit from dividend income, which bondholders do not receive. Ultimately, it depends on an individual's risk tolerance and financial goals when deciding which type of investment is the better option.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147574,
+    "input": "Generate a tweet about the environment.",
+    "context": null,
+    "sevenb": "We only have one planet. Let's do our part to protect it and keep our environment clean. #EnvironmentDay #Conservation #ClimateAction",
+    "checkpoint": 5
+  },
+  {
+    "id": 147604,
+    "input": "Come up with a creative way to store shoes in the closet.",
+    "context": null,
+    "sevenb": "One creative way to store shoes in the closet is to use three-tiered stackable shoe shelves. This allows for shoes to be stored neatly and in an orderly fashion. Additionally, using shoe boxes or hanging shoes on hooks are also good options for organized storage.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147619,
+    "input": "Describe a country beginning with the letter 'J'",
+    "context": null,
+    "sevenb": "Japan is an island country located in East Asia. It is a vibrant, modern nation with a rich culture, beautiful landscapes, and exciting cities. It is also home to some of the most advanced technology in the world.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147772,
+    "input": "Add the following numbers: 5 + 7 + 9",
+    "context": null,
+    "sevenb": "The sum of 5 + 7 + 9 is 21.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147792,
+    "input": "Generate song lyrics that express love and longing.",
+    "context": null,
+    "sevenb": "Verse 1:\nEvery night I lie awake\nAnd count the stars up in the sky\nHoping that some day I'll find you\nAnd find out why I feel so alive\n\nChorus:\nTime keeps passing by\nBut my longing doesn't die\nA love so strong, so hard to find\nI'm searching for you all the time\n\nVerse 2:\nAnd when I'm lost in the dark\nMy thoughts drift off to our past\nYour beauty like the morning sun\nYour gentle touch, my only one\n\nChorus:\nTime keeps passing by\nBut my longing doesn't die\nA love so strong, so hard to find\nI'm searching for you all the time\n\nBridge:\nAnd when the sun sinks in the west\nAnd the stars come in to view\nI'll close my eyes, dream of you\nAnd the love that feels so true\n\nChorus:\nTime keeps passing by\nBut my longing doesn't die\nA love so strong, so hard to find\nI'm searching for you all the time",
+    "checkpoint": 5
+  },
+  {
+    "id": 147794,
+    "input": "Reword the following statement to focus on the positive aspects.",
+    "context": "I don't like going to the gym because it's boring.",
+    "sevenb": "I love going to the gym as it helps me stay active and healthy.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147798,
+    "input": "Describe the topography of the city Los Angeles.",
+    "context": null,
+    "sevenb": "Los Angeles is located in a wide basin in the heart of Southern California and stretches out along the surrounding coastal mountain ranges. The central city is primarily flat, with its major transportation arteries, freeways, and metro railway hubs crossing the area in a crisscross pattern. The northern parts of the city are much hillier, as the San Gabriel Mountains rise more than 5,000 feet above the city's downtown. The eastern parts of the city are somewhat eroded, as the San Fernando Valley is bound by the Verdugo and San Gabriel Mountains.",
+    "checkpoint": 5
+  },
+  {
+    "id": 147845,
+    "input": "Come up with a title for an article about the latest technology trends.",
+    "context": "Noinput",
+    "sevenb": "Staying Ahead of the Curve: Latest Technology Trends",
+    "checkpoint": 5
+  },
+  {
+    "id": 147897,
+    "input": "Generate 5 synonyms for a hopeful mood.",
+    "context": null,
+    "sevenb": "Uplifted, Positivity, Positive Outlook, Optimistic, Encouraged",
+    "checkpoint": 5
+  },
+  {
+    "id": 148015,
+    "input": "Compose a film review for the last film you watched.",
+    "context": "Parasite",
+    "sevenb": "I just watched Parasite and it was an amazing movie! It was an original story with unexpected twists and turns that kept me engaged throughout. The acting was top notch and the cinematography added to the tension of the story. I highly recommend it!",
+    "checkpoint": 5
+  },
+  {
+    "id": 148050,
+    "input": "Create a headline that would go with the following story.",
+    "context": "John Doe was walking down the street in a small town when he noticed a strange man following him.",
+    "sevenb": "Suspicion Grows as John Doe Spots Stranger Following Him in Small Town.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148052,
+    "input": "Look up a word in the dictionary.",
+    "context": "\"amorphous\"",
+    "sevenb": "The word amorphous is an adjective that means having no definite form or distinct shape.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148094,
+    "input": "Summarize the differences between humans and primates in 3-4 sentences.",
+    "context": null,
+    "sevenb": "Humans are more advanced than primates in many ways, including their capacity for abstract thought, development of societies, and tool use. Humans have smaller canines, which is an indication of less aggression and a greater ability to chew and digest food. Humans also have larger brains than primates, and they have a greater capacity for meaningful language and communication. In addition, humans have the recognizable trait of bipedalism, enabling more efficient travel over longer distances.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148099,
+    "input": "Calculate the cost of purchasing 5 apples with a discount of 10%.",
+    "context": null,
+    "sevenb": "The cost of purchasing 5 apples with a 10% discount would be $4.50. ($9.00 - 10% = $8.10, $8.10 divided by 5 = $1.62, multiplied by 5 = $8.10, $8.10 - $3.60 = $4.50).",
+    "checkpoint": 5
+  },
+  {
+    "id": 148122,
+    "input": "Update the given document with the provided information",
+    "context": "Document:\n\nJohn Smith is a software engineer who has been working at ABC Corp for the past 7 years. He has extensive experience in software development and product design. \n\nAdditional Information: \n\n- John was promoted to Technical Lead in 2018\n- His team is working on the new XYZ project",
+    "sevenb": "John Smith is a software engineer and Technical Lead who has been working at ABC Corp for the past 7 years. His extensive experience in software development and product design has been instrumental in their new XYZ project. In 2018, he was also promoted to Technical Lead.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148171,
+    "input": "Evaluate the positive and negative effects of using artificial intelligence in healthcare.",
+    "context": null,
+    "sevenb": "The use of Artificial Intelligence in healthcare has had both positive and negative effects. On the positive side, AI has enabled healthcare providers to make more accurate diagnoses, automate clinical processes, and reduce errors in patient records. This can lead to improved operational efficiency, lower costs, and improved patient outcomes. On the negative side, AI can lead to data privacy violations, as it is only as secure as the systems it is running on. Additionally, AI systems can lead to ethical issues, as they are programmed to make decisions based on limited data and may not take human values into account.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148380,
+    "input": "What is the scene in a crowded restaurant?",
+    "context": null,
+    "sevenb": "The restaurant is bustling with people, the noise of conversations and laughter filling the air. Waiters and waitresses weave through the crowded tables, delivering food and taking orders from the customers. Plates clatter and utensils clink as people stir and savor the delicious food. An unmistakable atmosphere of joy and enjoyment pervades the room.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148428,
+    "input": "Automatically replace each word in the text with its synonym.",
+    "context": "This is a challenging task.",
+    "sevenb": "That is an arduous labor.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148439,
+    "input": "Pick two analogies from the given text and explain them",
+    "context": "An analogy compares one thing to another in order to help explain it. It’s like throwing a pebble in a pond: the ripples of the water show how something small can affect a much larger area.",
+    "sevenb": "The first analogy compares something to throwing a pebble in a pond. This analogy illustrates how a small action can have consequences that extend far beyond the initial action. The second analogy compares something to ripples in water. This analogy illustrates how an event can cause further and lasting effects that extend beyond the initial event.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148478,
+    "input": "Compare the capabilities of AI and humans",
+    "context": null,
+    "sevenb": "AI is capable of performing tedious and repetitive tasks quickly and efficiently, while humans are good at creative problem-solving and abstract thinking.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148497,
+    "input": "Calculate the monthly mortgage payment on a loan of $250,000 with a fixed annual interest rate of 4%.",
+    "context": null,
+    "sevenb": "The monthly mortgage payment on a loan of $250,000 with a fixed annual interest rate of 4% would be $1197.92.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148513,
+    "input": "Construct a flow chart that depicts the process of making a sandwich",
+    "context": "Teacher answer: <image>",
+    "sevenb": "<image>",
+    "checkpoint": 5
+  },
+  {
+    "id": 148676,
+    "input": "Analyze the following code and explain the purpose of each line as a comment.",
+    "context": "int i = 1;",
+    "sevenb": "// Declaring a variable named 'i' and assigning the value of 1 to it.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148687,
+    "input": "Explain the economic differences between the Northern and Southern states prior to the Civil War",
+    "context": null,
+    "sevenb": "Prior to the Civil War, there were significant economic differences between the Northern and Southern states. The North had a more diversified and developed economy, with manufacturing, banking, insurance, and commerce. The main industry in the South was slave-plantation based and focused on cotton, tobacco, and rice production. This meant the North had more capital and access to markets than the South. The North also had access to more advanced technologies, railways, and canals, while the South did not. These differences helped exacerbate and fuel the divide between North and South in the lead up to the Civil War.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148718,
+    "input": "Given a description, classify whether it is a mammal or not.\nOutput: \"Mammal\" or \"Not a Mammal\"",
+    "context": "A small black and white bird with a long beak",
+    "sevenb": "Not a Mammal",
+    "checkpoint": 5
+  },
+  {
+    "id": 148735,
+    "input": "Generate a recipe that combines the flavors of <mask> and <mask>.",
+    "context": "Cranberry, Garlic",
+    "sevenb": "Garlic and Cranberry Chicken is an easy and delicious weeknight meal. Begin by seasoning 8 chicken thighs with salt and pepper. Heat a few tablespoons of olive oil in a large skillet over medium-high heat. Add the chicken and sear on each side until golden and cooked through, about 8 minutes. Add 2 cloves of minced garlic and cook for another 1-2 minutes. Remove the chicken from the skillet and set aside. In the same skillet over medium-high heat, add 1/4 cup of dried cranberries and 1/4 cup of chicken broth. Simmer for about 5 minutes until the cranberries are tender. Return the chicken to the skillet and toss with the cranberries and garlic. Sprinkle with freshly chopped herbs for added flavor and serve with a side of your favorite vegetables.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148741,
+    "input": "Describe how a character acts in a particular situation.",
+    "context": "Character: Alice\nSituation: Meeting a group of new people",
+    "sevenb": "Alice was shy at first when meeting a group of new people, avoiding direct eye contact and blushing when spoken to. However, she was an excellent listener and soon felt more comfortable in the group and began to engage in conversations. She was friendly and upbeat, asking questions and sharing stories to get to know the others better.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148758,
+    "input": "Describe the colors of an autumn day",
+    "context": null,
+    "sevenb": "The colors of an autumn day are full of glorious hues; the vibrant oranges, brilliant yellows, and fiery reds of the trees create a magnificent landscape, while the deep blue of the sky contrasts beautifully against the warm colors of the leaves.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148761,
+    "input": "Create an interactive quiz with at least three questions",
+    "context": null,
+    "sevenb": "Q1: What is the capital of India?\nA. Mumbai  B. New Delhi  C. Bengaluru  D. Chennai\n\nQ2: What is the largest country in the world in terms of area?\nA. Russia  B. China  C. United States  D. Canada\n\nQ3: What is the hottest continent on Earth?\nA. Africa  B. Europe  C. Asia  D. Antarctica",
+    "checkpoint": 5
+  },
+  {
+    "id": 148808,
+    "input": "Make a list of three items a photographer needs for a photo shoot.",
+    "context": null,
+    "sevenb": "A photographer needs a camera, photography lighting, and a backdrop for a photo shoot.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148811,
+    "input": "What is Big O notation?",
+    "context": null,
+    "sevenb": "Big O notation is a mathematical notation used to describe the complexity of an algorithm. It describes the upper bound on the number of operations done by the algorithm and is used to describe the execution time of an algorithm and its space requirements. The basic idea is to express the time or space of the algorithm in terms of an upper bound which is related to the input size, usually represented as “N”.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148866,
+    "input": "Rewrite a poem in a different style.",
+    "context": "Poem:\n\nThe sun smiles in the sky\nA light that warms us all\nAs it slowly fades away",
+    "sevenb": "The sun's resplendent rays \nSparkling and bright, they meander \nOff into the night.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148876,
+    "input": "List five unique characteristics of a monarch butterfly.",
+    "context": null,
+    "sevenb": "1. The monarch butterfly has a wingspan of up to 4 inches.\n2. It has four distinct uniquely-colored wings: black, orange, white and blue.\n3. The monarch butterfly migrates from as far away as Canada to Mexico during the winter months.\n4. Monarchs are herbivorous and feed on nectar from flowers.\n5. The monarch butterfly is known for its annual mass migration phenomenon.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148907,
+    "input": "Detect if the statements are logically equivalent.",
+    "context": "If p then q\nq implies p",
+    "sevenb": "Yes, the statements are logically equivalent.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148942,
+    "input": "Summarize the rules and regulations of a hypothetical store.",
+    "context": null,
+    "sevenb": "The rules and regulations of this store are simple: all visitors must follow basic health and safety protocols, maintain social distancing, and refrain from shouting and excessively loud conversation. No food or drink is permitted, nor are any bags, backpacks, or other large items. All visitors must follow all posted signs and product labels, and respect the store staff and other customers at all times. Payment is by cash or credit card; no checks or other forms of payment are accepted. Visitors may not touch or handle any products unless authorized by a staff member. Cameras are not permitted in the store. Please remember to respect the store policies, so that we can all enjoy a safe and pleasant shopping experience.",
+    "checkpoint": 5
+  },
+  {
+    "id": 148943,
+    "input": "Design a new beverage",
+    "context": null,
+    "sevenb": "Introducing Blueberry Sage, a delicious new sparkling beverage! Made from pure blueberries, pure sage and flavored with a hint of agave, this beverage is not only delicious but also packed with antioxidants, vitamin A and C, healthy fats and even a natural calming agent. Perfect for those days when you need a refreshing boost, this beverage is sure to add a sparkle to your day. Enjoy on its own or as a mixer in cocktails and mocktails. Cheers!",
+    "checkpoint": 5
+  },
+  {
+    "id": 148991,
+    "input": "Describe the effect of the Great Plague of 1665 on England.",
+    "context": null,
+    "sevenb": "The Great Plague of 1665 had a devastating effect on England. It caused widespread death and illness, devastated the economy, and caused a deep disruption to all aspects of life. The estimated death toll was between 75,000 and 200,000 people.",
+    "checkpoint": 5
+  },
+  {
+    "id": 149074,
+    "input": "Construct an example of a ​structured conversation in which a user requests a customer service representative to send a copy of a receipt.",
+    "context": null,
+    "sevenb": "User: Hi, I purchased something from your online store recently and I need a copy of my receipt. \n\nCustomer Service Representative: Hi there! What was the purchase date and the name of the item purchased? \n\nUser: The purchase date was yesterday and I purchased a pair of sneakers.\n\nCustomer Service Representative: Got it! I'll send you a copy of the receipt by email. Is this the correct email address? [Provide email address] \n\nUser: Yes, that's correct. Thanks for your help.",
+    "checkpoint": 5
+  },
+  {
+    "id": 149125,
+    "input": "Analyze the following sentence to identify implicit bias.",
+    "context": null,
+    "sevenb": "The sentence \"He got the job without even having a degree\" implies that having a degree is the default requirement for obtaining a job, suggesting that people without a degree are less capable and qualified than those with one. This implies an implicit bias against those without a degree.",
+    "checkpoint": 5
+  },
+  {
+    "id": 149133,
+    "input": "Compare and contrast URL encoding and base64 encoding",
+    "context": null,
+    "sevenb": "URL encoding and base64 encoding are both methods of converting data into a character string that is safe to be transmitted in an URL. URL encoding involves encoding unsafe characters into a string of characters that are safe to transmit and then reverting them back once they reach the intended destination, while base64 encoding converts the data into a string of characters using a base64 encoding scheme, which is a set of 64 characters in a specific order that is used to represent data.\n\nThe main difference between the two is that URL encoding only works for unsafe characters, while base64 encoding works for any kind of data, including binary data. Additionally, URL encoding is much simpler and can be applied directly to a string, whereas base64 encoding is more complex and requires the data to be converted into bytes before encoding.",
+    "checkpoint": 5
+  },
+  {
+    "id": 149172,
+    "input": "Create an appropriate response to the given customer service enquiry",
+    "context": "I am trying to access my account but can't remember my password.",
+    "sevenb": "No worries! You can easily reset your password by clicking on the 'Forgot Password' link on the login page. From there, we'll have you fill out some information so we can verify your identity and you'll be able to create a new password that you'll be able to use to access your account.",
+    "checkpoint": 5
+  },
+  {
+    "id": 149182,
+    "input": "Document five challenges of online classes.",
+    "context": null,
+    "sevenb": "1. Technical challenges such as developing reliable internet connections and having access to computers or other technological devices.\n2. Difficulty engaging with peers and instructors.\n3. Cost of materials, processes and access.\n4. Self-discipline in studying and completing assignments without face-to-face instruction.\n5. Time zone differences in which creating a common meeting time for global classes can be difficult.",
+    "checkpoint": 5
+  },
+  {
+    "id": 149226,
+    "input": "Create a function that takes a string of parentheses and determines its validity",
+    "context": null,
+    "sevenb": "function validateParens(str) {\n  let parenthesesCounter = 0;\n  for (let i = 0; i < str.length; i++) {\n    if (str[i] === '(') {\n      parenthesesCounter++;\n    } else if (str[i] === ')') {\n      parenthesesCounter--;\n    }\n\n    if (parenthesesCounter < 0) {\n      return false;\n    }\n  }\n  return parenthesesCounter === 0;\n}",
+    "checkpoint": 5
+  },
+  {
+    "id": 149230,
+    "input": "Create a logo that conveys professionalism and strength.",
+    "context": null,
+    "sevenb": "An elegant black and white logo with a bold typeface spelling out the company name, such as a strong serif font. The logo would be centered within a circular background element, standing out against the neutral background.",
+    "checkpoint": 5
+  },
+  {
+    "id": 149251,
+    "input": "List 5 fruits that are considered exotic",
+    "context": null,
+    "sevenb": "Five exotic fruits are durian, mangosteen, dragon fruit, rambutan, and jackfruit.",
+    "checkpoint": 5
+  },
+  {
+    "id": 149276,
+    "input": "Name two books that discuss the ethics of artificial intelligence.",
+    "context": null,
+    "sevenb": "The books 'Superintelligence' by Nick Bostrom and 'The Age of Surveillance Capitalism' by Shoshana Zuboff discuss the ethics of artificial intelligence.",
+    "checkpoint": 5
+  },
+  {
+    "id": 149290,
+    "input": "Draft a job advertisement for a Software Developer role.",
+    "context": null,
+    "sevenb": "We are looking for a skilled Software Developer to join our team. The successful candidate will be responsible for creating, maintaining and troubleshooting software solutions. They must have a good eye for detail and excellent problem-solving skills. The individual should also be comfortable working in teams.\n\nRequirements:\n- Bachelor's Degree in Computer Science/Software Engineering or related field \n- Professional experience in software development\n- Good knowledge of .NET and/or Java\n- Ability to work in a fast-paced environment\n- Good analytical and problem-solving capabilities\n\nIf you possess the core skills and experience, we look forward to hearing from you.",
+    "checkpoint": 5
+  },
+  {
+    "id": 149327,
+    "input": "Given the input a list of nouns, generate a sentence using at least 5 nouns",
+    "context": "House, cat, tree, park, student",
+    "sevenb": "The student walked through the park while admiring the house and the tree and petting the cat.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149368,
+    "input": "Explain the concept of AI in a single sentence.",
+    "context": null,
+    "sevenb": "AI is the science and technology of creating intelligent machines that can think, learn and act like humans.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149430,
+    "input": "Rewrite the following sentence with clearer language: \"Our department is looking for somebody who can help us with our project\".",
+    "context": "Our department is looking for somebody who can help us with our project.",
+    "sevenb": "Our department is searching for someone to assist us with our project.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149469,
+    "input": "What is the molecular structure of water?",
+    "context": null,
+    "sevenb": "The molecular structure of water is H2O, meaning two hydrogen atoms covalently bonded to an oxygen atom. The oxygen atom has two lone pairs of electrons, which give water an overall bent molecular geometry. This gives water a polar character, with a partial negative charge near the oxygen atom, and a partial positive charge on the hydrogen atoms. This is also what gives water many of its unique properties, such as its high surface tension and high boiling point.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149482,
+    "input": "Create a character sketch of the protagonist of the book.",
+    "context": null,
+    "sevenb": "The protagonist in the book is John Smith, a 35-year-old man from a small town in the Midwest who is driven and ambitious. He is determined to realize his dream of becoming a successful entrepreneur and is willing to go to any lengths to do so. He is also a loving father to his young daughter, and although he has his flaws, he ultimately wants what's best for his family.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149567,
+    "input": "How does the presence of oceanic heat storage affect the climate?",
+    "context": null,
+    "sevenb": "The presence of oceanic heat storage plays an important role in regulating the climate. Heat stored in the ocean helps keep the temperature of the atmosphere in balance by redistributing warmth in the form of currents around the globe. In addition, the ocean serves as a buffer against rapid changes in temperatures, creating a stabilizing influence. Furthermore, the ocean absorbs a large portion of the excess heat generated by human activities, helping to mitigate the effects of climate change.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149636,
+    "input": "Tell me the title and author of a book that won the Pulitzer Prize in 2019",
+    "context": null,
+    "sevenb": "The Overstory by Richard Powers.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149721,
+    "input": "Provide five tips for effective customer service.",
+    "context": null,
+    "sevenb": "1. Listen to your customers and focus on understanding their needs and concerns.\n2. Show empathy and offer solutions, not excuses.\n3. Make sure your customer service is consistent across all channels and departments.\n4. Ensure that customers are treated fairly and with respect.\n5. Keep customers informed of progress and give them regular updates.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149725,
+    "input": "Identify an area where the given vehicle has superior performance.",
+    "context": "Tesla Model 3",
+    "sevenb": "The Tesla Model 3 has superior performance in terms of acceleration and range. It is able to accelerate from 0-60 mph in as little as 3.5 seconds, and has a range of up to 310 miles on a single charge. Additionally, its regenerative braking system enhances the car’s efficiency, furthering its driving range.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149754,
+    "input": "Explain what a GPT language model is in 3 sentences.",
+    "context": null,
+    "sevenb": "A GPT language model is a type of artificial intelligence that uses a combination of deep learning, natural language processing, and natural language understanding to generate predictive text. The model is trained on a dataset of text and learns to generate word based on the context of the words that came before it. It can be used for a variety of tasks such as summarizing long passages, answering questions, and generating creative new texts.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149776,
+    "input": "Sort the following numbers from lowest to highest: 5, 81, 0, -4",
+    "context": "Teacher answer: -4, 0, 5, 81",
+    "sevenb": "-4, 0, 5, 81",
+    "checkpoint": 6
+  },
+  {
+    "id": 149780,
+    "input": "Arrange the following words alphabetically: blue, white, silver, yellow",
+    "context": null,
+    "sevenb": "Blue, Silver, White, Yellow",
+    "checkpoint": 6
+  },
+  {
+    "id": 149786,
+    "input": "Write a css code to display an element with a red background and green font.",
+    "context": null,
+    "sevenb": "div {\n    background-color: red;\n    color: green;\n}",
+    "checkpoint": 6
+  },
+  {
+    "id": 149791,
+    "input": "Write a function in C++ to count the number of occurrences of a string inside a longer string.",
+    "context": null,
+    "sevenb": "int countOccurrences(string s, string find) \n{ \n    int count = 0; \n    for (int i=0; i<s.length(); i++)\n    { \n        if(s.substr(i, find.length()) == find) \n            count++; \n    }\n    return count; \n}",
+    "checkpoint": 6
+  },
+  {
+    "id": 149792,
+    "input": "Research and explain the history of cloud computing.",
+    "context": null,
+    "sevenb": "Cloud computing is a model of data processing that allows users to access services and data stored on a remote server connected to the internet. The history of cloud computing dates back to the 1950s with the emergence of mainframe computers. Over time, the concept evolved and today, cloud computing is commonly used in both private and public organizations as a more efficient and cost-effective method of data storage and processing.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149794,
+    "input": "Suggest an innovative product design that encourages people to avoid plastic",
+    "context": null,
+    "sevenb": "A product design that could encourage people to avoid plastic could be a reusable, compostable grocery bag made from sustainable, plant-based materials. The bag could be designed to be lightweight, foldable, and stylish, so that it could easily be brought with the user whenever they go grocery shopping. Additionally, the bag could be designed to be durable and resuable so that it can last for years.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149808,
+    "input": "Provide a concise definition for this term",
+    "context": "Hyperbole",
+    "sevenb": "Hyperbole is the use of exaggerated language to emphasize a point or create a desired effect.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149811,
+    "input": "Edit the sentence to use informal language",
+    "context": "We should endeavor to do better",
+    "sevenb": "Let's try to do better.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149836,
+    "input": "Given a piece of text about a person, come up with four questions about the person.",
+    "context": "Suzie has recently moved to Los Angeles and is looking for a job.",
+    "sevenb": "1. What type of job is Suzie looking for?\n2. Why did Suzie move to Los Angeles?\n3. How long has Suzie been in Los Angeles? \n4. What experience does Suzie possess to help her job search?",
+    "checkpoint": 6
+  },
+  {
+    "id": 149865,
+    "input": "Find the corresponding adverb for the given adjective.",
+    "context": "Serene",
+    "sevenb": "Serenely.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149869,
+    "input": "Find the word that the given word is an antonym of.",
+    "context": "The word is \"continue\"",
+    "sevenb": "The antonym of \"continue\" is \"stop\".",
+    "checkpoint": 6
+  },
+  {
+    "id": 149874,
+    "input": "Reorganize the following sentence in a way that improves its structure.",
+    "context": "Tireless effort and dedication will result in an incredible reward.",
+    "sevenb": "Incredible rewards await those who put in tireless effort and dedication.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149879,
+    "input": "Remove all occurrences of the given word from the following text.",
+    "context": "The computer is an amazing tool for productivity, with an array of applications for productivity. \nWord: productivity",
+    "sevenb": "The computer is an amazing tool for, with an array of applications for.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149893,
+    "input": "Describe the possible consequences if something goes wrong with a nuclear power plant.",
+    "context": null,
+    "sevenb": "If something goes wrong with a nuclear power plant, the consequences can be catastrophic. A nuclear accident could cause the release of dangerous levels of radiation, and could contaminate the surrounding area for many years. It could also cause long-term health effects for the people exposed to the radiation, and could put a strain on the local economy.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149894,
+    "input": "Explain why it is important to keep track of finances.",
+    "context": null,
+    "sevenb": "Keeping track of finances is important because it helps you to better understand your spending habits, money goals, and how to appropriately budget your money. Having a clear understanding of your current financial situation can also help you to make better decisions and plan for the future.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149930,
+    "input": "How do you pronounce the word \"marmalade\"?",
+    "context": null,
+    "sevenb": "Marmalade is pronounced as mar-muh-lahd.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149958,
+    "input": "Rank the following items in order of importance: customer service, employee satisfaction, sales.",
+    "context": null,
+    "sevenb": "Customer service, Employee satisfaction, Sales.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149969,
+    "input": "How can you protect a computer from malware?",
+    "context": null,
+    "sevenb": "1. Keep your computer and software updated with the latest security patches.\n2. Install an anti-malware program and make sure it is set to run daily scans. \n3. Don't open any suspicious emails or attachments from unknown senders.\n4. Avoid visiting suspicious websites and downloading any unknown software.\n5. Use secure passwords and change them periodically.\n6. Avoid connecting to public Wi-Fi networks.",
+    "checkpoint": 6
+  },
+  {
+    "id": 149984,
+    "input": "Rank the following energy sources according to their cleanliness.",
+    "context": "Solar, Wind, Coal",
+    "sevenb": "Solar > Wind > Coal. Solar and Wind are both clean renewable sources of energy, while coal produces a lot of pollution.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150014,
+    "input": "Create a quip about technology",
+    "context": null,
+    "sevenb": "Technology makes things easier, unless you forget the password!",
+    "checkpoint": 6
+  },
+  {
+    "id": 150080,
+    "input": "Write a rap based on the topic of self-love",
+    "context": null,
+    "sevenb": "It's time to recognize, love is in my blood \nGonna be myself and leave the judgin' to the floods \nMy past may be a mess but I'm blessed with today \nGonna take that pain and use it in a good way \nFuelin' my fire, keepin' on the grind \nAin't gonna apologize for bein' in my prime \nAin't nobody but myself that's infinitely defined \nFeelin' the peace in bein' perfectly aligned.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150088,
+    "input": "Construct a sentence with the words \"seize\", \"opportunity\", and \"enjoyment\".",
+    "context": null,
+    "sevenb": "We must seize every opportunity to enjoy life and make the most of it.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150110,
+    "input": "Describe the Internet of Things (IoT) in one sentence.",
+    "context": null,
+    "sevenb": "The Internet of Things (IoT) is a network of physical devices, sensors, and computers connected to the internet that can collect and exchange data.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150118,
+    "input": "Choose the correct phrase to fill in the blank. Output the phrase.",
+    "context": "The teacher gave the students _________ to complete the assignment.",
+    "sevenb": "a deadline",
+    "checkpoint": 6
+  },
+  {
+    "id": 150122,
+    "input": "Update the following sentence with slang or alternative language. Output the updated sentence.",
+    "context": "I had a really fun time at the party.",
+    "sevenb": "I had a blast at the party.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150214,
+    "input": "Evaluate the following movie review.",
+    "context": "This movie was truly inspiring and had wonderful characters.",
+    "sevenb": "Positive review.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150235,
+    "input": "List 5 items to keep in a picnic basket.",
+    "context": null,
+    "sevenb": "1. Utensils: Forks, spoons, knives, napkins, and plates.\n2. Drinks: Water, juice, soda, beer, etc. \n3. Food: Sandwiches, salads, chips, dips, etc.\n4. Condiments: Salt, pepper, mustard, ketchup, etc. \n5. Dessert: Cookies, cakes, brownies, fruits, etc.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150301,
+    "input": "Suggest a fashion item to match this outfit.",
+    "context": "Jeans, white top, and a pair of black shoes.",
+    "sevenb": "To complete the look, you can add a black blazer and a pair of statement earrings.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150310,
+    "input": "Name 3 international organizations",
+    "context": null,
+    "sevenb": "1. United Nations \n2. International Monetary Fund \n3. World Health Organization",
+    "checkpoint": 6
+  },
+  {
+    "id": 150349,
+    "input": "Describe the long-term effects of smoking.",
+    "context": null,
+    "sevenb": "Smoking can have a wide range of long-term effects on the body. It can increase the risk of developing a number of diseases, including cancer and cardiovascular disease. It can also affect fertility and can increase the risk of developing a variety of respiratory illnesses, such as chronic bronchitis and emphysema. Long-term smoking can also contribute to psychological and mental stress, as well as a deterioration of overall quality of life.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150370,
+    "input": "Replace the noun “cat” with some other word.",
+    "context": "There was a cat in the garden.",
+    "sevenb": "There was a kitten in the garden.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150402,
+    "input": "How might poverty lead to homelessness?",
+    "context": null,
+    "sevenb": "Poverty is one of the primary causes of homelessness, as the costs associated with finding and maintaining a home can often be insurmountable for those living in poverty. Homelessness can be caused by a lack of access to safe and affordable housing, as well as an inability to provide for basic needs such as housing, food, and healthcare. Additionally, high rent/mortgage costs, high unemployment rates, and low wages also contribute to homelessness. Without access to basic resources and enough income, people can become homeless and find themselves caught in a cycle of poverty and homelessness.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150467,
+    "input": "Generate a list of the seven most iconic locations in Colorado.",
+    "context": null,
+    "sevenb": "1. Garden of the Gods – Colorado Springs \n2. Maroon Bells – Aspen \n3. Mesa Verde National Park – Montezuma \n4. Royal Gorge Bridge – Cañon City \n5. Red Rocks Amphitheater – Denver \n6. Pikes Peak – Colorado Springs \n7. Rocky Mountain National Park – Estes Park",
+    "checkpoint": 6
+  },
+  {
+    "id": 150589,
+    "input": "Name three restaurants near Seattle.",
+    "context": null,
+    "sevenb": "Three restaurants near Seattle are The Pink Door, Palace Kitchen, and Altura.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150610,
+    "input": "Explain why visuals are important for marketing.",
+    "context": null,
+    "sevenb": "Visuals are important for marketing because they help to capture people's attention, communicate messages more quickly and effectively, and create an emotional connection with the audience. Visuals can be used to create an eye-catching design, emphasize key points, explain complex topics, and give life to a brand. They also help to engage viewers and build trust, as people are more likely to remember what they have seen rather than what they have read or heard.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150670,
+    "input": "List five types of commonly used spices",
+    "context": null,
+    "sevenb": "Five types of commonly used spices are ginger, cinnamon, turmeric, cumin, and paprika.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150674,
+    "input": "Explain the following proverb \"Honesty is the best policy\"",
+    "context": null,
+    "sevenb": "This proverb means that it is always best to be honest and truthful. Honesty means being open and genuine, even if it would be easier or more beneficial to be deceptive. Being honest with others will lead to mutual respect and trust, while lying can lead to serious problems. Being honest can also lead to feeling better about oneself, as it is never enjoyable to have to keep track of one's own lies.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150684,
+    "input": "Edit the following sentence so that the two clauses are parallel:",
+    "context": "I studied French for years and spent a month studying in Paris.",
+    "sevenb": "I studied French for years and spent a month in Paris studying.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150825,
+    "input": "Find the area and the perimeter of a rectangle with length 6cm and width 4cm.",
+    "context": null,
+    "sevenb": "The area of the rectangle is 24 cm2 and its perimeter is 20 cm.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150844,
+    "input": "Generate a descriptive sentence about a beach sunset.",
+    "context": null,
+    "sevenb": "The sky painted a beautiful canvas of orange, red, and purple hues, while the sun dipped below the horizon and the waves lapped against the shore.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150878,
+    "input": "Give me a list of people who have won the Nobel Prize in Physics",
+    "context": null,
+    "sevenb": "Albert Einstein, Niels Bohr, Ernest Rutherford, Wolfgang Pauli, Werner Heisenberg, Enrico Fermi, Henri Becquerel, Marie Curie, Peter Higgs, Wolfgang Ketterle, John G. Cramer, Fritz Houtermans, Lev Landau, Arthur Compton, Abdus Salam, Steven Weinberg, Carlos Rubbia, James Cronin, Eugene Wigner, Guiseppe Occhialini.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150881,
+    "input": "Create a review of a movie that you recently watched, based on the input.",
+    "context": "The movie is \"The Greatest Showman\", starring Hugh Jackman .",
+    "sevenb": "I recently watched The Greatest Showman starring Hugh Jackman, and it was fantastic! It's the perfect mix of a feel-good movie, with uplifting music, incredible dance numbers and an impressive cast.\n\nThe visuals in the film were stunning, the choreography was extraordinary and Jackman's performance was incredible. I particularly enjoyed the twists and turns of the plot. It's a great story of ambition, success, failure, and finding love in unexpected places.\n\nThe Greatest Showman is an amazing film that will inspire and delight people of all ages. It's entertaining, heart-warming and beautiful, and it's definitely worth watching again. Highly recommended!",
+    "checkpoint": 6
+  },
+  {
+    "id": 150882,
+    "input": "Write a short story that centers around the theme of time.",
+    "context": null,
+    "sevenb": "Once upon a time there was an old man named Harold who lived alone in a small cottage in the woods. He had spent all his life trying to create a machine that could control time. He was so fixated on his dream that he had neglected all his other responsibilities, including his health and relationships.\n\nOne day, after months of hard work and tinkering, he finally accomplished his goal. He created a device that could control time. Whenever he wanted, he could freeze time and make it stand still. He was ecstatic with his accomplishment and immediately decided to use the machine to help mankind, but the difficult part was figuring out how.\n\nAfter some thought, Harold decided to use the machine to help people make the most of their limited time on Earth. He used it to allow people to skip work and make more time to spend with family and friends, to make sure everyone had enough time to do all the things they wanted to do in life.\n\nHarold became more and more revered as word spread of his great invention. People attributed his invention to the amazing things that started to happen, and life seemed to gain a new vibrancy. Even though it's been many years since Harold created the machine, people still remember his legacy and his impact on life.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150892,
+    "input": "List 4 advantages of distributed systems.",
+    "context": null,
+    "sevenb": "Four advantages of distributed systems are scalability, performance, fault tolerance, and cost-efficiency. \n\nDistributed systems can be easily scaled to meet growing demands by adding more computing resources as needed. This allows for a high level of availability, as well as faster processing speeds, as the workload can be split over multiple machines. \n\nAdditionally, distributed systems provide fault tolerance, as the work can be spread across multiple machines. If one machine fails, the rest of the system can still operate and prevent extended downtime. \n\nLastly, distributed systems are cost-efficient, as the workload can be split over multiple machines, resulting in lower hardware costs. Furthermore, distributed systems can take advantage of cloud computing technologies, resulting in lower operational costs and minimizing upfront investments.",
+    "checkpoint": 6
+  },
+  {
+    "id": 150970,
+    "input": "Give me a sentence which uses the word \"elaborate\".",
+    "context": null,
+    "sevenb": "He elaborated on the advantages of the plan in great detail.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151059,
+    "input": "Rewrite the sentence \"He was able to climb the mountain\" in a positive manner.",
+    "context": null,
+    "sevenb": "He successfully climbed the mountain.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151075,
+    "input": "Add two adjectives to the following sentence that match its meaning.",
+    "context": "My phone is powerful.",
+    "sevenb": "My phone is powerful and versatile.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151079,
+    "input": "Create a list of five values that a person might find important.",
+    "context": "Teacher reference: 1. Respect 2. Integrity 3. Compassion 4. Responsibility 5. Empathy",
+    "sevenb": "1. Respect \n2. Integrity \n3. Compassion \n4. Responsibility \n5. Empathy",
+    "checkpoint": 6
+  },
+  {
+    "id": 151108,
+    "input": "Convert the below sentence into plural.",
+    "context": "She has a dog.",
+    "sevenb": "She has dogs.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151129,
+    "input": "Compose a tune for a happy birthday song",
+    "context": null,
+    "sevenb": "[A cheerful 8-measure melody, with a repeat for a 16-measure song]  \n\n[Verse 1] \nHappy birthday to you, \nHappy birthday to you, \nHappy birthday dear [person], \nHappy birthday to you! \n \n[Chorus]\nBoom-boom clap, clap, clap, clap, \nBoom-boom clap, clap, clap, clap, \nHey! \n \n[Verse 2] \nMay all your dreams come true, \nAnd may you never have trouble, \nCongratulations on your special day, \nHappy birthday to you!",
+    "checkpoint": 6
+  },
+  {
+    "id": 151165,
+    "input": "Create an algorithm to check for palindromes.",
+    "context": null,
+    "sevenb": "def check_palindrome(word):\n  # Reverse the word\n  reversed_word = word[::-1]\n  \n  # Check if the original word matches the reversed word\n  return word == reversed_word\n  \n# Test the function\nprint(check_palindrome(\"abba\"))  # True\nprint(check_palindrome(\"redrum\"))  # False",
+    "checkpoint": 6
+  },
+  {
+    "id": 151200,
+    "input": "Find the missing value for n.",
+    "context": "n + 3 = 8",
+    "sevenb": "n = 5",
+    "checkpoint": 6
+  },
+  {
+    "id": 151211,
+    "input": "Generate a function to find the sum of the elements of a given array.",
+    "context": "[1, 4, 9, 0]",
+    "sevenb": "def SumArray(arr):\n    sum = 0\n    for element in arr:\n        sum += element\n    return sum",
+    "checkpoint": 6
+  },
+  {
+    "id": 151252,
+    "input": "Are the two statements logically consistent?",
+    "context": "The moon is made of cheese.\nMars is the fourth planet from the sun.",
+    "sevenb": "No, the two statements are not logically consistent.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151262,
+    "input": "Given a sentence, suggest an alternative that preserves the original meaning but with a different wording (synonymous substitution).",
+    "context": "It's too late.",
+    "sevenb": "It's beyond the point.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151275,
+    "input": "Describe a current trend in the field of Machine Learning.",
+    "context": null,
+    "sevenb": "One of the biggest trends in Machine Learning at the moment is the use of transfer learning and pre-trained models. Transfer learning is a technique in which a model is trained on a dataset and then used to create an entirely different model, allowing new models to learn from what was learned previously, saving time, costs and resources. Pre-trained models are models that are already trained for a certain task, such as language translation and natural language processing, and are then adapted for use in other tasks such as image classification, object detection, and text summarization.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151287,
+    "input": "generate a list of ten interesting things about a cat",
+    "context": null,
+    "sevenb": "1. Cats' whiskers are extremely sensitive and are used to help them navigate in the dark or locate potential prey.\n2. A domestic cat can sprint up to 31 miles per hour.\n3. Cats have an incredibly powerful sense of smell and can smell up to 100 times better than humans.\n4. Cats are able to survive falls from great heights by righting themselves and landing on their feet.\n5. A cat's heart beats nearly twice as fast as a human heart.\n6. Cats can jump up to 5 times their own height.\n7. Cats groom themselves primarily with their tongue, which has tiny barbs on the end to help remove dirt and debris.\n8. Cats can make over 100 different sounds, while humans and dogs can both only make around 10.\n9. Cats sweat through the pads of their feet rather than through their skin.\n10. Cats have twice as many neurons in the somatosensory region of the brain, meaning they have an exceptionally strong sense of touch.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151299,
+    "input": "Read the following web page and generate three topics.",
+    "context": "https://www.weather.gov/grk/",
+    "sevenb": "1. Local Weather Conditions\n2. Air Quality\n3. Severe Weather Alerts",
+    "checkpoint": 6
+  },
+  {
+    "id": 151316,
+    "input": "Describe the impact of ocean acidification on coral reefs.",
+    "context": null,
+    "sevenb": "Ocean acidification is a major threat to the health of coral reefs, as it decreases the concentrations of calcium carbonate minerals in the ocean, which are essential to coral reef growth and health. Due to this decrease, coral reefs are unable to absorb the calcium and other essential minerals they need to survive, leading to a decrease in coral growth, bleaching, and eventual death. Additionally, ocean acidification can detrimentally affect the species that rely on coral reefs, such as fish, turtles, and other marine life.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151342,
+    "input": "Construct a family tree with the following individuals: John, Lucy, David, Sam, and Adam.",
+    "context": null,
+    "sevenb": "John  \n|___ Lucy \n     |___ David \n     |___ Sam \n|___ Adam",
+    "checkpoint": 6
+  },
+  {
+    "id": 151356,
+    "input": "Guess what is the best practice for customer service?",
+    "context": null,
+    "sevenb": "The best practice for customer service is to treat customers with respect and provide a personalized experience. Customer service should be prompt, efficient, and attentive to customer needs. It is important to listen to customer complaints and use feedback to improve customer service.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151362,
+    "input": "Arrange a series of steps to explain how to cook a microwave recipe.",
+    "context": "Microwave Mac and Cheese",
+    "sevenb": "- Gather the ingredients: macaroni, cheese, milk, butter and salt\n- Bring a pot of water to a boil \n- Add the macaroni and cook for the the amount of time indicated on the package \n- Drain the macaroni and place in a microwave-safe bowl\n- Stir in the cheese, milk, butter and salt \n- Place in the microwave and cook on high for 5 minutes\n- Stir the mac and cheese and cook for an additional 2 to 5 minutes \n- Remove from the microwave, serve and enjoy!",
+    "checkpoint": 6
+  },
+  {
+    "id": 151372,
+    "input": "Fill in the blank of the following sentence: \n\n\"Global warming is ___ to have serious consequences on our environment.\"",
+    "context": null,
+    "sevenb": "Global warming is likely to have serious consequences on our environment.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151462,
+    "input": "Generate a list of three countries and three cities.",
+    "context": null,
+    "sevenb": "Countries: United States, India, Brazil. Cities: New York, Mumbai, Sao Paulo.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151497,
+    "input": "Generate a C program to compute the current speed of an object.",
+    "context": null,
+    "sevenb": "#include <stdio.h>  \nint main() \n{ \n    float initial_velocity, final_velocity, time; \n    \n    // input the initial velocity, final velocity and \n    // time interval\n    printf(\"Enter initial velocity, final velocity and time interval respectively: \"); \n    scanf(\"%f%f%f\", &initial_velocity, &final_velocity, &time); \n  \n    // Computing the current speed \n    float current_speed; \n    current_speed = (final_velocity - initial_velocity) / time; \n  \n    // printing the value of current speed \n    printf(\"Current Speed = %f m/sec\", current_speed); \n  \n    return 0; \n}",
+    "checkpoint": 6
+  },
+  {
+    "id": 151498,
+    "input": "Make a list of these items from a grocery store",
+    "context": "Apples, bananas, oranges.",
+    "sevenb": "- Apples\n- Bananas\n- Oranges",
+    "checkpoint": 6
+  },
+  {
+    "id": 151608,
+    "input": "Analyze the given piece of artwork and explain your interpretation in five sentences.",
+    "context": "https://upload.wikimedia.org/wikipedia/commons/f/f4/The_Wanderer_%287692510989%29.jpg",
+    "sevenb": "The painting “The Wanderer” by François-Auguste Biard depicts a lonely figure trudging through a bleak, mountainous landscape. The stark contrast of blue-black sky against the white snow shows the figure’s despair. The figure is surrounded by birds that represent his thoughts, signifying his internal struggles. The tall mountain in the background is a reminder of his insignificance and solitude. The painting captures the feelings of loneliness and uncertainty amidst uncertain times.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151664,
+    "input": "Give an example of a person who has achieved greatness in their field.",
+    "context": null,
+    "sevenb": "A great example of someone who has achieved greatness in their field is basketball player Michael Jordan. He is widely regarded as one of the greatest players in the history of the game. He was a six-time NBA champion, five-time MVP, and fourteen-time All-Star selection. Jordan is a cultural icon and has been credited with popularizing the NBA around the world.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151760,
+    "input": "Describe a relaxing evening in five words.",
+    "context": null,
+    "sevenb": "Cozy, candlelit, music, dinner, stars.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151850,
+    "input": "What are the different roles in marketing?",
+    "context": null,
+    "sevenb": "The different roles in marketing include market research, content marketing, digital marketing, direct marketing, advertising, public relations, brand management, social media marketing, search engine optimization, and customer service and support.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151884,
+    "input": "Given a sentence containing a modal verb, identify the modal verb.",
+    "context": "You should take a break.",
+    "sevenb": "should",
+    "checkpoint": 6
+  },
+  {
+    "id": 151900,
+    "input": "Give the French equivalent of the phrase 'It's raining cats and dogs'.",
+    "context": null,
+    "sevenb": "Il pleut des cordes.",
+    "checkpoint": 6
+  },
+  {
+    "id": 151922,
+    "input": "Editing the following sentence so that the meaning is unchanged while maintaining proper grammar.",
+    "context": "In the 20th century, the most important development that take place was the industrial revolution.",
+    "sevenb": "In the 20th century, the most important development that took place was the industrial revolution.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152039,
+    "input": "Describe the process for making a PB&J sandwich.",
+    "context": null,
+    "sevenb": "Spread a layer of peanut butter on one side of the bread and jelly on the other side. Place the sides together and press down slightly to ensure the sandwich stays together. Cut the sandwich in half or in triangles and enjoy!",
+    "checkpoint": 6
+  },
+  {
+    "id": 152103,
+    "input": "Summarize the summary of an article.",
+    "context": "The article discusses how the current global pandemic has led to increased pressure on businesses to adopt digital strategies.",
+    "sevenb": "Businesses are feeling the pressure to innovate digitally in the face of the global pandemic, which has had a wide-ranging impact on industries.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152113,
+    "input": "Given an arithmetic expression, evaluate it and output the result.",
+    "context": "46-32",
+    "sevenb": "14",
+    "checkpoint": 6
+  },
+  {
+    "id": 152236,
+    "input": "Transform the given input sentence into one describing a virtual reality experience.",
+    "context": "I firmly believe in education.",
+    "sevenb": "Transported to a virtual world, I feel strongly that education is essential for navigating its complexities.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152308,
+    "input": "Describe the measures you can take to reduce global warming.",
+    "context": null,
+    "sevenb": "To reduce global warming, some measures that can be taken include reducing energy consumption, switching to renewable energy sources, increasing energy efficiency, preserving forests, reducing pollution, and promoting sustainable agriculture.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152394,
+    "input": "Write an algorithm to identify prime numbers.",
+    "context": null,
+    "sevenb": "def is_prime(n):\n  if n <= 1:\n    return False\n  if n <= 3:  \n    return True  \n  if n % 2 == 0 or n % 3 == 0: \n    return False  \n  i = 5\n  while i*i <= n:\n    if n % i == 0 or n % (i + 2) == 0: \n      return False\n    i = i + 6\n  return True",
+    "checkpoint": 6
+  },
+  {
+    "id": 152439,
+    "input": "What are the long-term conditions of the given health condition?",
+    "context": "Diabetes",
+    "sevenb": "The long-term complications of diabetes can include an increased risk of blindness, kidney damage, nerve damage, stroke, heart attack, and an increased risk of developing other health conditions such as skin disesases, arthritis, and loss of limb.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152552,
+    "input": "Determine from the following information the type of triangle and explain why.",
+    "context": "Sides: 3, 4, 5",
+    "sevenb": "This triangle is a right triangle because all three sides follow the Pythagorean Theorem, which states that the sum of the squares of the sides of a right triangle is equal to the square of the hypotenuse.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152623,
+    "input": "What is the function of an electrolyte in the body?",
+    "context": null,
+    "sevenb": "Electrolytes are essential for the body to function properly. They help regulate the balance of body fluids, regulate nerve and muscle function, and maintain a steady heart rhythm. Electrolytes are electrically charged minerals, such as sodium, potassium, chlorine, calcium, and magnesium, which help regulate the amount of water in the body and control the acid-base (pH) balance of cells and tissues. They also play a role in muscle contractions and normal cell functioning.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152640,
+    "input": "Find the function that is called in this piece of code.",
+    "context": "sum_product(A, B, length):\n\ttotal = 0 \n\tfor i in range(0, length):\n\t\ttotal += A[i] * B[i]\n\treturn total",
+    "sevenb": "The function called in this piece of code is `sum_product`.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152653,
+    "input": "Give three reasons why long-term planning is important for businesses.",
+    "context": null,
+    "sevenb": "1. Long-term planning allows businesses to anticipate events and prepare accordingly. Knowing the future helps businesses gain a competitive edge and helps them be more efficient and effective.\n2. Long-term planning helps businesses allocate resources correctly and prioritize projects that are important for business growth.\n3. Long-term planning can help businesses stick to their core values and mission, so that they can stay focused on their objectives over time.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152662,
+    "input": "Given a description of a food, provide instructions on how to prepare it.",
+    "context": "Miso soup",
+    "sevenb": "Miso soup is a popular Japanese dish made from a base of miso, a paste made from fermented soybeans. To prepare it, start by heating two cups of dashi broth in a pot. Once the broth is hot, whisk in two tablespoons of miso paste until it fully dissolves. Add cubed tofu, sliced mushrooms, and chopped green onions to the pot and let simmer for five minutes. Serve the soup hot, garnished with additional green onions, if desired.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152684,
+    "input": "Construct an interface for a website that sells books.",
+    "context": null,
+    "sevenb": "The interface for the website should include a home page with a search bar to allow customers to search for books, an easy-to-navigate menu, filters to narrow down the results and sort them in various categories, as well as filters for authors, genres and price. The website should display details about each book, including its title, author, price, rating and reviews. It should also have a shopping cart feature, allowing customers to add books to their cart and checkout their purchases. Additionally, the website should have a page containing the customer's personal information, shipping details, and payment methods.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152689,
+    "input": "Give me the most important action from this text.",
+    "context": "Mary is cycling out of Paris to the beach. She has a picnic lunch in her basket.",
+    "sevenb": "Cycling out of Paris.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152722,
+    "input": "Explain the principal components analysis in machine learning",
+    "context": null,
+    "sevenb": "Principal Components Analysis (PCA) is a statistical technique used to analyze high-dimensional datasets and reduce them to fewer dimensions, helping to capture underlying patterns, detect correlations, and identify trends. PCA projects all data points onto a new coordinate system, so that the points that most influence the variance in the data are positioned at the origin. It helps machine learning models to reduce the number of input variables and to reveal the underlying structure of data.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152789,
+    "input": "Critically analyse the six core principles of design-thinking",
+    "context": null,
+    "sevenb": "Design thinking is a human-centered approach to problem-solving that encourages creativity and innovation. The core principles of design thinking involve understanding the user and the context, following a creative and iterative process, embracing exploration and collaboration, employing prototyping and testing, and communicating effectively. By understanding the needs and experiences of users, designers can develop creative solutions that would not have been possible with a traditional approach. By following an iterative process, users can refine and perfect their solutions over time. By exploring different perspectives and collaborating with different stakeholders, designers can come up with more well-rounded solutions. Prototyping and testing are essential for verifying the usability and desirability of a solution. Finally, effective communication is essential for ensuring that different stakeholders are in agreement on the solution and that there is understanding and support throughout the design process.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152811,
+    "input": "Name four benefits of taking a walk",
+    "context": null,
+    "sevenb": "Taking a walk can improve mental health, physical fitness, sleep quality, and reduce stress.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152820,
+    "input": "List five historical events that happened in the 18th century.",
+    "context": null,
+    "sevenb": "Five historical events that happened in the 18th century are the French Revolution (1789-1799), the American Revolution (1775-1783), the Industrial Revolution (1760-1820), the Seven Years' War (1756-1763), and the Haitian Revolution (1791-1804).",
+    "checkpoint": 6
+  },
+  {
+    "id": 152821,
+    "input": "Find all words that rhyme with 'cat'.",
+    "context": null,
+    "sevenb": "Words that rhyme with 'cat' are: rat, hat, bat, sat, mat, pat, fat, vat, chat, gnat, scat, and grot.",
+    "checkpoint": 6
+  },
+  {
+    "id": 152824,
+    "input": "Name 6 different polygons.",
+    "context": "N/A",
+    "sevenb": "1. Triangle\n2. Square\n3. Pentagon\n4. Hexagon\n5. Heptagon\n6. Octagon",
+    "checkpoint": 6
+  },
+  {
+    "id": 152888,
+    "input": "Determine if the following numbers are prime or not. Output 1 for prime, and 0 for not prime.",
+    "context": "19",
+    "sevenb": "1",
+    "checkpoint": 6
+  },
+  {
+    "id": 152945,
+    "input": "Create a set of interview questions for a Data Scientist position",
+    "context": null,
+    "sevenb": "A set of interview questions for a Data Scientist position include:\n\n- What data science tools and techniques have you used in your past projects?\n- How do you determine which data sets are relevant for a given analysis?\n- How do you diagnose and troubleshoot data-related issues?\n- How do you identify patterns and insights in large data sets?\n- Describe a successful data science project that you have completed.\n- What methods do you use to evaluate your data science models? \n- How do you ensure that the data is properly cleaned, formatted and organized?\n- How do you handle challenges with data availability and quality?\n- How do you approach making decisions that require predictive analytics?\n- How do you ensure accuracy and completeness of results when working with data? \n- How would you explain the concept of machine learning to a non-technical person?",
+    "checkpoint": 6
+  },
+  {
+    "id": 152987,
+    "input": "What is a mechanical clock?",
+    "context": null,
+    "sevenb": "A mechanical clock is a time-keeping device that uses clockwork mechanisms to keep track of the time. It is powered by gears and springs, and is typically wound manually. Mechanical clocks were some of the first time-keeping devices, and are still widely used today.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153033,
+    "input": "Identify a common mistake in the sentence and provide a correction.",
+    "context": "I seen that movie.",
+    "sevenb": "I saw that movie.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153056,
+    "input": "Contruct a joke using the words \"boats\" and \"yoghurt\".",
+    "context": null,
+    "sevenb": "Why don't boats like yoghurt? Because it makes them seasick!",
+    "checkpoint": 6
+  },
+  {
+    "id": 153085,
+    "input": "Rewrite this sentence with two different adjectives",
+    "context": "The book was interesting.",
+    "sevenb": "The book was fascinating and compelling.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153147,
+    "input": "Give three reasons why the use of robots in manufacturing operations is important",
+    "context": null,
+    "sevenb": "1. Robots can perform tasks more quickly and accurately than humans.\n2. They can operate for long periods without breaks or rest periods, resulting in increased efficiency and productivity.\n3. Robot components are smaller and less expensive than traditional factory machines.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153183,
+    "input": "Categorize this product into the correct industry.",
+    "context": "The new AppPlatform will allow developers to design and publish mobile applications in just a few clicks.",
+    "sevenb": "Software Industry",
+    "checkpoint": 6
+  },
+  {
+    "id": 153230,
+    "input": "Generate a list of 3 ways to conserve energy.",
+    "context": null,
+    "sevenb": "Here are 3 ways to conserve energy: \n1. Turn off lights, appliances, and electronic devices when not in use. \n2. Unplug appliances when not in use. \n3. Use natural light and ventilation when possible.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153232,
+    "input": "Generate a list of 5 advantages of using technology in education.",
+    "context": null,
+    "sevenb": "Here are 5 advantages of using technology in education: \n1. Technology can improve access to educational materials for students. \n2. Technology can facilitate personalized learning experiences. \n3. Technology can facilitate collaboration between students, teachers, and other stakeholders. \n4. Technology can help students stay engaged and motivated. \n5. Technology can enable assessments to monitor student progress.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153251,
+    "input": "Research the current trends in virtual reality technology",
+    "context": null,
+    "sevenb": "Recent trends in virtual reality (VR) technology include advancements in VR headset technology, immersive storytelling, and multi-user experiences. VR headsets are becoming more advanced, incorporating higher resolution displays, more accurate motion tracking, and improved ergonomics to enhance the user's experience. Many companies are creating new VR content that takes advantage of immersive storytelling and multi-user experiences, such as digitally generated social environments or interactive gaming. Additionally, companies are leveraging AI to facilitate the development of more realistic visuals and the implementation of more sophisticated features.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153263,
+    "input": "Generate a topic sentence for an essay on the environment",
+    "context": null,
+    "sevenb": "The environmental crisis is one of the most pressing issues of our time and must be addressed through collective action and individual changes.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153301,
+    "input": "Name the type of triangle based on their angles and sides.",
+    "context": "37°, 41°, 2",
+    "sevenb": "The triangle has two acute angles and one obtuse angle, so it is an obtuse scalene triangle.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153335,
+    "input": "Analyze the following scientific paper",
+    "context": "A Study of Photosynthetic Efficiency Under Different Light Conditions",
+    "sevenb": "This paper studied the effect of light intensity on the photosynthetic efficiency of an organism. The research was conducted over several experiments with different light intensities, with the results indicating that photosynthetic rates decreased as light intensity increased. The paper concluded that light intensity strongly affects photosynthetic efficiency and should be taken into consideration when studying an organism's environment.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153337,
+    "input": "Name two ways to reduce your water usage",
+    "context": null,
+    "sevenb": "Two ways to reduce your water usage include installing water-efficient appliances, such as a low-flow showerhead and dishwasher, or taking shorter showers. Other ideas include using a broom instead of a hose to clean outdoor surfaces, or turning off the tap when brushing your teeth. These small changes can make a big difference in reducing water consumption.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153340,
+    "input": "Describe the best strategy to maximize revenue from a given product.",
+    "context": "The product is a miniature Christmas tree made with real pine needles and artificial snow. It's sold in department stores and online.",
+    "sevenb": "The best strategy to maximize revenue from this product is to ensure that it's well-stocked both in the stores and online. To ensure that it's always visible to potential customers, it should be placed in prime display locations, such as near the store entrances or checkout lines. Additionally, it's important to ensure that the product is well-promoted online. This could include advertising on social media, creating content that demonstrates its beauty and uses, and creating compelling email campaigns to draw customers in. Furthermore, offering discounts and promotions can also create a surge in sales and help to increase revenue from the product. Finally, customer service should be a priority, with staff members available to help customers better understand how the product works and the value it provides.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153345,
+    "input": "Write a rhyming poem that summarizes the following article.",
+    "context": "The article is about the importance of trees.",
+    "sevenb": "Trees do the planet so much good,\nThey freshen the air like they should \nFrom the leaves of a tree we take shade \nAnd without them, the world would be frayed\n\nThe branches are swaying with the breeze \nProviding shelter and giving a peace \nWithout tree these lands would be bare\nSo let's do our part and take care",
+    "checkpoint": 6
+  },
+  {
+    "id": 153361,
+    "input": "Generate an article headline and abstract for a given topic.",
+    "context": "The Impact of Social Media on Mental Health",
+    "sevenb": "Headline: Social Media: A Problematic Relationship with Mental Health \nAbstract: Social media has become a ubiquitous part of our lives, but its impact on mental health is less understood. This article explores the relationship between social media use and mental health, discussing both the positive and negative effects it can have. It examines the ways that mental health can be affected such as distorted self-image, fear of missing out, depression, and anxiety. Finally, the article emphasizes the need to better understand and regulate social media use to maximize its benefits, while minimizing its potential harm.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153478,
+    "input": "Write a persuasive essay about why people should eat more fruits and vegetables.",
+    "context": null,
+    "sevenb": "Eating fruits and vegetables is essential for maintaining a healthy diet. The consumption of fruits and vegetables is associated with a lower risk of chronic diseases such as stroke, heart disease, and certain cancers. Fruits and vegetables are rich sources of essential vitamins and minerals like Vitamin A, Vitamin C, and calcium. Eating a variety of different fruits and vegetables can also provide additional vitamins and minerals that are not found in other food sources. Furthermore, fruits and vegetables are low in calories and contain dietary fiber, which helps to keep you feeling full and satisfied. \n\nIn conclusion, eating more fruits and vegetables is important for maintaining good health. By incorporating fruits and vegetables as a regular part of your diet, you can increase your intake of essential vitamins and minerals, reduce the risk of developing chronic diseases, and get the most nutrition from the least amount of calories.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153520,
+    "input": "Write a blog post discussing the effects of social media on self-esteem.",
+    "context": null,
+    "sevenb": "Social media has had a profound effect on self-esteem, both positively and negatively. On one hand, it can facilitate connection and provide an outlet for expressing yourself. However, it can also be a source of negative comparisons and a platform for cyberbullying. There is now a body of evidence to suggest that long-term usage of social media can lead to a decrease in self-esteem in young people. \n\nWhen using social media, it is important to remember that the online world is largely curated and not an accurate reflection of reality. It is important to ask yourself if these are the types of connections that you want to be forming, and to question if your content is true to your values. Being mindful and discerning with your choice of content can help foster self-confidence and feelings of self-worth.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153571,
+    "input": "Name 5 common sorting algorithms",
+    "context": null,
+    "sevenb": "1. Bubble Sort\n2. Insertion Sort\n3. Selection Sort\n4. Merge Sort\n5. Quick Sort",
+    "checkpoint": 6
+  },
+  {
+    "id": 153599,
+    "input": "Construct an analogy that compares the terms “master” and “servant”",
+    "context": null,
+    "sevenb": "A master is to a servant like a captain is to a sailor.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153642,
+    "input": "Convert the following sentence into passive voice: He created an app.",
+    "context": null,
+    "sevenb": "An app was created by him.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153682,
+    "input": "Suggest a better alternative for the following adjective.",
+    "context": "The party was dry.",
+    "sevenb": "The party was uneventful.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153710,
+    "input": "Rewrite the following sentence with a pronoun. Output the rewritten sentence.",
+    "context": "The programmer who was working on the project was praised.",
+    "sevenb": "They praised the programmer working on the project.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153723,
+    "input": "Generate a creative story about a character who lives in a village with a secret.",
+    "context": null,
+    "sevenb": "Once upon a time, there lived a young girl in a small village deep in a secluded wood. The village was filled with beautiful greenery and people of all ages living side by side. But behind all of that beauty, the village was keeping a big secret. It was said that the village was home to a mythical creature, living deep below the village and only coming out at night. No one knew what kind of creature it was, but they knew they had to keep it safe and hidden.\n\nFor years the villagers had a secret agreement that they would protect the creature and not tell anyone about it. They would hunt for it in the night and offer it food, but never dared to speak of it during the day. But one day a curious young girl found the secret and began to tell everyone about it.\n\nNo one knew what would happen when the secret was out, but the villagers didn't have time to find out. Before long, the creature had disappeared, never to be seen again. Even though the creature was gone, the myth still lives on in the village and its secret lives on too.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153753,
+    "input": "Name a country that has French as its official language.",
+    "context": null,
+    "sevenb": "France is a country that has French as its official language.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153777,
+    "input": "Is the following sentence true or false?\n\n\"Jupiter has the highest temperature of all the planets in our solar system.\"",
+    "context": null,
+    "sevenb": "False. Jupiter has the highest mass in our solar system, but the planet with the highest temperature is Venus.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153788,
+    "input": "Given a list, sort it from highest to lowest.",
+    "context": "[3, 5, 27, 1, -3]",
+    "sevenb": "[27, 5, 3, 1, -3]",
+    "checkpoint": 6
+  },
+  {
+    "id": 153801,
+    "input": "Rewrite the following proverb as a question: \"A penny saved is a penny earned.\"",
+    "context": null,
+    "sevenb": "Is a penny saved the same as a penny earned?",
+    "checkpoint": 6
+  },
+  {
+    "id": 153864,
+    "input": "Name one thing that you could do to reduce your environmental footprint.",
+    "context": null,
+    "sevenb": "One simple way to reduce your environmental footprint is to switch to energy-efficient solutions every time you buy or replace electronics and appliances. Energy-efficient solutions consume less energy, require less electricity to use, and usually offer a long-term saving in electricity bills. Additionally, you can reduce your consumption of single-use plastics such as plastic water bottles, straws and grocery bags. Instead, opt to use reusable or recyclable items when possible. Finally, you can limit your driving and use public transit, carpooling, or biking to get around.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153869,
+    "input": "What challenges can you expect when editing a long-form article?",
+    "context": null,
+    "sevenb": "When editing a long-form article, some of the challenges to be expected include identifying and correcting errors in grammar, spelling, punctuation, and syntax; ensuring consistency in terms of tone, language, and style; confirming facts and figures; and reworking particular passages to improve clarity and readability. Additionally, as the article contains more content, the editing process becomes more complex, requiring greater attention to detail and more time for extensive revising and polishing.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153898,
+    "input": "List five differences between photosynthesis and aerobic respiration.",
+    "context": null,
+    "sevenb": "1. Photosynthesis occurs in plants and some bacteria, whereas aerobic respiration occurs in all living organisms.\n2. Photosynthesis occurs in chloroplasts and uses light energy to convert carbon dioxide and water into organic molecules and oxygen, whereas aerobic respiration occurs in the mitochondria and breaks down organic molecules to release energy, producing carbon dioxide and water.\n3. Photosynthesis uses water as a reactant molecule and produces oxygen as a by-product, whereas aerobic respiration uses oxygen as a reactant and produces carbon dioxide as a by-product.\n4. Photosynthesis is generally an exothermic reaction, while aerobic respiration is an endothermic reaction.\n5. Photosynthesis uses electromagnetic radiation, such as sunlight, for energy, whereas aerobic respiration produces ATP molecules which provide energy for metabolic processes.",
+    "checkpoint": 6
+  },
+  {
+    "id": 153913,
+    "input": "List 5 types of black holes.",
+    "context": null,
+    "sevenb": "- Stellar Black Hole \n- Supermassive Black Hole \n- Intermediate-Mass Black Hole \n- Recoiling Black Hole\n- Primordial Black Hole",
+    "checkpoint": 6
+  },
+  {
+    "id": 153991,
+    "input": "Compare the themes of freedom in \"The New Colossus\" and \"Sonnet 19\".",
+    "context": "\"The New Colossus\" by Emma Lazarus and \"Sonnet 19\" by William Shakespeare",
+    "sevenb": "Both \"The New Colossus\" by Emma Lazarus and \"Sonnet 19\" by William Shakespeare present the theme of freedom in their respective works. Lazarus' poem speaks of the hope and promise of freedoms that immigrants will find while coming to America, while Shakespeare's sonnet focuses on the freedom that can be found in self-expression and the appreciation of nature. Both works emphasize the importance of freedom, but do so from different perspectives. While Lazarus speaks of liberation from tyranny and the promise of a better new life, Shakespeare looks inward and finds liberty in the simple pleasure of expression. Both poems are ultimately a celebration of the power of freedom and the joy it brings.",
+    "checkpoint": 6
+  },
+  {
+    "id": 154009,
+    "input": "Who is the target customer of Adidas?",
+    "context": null,
+    "sevenb": "Adidas markets its products to a wide range of customers, from professional athletes to casual sports enthusiasts. It focuses on teens, youth and young adults, with the aim of creating a strong connection to its customers. Adidas also targets the female demographic, building campaign messages which are tailored towards their lifestyle and needs. Additionally, the brand emphasizes authenticity and individualism, focusing on inclusivity and representation of different identities.",
+    "checkpoint": 6
+  },
+  {
+    "id": 154028,
+    "input": "Describe how a customer might feel when they receive excellent customer service.",
+    "context": null,
+    "sevenb": "When a customer receives excellent customer service, they might feel relieved, respected, and valued. They might believe that their needs are being heard, understood, and acted upon in a timely and efficient manner. They might be pleased to receive solutions tailored to their individual needs and feel that their trust in the company or service provider is well-placed. All of these factors can leave the customer feeling satisfied and happy with their experience.",
+    "checkpoint": 6
+  },
+  {
+    "id": 154039,
+    "input": "Describe the personality of a person who enjoys playing sports.",
+    "context": null,
+    "sevenb": "A person who enjoys playing sports typically has an outgoing and upbeat personality. They are competitive and determined, often pushing to be their best at the game. They strive to be the best and take great pride in the successes they achieve, whether it be winning a game or simply beating their own personal record. These individuals are passionate, both for the game and for their team, and are willing to work hard and sacrifice for what they believe in. They also display leadership qualities and are naturally driven to both compete and collaborate with their peers.",
+    "checkpoint": 6
+  },
+  {
+    "id": 154082,
+    "input": "Output an appropriate response for the given talking point.",
+    "context": "It has been a long day.",
+    "sevenb": "I understand, let's take a break.",
+    "checkpoint": 6
+  },
+  {
+    "id": 154106,
+    "input": "Explain how climate change will affect agriculture in the United States.",
+    "context": null,
+    "sevenb": "Climate change is having a significant impact on agriculture in the United States. For example, rising temperatures have caused drought, which in turn has reduced crop yields and livestock production. In addition, the increased frequency and intensity of storms and hurricanes has led to more soil erosion and decreased soil fertility. Warmer temperatures also cause an increase in pests and weeds, which are damaging to crops and difficult to control. \n\nMoreover, climate change is resulting in changes to the growing season and a decline in the availability of water for irrigation. Drought and water shortages are major threats to crop production and can negatively affect yields. Finally, climate change has increased the risk of wildfires, damaging agricultural land and crops. \n\nThe effects of climate change on agriculture are not only threatening food production, but are also leading to economic losses. As a result, it is important to take action to address climate change in order to protect agricultural production. This includes improving water management, adapting infrastructure and practices, and protecting crop lands with sustainable farming practices.",
+    "checkpoint": 6
+  },
+  {
+    "id": 154108,
+    "input": "Describe two different designs for a website and their respective advantages.",
+    "context": null,
+    "sevenb": "Two different website designs include minimalist designs and dynamic designs. A minimalist design emphasizes simple layouts and minimal use of graphics, while a dynamic design uses engaging graphics and often utilizes animation. A minimalist design is easier to navigate and consumes less data, while a dynamic design is more attractive and engages users more actively.",
+    "checkpoint": 6
+  },
+  {
+    "id": 154145,
+    "input": "Come up with an imaginative story about a magical forest.",
+    "context": null,
+    "sevenb": "Once upon a time, deep in the heart of an ancient forest, lived a mystical creature named Lumi. Lumi had the power to create, shape and manipulate the enchanted trees and plants of the forest. With this power, she could transform the forest into a place of wondrous beauty, filled with lights and colors beyond belief. \n\nEvery day, Lumi would open the gate to her magical forest and visitors from all over would be in awe of the splendor it contained. Journeying through the forest, one could find the ancient tree of dreams, the rainbow bridge, the fountain of stars and the path of dancing leaves. Every creature, from the tiny faeries to the mighty dragons, could find solace and joy in the warm embrace of the magical forest. \n\nThough unknown to many, this beautiful place was Lumi's secret. For she knew that the powers of her magical forest were too powerful to be known by all.",
+    "checkpoint": 6
+  },
+  {
+    "id": 154149,
+    "input": "Is it possible to see a rainbow during a storm?",
+    "context": null,
+    "sevenb": "Yes, it is possible to see a rainbow during a storm. Rainbows appear when the sun is behind you, the rain is in front of you, and the colors of the sun's light can refract off of the water droplets in the sky. The light is then split into its constituent colors, creating a rainbow.",
+    "checkpoint": 6
+  },
+  {
+    "id": 154183,
+    "input": "Create a list of 5 critical success factors for launching a successful digital marketing campaign",
+    "context": null,
+    "sevenb": "1. Define specific goals and find target audience. \n2. Set realistic budget and allocate resources.\n3. Develop a comprehensive digital marketing plan. \n4. Measure regularly, analyze and adjust as needed.\n5. Make use of a variety of digital platforms.",
+    "checkpoint": 6
+  },
+  {
+    "id": 154184,
+    "input": "Reword this sentence: The desktop wallpaper of a user speaks a lot about him",
+    "context": null,
+    "sevenb": "The desktop wallpaper of a user reflects a lot about their personality and interests.",
+    "checkpoint": 6
+  },
+  {
+    "id": 154234,
+    "input": "Generate an article on why it is important to follow safety measures related to COVID-19",
+    "context": null,
+    "sevenb": "With the rise of the COVID-19 pandemic, it has become more important than ever for people to take necessary safety measures. From wearing face masks in public to practicing social distancing to the utmost extent, following safety measures related to COVID-19 is the only way to prevent the further spread of the virus. Not following these safety measures can lead to an even more drastic surge in the cases of the virus seen across the world. \n\nIt is also important to take preventive measures such as getting vaccinated as soon as possible, especially for those who are at a higher risk of infection. Following all the guidelines and protocols set by governmental and health organizations can help protect individuals and communities at large, giving them a chance to lead a normal life. \n\nTo sum it up, following safety measures related to COVID-19 is the only way to protect oneself and others from catching and spreading the virus. Taking necessary precautions such as wearing face masks, following social distancing rules, and getting vaccinated can help reduce the risk and severity of the infection.",
+    "checkpoint": 6
+  },
+  {
+    "id": 154238,
+    "input": "Construct a logical argument from the given premises.",
+    "context": "Premise 1: All dogs bark\nPremise 2: Rover is a dog",
+    "sevenb": "Therefore, Rover must bark.",
+    "checkpoint": 6
+  }
+]

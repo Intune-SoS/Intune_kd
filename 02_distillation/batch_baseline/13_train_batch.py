@@ -15,6 +15,7 @@ Status flow:  score -> finetune -> output_tuned -> score_tuned -> completed
 # ── stdlib only at top level (fast, no CUDA init) ────────────────────────────
 import os, sys, json, time, gc, argparse, threading
 from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -39,22 +40,23 @@ os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 # ── Config ────────────────────────────────────────────────────────────────────
 MODEL_NAME       = "unsloth/gemma-3-1b-it-bnb-4bit"
-MAX_SEQ_LENGTH   = 2048
-MAX_NEW_TOKENS   = 512
+MAX_SEQ_LENGTH   = 512     # Dataset P99 is 328 tokens, max is 440
+MAX_NEW_TOKENS   = 256     # Target response median is 81 tokens
 MIN_RECORDS      = 100
-BATCH_SIZE       = 1       # RTX 4060 8GB — do not increase
-GRAD_ACCUM       = 16      # effective batch = 16
+BATCH_SIZE       = 4       # Fast, fits comfortably in ~3.5GB VRAM
+GRAD_ACCUM       = 4       # effective batch = 16 (4 x 4)
 STREAM_SIZE      = 1000    # Larger chunks for DB fetches (reduced round-trips)
-DB_CHUNK         = 500     # Increased from 100 for faster bulk updates
-INFERENCE_CHUNK  = 16      # records between GPU purges during inference
-TUNED_INFER_BATCH_SIZE = 50
-TUNED_SCAN_PAGE_SIZE   = 500   # Increased from 250 to reduce pagination
-TUNED_GPU_BATCH_SIZE   = int(os.getenv('TUNED_GPU_BATCH_SIZE', '12'))
+DB_CHUNK         = 500     # Bulk update chunk size
+INFERENCE_CHUNK  = 32      # records between GPU purges during inference
+TUNED_INFER_BATCH_SIZE = 128
+TUNED_SCAN_PAGE_SIZE   = 500
+TUNED_GPU_BATCH_SIZE   = int(os.getenv('TUNED_GPU_BATCH_SIZE', '32'))
 LORA_R           = 16
 LORA_ALPHA       = 16
 LORA_DROPOUT     = 0
 BATCH_MODEL_PATH  = "models/gemma-batch-lora"
 BATCH_REPORT_PATH = "reports/batch_learning"
+TABLE_NAME        = os.getenv('SUPABASE_TABLE_BATCH', 'modelcomp_batch_v2')
 
 
 # =============================================================================
@@ -112,20 +114,21 @@ def gpu_info():
 
 def get_supabase():
     from supabase import create_client
-    return create_client(os.getenv('SUPABASE_URL'), os.getenv('SUPABASE_KEY'))
+    key = os.getenv('SUPABASE_SERVICE_ROLE_KEY') or os.getenv('SUPABASE_KEY')
+    return create_client(os.getenv('SUPABASE_URL'), key)
 
 def count_by_status(sb):
     counts = {}
     for s in ['score','finetune','output_tuned','score_tuned','completed']:
-        counts[s] = sb.table('modelcomp_batch').select('id', count='exact').eq('status', s).execute().count
-    counts['null'] = sb.table('modelcomp_batch').select('id', count='exact').is_('status','null').execute().count
+        counts[s] = sb.table(TABLE_NAME).select('id', count='exact').eq('status', s).execute().count
+    counts['null'] = sb.table(TABLE_NAME).select('id', count='exact').is_('status','null').execute().count
     return counts
 
 def fetch_all_by_status(sb, status):
-    _flush(f"[DB] Fetching status='{status}'...")
+    _flush(f"[DB] Fetching status='{status}' from '{TABLE_NAME}'...")
     rows, offset, chunk = [], 0, STREAM_SIZE
     while True:
-        r = sb.table('modelcomp_batch').select('*').eq('status', status)\
+        r = sb.table(TABLE_NAME).select('*').eq('status', status)\
               .range(offset, offset + chunk - 1).execute()
         if not r.data: break
         rows.extend(r.data)
@@ -136,21 +139,21 @@ def fetch_all_by_status(sb, status):
 
 def bulk_update_status(sb, ids, new_status):
     """FIX: batch .in_() updates — not one HTTP round-trip per row."""
-    _flush(f"[DB] Bulk-updating {len(ids)} rows to '{new_status}'...")
+    _flush(f"[DB] Bulk-updating {len(ids)} rows to '{new_status}' in '{TABLE_NAME}'...")
     for i in range(0, len(ids), DB_CHUNK):
         chunk = ids[i:i+DB_CHUNK]
         try:
-            sb.table('modelcomp_batch').update({'status': new_status}).in_('id', chunk).execute()
+            sb.table(TABLE_NAME).update({'status': new_status}).in_('id', chunk).execute()
         except Exception as e:
             _flush(f"[WARN] bulk chunk {i//DB_CHUNK} failed ({e}), retrying row-by-row")
             for rid in chunk:
                 try:
-                    sb.table('modelcomp_batch').update({'status': new_status}).eq('id', rid).execute()
+                    sb.table(TABLE_NAME).update({'status': new_status}).eq('id', rid).execute()
                 except Exception as e2:
                     _flush(f"[ERROR] row {rid}: {e2}")
 
 def _default_metrics():
-    return {k: 0.5 for k in ['structured_correctness','task_success','instruction_following',
+    return {k: 0.0 for k in ['structured_correctness','task_success','instruction_following',
                                'coverage','faithfulness','hallucination','context_grounding',
                                'overall_score','conciseness']}
 
@@ -159,7 +162,8 @@ def _get_eval():
         from importlib import import_module
         m = import_module('06_eval_metrics')
         return m.evaluate_single_output
-    except Exception:
+    except Exception as e:
+        _flush(f"[ERROR] Could not import 06_eval_metrics: {e}")
         return None
 
 def _compute_metrics(fn, instruction, student, teacher, context, task_label):
@@ -167,7 +171,8 @@ def _compute_metrics(fn, instruction, student, teacher, context, task_label):
         try:
             return fn(instruction=instruction, student_output=student,
                       teacher_output=teacher, context=context, task_label=task_label)
-        except Exception:
+        except Exception as e:
+            _flush(f"[WARN] Metric evaluation error: {e}")
             pass
     return _default_metrics()
 
@@ -211,39 +216,43 @@ def generate_output_batch(model, tokenizer, records: list) -> tuple[list, list]:
     torch = _import_torch()
     prompts = [_build_prompt(r['input'], r.get('context', '') or '') for r in records]
 
-    inputs = tokenizer(
-        prompts,
-        return_tensors='pt',
-        truncation=True,
-        padding=True,
-        max_length=MAX_SEQ_LENGTH - MAX_NEW_TOKENS,
-    )
-    inputs = {k: v.to(model.device) for k, v in inputs.items()}
-
-    t0 = time.time()
-    with torch.inference_mode():
-        out = model.generate(
-            **inputs,
-            max_new_tokens=MAX_NEW_TOKENS,
-            do_sample=True,
-            temperature=0.7,
-            top_p=0.9,
-            use_cache=True,
-            pad_token_id=tokenizer.pad_token_id or tokenizer.eos_token_id,
+    saved_side = tokenizer.padding_side
+    tokenizer.padding_side = 'left'
+    try:
+        inputs = tokenizer(
+            prompts,
+            return_tensors='pt',
+            truncation=True,
+            padding=True,
+            max_length=MAX_SEQ_LENGTH - MAX_NEW_TOKENS,
         )
-    batch_latency_ms = (time.time() - t0) * 1000
+        inputs = {k: v.to(model.device) for k, v in inputs.items()}
+        input_len = inputs['input_ids'].shape[1]
 
-    input_lengths = inputs['attention_mask'].sum(dim=1).tolist()
-    outputs = []
-    for i, seq in enumerate(out):
-        response_tokens = seq[int(input_lengths[i]):]
-        text = tokenizer.decode(response_tokens, skip_special_tokens=True).strip()
-        if not text:
-            text = _extract_response(tokenizer.decode(seq, skip_special_tokens=True))
-        outputs.append(text)
+        t0 = time.time()
+        with torch.inference_mode():
+            out = model.generate(
+                **inputs,
+                max_new_tokens=MAX_NEW_TOKENS,
+                do_sample=False,
+                use_cache=True,
+                pad_token_id=tokenizer.pad_token_id or tokenizer.eos_token_id,
+                eos_token_id=tokenizer.eos_token_id,
+            )
+        batch_latency_ms = (time.time() - t0) * 1000
 
-    per_row_latency = [batch_latency_ms / max(1, len(records))] * len(records)
-    return outputs, per_row_latency
+        outputs = []
+        for seq in out:
+            response_tokens = seq[input_len:]
+            text = tokenizer.decode(response_tokens, skip_special_tokens=True).strip()
+            if not text:
+                text = _extract_response(tokenizer.decode(seq, skip_special_tokens=True))
+            outputs.append(text)
+
+        per_row_latency = [batch_latency_ms / max(1, len(records))] * len(records)
+        return outputs, per_row_latency
+    finally:
+        tokenizer.padding_side = saved_side
 
 
 def generate_output_batch_adaptive(model, tokenizer, records: list, max_gpu_batch: int, desc: str) -> tuple[list, list]:
@@ -284,41 +293,34 @@ def generate_output_batch_adaptive(model, tokenizer, records: list, max_gpu_batc
 
 def bulk_update_rows(sb, rows: list) -> None:
     """
-    Update rows in DB efficiently with automatic retry and progress tracking.
-    Uses batch grouping to reduce total requests.
+    Update rows in DB efficiently using concurrent threads and automatic retry.
     """
     if not rows:
         return
     
     from tqdm import tqdm
-    import time
     
-    failed_rows = []
-    
+    def _update_single(row):
+        rid = row['id']
+        payload = {k: v for k, v in row.items() if k != 'id'}
+        if payload:
+            for attempt in range(3):
+                try:
+                    sb.table(TABLE_NAME).update(payload).eq('id', rid).execute()
+                    return
+                except Exception as e:
+                    if attempt < 2:
+                        time.sleep(0.5 * (2 ** attempt))
+                    else:
+                        _flush(f"[ERROR] Row {rid} update failed: {e}")
+
     with tqdm(total=len(rows), desc="DB update", unit='rows', disable=False) as pbar:
         for i in range(0, len(rows), DB_CHUNK):
             chunk = rows[i:i + DB_CHUNK]
-            
-            for attempt in range(2):  # Retry once on failure
-                try:
-                    for row in chunk:
-                        rid = row['id']
-                        payload = {k: v for k, v in row.items() if k != 'id'}
-                        if payload:
-                            sb.table('modelcomp_batch').update(payload).eq('id', rid).execute()
-                        pbar.update(1)
-                    break  # Success, move to next chunk
-                except Exception as e:
-                    if attempt == 0:
-                        _flush(f"[RETRY] Batch {i//DB_CHUNK}: {str(e)[:60]}...")
-                        time.sleep(0.5)  # Brief pause before retry
-                    else:
-                        _flush(f"[ERROR] Batch {i//DB_CHUNK} failed after 2 attempts")
-                        failed_rows.extend([r['id'] for r in chunk])
-                        pbar.update(len(chunk))
-    
-    if failed_rows:
-        _flush(f"[WARN] {len(failed_rows)} rows failed to update: {failed_rows[:10]}...")
+            workers = min(16, len(chunk))
+            with ThreadPoolExecutor(max_workers=workers) as pool:
+                list(pool.map(_update_single, chunk))
+            pbar.update(len(chunk))
 
 
 # =============================================================================
@@ -347,7 +349,7 @@ def step_score(sb):
     rows = []
     offset, chunk = 0, STREAM_SIZE
     while True:
-        r = sb.table('modelcomp_batch').select('*').is_('status','null')\
+        r = sb.table(TABLE_NAME).select('*').is_('status','null')\
               .neq('student_output','').not_.is_('student_output','null')\
               .range(offset, offset+chunk-1).execute()
         if not r.data: break
@@ -355,7 +357,11 @@ def step_score(sb):
         if len(r.data) < chunk: break
     _flush(f"[SCORE] {len(rows)} records to score")
     if len(rows) < MIN_RECORDS:
-        _flush("[SKIP] not enough"); return False
+        downstream = sb.table(TABLE_NAME).select('id', count='exact').in_('status', ['score', 'finetune', 'output_tuned', 'score_tuned', 'completed']).limit(1).execute()
+        if downstream.count and downstream.count >= MIN_RECORDS:
+            _flush(f"⏩ Found {downstream.count:,} records already scored (status='score' or later). Skipping to finetune.")
+            return True
+        _flush("[SKIP] not enough records to score"); return False
 
     eval_fn = _get_eval()
     rouge   = rouge_scorer.RougeScorer(['rouge1','rougeL'], use_stemmer=True)
@@ -427,28 +433,14 @@ def step_finetune(sb):
     _flush("[1] Fetching records...")
     records = fetch_all_by_status(sb, 'score')
     if len(records) < MIN_RECORDS:
+        downstream = sb.table(TABLE_NAME).select('id', count='exact').in_('status', ['finetune', 'output_tuned', 'score_tuned', 'completed']).limit(1).execute()
+        if downstream.count and downstream.count >= MIN_RECORDS and os.path.exists(BATCH_MODEL_PATH):
+            _flush(f"⏩ Found {downstream.count:,} records already past 'finetune' and model exists. Skipping to output_tuned.")
+            return True
         _flush(f"[SKIP] only {len(records)} records"); return False
 
-    _flush(f"[2] Formatting {len(records):,} samples...")
-    training_data = []
-    for item in tqdm(records, desc="Format"):
-        ctx = item.get('context','') or ''
-        if ctx:
-            text = (f"### Instruction:\n{item['input']}\n\n"
-                    f"### Context:\n{ctx}\n\n"
-                    f"### Response:\n{item['sevenb']}")
-        else:
-            text = (f"### Instruction:\n{item['input']}\n\n"
-                    f"### Response:\n{item['sevenb']}")
-        training_data.append({"text": text})
-    dataset = Dataset.from_list(training_data)
-    _flush(f"[2] Dataset ready: {len(dataset)} samples")
-
-    _flush(f"[3] {gpu_info()}")
-    purge_gpu()
-
     # ── Load model ────────────────────────────────────────────────────────────
-    _flush(f"[4] Loading {MODEL_NAME}  <-- may take 3-6 min, heartbeat prints every 20s")
+    _flush(f"[2] Loading {MODEL_NAME}  <-- may take 3-6 min, heartbeat prints every 20s")
     model = tokenizer = None
     try:
         model, tokenizer = FastLanguageModel.from_pretrained(
@@ -457,11 +449,31 @@ def step_finetune(sb):
             dtype=None,
             load_in_4bit=True,
         )
-        _flush(f"[4] Model loaded  {gpu_info()}")
+        _flush(f"[2] Model loaded  {gpu_info()}")
     except Exception as e:
         _flush(f"[ERROR] load failed: {e}")
         safe_delete(model, tokenizer)
         return False
+
+    eos = tokenizer.eos_token or "<end_of_turn>"
+    _flush(f"[3] Formatting {len(records):,} samples with EOS={repr(eos)}...")
+    training_data = []
+    for item in tqdm(records, desc="Format"):
+        ctx = (item.get('context','') or '').strip()
+        ans = (item.get('sevenb','') or '').strip()
+        if ctx:
+            text = (f"### Instruction:\n{item['input']}\n\n"
+                    f"### Context:\n{ctx}\n\n"
+                    f"### Response:\n{ans}{eos}")
+        else:
+            text = (f"### Instruction:\n{item['input']}\n\n"
+                    f"### Response:\n{ans}{eos}")
+        training_data.append({"text": text})
+    dataset = Dataset.from_list(training_data)
+    _flush(f"[3] Dataset ready: {len(dataset)} samples")
+
+    _flush(f"[4] {gpu_info()}")
+    purge_gpu()
 
     # ── LoRA ──────────────────────────────────────────────────────────────────
     _flush("[5] Adding LoRA...")
@@ -588,11 +600,15 @@ def step_output_tuned(sb):
 
     hb = _heartbeat("output_tuned", interval=20)
 
-    pending_count = sb.table('modelcomp_batch') \
+    pending_count = sb.table(TABLE_NAME) \
         .select('id', count='exact') \
         .eq('status', 'finetune') \
         .execute().count or 0
     if pending_count == 0:
+        downstream = sb.table(TABLE_NAME).select('id', count='exact').in_('status', ['output_tuned', 'score_tuned', 'completed']).limit(1).execute()
+        if downstream.count and downstream.count >= MIN_RECORDS:
+            _flush(f"⏩ Found {downstream.count:,} records already past 'output_tuned'. Skipping to score_tuned.")
+            return True
         _flush("[SKIP] No rows with status='finetune'")
         return False
 
@@ -621,7 +637,7 @@ def step_output_tuned(sb):
 
     while True:
         while len(pending_buffer) < TUNED_INFER_BATCH_SIZE:
-            page = sb.table('modelcomp_batch') \
+            page = sb.table(TABLE_NAME) \
                 .select('id, input, context') \
                 .eq('status', 'finetune') \
                 .gt('id', last_seen_id) \
@@ -694,6 +710,10 @@ def step_score_tuned(sb):
     _flush("\n[SCORE_TUNED] Scoring tuned outputs...")
     records = fetch_all_by_status(sb, 'output_tuned')
     if len(records) == 0:
+        downstream = sb.table(TABLE_NAME).select('id', count='exact').in_('status', ['score_tuned', 'completed']).limit(1).execute()
+        if downstream.count and downstream.count >= MIN_RECORDS:
+            _flush(f"⏩ Found {downstream.count:,} records already past 'score_tuned'. Skipping to completed.")
+            return True
         _flush(f"[SKIP] no records to score"); return False
 
     eval_fn = _get_eval()
@@ -810,8 +830,8 @@ def preflight(sb):
         p = torch.cuda.get_device_properties(0)
         _flush(f"  {p.name}  {p.total_memory/1e9:.1f}GB VRAM")
     try:
-        r = sb.table('modelcomp_batch').select('id', count='exact').limit(1).execute()
-        _flush(f"  Supabase OK — {r.count} total rows")
+        r = sb.table(TABLE_NAME).select('id', count='exact').limit(1).execute()
+        _flush(f"  Supabase OK ({TABLE_NAME}) — {r.count} total rows")
     except Exception as e:
         _flush(f"  Supabase FAIL: {e}"); return False
     counts = count_by_status(sb)
@@ -840,14 +860,19 @@ STEPS = {
 }
 
 def main():
+    global TABLE_NAME
     p = argparse.ArgumentParser()
     p.add_argument('--status',    action='store_true')
     p.add_argument('--preflight', action='store_true')
     p.add_argument('--step',      choices=list(STEPS.keys()))
     p.add_argument('--run-all',   action='store_true')
+    p.add_argument('--table',     type=str, default=None, help=f'Supabase table name (default: {TABLE_NAME})')
     args = p.parse_args()
 
-    _flush("[INIT] Connecting to Supabase...")
+    if args.table:
+        TABLE_NAME = args.table
+
+    _flush(f"[INIT] Connecting to Supabase for table '{TABLE_NAME}'...")
     sb = get_supabase()
     _flush("[INIT] Connected!")
 

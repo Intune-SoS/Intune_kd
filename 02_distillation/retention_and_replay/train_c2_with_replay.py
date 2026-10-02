@@ -246,10 +246,10 @@ def prepare_replay_dataset(
 # Prompt Formatting & Dataset Creation
 # ─────────────────────────────────────────────────────────────────────────────
 
-def format_training_sample(record: Dict[str, Any]) -> str:
+def format_training_sample(record: Dict[str, Any], eos_token: str = "<end_of_turn>") -> str:
     """
     Format training sample:
-    ### Instruction:\n{input}\n\n### Context:\n{context}\n\n### Response:\n{sevenb}
+    ### Instruction:\n{input}\n\n### Context:\n{context}\n\n### Response:\n{sevenb}{eos_token}
     (Context block omitted if empty)
     """
     instruction = (record.get("input") or "").strip()
@@ -260,11 +260,11 @@ def format_training_sample(record: Dict[str, Any]) -> str:
         return (
             f"### Instruction:\n{instruction}\n\n"
             f"### Context:\n{context}\n\n"
-            f"### Response:\n{response}"
+            f"### Response:\n{response}{eos_token}"
         )
     return (
         f"### Instruction:\n{instruction}\n\n"
-        f"### Response:\n{response}"
+        f"### Response:\n{response}{eos_token}"
     )
 
 
@@ -357,7 +357,8 @@ def train_c2_replay(
 
     # 2. Format & Pre-tokenize Dataset (single worker to avoid Windows multiprocessing crash)
     log.info("Formatting dataset...")
-    formatted_texts = [{"text": format_training_sample(r)} for r in mixed_records]
+    eos = tokenizer.eos_token or "<end_of_turn>"
+    formatted_texts = [{"text": format_training_sample(r, eos_token=eos)} for r in mixed_records]
     dataset = Dataset.from_list(formatted_texts)
 
     log.info("Pre-tokenizing dataset (num_proc=1)...")

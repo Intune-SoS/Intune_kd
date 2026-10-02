@@ -82,3 +82,7 @@ __pycache__/
 config.local.yaml
 config.local.json
 .supabaserc
+
+models_backup/
+check_len.py
+*backup*.json
