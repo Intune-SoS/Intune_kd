@@ -178,6 +178,8 @@ _RETRYABLE_SIGS = (
     'ReadError', 'TimeoutException', 'Connection', 'ConnectionError',
     'RemoteDisconnected', 'BrokenPipe',
     'statement timeout', '57014',
+    'ReadTimeout', 'timeout', 'timed out', 'Timeout', 'ConnectTimeout',
+    'PoolTimeout', 'NetworkError', 'TransportError', 'httpcore', 'httpx'
 )
 
 
@@ -199,14 +201,15 @@ def get_supabase():
 
 def _is_retryable(exc: Exception) -> bool:
     msg = str(exc)
-    return any(sig in msg for sig in _RETRYABLE_SIGS)
+    exc_type = type(exc).__name__
+    return any(sig in msg or sig in exc_type for sig in _RETRYABLE_SIGS)
 
 
 def supabase_batch_update_with_retry(
     table: str,
     rows: list,          # list of dicts, each MUST contain 'id' key
     id_col: str = 'id',
-    max_retries: int = 4,
+    max_retries: int = 5,
     concurrency: int = 16,
 ) -> None:
     """
@@ -228,11 +231,11 @@ def supabase_batch_update_with_retry(
                 return
             except Exception as exc:
                 last_exc = exc
-                if attempt < max_retries - 1 and _is_retryable(exc):
-                    time.sleep(0.5 * (2 ** attempt))
+                if attempt < max_retries - 1:
+                    time.sleep(1.0 * (1.5 ** attempt))
                 else:
-                    raise
-        raise last_exc
+                    print(f"⚠️  [DB WARN] Row {row_id} update failed after {max_retries} attempts: {exc}")
+                    return
 
     for i in range(0, len(rows), UPDATE_BATCH_SIZE):
         batch = rows[i: i + UPDATE_BATCH_SIZE]
