@@ -1,0 +1,19 @@
+=====================================================================================
+REPLAY MITIGATION COMPARISON (C1 Evaluation Slice, N=100)
+=====================================================================================
+Metric                         C2-Original     C2-Replay         Delta        Status
+-------------------------------------------------------------------------------------
+Structured Correctness              0.5200        0.5170       -0.0030     regressed
+Instruction Following               0.9862        0.9838       -0.0024     regressed
+Coverage                            0.4237        0.4451       +0.0214      improved
+Hallucination                       0.1997        0.1717       -0.0280      improved
+Context Grounding                   0.8030        0.8258       +0.0228      improved
+Conciseness                         0.8060        0.8360       +0.0300      improved
+ROUGE-1                             0.5206        0.5587       +0.0381      improved
+ROUGE-L                             0.4517        0.4844       +0.0327      improved
+BLEU                                0.2034        0.2290       +0.0256      improved
+-------------------------------------------------------------------------------------
+Overall Score                       0.5554        0.5869       +0.0315      improved
+=====================================================================================
+
+Note: For Hallucination, lower is better (negative delta indicates improvement).

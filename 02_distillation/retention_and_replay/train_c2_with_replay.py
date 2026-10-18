@@ -85,13 +85,14 @@ REPORTS_DIR.mkdir(parents=True, exist_ok=True)
 C1_EVAL_SLICE_FILE = REPORTS_DIR / "c1_eval_slice.json"
 COMPARISON_JSON_FILE = REPORTS_DIR / "replay_comparison.json"
 COMPARISON_TABLE_FILE = REPORTS_DIR / "replay_comparison_table.txt"
+TABLE_NAME = os.getenv("SUPABASE_TABLE_INCREMENTAL", "model_comp_50k_v2")
 
 # Constraints: RTX 4070 8GB
 BATCH_SIZE = 4
 GRAD_ACCUM = 4
 MAX_SEQ_LENGTH = 2048
 MAX_NEW_TOKENS = 64
-EVAL_BATCH_SIZE = 4
+EVAL_BATCH_SIZE = 32
 LORA_R = 16
 LORA_ALPHA = 16
 LORA_DROPOUT = 0.0
@@ -141,7 +142,7 @@ def get_c1_eval_slice(client, limit: int = 100) -> List[Dict[str, Any]]:
 
     log.info(f"Pinning C1 evaluation slice to: {C1_EVAL_SLICE_FILE}")
     id_resp = (
-        client.table("modelcomp_50k")
+        client.table(TABLE_NAME)
         .select("id")
         .eq("checkpoint", 1)
         .order("id", desc=False)
@@ -153,7 +154,7 @@ def get_c1_eval_slice(client, limit: int = 100) -> List[Dict[str, Any]]:
         raise RuntimeError("No records found for checkpoint 1")
 
     hydrate_resp = (
-        client.table("modelcomp_50k")
+        client.table(TABLE_NAME)
         .select("id, input, context, sevenb, checkpoint")
         .in_("id", ids)
         .execute()
@@ -182,7 +183,7 @@ def fetch_all_records_by_checkpoint(client, ckpt_num: int) -> List[Dict[str, Any
 
     while True:
         resp = (
-            client.table("modelcomp_50k")
+            client.table(TABLE_NAME)
             .select("id, input, context, sevenb, checkpoint")
             .eq("checkpoint", ckpt_num)
             .range(offset, offset + page_size - 1)
@@ -343,8 +344,8 @@ def train_c2_replay(
             dtype=None,
             load_in_4bit=True,
         )
-        # Ensure PEFT LoRA parameters are trainable
-        model = FastLanguageModel.get_peft_model(model, **_lora_kwargs)
+        FastLanguageModel.for_training(model)
+        log.info("C1 adapter loaded; existing LoRA weights active for continual training.")
     else:
         log.info(f"Loading base model {BASE_MODEL}...")
         model, tokenizer = FastLanguageModel.from_pretrained(
@@ -354,6 +355,7 @@ def train_c2_replay(
             load_in_4bit=True,
         )
         model = FastLanguageModel.get_peft_model(model, **_lora_kwargs)
+        FastLanguageModel.for_training(model)
 
     # 2. Format & Pre-tokenize Dataset (single worker to avoid Windows multiprocessing crash)
     log.info("Formatting dataset...")
@@ -392,6 +394,8 @@ def train_c2_replay(
         save_strategy="no",
         remove_unused_columns=False,
         ddp_find_unused_parameters=False,
+        report_to=[],
+        torch_compile=False,
     )
 
     trainer = SFTTrainer(
@@ -480,47 +484,37 @@ def evaluate_adapter_on_c1_slice(
     c1_records: List[Dict[str, Any]],
 ) -> Tuple[Dict[str, float], List[Dict[str, Any]]]:
     """
-    Evaluates an adapter on the 100-record C1 slice using plain transformers + PEFT.
+    Evaluates an adapter on the 100-record C1 slice using FastLanguageModel fast inference.
     Returns (mean_metrics, record_evaluations).
     """
     import torch
-    from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
-    from peft import PeftModel
+    from unsloth import FastLanguageModel
 
     log.info(f"Evaluating {adapter_name} on C1 slice ({len(c1_records)} records)...")
-    bnb_config = BitsAndBytesConfig(
+    model, tokenizer = FastLanguageModel.from_pretrained(
+        model_name=adapter_path,
+        max_seq_length=1024,
+        dtype=None,
         load_in_4bit=True,
-        bnb_4bit_quant_type="nf4",
-        bnb_4bit_compute_dtype=torch.bfloat16,
-        bnb_4bit_use_double_quant=True,
     )
-
-    base_model = AutoModelForCausalLM.from_pretrained(
-        BASE_MODEL,
-        quantization_config=bnb_config,
-        device_map="auto",
-        trust_remote_code=True,
-        attn_implementation="eager",
-    )
-    model = PeftModel.from_pretrained(base_model, adapter_path)
-    model.eval()
-
-    try:
-        tokenizer = AutoTokenizer.from_pretrained(adapter_path, trust_remote_code=True, fix_mistral_regex=True)
-    except TypeError:
-        tokenizer = AutoTokenizer.from_pretrained(adapter_path, trust_remote_code=True)
+    FastLanguageModel.for_inference(model)
 
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
         tokenizer.pad_token_id = tokenizer.eos_token_id
 
-    model.generation_config.do_sample = False
-    model.generation_config.pad_token_id = tokenizer.pad_token_id
-
     # Batched inference
     saved_side = tokenizer.padding_side
     tokenizer.padding_side = "left"
     device = next(model.parameters()).device
+
+    eos_ids = [tokenizer.eos_token_id] if tokenizer.eos_token_id is not None else []
+    try:
+        eot = tokenizer.convert_tokens_to_ids("<end_of_turn>")
+        if eot and eot != getattr(tokenizer, 'unk_token_id', None) and eot not in eos_ids:
+            eos_ids.append(eot)
+    except Exception:
+        pass
 
     generated_texts: List[str] = []
     try:
@@ -537,6 +531,7 @@ def evaluate_adapter_on_c1_slice(
                     do_sample=False,
                     use_cache=True,
                     pad_token_id=tokenizer.pad_token_id,
+                    eos_token_id=eos_ids if len(eos_ids) > 1 else (eos_ids[0] if eos_ids else None),
                 )
 
             for j in range(len(batch)):
@@ -570,7 +565,7 @@ def evaluate_adapter_on_c1_slice(
     }
 
     # Free memory
-    del model, base_model, tokenizer
+    del model, tokenizer
     import gc
     gc.collect()
     if torch.cuda.is_available():

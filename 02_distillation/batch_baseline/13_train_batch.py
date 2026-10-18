@@ -41,16 +41,16 @@ os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 # ── Config ────────────────────────────────────────────────────────────────────
 MODEL_NAME       = "unsloth/gemma-3-1b-it-bnb-4bit"
 MAX_SEQ_LENGTH   = 512     # Dataset P99 is 328 tokens, max is 440
-MAX_NEW_TOKENS   = 256     # Target response median is 81 tokens
+MAX_NEW_TOKENS   = 128     # Student median answer is ~42 words (~55 tokens); 128 is ample
 MIN_RECORDS      = 100
 BATCH_SIZE       = 4       # Fast, fits comfortably in ~3.5GB VRAM
 GRAD_ACCUM       = 4       # effective batch = 16 (4 x 4)
 STREAM_SIZE      = 1000    # Larger chunks for DB fetches (reduced round-trips)
 DB_CHUNK         = 500     # Bulk update chunk size
-INFERENCE_CHUNK  = 32      # records between GPU purges during inference
-TUNED_INFER_BATCH_SIZE = 128
+INFERENCE_CHUNK  = 64      # records between GPU purges during inference
+TUNED_INFER_BATCH_SIZE = 256
 TUNED_SCAN_PAGE_SIZE   = 500
-TUNED_GPU_BATCH_SIZE   = int(os.getenv('TUNED_GPU_BATCH_SIZE', '32'))
+TUNED_GPU_BATCH_SIZE   = int(os.getenv('TUNED_GPU_BATCH_SIZE', '128'))  # 128 concurrent sequences uses ~3.5 - 3.8 GB VRAM safely
 LORA_R           = 16
 LORA_ALPHA       = 16
 LORA_DROPOUT     = 0
@@ -229,6 +229,15 @@ def generate_output_batch(model, tokenizer, records: list) -> tuple[list, list]:
         inputs = {k: v.to(model.device) for k, v in inputs.items()}
         input_len = inputs['input_ids'].shape[1]
 
+        # Multi-token EOS: stop on both <eos> and <end_of_turn>
+        eos_ids = [tokenizer.eos_token_id] if tokenizer.eos_token_id is not None else []
+        try:
+            eot = tokenizer.convert_tokens_to_ids("<end_of_turn>")
+            if eot and eot != getattr(tokenizer, 'unk_token_id', None) and eot not in eos_ids:
+                eos_ids.append(eot)
+        except Exception:
+            pass
+
         t0 = time.time()
         with torch.inference_mode():
             out = model.generate(
@@ -237,17 +246,18 @@ def generate_output_batch(model, tokenizer, records: list) -> tuple[list, list]:
                 do_sample=False,
                 use_cache=True,
                 pad_token_id=tokenizer.pad_token_id or tokenizer.eos_token_id,
-                eos_token_id=tokenizer.eos_token_id,
+                eos_token_id=eos_ids if len(eos_ids) > 1 else (eos_ids[0] if eos_ids else None),
             )
         batch_latency_ms = (time.time() - t0) * 1000
 
         outputs = []
-        for seq in out:
-            response_tokens = seq[input_len:]
-            text = tokenizer.decode(response_tokens, skip_special_tokens=True).strip()
-            if not text:
-                text = _extract_response(tokenizer.decode(seq, skip_special_tokens=True))
-            outputs.append(text)
+        batch_tokens = out[:, input_len:]
+        decoded_batch = tokenizer.batch_decode(batch_tokens, skip_special_tokens=True)
+        for i, text in enumerate(decoded_batch):
+            clean = text.strip()
+            if not clean:
+                clean = _extract_response(tokenizer.decode(out[i], skip_special_tokens=True))
+            outputs.append(clean)
 
         per_row_latency = [batch_latency_ms / max(1, len(records))] * len(records)
         return outputs, per_row_latency
@@ -258,6 +268,7 @@ def generate_output_batch(model, tokenizer, records: list) -> tuple[list, list]:
 def generate_output_batch_adaptive(model, tokenizer, records: list, max_gpu_batch: int, desc: str) -> tuple[list, list]:
     """
     Adaptive micro-batching: shrink on CUDA OOM and continue.
+    Displays live VRAM allocated, reserved, and peak in progress bar.
     """
     from tqdm import tqdm
     torch = _import_torch()
@@ -277,10 +288,20 @@ def generate_output_batch_adaptive(model, tokenizer, records: list, max_gpu_batc
                 latencies.extend(chunk_lat)
                 idx += take
                 pbar.update(take)
+                if torch.cuda.is_available():
+                    alloc = torch.cuda.memory_allocated() / 1e9
+                    res   = torch.cuda.memory_reserved()  / 1e9
+                    peak  = torch.cuda.max_memory_allocated() / 1e9
+                    pbar.set_postfix({
+                        'vram_res': f"{res:.2f}GB",
+                        'vram_alloc': f"{alloc:.2f}GB",
+                        'peak': f"{peak:.2f}GB",
+                        'batch': take,
+                    })
             except RuntimeError as exc:
                 if _is_cuda_oom(exc) and take > 1:
                     curr_bs = max(1, take // 2)
-                    _flush(f"⚠️ CUDA OOM at batch={take}; retrying with batch={curr_bs}")
+                    _flush(f"\n⚠️ CUDA OOM at batch={take}; retrying with batch={curr_bs}")
                     if torch.cuda.is_available():
                         torch.cuda.empty_cache()
                     continue
@@ -625,7 +646,8 @@ def step_output_tuned(sb):
             load_in_4bit=True,
         )
         FastLanguageModel.for_inference(model)
-        _flush(f"[2] Model loaded  {gpu_info()}")
+        _flush(f"[2] Model weights loaded into VRAM: {gpu_info()}")
+        _flush(f"[2] Active generation batch size: {TUNED_GPU_BATCH_SIZE} (Targeting ~3.5 - 3.8 GB VRAM during generation)")
     except Exception as e:
         _flush(f"[ERROR] load: {e}")
         safe_delete(model, tokenizer)
@@ -689,7 +711,7 @@ def step_output_tuned(sb):
         except Exception as e:
             _flush(f"[ERROR] DB update failed: {e}")
 
-        _flush(f"BATCH output_tuned progress: {processed}/{pending_count}")
+        _flush(f"BATCH output_tuned progress: {processed}/{pending_count} | {gpu_info()}")
         # Only purge every 3 batches to reduce overhead
         if processed % (TUNED_INFER_BATCH_SIZE * 3) == 0:
             purge_gpu()

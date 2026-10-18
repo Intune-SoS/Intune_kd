@@ -1,0 +1,138 @@
+{
+  "checkpoint": 4,
+  "timestamp": "2026-10-14T03:27:02.545232",
+  "records_evaluated": 4969,
+  "summary": {
+    "overall_score_before": 0.4222,
+    "overall_score_after": 0.5233,
+    "improvement": 0.1011,
+    "improvement_pct": 23.93,
+    "win_rate_improved_pct": 70.8,
+    "regression_pct": 23.6,
+    "neutral_pct": 5.6,
+    "counts": {
+      "total": 4969,
+      "improved": 3519,
+      "regressed": 1174,
+      "neutral": 276
+    }
+  },
+  "quality_metrics (weight 0.60)": {
+    "structured_correctness": {
+      "before": 0.6571,
+      "after": 0.5185,
+      "improvement": -0.1386
+    },
+    "task_success": {
+      "before": 0.6281,
+      "after": 0.6247,
+      "improvement": -0.0034
+    },
+    "instruction_following": {
+      "before": 0.9951,
+      "after": 0.9904,
+      "improvement": -0.0047
+    }
+  },
+  "fidelity_metrics (weight 0.40)": {
+    "coverage": {
+      "before": 0.3196,
+      "after": 0.3558,
+      "improvement": 0.0362
+    },
+    "faithfulness": {
+      "before": 0.3322,
+      "after": 0.4734,
+      "improvement": 0.1412
+    },
+    "hallucination": {
+      "before": 0.3363,
+      "after": 0.2314,
+      "improvement": -0.1049
+    },
+    "context_grounding": {
+      "before": 0.85,
+      "after": 0.8281,
+      "improvement": -0.0219
+    }
+  },
+  "diagnostic_metrics": {
+    "conciseness": {
+      "before": 0.5145,
+      "after": 0.8201,
+      "improvement": 0.3056
+    },
+    "rouge1": {
+      "before": 0.2529,
+      "after": 0.4994,
+      "improvement": 0.2465
+    },
+    "rougel": {
+      "before": 0.1863,
+      "after": 0.4223,
+      "improvement": 0.236
+    },
+    "bleu": {
+      "before": 0.0316,
+      "after": 0.1616,
+      "improvement": 0.13
+    }
+  },
+  "all_metrics_breakdown": {
+    "structured_correctness": {
+      "before": 0.6571,
+      "after": 0.5185,
+      "improvement": -0.1386
+    },
+    "task_success": {
+      "before": 0.6281,
+      "after": 0.6247,
+      "improvement": -0.0034
+    },
+    "instruction_following": {
+      "before": 0.9951,
+      "after": 0.9904,
+      "improvement": -0.0047
+    },
+    "coverage": {
+      "before": 0.3196,
+      "after": 0.3558,
+      "improvement": 0.0362
+    },
+    "faithfulness": {
+      "before": 0.3322,
+      "after": 0.4734,
+      "improvement": 0.1412
+    },
+    "hallucination": {
+      "before": 0.3363,
+      "after": 0.2314,
+      "improvement": -0.1049
+    },
+    "context_grounding": {
+      "before": 0.85,
+      "after": 0.8281,
+      "improvement": -0.0219
+    },
+    "conciseness": {
+      "before": 0.5145,
+      "after": 0.8201,
+      "improvement": 0.3056
+    },
+    "rouge1": {
+      "before": 0.2529,
+      "after": 0.4994,
+      "improvement": 0.2465
+    },
+    "rougel": {
+      "before": 0.1863,
+      "after": 0.4223,
+      "improvement": 0.236
+    },
+    "bleu": {
+      "before": 0.0316,
+      "after": 0.1616,
+      "improvement": 0.13
+    }
+  }
+}
