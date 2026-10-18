@@ -468,6 +468,15 @@ Subjective LLM judges introduce stochasticity, self-enhancement bias, and high d
 - Decoupling evaluation from LLM inference through formal n-gram, LCS, and set-theoretic vocabulary alignment metrics.
 - Establishing formal schema contracts and CI/CD unit tests for automated validation of language model capabilities in safety-critical deployments.
 
+### 5. C3B-Adapter: Architectural Circuit Breakers & Self-Healing (ICSE CAIN 2026)
+To operationalize these principles into a fully autonomous delivery gate, we implement **C3B-Adapter** (`src/orchestration/c3b_circuit_breaker.py`):
+- **3-Tier Behavioral Contract**: Formalizes Tier 1 (Syntactic & Invariant Constraints), Tier 2 (Backward Non-Regression SLA: retention $\ge 98\%$, hallucination delta $\le +0.015$), and Tier 3 (Operational SLA: latency $\le 3.0$s, VRAM $\le 4.0$GB).
+- **Fast Pre-Flight Test Gate**: Evaluates pinned canary benchmark slices ($N=100$) in $<30$ seconds using a deterministic 9-metric oracle on local GPU hardware ($B=32$).
+- **Tri-State Circuit Breaker FSM**: Manages adapter deployment across `Closed` (serving verified baseline), `Half-Open` (staged canary evaluation), and `Open` (tripped upon contract breach, freezing live traffic on baseline).
+- **Autonomous Closed-Loop Self-Healing**: Upon tripping `Open`, the breaker dynamically extracts a 10% coreset rehearsal buffer from failing historical distributions and fine-tunes a repaired patch adapter ($C_2\text{-replay}$).
+- **Empirical Validation**: Successfully intercepted $C_2\text{-Original}$'s retention decay on Slice $C_1$ ($96.66\%$), held traffic on $C_1$, and autonomously synthesized $C_2\text{-replay}$, boosting retention to **$102.14\%$** ($0.5869$) and slashing hallucination by **$14.0\%$ relative** ($0.1997 \to 0.1717$).
+- **Manuscript & Audit Logs**: Detailed in [`ICSE_CAIN_PAPER_MANUSCRIPT.md`](ICSE_CAIN_PAPER_MANUSCRIPT.md) and [`reports/c3b/c3b_evaluation_report.md`](reports/c3b/c3b_evaluation_report.md).
+
 ---
 
 ## References
