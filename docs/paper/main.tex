@@ -73,11 +73,11 @@ C2   & 0.5590$^{\dagger}$ & 0.5082 & 0.5325 & 0.4701 & 0.5336 \\
 C3   & 0.5602 & 0.5129 & 0.5339 & 0.4679 & 0.5311 \\
 C4   & 0.5559$^{*}$ & 0.5024 & 0.5306 & 0.4870 & 0.5317 \\
 \bottomrule
-\multicolumn{6}{@{}p{\columnwidth}@{}}{\scriptsize $^{\dagger}p<0.05$ on lexical fidelity (ROUGE/BLEU); $^{*}p=0.0224$ (Wilcoxon signed-rank).}\\
+\multicolumn{6}{@{}p{\columnwidth}@{}}{\scriptsize $^{\dagger}p<0.05$ on lexical metrics (ROUGE-1/BLEU); $^{*}p=0.0224$ (Wilcoxon signed-rank).}\\
 \end{tabular}
 \end{table}
 
-On slice C1, later adapter scores remain below C1's 0.5746: C2=0.5590, C3=0.5602, C4=0.5559. Paired statistical testing on the C1 cohort ($N=100$) reveals significant retention degradation in lexical fidelity between C1 and C2 (ROUGE-1 drops by $-0.0221$, paired $t$-test $p=0.0372$; BLEU drops by $-0.0331$, $p=0.0231$). Across the longer stream horizon ($C_1 \to C_4$), overall retention decay is statistically significant under the Wilcoxon signed-rank test ($p=0.0224 < 0.05$, 95\% CI $[-0.0394, +0.0020]$). These empirical distributions confirm that without explicit retention gating, catastrophic forgetting accumulates across successive streaming updates.
+On slice C1, later adapter scores remain below C1's 0.5746: C2=0.5590, C3=0.5602, C4=0.5559. Paired statistical testing on the C1 cohort ($N=100$) reveals significant retention degradation in lexical metrics between C1 and C2 (ROUGE-1 drops by $-0.0221$, paired $t$-test $p=0.0372$; BLEU drops by $-0.0331$, $p=0.0231$). Across the longer stream horizon ($C_1 \to C_4$), overall retention decay is statistically significant under the two-sided Wilcoxon signed-rank test ($W = 748.0, p=0.0224 < 0.05$, with 42 queries degrading versus 24 improving; parametric paired $t$-test $p=0.0803$, mean $\Delta = -0.0187$, 95\% CI $[-0.0394, +0.0020]$). These empirical distributions confirm that without explicit retention gating, catastrophic forgetting accumulates across successive streaming updates.
 
 The release problem is to decide whether a candidate $C_t$ may replace accepted adapter $C_{t-1}$ under pinned historical contracts $\mathcal{K}_{<t}$ and operational constraints $\mathcal{O}$. Promotion is fail-closed:
 \begin{equation}

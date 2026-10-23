@@ -11,7 +11,7 @@
 | **Checkpoint 4 ($C_4$)** | 0.5559$^*$ | 0.5024 | 0.5306 | 0.4870 | 0.5317 | 0.9674$^*$ *(Violates SLA)* |
 | **Contract SLA Floor** | --- | --- | --- | --- | --- | **$\ge 0.9800$** |
 
-### Statistical Significance Notes
-- $^{\dagger}p < 0.05$ on lexical precision (ROUGE-1 $p = 0.0372$, BLEU $p = 0.0231$, paired $t$-test).
-- $^*p = 0.0224$ across long-horizon stream degradation ($C_1 \to C_4$, Wilcoxon signed-rank test).
-- $N = 100$ evaluated queries per stream cohort.
+### Statistical Notes
+- $^{\dagger}p < 0.05$ on lexical metrics: paired $t$-test between $C_1$ and $C_2$ reveals significant degradation in ROUGE-1 ($p = 0.0372$, mean diff $-0.0221$) and BLEU ($p = 0.0231$, mean diff $-0.0331$).
+- $^*p = 0.0224$: two-sided Wilcoxon signed-rank test on long-horizon paired query scores ($C_1 \to C_4$ on Slice C1, $W = 748.0, N = 100$), where 42 queries exhibited score decay versus 24 showing improvement (parametric paired $t$-test $p = 0.0803$, mean diff $-0.0187$, 95% CI $[-0.0394, +0.0020]$).
+- All cohorts evaluated on $N = 100$ customer-service interaction records.
